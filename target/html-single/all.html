@@ -65,7 +65,7 @@
 					
 				</div>	
 				<div style="float:left;padding-top: 15px;padding-left: 30px;">
-<h1><a href="">Release Notes<span style="font-size:12px">   Publication Date : Dec 25, 2015 </span></a></h1>
+<h1><a href="">Release Notes<span style="font-size:12px">   Publication Date : Jan 11, 2016 </span></a></h1>
 				</div>
 			</div>
 			</div>
@@ -77,6 +77,11 @@
            <nav id="toc">
        
     <ol>
+    
+        <li>
+            <a href="index.html#36-rc1">3.6-RC1</a>
+            
+        </li>
     
         <li>
             <a href="index.html#36-ea3">3.6-EA3</a>
@@ -94,7 +99,7 @@
         </li>
     
         <li>
-            <a href="index.html#354">3.5.4</a>
+            <a href="index.html#355">3.5.5</a>
             
         </li>
     
@@ -151,7 +156,21 @@
 
 	        <div id="content">
 	        <p>This document includes the new features, enhancements and fixed issues for Hazelcast releases.<p>
-	            <a name="36-ea3"></a><h1 id="3-6-ea3">3.6-EA3</h1>
+	            <a name="36-rc1"></a><h1 id="3-6-rc1">3.6-RC1</h1>
+<p>This section lists the enhancements and fixed issues for 3.6-RC1 release.</p>
+<ul>
+<li>Javadoc for <code>IMap.putAll()</code> does not mention the lack of atomicity in the invocation. <a href="https://github.com/hazelcast/hazelcast/issues/7256" target="_blank">[7256]</a></li>
+<li>When a WAN Queue overrun occurs (with exception enabled), the source cluster logs an excessive amount of noise. This should to be logged. <a href="https://github.com/hazelcast/hazelcast/issues/7242" target="_blank">[7242]</a></li>
+<li>On WAN Replication Queue overrun, a <code>WANReplicationQueueFullException</code> is expected, but instead, the client receives an <code>UndefinedErrorCodeException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7241" target="_blank">[7241]</a></li>
+<li>When using Hazelcast as a JCache provider: As JSR-107 Javadoc states, an update should not reset expiry time for <code>CreatedExpiryPolicy</code>. However, when a cache entry is updated, it does not expire. <a href="https://github.com/hazelcast/hazelcast/issues/7236" target="_blank">[7236]</a></li>
+<li>Default WAN acknowledge type should be <code>ACK_ON_RECEIPT</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7160" target="_blank">[7160]</a></li>
+<li><code>NullPointerException</code> is thrown in <code>ClientRegressionWithMockNetworkTest</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7148" target="_blank">[7148]</a></li>
+<li>Changing clusters in the Management Center does not update/refresh the cluster members in the Scripting tab. <a href="https://github.com/hazelcast/hazelcast/issues/7119" target="_blank">[7119]</a></li>
+<li>A fix is needed for operation retries in <code>PartitionCheckIfLoadedOperation</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7114" target="_blank">[7114]</a></li>
+<li>WAN Queue counts in the Management Center for Hazelcast 3.6-EA3 are not correct. <a href="https://github.com/hazelcast/hazelcast/issues/7100" target="_blank">[7100]</a></li>
+<li>Hazelcast 3.6 Reference Manual is not correct for its Enterprise WAN Replication content. <a href="https://github.com/hazelcast/hazelcast/issues/7099" target="_blank">[7099]</a></li>
+</ul>
+<a name="36-ea3"></a><h1 id="3-6-ea3">3.6-EA3</h1>
 <p>This section lists the enhancements and fixed issues for 3.6-EA3 (Early Access 3) release.</p>
 <ul>
 <li><code>NullPointerException</code> is thrown for the thread <code>cached4</code> in a test which uses <code>MapLoader</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7098" target="_blank">[7098]</a></li>
@@ -285,7 +304,7 @@ listeners when client is disconnected, it should be removed too after the listen
 <li>Default directory name is hardcoded as &quot;mancenter3.5&quot; and it needs to be maintained for every major release. This process should be dynamic. <a href="https://github.com/hazelcast/management-center/issues/174" target="_blank">[174]</a></li>
 <li>Throughput statistics for Map shows nothing when the <code>putAll()</code> method is used. <a href="https://github.com/hazelcast/management-center/issues/159" target="_blank">[159]</a></li>
 </ul>
-<a name="354"></a><h1 id="3-5-4">3.5.4</h1>
+<a name="355"></a><h1 id="3-5-5">3.5.5</h1>
 <p>This section lists the new features, enhancements and fixed issues for 3.5 and 3.5.x releases.</p>
 <a name="new-features"></a><h2 id="new-features">New Features</h2>
 <p>The following are the new features introduced with 3.5 release.</p>
@@ -368,6 +387,20 @@ resolver <a href="https://github.com/hazelcast/hazelcast/issues/2431">[#2431]</a
 </ul>
 <a name="fixes"></a><h2 id="fixes">Fixes</h2>
 <p>The following are the issues solved for Hazelcast 3.5 and 3.5.x releases.</p>
+<p><strong>3.5.5 Fixes</strong></p>
+<p>The following are the issues solved for Hazelcast 3.5.5 release.</p>
+<ul>
+<li>The methods <code>IMap.getAsync</code> and <code>IMap.putAsync</code> should update the statistics <code>getCount</code> and <code>putCount</code>, etc. <a href="https://github.com/hazelcast/hazelcast/issues/7109">[#7109]</a></li>
+<li><code>NullPointerException</code> is thrown for <code>CoalescedWriteBehindQueue.removeFirstOccurrence()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7082">[#7082]</a></li>
+<li>The quorum definition in the Spring context is not correct. <a href="https://github.com/hazelcast/hazelcast/issues/6946">[#6946]</a></li>
+<li>While publishing events, IMap operations convert the value to data even if the registered listener does not request the value. <a href="https://github.com/hazelcast/hazelcast/issues/6866">[#6866]</a></li>
+<li>Map entry event listeners are not invoked on the clients of WAN replication target cluster. <a href="https://github.com/hazelcast/hazelcast/issues/6802">[#6802]</a></li>
+<li>The method <code>putAsync</code> does not affect <code>LocalMapStats.getPutOperationCount()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/6731">[#6731]</a></li>
+<li>Possible memory leak when using <code>IMap.containsKey</code>. Problem happens when <code>containsKey</code> is used for a value that exists in the <code>MapStore</code>. Entry is loaded from the store but it does not get added to the map (no event is triggered in this case), eventually the system crashes with no memory. <a href="https://github.com/hazelcast/hazelcast/issues/6517">[#6517]</a></li>
+<li>Performance test with Spring Batch throws <code>TargetDisconnectedException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/4230">[#4230]</a></li>
+<li>Web session replication does not work as expected during a shutdown. <a href="https://github.com/hazelcast/hazelcast/issues/3362">[#3362]</a></li>
+<li>The parameter <code>session-ttl-seconds</code> is set after the instance creation. It should be set before the instance is created. <a href="https://github.com/hazelcast/hazelcast/issues/2377">[#2377]</a></li>
+</ul>
 <p><strong>3.5.4 Fixes</strong></p>
 <p>The following are the issues solved for Hazelcast 3.5.4 release.</p>
 <ul>
