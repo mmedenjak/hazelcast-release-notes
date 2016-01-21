@@ -10,10 +10,10 @@ This behavior has been changed with the release of Hazelcast 3.5. `SpringAware` 
 Starting with the release 3.6, WAN replication related system properties, that are configured per node basis, can now be configured per target cluster.
 Below 4 system properties are no more valid;
 
-1. `hazelcast.enterprise.wanrep.batch.size`, please see the [WAN Replication Batch Size](#wan-replication-batch-size). 
-2. `hazelcast.enterprise.wanrep.batchfrequency.seconds`, please see the [WAN Replication Batch Maximum Delay](#wan-replication-batch-maximum-delay).
-3. `hazelcast.enterprise.wanrep.optimeout.millis`, please see the [WAN Replication Response Timeout](#wan-replication-response-timeout).
-4. `hazelcast.enterprise.wanrep.queue.capacity`, please see the [WAN Replication Queue Capacity](#wan-replication-queue-capacity).
+1. `hazelcast.enterprise.wanrep.batch.size`, please see the [WAN Replication Batch Size](http://docs.hazelcast.org/docs/latest-dev/manual/html-single/index.html#batch-size). 
+2. `hazelcast.enterprise.wanrep.batchfrequency.seconds`, please see the [WAN Replication Batch Maximum Delay](http://docs.hazelcast.org/docs/latest-dev/manual/html-single/index.html#batch-maximum-delay).
+3. `hazelcast.enterprise.wanrep.optimeout.millis`, please see the [WAN Replication Response Timeout](http://docs.hazelcast.org/docs/latest-dev/manual/html-single/index.html#response-timeout).
+4. `hazelcast.enterprise.wanrep.queue.capacity`, please see the [WAN Replication Queue Capacity](http://docs.hazelcast.org/docs/latest-dev/manual/html-single/index.html#queue-capacity).
 
 
 
