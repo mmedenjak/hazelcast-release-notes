@@ -17,8 +17,6 @@ HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
 // HazelcastInstance hazelcastInstance = Hazelcast.getHazelcastInstanceByName( "instance1" );
 Map<Integer, String> customers = hazelcastInstance.getMap( "customers" );
 ```
-- **Removal of lite members:**
-With 3.0 there will be no member type as lite member. As 3.0 clients are smart client that they know in which node the data is located, you can replace your lite members with native clients.
 
 - **Renaming "instance" to "distributed object":**
 Before 3.0 there was a confusion for the term "instance". It was used for both the cluster members and the distributed objects (map, queue, topic, etc. instances). Starting 3.0, the term instance will be only used for Hazelcast instances, namely cluster members. We will use the term "distributed object" for map, queue, etc. instances. So you should replace the related methods with the new renamed ones. As 3.0 clients are smart client that they know in which node the data is located, you can replace your lite members with native clients.
