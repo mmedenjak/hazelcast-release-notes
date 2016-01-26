@@ -1215,12 +1215,8 @@ The static methods of Hazelcast class reaching Hazelcast data components have be
 Map&lt;Integer, String&gt; customers = hazelcastInstance.getMap( &quot;customers&quot; );
 </code></pre>
 <ul>
-<li><p><strong>Removal of lite members:</strong>
-With 3.0 there will be no member type as lite member. As 3.0 clients are smart client that they know in which node the data is located, you can replace your lite members with native clients.</p>
-</li>
-<li><p><strong>Renaming &quot;instance&quot; to &quot;distributed object&quot;:</strong>
-Before 3.0 there was a confusion for the term &quot;instance&quot;. It was used for both the cluster members and the distributed objects (map, queue, topic, etc. instances). Starting 3.0, the term instance will be only used for Hazelcast instances, namely cluster members. We will use the term &quot;distributed object&quot; for map, queue, etc. instances. So you should replace the related methods with the new renamed ones. As 3.0 clients are smart client that they know in which node the data is located, you can replace your lite members with native clients.</p>
-</li>
+<li><strong>Renaming &quot;instance&quot; to &quot;distributed object&quot;:</strong>
+Before 3.0 there was a confusion for the term &quot;instance&quot;. It was used for both the cluster members and the distributed objects (map, queue, topic, etc. instances). Starting 3.0, the term instance will be only used for Hazelcast instances, namely cluster members. We will use the term &quot;distributed object&quot; for map, queue, etc. instances. So you should replace the related methods with the new renamed ones. As 3.0 clients are smart client that they know in which node the data is located, you can replace your lite members with native clients.</li>
 </ul>
 <pre><code class="lang-java">public static void main( String[] args ) throws InterruptedException {
   HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
