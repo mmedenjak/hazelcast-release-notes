@@ -8,11 +8,18 @@ var documentTitles = {};
 
 
 
+documentTitles["index.html#361"] = "3.6.1";
+index.add({
+    url: "index.html#361",
+    title: "3.6.1",
+    body: ""
+});
+
 documentTitles["index.html#36"] = "3.6";
 index.add({
     url: "index.html#36",
     title: "3.6",
-    body: "# 3.6  This section lists the new features, enhancements and fixed issues for 3.6 release.  "
+    body: "# 3.6.1  This section lists the fixed issues for 3.6.1 release.  - Hazelcast 3.6 fails to create `ObjectName` for an instance created with JCache API. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7548\&quot; target=\&quot;_blank\&quot;&gt;[7548]&lt;/a&gt; - The test `com.hazelcast.client.spi.impl.ClientInvocationTest.executionCallback_FailOnShutdown` fails. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7462\&quot; target=\&quot;_blank\&quot;&gt;[7462]&lt;/a&gt; - There are failures in `SystemClockChangeTest`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7444\&quot; target=\&quot;_blank\&quot;&gt;[7444]&lt;/a&gt; - When you use EntryProcessor with a map interceptor, it does not get the correct value. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7414\&quot; target=\&quot;_blank\&quot;&gt;[7414]&lt;/a&gt; - Backup records also increase the owned cache entry count but they should be ignored. Cache statistics show incorrect entry count via the method `getOwnedEntryCount`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7403\&quot; target=\&quot;_blank\&quot;&gt;[7403]&lt;/a&gt; - When getting values from `PredicateSupplier`, the method `DistinctValueAggregation.DistinctValueMapper.map()` throws a `ClassCastException`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7398\&quot; target=\&quot;_blank\&quot;&gt;[7398]&lt;/a&gt; - Timeout is not enough for the test `TransferStressTest.testLargePackets`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7393\&quot; target=\&quot;_blank\&quot;&gt;[7393]&lt;/a&gt; - There are failures in the test `ClientExceptionFactoryTest.testException`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7360\&quot; target=\&quot;_blank\&quot;&gt;[7360]&lt;/a&gt; - The method `getReplicationImplObject` in `WanTargetClusterConfig` is not used. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7353\&quot; target=\&quot;_blank\&quot;&gt;[7353]&lt;/a&gt; - Entry processor and map put/remove tests in WAN replication module fail.  &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7352\&quot; target=\&quot;_blank\&quot;&gt;[7352]&lt;/a&gt; - Hazelcast namespace for Spring configuration does not support Discovery SPI. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/6913\&quot; target=\&quot;_blank\&quot;&gt;[6913]&lt;/a&gt; - When Hazelcast Spring configuration is used for the client and if a serialization configuration is present in the Spring client, then the client hangs forever during the authentication method. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/5815\&quot; target=\&quot;_blank\&quot;&gt;[5815]&lt;/a&gt;         # 3.6  This section lists the new features, enhancements and fixed issues for 3.6 release.  "
 });
 
 documentTitles["index.html#new-features"] = "New Features";
