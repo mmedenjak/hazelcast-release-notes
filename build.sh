@@ -3,8 +3,10 @@
 function buildDocumentation {
     init $1
     cleanIfExists
+    createMultiHTML
     createMergedMarkdownFile
     createSingleHTML
+    createPDF
     delete
     echo "Done"
 }
@@ -12,13 +14,17 @@ function buildDocumentation {
 function init {
 	VERSION=$1
 	OUTPUT_DIR="target"
+	MULTI_HTML_OUTPUT_DIR="html"
 	SINGLE_HTML_OUTPUT_DIR="html-single"
+	PDF_OUTPUT_DIR="pdf"
+	PDF_FILE_NAME="hazelcast-documentation-${VERSION}.pdf"
 	MANIFEST_FILE_NAME="manifest.json"
 	MERGED_FILE_NAME="index.md"
 	COPYRIGHT_FILE_NAME="copyright.txt"
 	DATE=`date +%b\ %d\,\ %Y`
 	YEAR=`date +%Y`
 	INDEX=`awk '{gsub(/^[ \t]+|^([#]+.*)|[ \t]+([#]+.*)\$/,""); print;}' documentation.index`
+	MANCENTER_INDEX=`awk '{gsub(/^[ \t]+|([#]+.*)|[ \t]+([#]+.*)\$/,""); print;}' mancenter.index`
 }
 
 function cleanIfExists {
@@ -28,8 +34,14 @@ function cleanIfExists {
 	fi
 	echo "Creating $OUTPUT_DIR"
 	mkdir ${OUTPUT_DIR}
+	echo "Creating $OUTPUT_DIR/$MULTI_HTML_OUTPUT_DIR"
+	mkdir ${OUTPUT_DIR}/${MULTI_HTML_OUTPUT_DIR}
 	echo "Creating $OUTPUT_DIR/$SINGLE_HTML_OUTPUT_DIR"
 	mkdir ${OUTPUT_DIR}/${SINGLE_HTML_OUTPUT_DIR}
+	echo "Creating $OUTPUT_DIR/$MANCENTER_OUTPUT_DIR"
+	mkdir ${OUTPUT_DIR}/${MANCENTER_OUTPUT_DIR}
+	echo "Creating $OUTPUT_DIR/$PDF_OUTPUT_DIR"
+	mkdir ${OUTPUT_DIR}/${PDF_OUTPUT_DIR}
 }
 
 function writeManifestFile {
@@ -43,6 +55,35 @@ function writeManifestFile {
     else
         echo "Error writing manifest file"
         echo ${writeManifest}
+        delete
+        exit -1
+    fi
+}
+
+function createMultiHTML {
+    MANIFEST_FILE_BODY="{\"title\": \"Documentation\",
+\"rootDir\": \".\",
+\"date\": \"${DATE}\",
+\"version\": \"${VERSION}\",
+\"maxTocLevel\":1,
+\"files\":"
+    MANIFEST_FILE_BODY+="["
+
+    echo "Building manifest file for multipage html"
+    for file in ${INDEX}; do
+        MANIFEST_FILE_BODY+="\"$file\","
+    done
+    MANIFEST_FILE_BODY=${MANIFEST_FILE_BODY:0: ${#MANIFEST_FILE_BODY}-1}
+    MANIFEST_FILE_BODY+="]}"
+
+    writeManifestFile "${MANIFEST_FILE_BODY}"
+
+    echo "Creating multi_html documentation"
+    createHtml=$(bfdocs --theme=themes/multi_html "./"${MANIFEST_FILE_NAME} "./"${OUTPUT_DIR}/${MULTI_HTML_OUTPUT_DIR})
+    if [[ $? -ge 0 ]]; then
+        echo "Multi HTML created successfully."
+    else
+        echo "Error creating Multi HTML documentation"
         delete
         exit -1
     fi
@@ -71,7 +112,7 @@ function createSingleHTML {
     writeManifestFile "${MANIFEST_FILE_BODY}"
 
     echo "Creating single_html documentation"
-    createHtml=$(bfdocs --theme=themes/single_html ${MANIFEST_FILE_NAME} "./"${OUTPUT_DIR}/${SINGLE_HTML_OUTPUT_DIR})
+    createHtml=$(bfdocs --theme=themes/single_html ${MANIFEST_FILE_NAME} "./"${OUTPUT_DIR}/${SINGLE_HTML_OUTPUT_DIR} )
     if [[ $? -eq 0 ]]; then
         echo "Single HTML created succesfully "
     else
@@ -81,6 +122,39 @@ function createSingleHTML {
     fi
 }
 
+function createPDF {
+    if [ -e "./$COPYRIGHT_FILE_NAME" ]; then
+	    $(rm -rf "./$COPYRIGHT_FILE_NAME")
+    fi
+    echo "Preparing Copyright Text"
+    printf "In-Memory Data Grid - Hazelcast | Documentation: version ${VERSION} \n\n" >> ${COPYRIGHT_FILE_NAME}
+    printf "Publication date ${DATE}\n\n" >> ${COPYRIGHT_FILE_NAME}
+    printf "Copyright © ${YEAR} Hazelcast, Inc.\n\n\n" >> ${COPYRIGHT_FILE_NAME}
+    printf "Permission to use, copy, modify and distribute this document for any purpose and without fee is hereby granted in perpetuity, provided that the above copyright notice
+and this paragraph appear in all copies." >> ${COPYRIGHT_FILE_NAME}
+    echo "Copyright text created successfully"
+
+    if [[ -e "./title.txt" ]]; then
+        $(rm -rf "./title.txt")
+    fi
+    echo "Creating title page"
+    echo "%Hazelcast Documentation" >> title.txt
+    echo "%version "${VERSION} >> title.txt
+    echo "%"${DATE} >> title.txt
+
+    echo "Creating PDF Documentation"
+    createPDF=$( pandoc title.txt ${MERGED_FILE_NAME} -o ${PDF_FILE_NAME} --toc --toc-depth=3 --chapters --number-sections --tab-stop=2 -V papersize:"a4paper" -H themes/margin.sty  --include-before-body=${COPYRIGHT_FILE_NAME} )
+    if [[ $? -eq 0 ]]; then
+        echo "PDF created successfully."
+    else
+        echo "Error creating PDF documentation"
+        echo ${createPDF}
+        delete
+        exit -1
+    fi
+
+    mv ${PDF_FILE_NAME} ./${OUTPUT_DIR}/${PDF_OUTPUT_DIR}/${PDF_FILE_NAME}
+}
 
 function delete {
     echo "Deleting created files"
