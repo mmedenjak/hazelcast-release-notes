@@ -22,5 +22,10 @@ Below 4 system properties are no more valid;
 - **Removal of deprecated getId() method**: 
 The method `getId()` in the interface `DistributedObject` has been removed. Please use the method `getName()` instead.
 
+- **Change in the Custom Serialization in the C++ Client Distribution**:
+
+Before, the method `getTypeId()` was used to retrieve the ID of the object to be serialized. Now, the method `getHazelcastTypeId()` is used and you give your object as a parameter to this new method. Also, `getTypeId()` was used in your custom serializer class, now it has been renamed to `getHazelcastTypeId()` too. Note that, these changes also apply when you want to switch from Hazelcast 3.6.1 to 3.6.2 too.
+
+
 
 
