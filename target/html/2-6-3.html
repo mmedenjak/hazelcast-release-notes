@@ -65,7 +65,7 @@
 					
 				</div>	
 				<div style="float:left;padding-top: 15px;padding-left: 30px;">
-<h1><a href="">Documentation <span style="font-size:12px"> Version: Not-Needed - Publication Date : Mar 10, 2016 </span></a></h1>
+<h1><a href="">Documentation <span style="font-size:12px"> Version: Not-Needed - Publication Date : Mar 22, 2016 </span></a></h1>
 				</div>
 			</div>
 			</div>
@@ -78,6 +78,11 @@
 	    <nav id="toc">
 	        
     <ol>
+    
+        <li>
+            <a href="3-6-2.html">3.6.2</a>
+            
+        </li>
     
         <li>
             <a href="3-6-1.html">3.6.1</a>
@@ -220,12 +225,57 @@
         </li>
     
         <li>
-            <a href="upgradingfrom3x.html">Upgrading from 3.x</a>
+            <a href="2-6-9.html">2.6.9</a>
             
         </li>
     
         <li>
-            <a href="upgradingfrom2x.html">Upgrading from 2.x</a>
+            <a href="2-6-8.html">2.6.8</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-6.html">2.6.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-3.html">2.6.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-2.html">2.6.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-1.html">2.6.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6.html">2.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-5-1.html">2.5.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-5.html">2.5</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-4-1.html">2.4.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-4.html">2.4</a>
             
         </li>
     
@@ -247,30 +297,12 @@
 	</div>
 
 	        <div id="content">
-	            <a name="upgrading-from-3x"></a><h1 id="upgrading-from-3-x">Upgrading from 3.x</h1>
+	            <a name="263"></a><h1 id="2-6-3">2.6.3</h1>
+<p>The following are the fixed issues for 2.6.3 release.</p>
 <ul>
-<li><p><strong>Introducing the <code>spring-aware</code> element:</strong>
-Before the release 3.5, Hazelcast uses <code>SpringManagedContext</code> to scan <code>SpringAware</code> annotations by default. This may cause some performance overhead for the users who do not use <code>SpringAware</code>.
-This behavior has been changed with the release of Hazelcast 3.5. <code>SpringAware</code> annotations are disabled by default. By introducing the <code>spring-aware</code> element, now it is possible to enable it by adding the <code>&lt;hz:spring-aware /&gt;</code> tag to the configuration. Please see the <a href="#spring-integration">Spring Integration section</a>.</p>
-</li>
-<li><p><strong>Introducing new configuration options for WAN replication:</strong>
-Starting with the release 3.6, WAN replication related system properties, that are configured per member basis, can now be configured per target cluster.
-Below 4 system properties are no more valid;</p>
-<ul>
-<li><p><code>hazelcast.enterprise.wanrep.batch.size</code>, please see the <a href="http://docs.hazelcast.org/docs/latest-dev/manual/html-single/index.html#batch-size">WAN Replication Batch Size</a>. </p>
-</li>
-<li><p><code>hazelcast.enterprise.wanrep.batchfrequency.seconds</code>, please see the <a href="http://docs.hazelcast.org/docs/latest-dev/manual/html-single/index.html#batch-maximum-delay">WAN Replication Batch Maximum Delay</a>.</p>
-</li>
-<li><p><code>hazelcast.enterprise.wanrep.optimeout.millis</code>, please see the <a href="http://docs.hazelcast.org/docs/latest-dev/manual/html-single/index.html#response-timeout">WAN Replication Response Timeout</a>.</p>
-</li>
-<li><p><code>hazelcast.enterprise.wanrep.queue.capacity</code>, please see the <a href="http://docs.hazelcast.org/docs/latest-dev/manual/html-single/index.html#queue-capacity">WAN Replication Queue Capacity</a>.</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><strong>Removal of deprecated getId() method</strong>: 
-The method <code>getId()</code> in the interface <code>DistributedObject</code> has been removed. Please use the method <code>getName()</code> instead.</li>
+<li>Memcache client content in the Reference Manual needs to be improved . <a href="https://github.com/hazelcast/hazelcast/issues/848" target="_blank">[1047]</a></li>
+<li>Hazelcast Hibernate <code>pom</code> is using a retired maven repo. <a href="https://github.com/hazelcast/hazelcast/issues/831" target="_blank">[831]</a></li>
+<li>&quot;Marked for removal&quot; mechanism should be more clarified. <a href="https://github.com/hazelcast/hazelcast/issues/792" target="_blank">[792]</a></li>
 </ul>
 
 

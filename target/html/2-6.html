@@ -297,17 +297,15 @@
 	</div>
 
 	        <div id="content">
-	            <a name="332"></a><h1 id="3-3-2">3.3.2</h1>
-<p>The following are the fixed issues for 3.3.2 release.</p>
+	            <a name="26"></a><h1 id="2-6">2.6</h1>
+<p>The following are the fixed issues and enhancements for 2.6 release.</p>
 <ul>
-<li>Reject multicast messages if the group configuration is not matching <a href="https://github.com/hazelcast/hazelcast/issues/3806">[#3806]</a>.</li>
-<li><code>Map#getEntryView</code> should check expiration of a key <a href="https://github.com/hazelcast/hazelcast/issues/3801">[#3801]</a>.</li>
-<li>Hazelcast gets stuck in <code>HazelcastInstanceNotActiveException</code> loop during multicast join <a href="https://github.com/hazelcast/hazelcast/issues/3732">[#3732]</a>.</li>
-<li>Hazelcast fails to comply with <code>maxIdleTime</code> expiration when running EntryProcessors. A delay should be added to expiration times on backups <a href="https://github.com/hazelcast/hazelcast/issues/3710">[#3710]</a>.</li>
-<li><code>containsKey()</code> in transactional context returns wrong value for keys deleted within transaction <a href="https://github.com/hazelcast/hazelcast/issues/3682">[#3682]</a>.</li>
-<li><code>TransactionalMap.values()</code> returns stale values that was updated within the transaction boundary <a href="https://github.com/hazelcast/hazelcast/issues/3668">[#3668]</a>.</li>
-<li>Number of loaded keys should not exceed map&#39;s maximum size <a href="https://github.com/hazelcast/hazelcast/issues/3608">[#3608]</a>.</li>
-<li>During client node shutdown, if the cluster happens to be down, Hazelcast logs some extra messages at SEVERE level <a href="https://github.com/hazelcast/hazelcast/issues/3493">[#3493]</a>.</li>
+<li>Issues with Spring configuration and merge policies. <a href="https://github.com/hazelcast/hazelcast/issues/488" target="_blank">[488]</a></li>
+<li>Trying to create a configuration object by API, serializing and deserializing the objects (by Hazelcast builder), due to an error of PartitionGroup, <code>RuntimeException</code> is thrown. If set by API, it works. <a href="https://github.com/hazelcast/hazelcast/issues/487" target="_blank">[487]</a></li>
+<li>OSGi: The manifest data in <code>hazelcast-all.jar</code> for 2.5.1 is not correct. <a href="https://github.com/hazelcast/hazelcast/issues/484" target="_blank">[484]</a></li>
+<li>Consistency of the set of members in the cluster should be guaranteed. <a href="https://github.com/hazelcast/hazelcast/issues/477" target="_blank">[477]</a></li>
+<li>Hazelcast IMap&#39;s <code>containsKey()</code>method does not reset the idle timeout. <a href="https://github.com/hazelcast/hazelcast/issues/472" target="_blank">[472]</a></li>
+<li><code>@SpringAware</code> annotation leads to memory leak when using Hazelcast distributed executor service. <a href="https://github.com/hazelcast/hazelcast/issues/470" target="_blank">[470]</a></li>
 </ul>
 
 

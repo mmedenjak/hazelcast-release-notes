@@ -297,17 +297,31 @@
 	</div>
 
 	        <div id="content">
-	            <a name="332"></a><h1 id="3-3-2">3.3.2</h1>
-<p>The following are the fixed issues for 3.3.2 release.</p>
+	            <a name="24"></a><h1 id="2-4">2.4</h1>
+<p>This section lists the new features, enhancements and fixed issues for 2.4 release.</p>
+<a name="new-features"></a><h3 id="new-features">New Features</h3>
+<p>The following are the new features introduced with 2.4 release.</p>
 <ul>
-<li>Reject multicast messages if the group configuration is not matching <a href="https://github.com/hazelcast/hazelcast/issues/3806">[#3806]</a>.</li>
-<li><code>Map#getEntryView</code> should check expiration of a key <a href="https://github.com/hazelcast/hazelcast/issues/3801">[#3801]</a>.</li>
-<li>Hazelcast gets stuck in <code>HazelcastInstanceNotActiveException</code> loop during multicast join <a href="https://github.com/hazelcast/hazelcast/issues/3732">[#3732]</a>.</li>
-<li>Hazelcast fails to comply with <code>maxIdleTime</code> expiration when running EntryProcessors. A delay should be added to expiration times on backups <a href="https://github.com/hazelcast/hazelcast/issues/3710">[#3710]</a>.</li>
-<li><code>containsKey()</code> in transactional context returns wrong value for keys deleted within transaction <a href="https://github.com/hazelcast/hazelcast/issues/3682">[#3682]</a>.</li>
-<li><code>TransactionalMap.values()</code> returns stale values that was updated within the transaction boundary <a href="https://github.com/hazelcast/hazelcast/issues/3668">[#3668]</a>.</li>
-<li>Number of loaded keys should not exceed map&#39;s maximum size <a href="https://github.com/hazelcast/hazelcast/issues/3608">[#3608]</a>.</li>
-<li>During client node shutdown, if the cluster happens to be down, Hazelcast logs some extra messages at SEVERE level <a href="https://github.com/hazelcast/hazelcast/issues/3493">[#3493]</a>.</li>
+<li>Client threads does not have fixed size anymore, now it uses internal Hazelcast cached thread pool.</li>
+<li>Added ability to restrict outbound ports that Hazelcast uses to connect to other nodes.</li>
+</ul>
+<a name="fixes"></a><h3 id="fixes">Fixes</h3>
+<p>The following are the fixed issues and enhancements for 2.4 release.</p>
+<ul>
+<li>Hazelcast Management Center&#39;s &quot;Configuration has been successfully updated.&quot; notification is never removed. <a href="https://github.com/hazelcast/hazelcast/issues/301" target="_blank">[301]</a></li>
+<li>Map maximum size does not take into account that some cluster members are lite members and cannot hold any data. Thus, the map becomes smaller than the size it was configured. <a href="https://github.com/hazelcast/hazelcast/issues/292" target="_blank">[292]</a></li>
+<li>The method <code>map.containsKey()</code> does not reset the idle time counter. <a href="https://github.com/hazelcast/hazelcast/issues/288" target="_blank">[288]</a></li>
+<li>In Hazelcast 2.3.1, the property <code>hazelcast.local.localAddress</code> is used only when provided directly from <code>System.properties</code>. <a href="https://github.com/hazelcast/hazelcast/issues/282" target="_blank">[282]</a></li>
+<li>Data removed under transaction sometimes could not be removed from the backup. <a href="https://github.com/hazelcast/hazelcast/issues/277" target="_blank">[277]</a></li>
+<li>Map initialization should not use the default executor service. <a href="https://github.com/hazelcast/hazelcast/issues/276" target="_blank">[276]</a></li>
+<li>In Hazelcast 2.3.1, Hazelcast got into a state where the list of members on some of the nodes do not match up. <a href="https://github.com/hazelcast/hazelcast/issues/274" target="_blank">[274]</a></li>
+<li>Map <code>EntryListener</code> is not working correctly if one master is restarted. <a href="https://github.com/hazelcast/hazelcast/issues/269" target="_blank">[269]</a></li>
+<li><code>IMap.tryLockAndGet</code>: There is a concurrency error when the map has map store. <a href="https://github.com/hazelcast/hazelcast/issues/268" target="_blank">[268]</a></li>
+<li>Error in <code>com.hazelcast.query.Predicates.NotEqualPredicate</code>. <a href="https://github.com/hazelcast/hazelcast/issues/262" target="_blank">[262]</a></li>
+<li>Partition Group with group type CUSTOM should honor configured backups. <a href="https://github.com/hazelcast/hazelcast/issues/260" target="_blank">[260]</a></li>
+<li>Messages are lost while moving them inside a transaction. <a href="https://github.com/hazelcast/hazelcast/issues/259" target="_blank">[259]</a></li>
+<li>Enable Hazelcast to use specified port ranges to accommodate firewall policies. <a href="https://github.com/hazelcast/hazelcast/issues/251" target="_blank">[251]</a></li>
+<li>Seeing multiple concurrent locks on a distributed lock. <a href="https://github.com/hazelcast/hazelcast/issues/168" target="_blank">[168]</a></li>
 </ul>
 
 

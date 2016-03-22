@@ -297,17 +297,25 @@
 	</div>
 
 	        <div id="content">
-	            <a name="332"></a><h1 id="3-3-2">3.3.2</h1>
-<p>The following are the fixed issues for 3.3.2 release.</p>
+	            <a name="261"></a><h1 id="2-6-1">2.6.1</h1>
+<p>The following are the fixed issues and enhancements for 2.6.1 release.</p>
 <ul>
-<li>Reject multicast messages if the group configuration is not matching <a href="https://github.com/hazelcast/hazelcast/issues/3806">[#3806]</a>.</li>
-<li><code>Map#getEntryView</code> should check expiration of a key <a href="https://github.com/hazelcast/hazelcast/issues/3801">[#3801]</a>.</li>
-<li>Hazelcast gets stuck in <code>HazelcastInstanceNotActiveException</code> loop during multicast join <a href="https://github.com/hazelcast/hazelcast/issues/3732">[#3732]</a>.</li>
-<li>Hazelcast fails to comply with <code>maxIdleTime</code> expiration when running EntryProcessors. A delay should be added to expiration times on backups <a href="https://github.com/hazelcast/hazelcast/issues/3710">[#3710]</a>.</li>
-<li><code>containsKey()</code> in transactional context returns wrong value for keys deleted within transaction <a href="https://github.com/hazelcast/hazelcast/issues/3682">[#3682]</a>.</li>
-<li><code>TransactionalMap.values()</code> returns stale values that was updated within the transaction boundary <a href="https://github.com/hazelcast/hazelcast/issues/3668">[#3668]</a>.</li>
-<li>Number of loaded keys should not exceed map&#39;s maximum size <a href="https://github.com/hazelcast/hazelcast/issues/3608">[#3608]</a>.</li>
-<li>During client node shutdown, if the cluster happens to be down, Hazelcast logs some extra messages at SEVERE level <a href="https://github.com/hazelcast/hazelcast/issues/3493">[#3493]</a>.</li>
+<li>The method <code>set(Key, Value, 0, Timeunit)</code> applies the configured TTL values where it should cancel eviction. Also, the method <code>set(Key, Value)</code> should apply the inherited TTL if exists. <a href="https://github.com/hazelcast/hazelcast/issues/585" target="_blank">[585]</a></li>
+<li>Operations like <code>contains()</code> should use a specific executor service. Calling the default executor service may cause a deadlock. <a href="https://github.com/hazelcast/hazelcast/issues/579" target="_blank">[579]</a></li>
+<li>Empty array for the predicate <code>in</code> throws exception. <a href="https://github.com/hazelcast/hazelcast/issues/573" target="_blank">[573]</a></li>
+<li>The methods <code>ILock.destroy()</code> and <code>ISemaphore.destroy()</code> throw exceptions on Hazelcast 2.5. <a href="https://github.com/hazelcast/hazelcast/issues/566" target="_blank">[566]</a></li>
+<li><code>NullPointerException</code> in <code>com.hazelcast.nio.ConnectionManager</code> in Hazelcast 2.5. <a href="https://github.com/hazelcast/hazelcast/issues/530" target="_blank">[530]</a></li>
+<li>Hazelcast instance does not start with TCP configuration in Hazelcast 2.5 when the hosts are not reachable. <a href="https://github.com/hazelcast/hazelcast/issues/523" target="_blank">[523]</a></li>
+<li>Hazelcast source archives in Maven central repository does not contain the Java source files but the class files. <a href="https://github.com/hazelcast/hazelcast/issues/514" target="_blank">[514]</a></li>
+<li>There is an unexpected store call behavior in Hazelcast 2.6. Every time when the method <code>get()</code> is used in a transaction and when the method <code>commit()</code> is called, it throws &quot;Duplicated key order_id&quot; exception. <a href="https://github.com/hazelcast/hazelcast/issues/506" target="_blank">[506]</a></li>
+<li>When the method <code>getInstances()</code> on HazelcastInstance is called (acquired via <code>HazelcastClient.newHazelcastClient(clientConfig)</code>), the collection is retrieved. After some time, <code>NullPointerException</code> is thrown when the same method is called. <a href="https://github.com/hazelcast/hazelcast/issues/478" target="_blank">[478]</a></li>
+<li>There are some formatting problems when using SQL predicates with date. <a href="https://github.com/hazelcast/hazelcast/issues/473" target="_blank">[473]</a></li>
+<li>There is a memory leak in the member when clients are connected. An <code>OutofMemoryException</code> is thrown related to a client authentication failure. <a href="https://github.com/hazelcast/hazelcast/issues/450" target="_blank">[450]</a></li>
+<li>Hazelcast client&#39;s <code>putAll()</code> method throws <code>NullPointerException</code> when called with an empty map. <a href="https://github.com/hazelcast/hazelcast/issues/397" target="_blank">[397]</a></li>
+<li>The <code>InputStream</code> in the <code>XmlConfigBuilder</code> can never be closed. If the constructor which provides an XML file is used, it creates a new <code>FileInputStream</code>. There is no ability to close this input stream after it is created. <a href="https://github.com/hazelcast/hazelcast/issues/390" target="_blank">[390]</a></li>
+<li>The heartbeat timer for Hazelcast client does not run again after a <code>NullPointerException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/382" target="_blank">[382]</a></li>
+<li>The queue <code>SysmteLogService.joinLogs</code> holds some data and causes memory consumption. <a href="https://github.com/hazelcast/hazelcast/issues/325" target="_blank">[325]</a></li>
+<li>Doing a read of a value not modified in a transaction causes the listener to fire an update for that entry. <a href="https://github.com/hazelcast/hazelcast/issues/311" target="_blank">[311]</a></li>
 </ul>
 
 

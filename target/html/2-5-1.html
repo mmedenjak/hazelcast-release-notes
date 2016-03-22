@@ -297,17 +297,24 @@
 	</div>
 
 	        <div id="content">
-	            <a name="332"></a><h1 id="3-3-2">3.3.2</h1>
-<p>The following are the fixed issues for 3.3.2 release.</p>
+	            <a name="251"></a><h1 id="2-5-1">2.5.1</h1>
+<p>The following are the fixed issues and enhancements for 2.5.1 release.</p>
 <ul>
-<li>Reject multicast messages if the group configuration is not matching <a href="https://github.com/hazelcast/hazelcast/issues/3806">[#3806]</a>.</li>
-<li><code>Map#getEntryView</code> should check expiration of a key <a href="https://github.com/hazelcast/hazelcast/issues/3801">[#3801]</a>.</li>
-<li>Hazelcast gets stuck in <code>HazelcastInstanceNotActiveException</code> loop during multicast join <a href="https://github.com/hazelcast/hazelcast/issues/3732">[#3732]</a>.</li>
-<li>Hazelcast fails to comply with <code>maxIdleTime</code> expiration when running EntryProcessors. A delay should be added to expiration times on backups <a href="https://github.com/hazelcast/hazelcast/issues/3710">[#3710]</a>.</li>
-<li><code>containsKey()</code> in transactional context returns wrong value for keys deleted within transaction <a href="https://github.com/hazelcast/hazelcast/issues/3682">[#3682]</a>.</li>
-<li><code>TransactionalMap.values()</code> returns stale values that was updated within the transaction boundary <a href="https://github.com/hazelcast/hazelcast/issues/3668">[#3668]</a>.</li>
-<li>Number of loaded keys should not exceed map&#39;s maximum size <a href="https://github.com/hazelcast/hazelcast/issues/3608">[#3608]</a>.</li>
-<li>During client node shutdown, if the cluster happens to be down, Hazelcast logs some extra messages at SEVERE level <a href="https://github.com/hazelcast/hazelcast/issues/3493">[#3493]</a>.</li>
+<li>Deadlock happens when Hazelcast client is shut down. <a href="https://github.com/hazelcast/hazelcast/issues/466" target="_blank">[466]</a></li>
+<li>There is a data inconsistency and loss following the <code>ClassCastException: CONCURRENT_MAP_REPLACE_IF_SAME</code>. <a href="https://github.com/hazelcast/hazelcast/issues/462" target="_blank">[462]</a></li>
+<li>Put operations with zero TTL does not prevent the eviction. <a href="https://github.com/hazelcast/hazelcast/issues/455" target="_blank">[455]</a></li>
+<li><code>NullPointerException</code> is thrown at <code>com.hazelcast.query.MapIndexService.remove</code> during CONCURRENT_MAP_REMOVE operation. <a href="https://github.com/hazelcast/hazelcast/issues/454" target="_blank">[454]</a></li>
+<li>The exception <code>Failed migrating from Member</code> is thrown when two clients are started in Eclipse and one is stopped before it is completely initialized. <a href="https://github.com/hazelcast/hazelcast/issues/452" target="_blank">[452]</a></li>
+<li>The method <code>IList.destroy()</code> does not empty the list. <a href="https://github.com/hazelcast/hazelcast/issues/449" target="_blank">[449]</a></li>
+<li>The package <code>hazelcast-all.jar</code> should build its manifest dynamically. <a href="https://github.com/hazelcast/hazelcast/issues/448" target="_blank">[448]</a></li>
+<li>The package <code>hazelcast-client.jar</code> does not deploy as OSGi bundle in JBoss7. <a href="https://github.com/hazelcast/hazelcast/issues/447" target="_blank">[447]</a></li>
+<li>The package <code>hazelcast-wm.jar</code> should not require <code>servlet-api</code> v3.0. <a href="https://github.com/hazelcast/hazelcast/issues/432" target="_blank">[432]</a></li>
+<li><code>NullPointerException</code> is thrown when trying to run the method <code>clear()</code> on an empty distributed set when migrating from Hazelcast 2.1.2 to 2.4 and 2.5 <a href="https://github.com/hazelcast/hazelcast/issues/430" target="_blank">[430]</a></li>
+<li>The method <code>getOldValue()</code> consistently returns wrong results for <code>entryUpdated</code> listener notifications after the <code>replace()</code> operation. <a href="https://github.com/hazelcast/hazelcast/issues/418" target="_blank">[418]</a></li>
+<li>In the Hazelcast configuration schema XSD, the <code>tcp-ip</code> and <code>aws</code> elements do not have <code>conn-timeout-seconds</code> sub-element. <a href="https://github.com/hazelcast/hazelcast/issues/410" target="_blank">[410]</a></li>
+<li>It would be nice if the <code>hazelcast.config</code> option can be used in combination with the classpath. <a href="https://github.com/hazelcast/hazelcast/issues/408" target="_blank">[408]</a></li>
+<li>Deadlock happens when adding an index to a map that is not empty. <a href="https://github.com/hazelcast/hazelcast/issues/310" target="_blank">[310]</a></li>
+<li>When custom loader is used with write-behind persistence mode, every time <code>store()</code> is called in loader and then <code>remove()</code> is called on locked map, value for the key is read from the store and not from map. Consequently, put/set/update is overridden and data is lost. <a href="https://github.com/hazelcast/hazelcast/issues/187" target="_blank">[187]</a> </li>
 </ul>
 
 

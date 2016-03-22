@@ -297,17 +297,23 @@
 	</div>
 
 	        <div id="content">
-	            <a name="332"></a><h1 id="3-3-2">3.3.2</h1>
-<p>The following are the fixed issues for 3.3.2 release.</p>
+	            <a name="25"></a><h1 id="2-5">2.5</h1>
+<p>This section lists the new features, enhancements and fixed issues for 2.5 release.</p>
+<a name="new-features"></a><h3 id="new-features">New Features</h3>
+<p>The following are the new features introduced with 2.5 release.</p>
 <ul>
-<li>Reject multicast messages if the group configuration is not matching <a href="https://github.com/hazelcast/hazelcast/issues/3806">[#3806]</a>.</li>
-<li><code>Map#getEntryView</code> should check expiration of a key <a href="https://github.com/hazelcast/hazelcast/issues/3801">[#3801]</a>.</li>
-<li>Hazelcast gets stuck in <code>HazelcastInstanceNotActiveException</code> loop during multicast join <a href="https://github.com/hazelcast/hazelcast/issues/3732">[#3732]</a>.</li>
-<li>Hazelcast fails to comply with <code>maxIdleTime</code> expiration when running EntryProcessors. A delay should be added to expiration times on backups <a href="https://github.com/hazelcast/hazelcast/issues/3710">[#3710]</a>.</li>
-<li><code>containsKey()</code> in transactional context returns wrong value for keys deleted within transaction <a href="https://github.com/hazelcast/hazelcast/issues/3682">[#3682]</a>.</li>
-<li><code>TransactionalMap.values()</code> returns stale values that was updated within the transaction boundary <a href="https://github.com/hazelcast/hazelcast/issues/3668">[#3668]</a>.</li>
-<li>Number of loaded keys should not exceed map&#39;s maximum size <a href="https://github.com/hazelcast/hazelcast/issues/3608">[#3608]</a>.</li>
-<li>During client node shutdown, if the cluster happens to be down, Hazelcast logs some extra messages at SEVERE level <a href="https://github.com/hazelcast/hazelcast/issues/3493">[#3493]</a>.</li>
+<li>Added near cache support for Java Client.</li>
+<li>Management Center alert system can now receive alerts based on custom filters.</li>
+<li>Management Center has now better support for Hazelcast cluster running in OSGI environment.</li>
+<li>Nodes can be easily shutdown or restarted using Management Center interface.</li>
+</ul>
+<a name="fixes"></a><h3 id="fixes">Fixes</h3>
+<p>The following are the fixed issues and enhancements for 2.5 release.</p>
+<ul>
+<li>Management Center does not respond for the maps with names having underscore characters. <a href="https://github.com/hazelcast/hazelcast/issues/394" target="_blank">[394]</a></li>
+<li>MultiTask operation returns <code>Constants$Object$6</code> instead of a map. <a href="https://github.com/hazelcast/hazelcast/issues/392" target="_blank">[392]</a></li>
+<li>In the method <code>forceUnlock()</code>, local lock is not removed. <a href="https://github.com/hazelcast/hazelcast/issues/386" target="_blank">[386]</a></li>
+<li>Deadlock happens when the cluster is being initialized. <a href="https://github.com/hazelcast/hazelcast/issues/386" target="_blank">[386]</a></li>
 </ul>
 
 

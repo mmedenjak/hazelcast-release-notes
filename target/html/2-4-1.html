@@ -297,17 +297,33 @@
 	</div>
 
 	        <div id="content">
-	            <a name="332"></a><h1 id="3-3-2">3.3.2</h1>
-<p>The following are the fixed issues for 3.3.2 release.</p>
+	            <a name="241"></a><h1 id="2-4-1">2.4.1</h1>
+<p>This section lists the new features, enhancements and fixed issues for 2.4.1 release.</p>
+<a name="new-features"></a><h3 id="new-features">New Features</h3>
+<p>The following are the new features introduced with 2.4.1 release.</p>
 <ul>
-<li>Reject multicast messages if the group configuration is not matching <a href="https://github.com/hazelcast/hazelcast/issues/3806">[#3806]</a>.</li>
-<li><code>Map#getEntryView</code> should check expiration of a key <a href="https://github.com/hazelcast/hazelcast/issues/3801">[#3801]</a>.</li>
-<li>Hazelcast gets stuck in <code>HazelcastInstanceNotActiveException</code> loop during multicast join <a href="https://github.com/hazelcast/hazelcast/issues/3732">[#3732]</a>.</li>
-<li>Hazelcast fails to comply with <code>maxIdleTime</code> expiration when running EntryProcessors. A delay should be added to expiration times on backups <a href="https://github.com/hazelcast/hazelcast/issues/3710">[#3710]</a>.</li>
-<li><code>containsKey()</code> in transactional context returns wrong value for keys deleted within transaction <a href="https://github.com/hazelcast/hazelcast/issues/3682">[#3682]</a>.</li>
-<li><code>TransactionalMap.values()</code> returns stale values that was updated within the transaction boundary <a href="https://github.com/hazelcast/hazelcast/issues/3668">[#3668]</a>.</li>
-<li>Number of loaded keys should not exceed map&#39;s maximum size <a href="https://github.com/hazelcast/hazelcast/issues/3608">[#3608]</a>.</li>
-<li>During client node shutdown, if the cluster happens to be down, Hazelcast logs some extra messages at SEVERE level <a href="https://github.com/hazelcast/hazelcast/issues/3493">[#3493]</a>.</li>
+<li>Added Hibernate 2nd level cache local/invalidation mode.</li>
+<li>Added quick clear feature for maps.</li>
+</ul>
+<a name="fixes"></a><h3 id="fixes">Fixes</h3>
+<p>The following are the fixed issues and enhancements for 2.4.1 release.</p>
+<ul>
+<li>After a split-brain syndrome, states sent by a non-member should be ignored. <a href="https://github.com/hazelcast/hazelcast/issues/374" target="_blank">[374]</a></li>
+<li>Indexing: Negative double values comparison causes problems in SQL predicate. <a href="https://github.com/hazelcast/hazelcast/issues/368" target="_blank">[368]</a></li>
+<li>Query on Hazelcast IMap with indexes returns stale data. <a href="https://github.com/hazelcast/hazelcast/issues/359" target="_blank">[359]</a></li>
+<li>By default, the method <code>map.clear()</code> clears the map entry by entry since the entries should be checked if they have a related lock, should be persisted, etc. If you do not use map store and can assume that there is no locked entries, then there should be an option to clear the map directly. <a href="https://github.com/hazelcast/hazelcast/issues/356" target="_blank">[356]</a></li>
+<li>System logs should be optional. <a href="https://github.com/hazelcast/hazelcast/issues/351" target="_blank">[351]</a></li>
+<li>Management center should show the Hazelcast version. <a href="https://github.com/hazelcast/hazelcast/issues/349" target="_blank">[349]</a></li>
+<li><code>UnsupportedOperationException</code> is thrown when the method <code>getConfig()</code> is called during the startup of the web application. Used versions are Hazelcast 2.4 and Hibernate 3.6.6. <a href="https://github.com/hazelcast/hazelcast/issues/339" target="_blank">[339]</a></li>
+<li>Documentation is wrong. Hazelcast supports <code>REPEATABLE_READ</code> instead of <code>READ_COMMITTED</code>. <a href="https://github.com/hazelcast/hazelcast/issues/337" target="_blank">[337]</a></li>
+<li>When you need a lite member, since it cannot be specified in the configuration file, you need to do the whole loading mechanism yourself. <a href="https://github.com/hazelcast/hazelcast/issues/333" target="_blank">[333]</a></li>
+<li>In the local map statistics, currently there is only <code>getHits()</code>. There should be statistics for misses (get requests which return null) to see hit/miss ratio. <a href="https://github.com/hazelcast/hazelcast/issues/328" target="_blank">[328]</a></li>
+<li>When Hazelcast OSGi bundle is used in Glassfish 3.1.2, <code>ClassNotFoundException</code> is thrown. <a href="https://github.com/hazelcast/hazelcast/issues/322" target="_blank">[322]</a></li>
+<li>The method <code>MapConfig.toString()</code> should report <code>mapIndexConfig</code> too. <a href="https://github.com/hazelcast/hazelcast/issues/321" target="_blank">[321]</a></li>
+<li>When the connection between the client and member is lost, the client does not notice it and tries to send the data for a very long time and it does not shut down.<a href="https://github.com/hazelcast/hazelcast/issues/315" target="_blank">[315]</a></li>
+<li>Hazelcast tends to consume large amounts of memory in <code>com.hazelcast.nio.Packet</code> instances. <a href="https://github.com/hazelcast/hazelcast/issues/312" target="_blank">[312]</a></li>
+<li>Map index entries are not deleted upon migration. When using SQL predicate in the method <code>localKeySet()</code>, the same key can be retrieved on different nodes. <a href="https://github.com/hazelcast/hazelcast/issues/308" target="_blank">[308]</a></li>
+<li>Hazelcast IMap entries are evicted even they are touched by the method <code>put()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/466" target="_blank">[466]</a></li>
 </ul>
 
 
