@@ -347,13 +347,22 @@
 	</div>
 
 	        <div id="content">
-	            <a name="354"></a><h1 id="3-5-4">3.5.4</h1>
-<p>The following are the issues solved for Hazelcast 3.5.4 release.</p>
+	            <a name="22"></a><h1 id="2-2">2.2</h1>
+<p>This section lists the new features, enhancements and fixed issues for 2.2 release.</p>
+<a name="new-features-and-changes"></a><h3 id="new-features-and-changes">New Features and Changes</h3>
+<p>The following are the new features and changes introduced with 2.2 release.</p>
 <ul>
-<li>Fixed wrong calculation of eviction removal size when <code>PER_NODE</code> <code>max-size</code> policy is used. <a href="https://github.com/hazelcast/hazelcast/pull/6674">[#6674]</a></li>
-<li>Lazy deserialization is required while events are being processed. <a href="https://github.com/hazelcast/hazelcast/issues/6582">[#6582]</a></li>
-<li>Thread Dumps freeze in the Management Center. It shows the same thread dumps for all connected members, same traces and same thread IDs. And they are shown on the same line numbers. <a href="https://github.com/hazelcast/hazelcast/issues/6536">[#6536]</a></li>
-<li>In Hazelcast 3.4.*, the methods <code>migrationStarted</code>/<code>migrationCompleted</code> were only called once when a partition migration was done. But in 3.5, these methods are called twice for each partition. <a href="https://github.com/hazelcast/hazelcast/issues/6396">[#6396]</a></li>
+<li>Improved redo logs and added maximum call/operation timeout.</li>
+<li>Improved domain name handling; Hazelcast will use defined addresses/domain-names in TCP-IP Config as they are, without resolving an IP address.</li>
+<li>Added Cluster Health Check to Management Center application.</li>
+</ul>
+<a name="fixes"></a><h3 id="fixes">Fixes</h3>
+<p>The following are the fixed issues and enhancements for 2.2 release.</p>
+<ul>
+<li>The Hazelcast manual show a default config for WAN replication that includes the config item 
+<code>&lt;replication-impl&gt;com.hazelcast.impl.wan.WanNoDelayReplication&lt;/replication-impl&gt;</code>. This item appears to be used for configuring WAN replication implementation to be used. This item is not being used at all. Instead the replication implementation is hard coded in <code>WanReplicationService.java</code>. <a href="https://github.com/hazelcast/hazelcast/issues/152" target="_blank">[152]</a></li>
+<li>It would be nice to have possibilities to instantiate native client from <code>java.util.Properties</code> and/or from classpath-located configuration file. <a href="https://github.com/hazelcast/hazelcast/issues/93" target="_blank">[93]</a></li>
+<li>The method <code>ILock.isLocked()</code> should have the ability to implement a spin lock / wait for a lock release to perform non-blocking code. <a href="https://github.com/hazelcast/hazelcast/issues/39" target="_blank">[39]</a></li>
 </ul>
 
 

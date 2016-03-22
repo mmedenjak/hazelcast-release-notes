@@ -125,6 +125,16 @@
         </li>
     
         <li>
+            <a href="3-4-6.html">3.4.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-4-5.html">3.4.5</a>
+            
+        </li>
+    
+        <li>
             <a href="3-4-4.html">3.4.4</a>
             
         </li>
@@ -176,6 +186,11 @@
     
         <li>
             <a href="3-3.html">3.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-2-7.html">3.2.7</a>
             
         </li>
     
@@ -276,6 +291,41 @@
     
         <li>
             <a href="2-4.html">2.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-3-1.html">2.3.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-3.html">2.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-2.html">2.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-1-3.html">2.1.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-1-2.html">2.1.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-1-1.html">2.1.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-1.html">2.1</a>
             
         </li>
     
@@ -704,6 +754,12 @@ resolver <a href="https://github.com/hazelcast/hazelcast/issues/2431">[#2431]</a
 <li>Owner connection <code>read()</code> forever <a href="https://github.com/hazelcast/hazelcast/issues/3401">[#3401]</a>.</li>
 </ul>
 
+<a name="346"></a><h1 id="3-4-6">3.4.6</h1>
+<p>No changes for this release. There are some minor internal improvements. </p>
+
+<a name="345"></a><h1 id="3-4-5">3.4.5</h1>
+<p>No changes for this release. There are some minor internal improvements. </p>
+
 <a name="344"></a><h1 id="3-4-4">3.4.4</h1>
 <p>The following is the fixed issue for 3.4.4 release.</p>
 <ul>
@@ -1020,6 +1076,9 @@ package) is declared threadsafe in JavaDocs, but it is not <a href="https://gith
 <li><code>IMap.set()</code> does not not remove a key from write behind deletions queue <a href="https://github.com/hazelcast/hazelcast/issues/2588">[#2588]</a>.</li>
 <li><code>com.hazelcast.core.EntryView#getLastAccessTime</code> is invalid<a href="https://github.com/hazelcast/hazelcast/issues/2581">[#2581]</a>.</li>
 </ul>
+
+<a name="327"></a><h1 id="3-2-7">3.2.7</h1>
+<p>No changes for this release. There are some minor internal improvements. </p>
 
 <a name="326"></a><h1 id="3-2-6">3.2.6</h1>
 <p>The following are the fixed issues for 3.2.6 release.</p>
@@ -1578,6 +1637,132 @@ since in the client, the client prefix is added to map&#39;s name. <a href="http
 <li>Messages are lost while moving them inside a transaction. <a href="https://github.com/hazelcast/hazelcast/issues/259" target="_blank">[259]</a></li>
 <li>Enable Hazelcast to use specified port ranges to accommodate firewall policies. <a href="https://github.com/hazelcast/hazelcast/issues/251" target="_blank">[251]</a></li>
 <li>Seeing multiple concurrent locks on a distributed lock. <a href="https://github.com/hazelcast/hazelcast/issues/168" target="_blank">[168]</a></li>
+</ul>
+
+<a name="231"></a><h1 id="2-3-1">2.3.1</h1>
+<p>The following are the fixed issues and enhancements for 2.3.1 release.</p>
+<ul>
+<li>Changed <code>hazelcast.partition.migration.interval</code> property&#39;s value from 1 to 0.</li>
+<li>The method <code>ILock.newCondition()</code> now throws <code>UnsupportedOperationException</code>.</li>
+<li>After upgrading Hazelcast to 2.3, IPv6 is no longer supported in TCP join mechanism. <a href="https://github.com/hazelcast/hazelcast/issues/258" target="_blank">[258]</a></li>
+<li><code>ClassCastException</code> is thrown when the method <code>MultiMap.get()</code> is run. <a href="https://github.com/hazelcast/hazelcast/issues/256" target="_blank">[256]</a></li>
+<li>Currently, the method <code>MultiMap.get(K key)</code> returns null if there are no values associated with the key. However, it should return an empty collection instead. <a href="https://github.com/hazelcast/hazelcast/issues/167" target="_blank">[167]</a></li>
+</ul>
+
+<a name="23"></a><h1 id="2-3">2.3</h1>
+<p>This section lists the new features, enhancements and fixed issues for 2.3 release.</p>
+<a name="new-features-and-changes"></a><h3 id="new-features-and-changes">New Features and Changes</h3>
+<p>The following are the new features and changes introduced with 2.3 release.</p>
+<ul>
+<li>Changed <code>hazelcast.max.operation.timeout</code> unit from seconds to milliseconds.</li>
+<li>Added <code>hazelcast.max.concurrent.operation.limit</code> property to be able to limit the number of concurrent operations that can be submitted to Hazelcast.</li>
+<li>Added <code>hazelcast.backup.redo.enabled</code> property to enable/disable redo for backup operations.</li>
+<li>Added MultiMap and Distributed ExecutorService statistics to Management Center application.</li>
+<li><code>MigrationListener</code> has now an additional method to receive failed migration events; <code>void migrationFailed(MigrationEvent migrationEvent)</code>.</li>
+<li><code>ItemEvent</code> has now an additional method returning Member firing that event; <code>public Member getMember()</code>.</li>
+<li>Improved out of memory (OOM) error detection and handling. Now it is possible to register a custom hook when OutOfMemoryError is thrown.</li>
+<li>Fixed some issues related to domain name handling and networking/join.</li>
+<li>During cluster merge after a network split-brain, merging side will now fire MERGING and MERGED before and after RESTARTING and RESTARTED LifecycleEvents.</li>
+</ul>
+<a name="fixes"></a><h3 id="fixes">Fixes</h3>
+<p>The following are the fixed issues and enhancements for 2.3 release.</p>
+<ul>
+<li>Operation exceptions occur randomly while the SQL predicates are stress tested. <a href="https://github.com/hazelcast/hazelcast/issues/263" target="_blank">[263]</a></li>
+<li><code>EOF</code> exception is thrown in Management Center. <a href="https://github.com/hazelcast/hazelcast/issues/252" target="_blank">[252]</a></li>
+<li>The method <code>IMap.flush()</code> delegates map store exceptions to the caller instead of suppressing them. <a href="https://github.com/hazelcast/hazelcast/issues/250" target="_blank">[250]</a></li>
+<li>Node appears to be in multiple clusters. <a href="https://github.com/hazelcast/hazelcast/issues/247" target="_blank">[247]</a></li>
+<li>It would be nice to have Spring support in Runnable tasks. <a href="https://github.com/hazelcast/hazelcast/issues/244" target="_blank">[244]</a></li>
+<li>MERGING and MERGED events should be fired during a split-brain merging process. <a href="https://github.com/hazelcast/hazelcast/issues/241" target="_blank">[241]</a></li>
+<li>A problem occurs during a quick restart of master node. <a href="https://github.com/hazelcast/hazelcast/issues/235" target="_blank">[235]</a></li>
+<li>Distributed <code>tryLock()</code> throws <code>NullPointerException</code> from lite member. <a href="https://github.com/hazelcast/hazelcast/issues/233" target="_blank">[233]</a></li>
+<li>Using domain instead of IP address is problematic. <a href="https://github.com/hazelcast/hazelcast/issues/230" target="_blank">[230]</a></li>
+<li>The method <code>MultiMap.lock()</code> blocks forever. <a href="https://github.com/hazelcast/hazelcast/issues/228" target="_blank">[228]</a></li>
+<li><code>SimpleMapTest</code> uses deprecated method <code>Hazelcast.getLoggingService()</code> and annoys WebLogic 12. <a href="https://github.com/hazelcast/hazelcast/issues/227" target="_blank">[227]</a></li>
+<li><code>ItemEvent</code> should have a <code>getMember</code> method to return the member that offered/polled an item. <a href="https://github.com/hazelcast/hazelcast/issues/226" target="_blank">[226]</a></li>
+<li>The consumers do <code>queue.take()</code> and block until something is put on the queue. In Hazelcast 2.1.2, this was fine, but in 2.2, it causes a massive amount of WARN-level log spam. <a href="https://github.com/hazelcast/hazelcast/issues/225" target="_blank">[225]</a></li>
+<li>The method <code>MultiMap.put()</code> is inconsistent when the key is locked by another node/thread. <a href="https://github.com/hazelcast/hazelcast/issues/223" target="_blank">[223]</a></li>
+<li>FAILED event should be fired when migration fails for some reason. <a href="https://github.com/hazelcast/hazelcast/issues/222" target="_blank">[222]</a></li>
+<li><code>Runtime</code> exception is thrown when accessing to queue after client restarted. <a href="https://github.com/hazelcast/hazelcast/issues/220" target="_blank">[220]</a></li>
+<li>Using the client, once it tries to access the cache while the cache is unavailable, the client cannot be used anymore after the server cache becomes available. <a href="https://github.com/hazelcast/hazelcast/issues/218" target="_blank">[218]</a></li>
+<li>The methods <code>DistributedTask.get()</code> and <code>MultiTask.get()</code> throw <code>OperationTimeoutException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/217" target="_blank">[217]</a></li>
+<li>There are a couple of classes that do not implement <code>toString</code>, that makes the <code>Config.toString</code> message incomplete. <a href="https://github.com/hazelcast/hazelcast/issues/209" target="_blank">[209]</a></li>
+<li>Hazelcast IMap ignores the size capacity. <a href="https://github.com/hazelcast/hazelcast/issues/188" target="_blank">[188]</a></li>
+<li>Hazelcast resource adapter package (version 2.1.2) does not deploy on JBoss 7.1.1. <a href="https://github.com/hazelcast/hazelcast/issues/182" target="_blank">[182]</a></li>
+</ul>
+
+<a name="22"></a><h1 id="2-2">2.2</h1>
+<p>This section lists the new features, enhancements and fixed issues for 2.2 release.</p>
+<a name="new-features-and-changes"></a><h3 id="new-features-and-changes">New Features and Changes</h3>
+<p>The following are the new features and changes introduced with 2.2 release.</p>
+<ul>
+<li>Improved redo logs and added maximum call/operation timeout.</li>
+<li>Improved domain name handling; Hazelcast will use defined addresses/domain-names in TCP-IP Config as they are, without resolving an IP address.</li>
+<li>Added Cluster Health Check to Management Center application.</li>
+</ul>
+<a name="fixes"></a><h3 id="fixes">Fixes</h3>
+<p>The following are the fixed issues and enhancements for 2.2 release.</p>
+<ul>
+<li>The Hazelcast manual show a default config for WAN replication that includes the config item 
+<code>&lt;replication-impl&gt;com.hazelcast.impl.wan.WanNoDelayReplication&lt;/replication-impl&gt;</code>. This item appears to be used for configuring WAN replication implementation to be used. This item is not being used at all. Instead the replication implementation is hard coded in <code>WanReplicationService.java</code>. <a href="https://github.com/hazelcast/hazelcast/issues/152" target="_blank">[152]</a></li>
+<li>It would be nice to have possibilities to instantiate native client from <code>java.util.Properties</code> and/or from classpath-located configuration file. <a href="https://github.com/hazelcast/hazelcast/issues/93" target="_blank">[93]</a></li>
+<li>The method <code>ILock.isLocked()</code> should have the ability to implement a spin lock / wait for a lock release to perform non-blocking code. <a href="https://github.com/hazelcast/hazelcast/issues/39" target="_blank">[39]</a></li>
+</ul>
+
+<a name="213"></a><h1 id="2-1-3">2.1.3</h1>
+<p>The following are the fixed issues and enhancements for 2.1.3 release.</p>
+<ul>
+<li>Hazelcast IList evicts the items using the default map TTL. <a href="https://github.com/hazelcast/hazelcast/issues/196" target="_blank">[196]</a></li>
+<li>Nodes with EC2 auto-discovery do not rejoin the cluster after a network outage. <a href="https://github.com/hazelcast/hazelcast/issues/195" target="_blank">[195]</a></li>
+<li>The method <code>remove()</code> cannot be called on a Hazelcast Set iterator. <a href="https://github.com/hazelcast/hazelcast/issues/189" target="_blank">[189]</a></li>
+<li>Topic does not receive messages when using Spring injection. <a href="https://github.com/hazelcast/hazelcast/issues/186" target="_blank">[186]</a></li>
+<li>The method <code>IMap.set()</code> should not load data from map store. <a href="https://github.com/hazelcast/hazelcast/issues/185" target="_blank">[185]</a></li>
+<li><code>EntryListener</code> for native clients receives duplicate events. <a href="https://github.com/hazelcast/hazelcast/issues/183" target="_blank">[183]</a></li>
+<li>Listeners do not work when used with locks and <code>remove</code>. <a href="https://github.com/hazelcast/hazelcast/issues/258" target="_blank">[196]</a></li>
+<li>The package <code>hazelcast-spring</code> dependencies on Hibernate and MongoDB should be optional. <a href="https://github.com/hazelcast/hazelcast/issues/179" target="_blank">[179]</a></li>
+<li>Backup entry count is smaller than the owned entries. <a href="https://github.com/hazelcast/hazelcast/issues/177" target="_blank">[177]</a></li>
+<li>Queries on enum indexed types return an empty result set. <a href="https://github.com/hazelcast/hazelcast/issues/176" target="_blank">[176]</a></li>
+</ul>
+
+<a name="212"></a><h1 id="2-1-2">2.1.2</h1>
+<p>The following are the fixed issues and enhancements for 2.1.2 release.</p>
+<ul>
+<li>The method <code>containsKey()</code> does not work on a single node with the default near cache configuration. <a href="https://github.com/hazelcast/hazelcast/issues/174" target="_blank">[174]</a></li>
+<li>The method Transactional <code>IMap.get(key)</code> causes the key to be added to map. <a href="https://github.com/hazelcast/hazelcast/issues/161" target="_blank">[161]</a></li>
+</ul>
+
+<a name="211"></a><h1 id="2-1-1">2.1.1</h1>
+<p>The following are the fixed issues and enhancements for 2.1.1 release.</p>
+<ul>
+<li>Item listener does not work when using client. <a href="https://github.com/hazelcast/hazelcast/issues/158" target="_blank">[158]</a></li>
+<li>The method <code>IMap.remove(key)</code> returns incorrect object. <a href="https://github.com/hazelcast/hazelcast/issues/149" target="_blank">[149]</a></li>
+<li>Map eviction policies are not documented. <a href="https://github.com/hazelcast/hazelcast/issues/148" target="_blank">[148]</a></li>
+<li>When calling the method <code>IQueue.remove(object)</code>, the item listener added for that queue is not invoked. <a href="https://github.com/hazelcast/hazelcast/issues/146" target="_blank">[146]</a></li>
+<li>List is not keeping the order in transactional context. <a href="https://github.com/hazelcast/hazelcast/issues/73" target="_blank">[73]</a></li>
+</ul>
+
+<a name="21"></a><h1 id="2-1">2.1</h1>
+<p>This section lists the new features, enhancements and fixed issues for 2.1 release.</p>
+<a name="new-features-and-changes"></a><h3 id="new-features-and-changes">New Features and Changes</h3>
+<p>The following are the new features and changes introduced with 2.1 release.</p>
+<ul>
+<li>Hazelcast now supports IPv6 addresses seamlessly.</li>
+<li>Added async backup support.</li>
+<li>Hazelcast now can be used as Spring Cache provider.</li>
+<li>Spring Dependency Injection support: Hazelcast can apply bean properties or to apply factory callbacks such as ApplicationContextAware, BeanNameAware or to apply bean post-processing such as InitializingBean, @PostConstruct like annotations while using Hazelcast distributed ExecutorService or DistributedTasks or more generally any Hazelcast managed object.</li>
+<li>Added persistence support with Spring-Data MongoDB and JPA integration.</li>
+<li><code>Member.getUuid()</code> now will return UUID for node.</li>
+<li>Improved session clustering configuration.</li>
+</ul>
+<a name="fixes"></a><h3 id="fixes">Fixes</h3>
+<p>The following are the fixed issues and enhancements for 2.1 release.</p>
+<ul>
+<li>Hazelcast client breaks the lifecycle listeners. <a href="https://github.com/hazelcast/hazelcast/issues/130" target="_blank">[130]</a></li>
+<li>The Spring bean attributes <code>lazy-init</code> and <code>scope</code> should be added. <a href="https://github.com/hazelcast/hazelcast/issues/118" target="_blank">[118]</a></li>
+<li>Spring configuration namespace is missing <code>lock</code>. <a href="https://github.com/hazelcast/hazelcast/issues/116" target="_blank">[116]</a></li>
+<li><code>MaxSizeHeapPolicy</code> issue causing improper evictions and freezes. <a href="https://github.com/hazelcast/hazelcast/issues/110" target="_blank">[110]</a></li>
+<li><code>NullPointerException</code> is thrown by the method <code>tx.commit()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/108" target="_blank">[108]</a></li>
+<li>Hazelcast client does not shutdown properly if no connection can be established. <a href="https://github.com/hazelcast/hazelcast/issues/101" target="_blank">[101]</a></li>
+<li>It would be nice to have &quot;semi-asynchronous&quot; replication for Hazelcast. <a href="https://github.com/hazelcast/hazelcast/issues/92" target="_blank">[92]</a></li>
 </ul>
 
 

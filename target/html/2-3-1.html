@@ -347,13 +347,14 @@
 	</div>
 
 	        <div id="content">
-	            <a name="354"></a><h1 id="3-5-4">3.5.4</h1>
-<p>The following are the issues solved for Hazelcast 3.5.4 release.</p>
+	            <a name="231"></a><h1 id="2-3-1">2.3.1</h1>
+<p>The following are the fixed issues and enhancements for 2.3.1 release.</p>
 <ul>
-<li>Fixed wrong calculation of eviction removal size when <code>PER_NODE</code> <code>max-size</code> policy is used. <a href="https://github.com/hazelcast/hazelcast/pull/6674">[#6674]</a></li>
-<li>Lazy deserialization is required while events are being processed. <a href="https://github.com/hazelcast/hazelcast/issues/6582">[#6582]</a></li>
-<li>Thread Dumps freeze in the Management Center. It shows the same thread dumps for all connected members, same traces and same thread IDs. And they are shown on the same line numbers. <a href="https://github.com/hazelcast/hazelcast/issues/6536">[#6536]</a></li>
-<li>In Hazelcast 3.4.*, the methods <code>migrationStarted</code>/<code>migrationCompleted</code> were only called once when a partition migration was done. But in 3.5, these methods are called twice for each partition. <a href="https://github.com/hazelcast/hazelcast/issues/6396">[#6396]</a></li>
+<li>Changed <code>hazelcast.partition.migration.interval</code> property&#39;s value from 1 to 0.</li>
+<li>The method <code>ILock.newCondition()</code> now throws <code>UnsupportedOperationException</code>.</li>
+<li>After upgrading Hazelcast to 2.3, IPv6 is no longer supported in TCP join mechanism. <a href="https://github.com/hazelcast/hazelcast/issues/258" target="_blank">[258]</a></li>
+<li><code>ClassCastException</code> is thrown when the method <code>MultiMap.get()</code> is run. <a href="https://github.com/hazelcast/hazelcast/issues/256" target="_blank">[256]</a></li>
+<li>Currently, the method <code>MultiMap.get(K key)</code> returns null if there are no values associated with the key. However, it should return an empty collection instead. <a href="https://github.com/hazelcast/hazelcast/issues/167" target="_blank">[167]</a></li>
 </ul>
 
 

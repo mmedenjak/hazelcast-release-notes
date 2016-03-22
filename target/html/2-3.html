@@ -347,13 +347,45 @@
 	</div>
 
 	        <div id="content">
-	            <a name="354"></a><h1 id="3-5-4">3.5.4</h1>
-<p>The following are the issues solved for Hazelcast 3.5.4 release.</p>
+	            <a name="23"></a><h1 id="2-3">2.3</h1>
+<p>This section lists the new features, enhancements and fixed issues for 2.3 release.</p>
+<a name="new-features-and-changes"></a><h3 id="new-features-and-changes">New Features and Changes</h3>
+<p>The following are the new features and changes introduced with 2.3 release.</p>
 <ul>
-<li>Fixed wrong calculation of eviction removal size when <code>PER_NODE</code> <code>max-size</code> policy is used. <a href="https://github.com/hazelcast/hazelcast/pull/6674">[#6674]</a></li>
-<li>Lazy deserialization is required while events are being processed. <a href="https://github.com/hazelcast/hazelcast/issues/6582">[#6582]</a></li>
-<li>Thread Dumps freeze in the Management Center. It shows the same thread dumps for all connected members, same traces and same thread IDs. And they are shown on the same line numbers. <a href="https://github.com/hazelcast/hazelcast/issues/6536">[#6536]</a></li>
-<li>In Hazelcast 3.4.*, the methods <code>migrationStarted</code>/<code>migrationCompleted</code> were only called once when a partition migration was done. But in 3.5, these methods are called twice for each partition. <a href="https://github.com/hazelcast/hazelcast/issues/6396">[#6396]</a></li>
+<li>Changed <code>hazelcast.max.operation.timeout</code> unit from seconds to milliseconds.</li>
+<li>Added <code>hazelcast.max.concurrent.operation.limit</code> property to be able to limit the number of concurrent operations that can be submitted to Hazelcast.</li>
+<li>Added <code>hazelcast.backup.redo.enabled</code> property to enable/disable redo for backup operations.</li>
+<li>Added MultiMap and Distributed ExecutorService statistics to Management Center application.</li>
+<li><code>MigrationListener</code> has now an additional method to receive failed migration events; <code>void migrationFailed(MigrationEvent migrationEvent)</code>.</li>
+<li><code>ItemEvent</code> has now an additional method returning Member firing that event; <code>public Member getMember()</code>.</li>
+<li>Improved out of memory (OOM) error detection and handling. Now it is possible to register a custom hook when OutOfMemoryError is thrown.</li>
+<li>Fixed some issues related to domain name handling and networking/join.</li>
+<li>During cluster merge after a network split-brain, merging side will now fire MERGING and MERGED before and after RESTARTING and RESTARTED LifecycleEvents.</li>
+</ul>
+<a name="fixes"></a><h3 id="fixes">Fixes</h3>
+<p>The following are the fixed issues and enhancements for 2.3 release.</p>
+<ul>
+<li>Operation exceptions occur randomly while the SQL predicates are stress tested. <a href="https://github.com/hazelcast/hazelcast/issues/263" target="_blank">[263]</a></li>
+<li><code>EOF</code> exception is thrown in Management Center. <a href="https://github.com/hazelcast/hazelcast/issues/252" target="_blank">[252]</a></li>
+<li>The method <code>IMap.flush()</code> delegates map store exceptions to the caller instead of suppressing them. <a href="https://github.com/hazelcast/hazelcast/issues/250" target="_blank">[250]</a></li>
+<li>Node appears to be in multiple clusters. <a href="https://github.com/hazelcast/hazelcast/issues/247" target="_blank">[247]</a></li>
+<li>It would be nice to have Spring support in Runnable tasks. <a href="https://github.com/hazelcast/hazelcast/issues/244" target="_blank">[244]</a></li>
+<li>MERGING and MERGED events should be fired during a split-brain merging process. <a href="https://github.com/hazelcast/hazelcast/issues/241" target="_blank">[241]</a></li>
+<li>A problem occurs during a quick restart of master node. <a href="https://github.com/hazelcast/hazelcast/issues/235" target="_blank">[235]</a></li>
+<li>Distributed <code>tryLock()</code> throws <code>NullPointerException</code> from lite member. <a href="https://github.com/hazelcast/hazelcast/issues/233" target="_blank">[233]</a></li>
+<li>Using domain instead of IP address is problematic. <a href="https://github.com/hazelcast/hazelcast/issues/230" target="_blank">[230]</a></li>
+<li>The method <code>MultiMap.lock()</code> blocks forever. <a href="https://github.com/hazelcast/hazelcast/issues/228" target="_blank">[228]</a></li>
+<li><code>SimpleMapTest</code> uses deprecated method <code>Hazelcast.getLoggingService()</code> and annoys WebLogic 12. <a href="https://github.com/hazelcast/hazelcast/issues/227" target="_blank">[227]</a></li>
+<li><code>ItemEvent</code> should have a <code>getMember</code> method to return the member that offered/polled an item. <a href="https://github.com/hazelcast/hazelcast/issues/226" target="_blank">[226]</a></li>
+<li>The consumers do <code>queue.take()</code> and block until something is put on the queue. In Hazelcast 2.1.2, this was fine, but in 2.2, it causes a massive amount of WARN-level log spam. <a href="https://github.com/hazelcast/hazelcast/issues/225" target="_blank">[225]</a></li>
+<li>The method <code>MultiMap.put()</code> is inconsistent when the key is locked by another node/thread. <a href="https://github.com/hazelcast/hazelcast/issues/223" target="_blank">[223]</a></li>
+<li>FAILED event should be fired when migration fails for some reason. <a href="https://github.com/hazelcast/hazelcast/issues/222" target="_blank">[222]</a></li>
+<li><code>Runtime</code> exception is thrown when accessing to queue after client restarted. <a href="https://github.com/hazelcast/hazelcast/issues/220" target="_blank">[220]</a></li>
+<li>Using the client, once it tries to access the cache while the cache is unavailable, the client cannot be used anymore after the server cache becomes available. <a href="https://github.com/hazelcast/hazelcast/issues/218" target="_blank">[218]</a></li>
+<li>The methods <code>DistributedTask.get()</code> and <code>MultiTask.get()</code> throw <code>OperationTimeoutException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/217" target="_blank">[217]</a></li>
+<li>There are a couple of classes that do not implement <code>toString</code>, that makes the <code>Config.toString</code> message incomplete. <a href="https://github.com/hazelcast/hazelcast/issues/209" target="_blank">[209]</a></li>
+<li>Hazelcast IMap ignores the size capacity. <a href="https://github.com/hazelcast/hazelcast/issues/188" target="_blank">[188]</a></li>
+<li>Hazelcast resource adapter package (version 2.1.2) does not deploy on JBoss 7.1.1. <a href="https://github.com/hazelcast/hazelcast/issues/182" target="_blank">[182]</a></li>
 </ul>
 
 

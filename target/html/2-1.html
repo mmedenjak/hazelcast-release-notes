@@ -347,13 +347,29 @@
 	</div>
 
 	        <div id="content">
-	            <a name="354"></a><h1 id="3-5-4">3.5.4</h1>
-<p>The following are the issues solved for Hazelcast 3.5.4 release.</p>
+	            <a name="21"></a><h1 id="2-1">2.1</h1>
+<p>This section lists the new features, enhancements and fixed issues for 2.1 release.</p>
+<a name="new-features-and-changes"></a><h3 id="new-features-and-changes">New Features and Changes</h3>
+<p>The following are the new features and changes introduced with 2.1 release.</p>
 <ul>
-<li>Fixed wrong calculation of eviction removal size when <code>PER_NODE</code> <code>max-size</code> policy is used. <a href="https://github.com/hazelcast/hazelcast/pull/6674">[#6674]</a></li>
-<li>Lazy deserialization is required while events are being processed. <a href="https://github.com/hazelcast/hazelcast/issues/6582">[#6582]</a></li>
-<li>Thread Dumps freeze in the Management Center. It shows the same thread dumps for all connected members, same traces and same thread IDs. And they are shown on the same line numbers. <a href="https://github.com/hazelcast/hazelcast/issues/6536">[#6536]</a></li>
-<li>In Hazelcast 3.4.*, the methods <code>migrationStarted</code>/<code>migrationCompleted</code> were only called once when a partition migration was done. But in 3.5, these methods are called twice for each partition. <a href="https://github.com/hazelcast/hazelcast/issues/6396">[#6396]</a></li>
+<li>Hazelcast now supports IPv6 addresses seamlessly.</li>
+<li>Added async backup support.</li>
+<li>Hazelcast now can be used as Spring Cache provider.</li>
+<li>Spring Dependency Injection support: Hazelcast can apply bean properties or to apply factory callbacks such as ApplicationContextAware, BeanNameAware or to apply bean post-processing such as InitializingBean, @PostConstruct like annotations while using Hazelcast distributed ExecutorService or DistributedTasks or more generally any Hazelcast managed object.</li>
+<li>Added persistence support with Spring-Data MongoDB and JPA integration.</li>
+<li><code>Member.getUuid()</code> now will return UUID for node.</li>
+<li>Improved session clustering configuration.</li>
+</ul>
+<a name="fixes"></a><h3 id="fixes">Fixes</h3>
+<p>The following are the fixed issues and enhancements for 2.1 release.</p>
+<ul>
+<li>Hazelcast client breaks the lifecycle listeners. <a href="https://github.com/hazelcast/hazelcast/issues/130" target="_blank">[130]</a></li>
+<li>The Spring bean attributes <code>lazy-init</code> and <code>scope</code> should be added. <a href="https://github.com/hazelcast/hazelcast/issues/118" target="_blank">[118]</a></li>
+<li>Spring configuration namespace is missing <code>lock</code>. <a href="https://github.com/hazelcast/hazelcast/issues/116" target="_blank">[116]</a></li>
+<li><code>MaxSizeHeapPolicy</code> issue causing improper evictions and freezes. <a href="https://github.com/hazelcast/hazelcast/issues/110" target="_blank">[110]</a></li>
+<li><code>NullPointerException</code> is thrown by the method <code>tx.commit()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/108" target="_blank">[108]</a></li>
+<li>Hazelcast client does not shutdown properly if no connection can be established. <a href="https://github.com/hazelcast/hazelcast/issues/101" target="_blank">[101]</a></li>
+<li>It would be nice to have &quot;semi-asynchronous&quot; replication for Hazelcast. <a href="https://github.com/hazelcast/hazelcast/issues/92" target="_blank">[92]</a></li>
 </ul>
 
 

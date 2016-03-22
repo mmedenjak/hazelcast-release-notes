@@ -347,13 +347,19 @@
 	</div>
 
 	        <div id="content">
-	            <a name="354"></a><h1 id="3-5-4">3.5.4</h1>
-<p>The following are the issues solved for Hazelcast 3.5.4 release.</p>
+	            <a name="213"></a><h1 id="2-1-3">2.1.3</h1>
+<p>The following are the fixed issues and enhancements for 2.1.3 release.</p>
 <ul>
-<li>Fixed wrong calculation of eviction removal size when <code>PER_NODE</code> <code>max-size</code> policy is used. <a href="https://github.com/hazelcast/hazelcast/pull/6674">[#6674]</a></li>
-<li>Lazy deserialization is required while events are being processed. <a href="https://github.com/hazelcast/hazelcast/issues/6582">[#6582]</a></li>
-<li>Thread Dumps freeze in the Management Center. It shows the same thread dumps for all connected members, same traces and same thread IDs. And they are shown on the same line numbers. <a href="https://github.com/hazelcast/hazelcast/issues/6536">[#6536]</a></li>
-<li>In Hazelcast 3.4.*, the methods <code>migrationStarted</code>/<code>migrationCompleted</code> were only called once when a partition migration was done. But in 3.5, these methods are called twice for each partition. <a href="https://github.com/hazelcast/hazelcast/issues/6396">[#6396]</a></li>
+<li>Hazelcast IList evicts the items using the default map TTL. <a href="https://github.com/hazelcast/hazelcast/issues/196" target="_blank">[196]</a></li>
+<li>Nodes with EC2 auto-discovery do not rejoin the cluster after a network outage. <a href="https://github.com/hazelcast/hazelcast/issues/195" target="_blank">[195]</a></li>
+<li>The method <code>remove()</code> cannot be called on a Hazelcast Set iterator. <a href="https://github.com/hazelcast/hazelcast/issues/189" target="_blank">[189]</a></li>
+<li>Topic does not receive messages when using Spring injection. <a href="https://github.com/hazelcast/hazelcast/issues/186" target="_blank">[186]</a></li>
+<li>The method <code>IMap.set()</code> should not load data from map store. <a href="https://github.com/hazelcast/hazelcast/issues/185" target="_blank">[185]</a></li>
+<li><code>EntryListener</code> for native clients receives duplicate events. <a href="https://github.com/hazelcast/hazelcast/issues/183" target="_blank">[183]</a></li>
+<li>Listeners do not work when used with locks and <code>remove</code>. <a href="https://github.com/hazelcast/hazelcast/issues/258" target="_blank">[196]</a></li>
+<li>The package <code>hazelcast-spring</code> dependencies on Hibernate and MongoDB should be optional. <a href="https://github.com/hazelcast/hazelcast/issues/179" target="_blank">[179]</a></li>
+<li>Backup entry count is smaller than the owned entries. <a href="https://github.com/hazelcast/hazelcast/issues/177" target="_blank">[177]</a></li>
+<li>Queries on enum indexed types return an empty result set. <a href="https://github.com/hazelcast/hazelcast/issues/176" target="_blank">[176]</a></li>
 </ul>
 
 

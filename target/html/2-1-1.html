@@ -347,13 +347,14 @@
 	</div>
 
 	        <div id="content">
-	            <a name="354"></a><h1 id="3-5-4">3.5.4</h1>
-<p>The following are the issues solved for Hazelcast 3.5.4 release.</p>
+	            <a name="211"></a><h1 id="2-1-1">2.1.1</h1>
+<p>The following are the fixed issues and enhancements for 2.1.1 release.</p>
 <ul>
-<li>Fixed wrong calculation of eviction removal size when <code>PER_NODE</code> <code>max-size</code> policy is used. <a href="https://github.com/hazelcast/hazelcast/pull/6674">[#6674]</a></li>
-<li>Lazy deserialization is required while events are being processed. <a href="https://github.com/hazelcast/hazelcast/issues/6582">[#6582]</a></li>
-<li>Thread Dumps freeze in the Management Center. It shows the same thread dumps for all connected members, same traces and same thread IDs. And they are shown on the same line numbers. <a href="https://github.com/hazelcast/hazelcast/issues/6536">[#6536]</a></li>
-<li>In Hazelcast 3.4.*, the methods <code>migrationStarted</code>/<code>migrationCompleted</code> were only called once when a partition migration was done. But in 3.5, these methods are called twice for each partition. <a href="https://github.com/hazelcast/hazelcast/issues/6396">[#6396]</a></li>
+<li>Item listener does not work when using client. <a href="https://github.com/hazelcast/hazelcast/issues/158" target="_blank">[158]</a></li>
+<li>The method <code>IMap.remove(key)</code> returns incorrect object. <a href="https://github.com/hazelcast/hazelcast/issues/149" target="_blank">[149]</a></li>
+<li>Map eviction policies are not documented. <a href="https://github.com/hazelcast/hazelcast/issues/148" target="_blank">[148]</a></li>
+<li>When calling the method <code>IQueue.remove(object)</code>, the item listener added for that queue is not invoked. <a href="https://github.com/hazelcast/hazelcast/issues/146" target="_blank">[146]</a></li>
+<li>List is not keeping the order in transactional context. <a href="https://github.com/hazelcast/hazelcast/issues/73" target="_blank">[73]</a></li>
 </ul>
 
 
