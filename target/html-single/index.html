@@ -70,11 +70,6 @@
     <ol>
     
         <li>
-            <a href="index.html#362">3.6.2</a>
-            
-        </li>
-    
-        <li>
             <a href="index.html#361">3.6.1</a>
             
         </li>
@@ -319,6 +314,16 @@
             
         </li>
     
+        <li>
+            <a href="index.html#204">2.0.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="index.html#203">2.0.3</a>
+            
+        </li>
+    
 </ol>
 
    </nav>
@@ -337,27 +342,7 @@
 
 			<div id="content">
 				<p>This document includes the new features, enhancements and fixed issues for Hazelcast releases.<p>
-					<a name="362"></a><h1 id="3-6-2">3.6.2</h1>
-<p>The following are the fixed issues for 3.6.2 release.</p>
-<ul>
-<li>Timeout happens at the <code>ClientMapBasicTest</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7718" target="_blank">[7718]</a></li>
-<li>IMap does not send invalidations to the client&#39;s near caches after <code>putAll</code>/<code>loadAll</code> operations at member side. <a href="https://github.com/hazelcast/hazelcast/issues/7715" target="_blank">[7715]</a></li>
-<li>Wildcards do not work with permissions. For example, when a queue permission is defined using wildcard, i.e. <code>&lt;queue-permission name=&quot;secure.*&quot; principal=&quot;admin&quot;&gt;</code> and the queue <code>secure.orders</code> is created at the client, Hazelcast throws <code>AccessControlException</code> is created using that name- <a href="https://github.com/hazelcast/hazelcast/issues/7616" target="_blank">[7616]</a></li>
-<li>The FREE_HEAP_PERCENTAGE eviction policy does not work as documented because the <code>EvictionChecker</code> is incorrectly calculating available memory percentage in <code>checkFreeHeapPercentageEviction</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7599" target="_blank">[7599]</a></li>
-<li><code>DiscoveryStrategy</code>&#39;s <code>destroy()</code> method is not called on shutdown. <a href="https://github.com/hazelcast/hazelcast/issues/7545" target="_blank">[7545]</a></li>
-<li>The method <code>MapStore.storeAll()</code> is never called when the objects are updated with a delay. <a href="https://github.com/hazelcast/hazelcast/issues/7464" target="_blank">[7464]</a></li>
-<li>WebFilter(3.6-RC1): Session attributes are lost or overwritten with old values when using <code>deferred-write</code> by reading them. <a href="https://github.com/hazelcast/hazelcast/issues/7291" target="_blank">[7291]</a></li>
-<li>The method <code>HazelcastHttpSession.getAttributeNames()</code> returns entries that were only read but not written. <a href="https://github.com/hazelcast/hazelcast/issues/7033" target="_blank">[7033]</a></li>
-<li>An exception is thrown on the server when attempting to deserialize <code>HIBERNATE4_TYPE_HIBERNATE_CACHE_ENTRY</code> value. <a href="https://github.com/hazelcast/hazelcast/issues/6683" target="_blank">[6683]</a></li>
-<li></li>
-</ul>
-<p>The following are the enhancements performed for 3.6.2 release.</p>
-<ul>
-<li>Hazelcast Docker images are big in size; it would be better to clean them up and reduce their sizes. <a href="https://github.com/hazelcast/hazelcast/issues/7553" target="_blank">[7553]</a></li>
-<li>It would be better to provide an <code>enterprise-javadoc.jar</code> in the Hazelcast Enterprise bundle. This way IDEs can auto-import the Javadocs for the Enterprise APIs and provide context sensitive completion/help within the IDE. <a href="https://github.com/hazelcast/hazelcast/issues/7245" target="_blank">[7245]</a></li>
-<li>Management Center WAN Replication metrics take a long time to stabilize. The responsiveness of the Outbound records/sec. metric should be improved. It currently seems to under-report WAN replication performance for 10s of seconds before reaching the same figure as the client side reported metrics.<a href="https://github.com/hazelcast/hazelcast/issues/7244" target="_blank">[7244]</a></li>
-</ul>
-<a name="361"></a><h1 id="3-6-1">3.6.1</h1>
+					<a name="361"></a><h1 id="3-6-1">3.6.1</h1>
 <p>The following are the fixed issues for 3.6.1 release.</p>
 <ul>
 <li>Hazelcast 3.6 fails to create <code>ObjectName</code> for an instance created with JCache API. <a href="https://github.com/hazelcast/hazelcast/issues/7548" target="_blank">[7548]</a></li>
@@ -1704,6 +1689,22 @@ since in the client, the client prefix is added to map&#39;s name. <a href="http
 <li><code>NullPointerException</code> is thrown by the method <code>tx.commit()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/108" target="_blank">[108]</a></li>
 <li>Hazelcast client does not shutdown properly if no connection can be established. <a href="https://github.com/hazelcast/hazelcast/issues/101" target="_blank">[101]</a></li>
 <li>It would be nice to have &quot;semi-asynchronous&quot; replication for Hazelcast. <a href="https://github.com/hazelcast/hazelcast/issues/92" target="_blank">[92]</a></li>
+</ul>
+<a name="204"></a><h1 id="2-0-4">2.0.4</h1>
+<p>The following are the fixed issues and enhancements for 2.0.4 release.</p>
+<ul>
+<li><code>NullPointerException</code> is thrown by the method <code>AbstractRecord.getLockCount()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/166" target="_blank">[166]</a></li>
+<li>There are &quot;Connection refused&quot; in Hazelcast 2.0.3. <a href="https://github.com/hazelcast/hazelcast/issues/140" target="_blank">[140]</a></li>
+<li>Predicate value on the date field should not be converted from a String by the method <code>getRealObject()</code>.<a href="https://github.com/hazelcast/hazelcast/issues/135" target="_blank">[135]</a></li>
+<li>Some IMap removed/evicted entries will go back when one cluster node crashes. <a href="https://github.com/hazelcast/hazelcast/issues/132" target="_blank">[132]</a></li>
+<li><code>Predicates.GreaterLesserPredicate</code>&#39;s <code>doApply</code> operation is broken. <a href="https://github.com/hazelcast/hazelcast/issues/131" target="_blank">[131]</a></li>
+<li>Incorrect selection by predicate with comparison of non-numerical fields and indexing problems. <a href="https://github.com/hazelcast/hazelcast/issues/98" target="_blank">[98]</a></li>
+<li>Evicted/deleted entries should not be stored to the map store. <a href="https://github.com/hazelcast/hazelcast/issues/96" target="_blank">[96]</a></li>
+</ul>
+<a name="203"></a><h1 id="2-0-3">2.0.3</h1>
+<p>The following are the fixed issues and enhancements for 2.0.3 release.</p>
+<ul>
+<li>. <a href="https://github.com/hazelcast/hazelcast/issues/166" target="_blank">[166]</a></li>
 </ul>
 
 

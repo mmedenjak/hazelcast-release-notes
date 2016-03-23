@@ -8,15 +8,6 @@ var documentTitles = {};
 
 
 
-documentTitles["3-6-2.html#362"] = "3.6.2";
-index.add({
-    url: "3-6-2.html#362",
-    title: "3.6.2",
-    body: "# 3.6.2  The following are the fixed issues for 3.6.2 release.  - Timeout happens at the `ClientMapBasicTest`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7718\&quot; target=\&quot;_blank\&quot;&gt;[7718]&lt;/a&gt; - IMap does not send invalidations to the client's near caches after `putAll`/`loadAll` operations at member side. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7715\&quot; target=\&quot;_blank\&quot;&gt;[7715]&lt;/a&gt; - Wildcards do not work with permissions. For example, when a queue permission is defined using wildcard, i.e. `&lt;queue-permission name=\&quot;secure.*\&quot; principal=\&quot;admin\&quot;&gt;` and the queue `secure.orders` is created at the client, Hazelcast throws `AccessControlException` is created using that name- &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7616\&quot; target=\&quot;_blank\&quot;&gt;[7616]&lt;/a&gt; - The FREE_HEAP_PERCENTAGE eviction policy does not work as documented because the `EvictionChecker` is incorrectly calculating available memory percentage in `checkFreeHeapPercentageEviction`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7599\&quot; target=\&quot;_blank\&quot;&gt;[7599]&lt;/a&gt; - `DiscoveryStrategy`'s `destroy()` method is not called on shutdown. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7545\&quot; target=\&quot;_blank\&quot;&gt;[7545]&lt;/a&gt; - The method `MapStore.storeAll()` is never called when the objects are updated with a delay. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7464\&quot; target=\&quot;_blank\&quot;&gt;[7464]&lt;/a&gt; - WebFilter(3.6-RC1): Session attributes are lost or overwritten with old values when using `deferred-write` by reading them. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7291\&quot; target=\&quot;_blank\&quot;&gt;[7291]&lt;/a&gt; - The method `HazelcastHttpSession.getAttributeNames()` returns entries that were only read but not written. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7033\&quot; target=\&quot;_blank\&quot;&gt;[7033]&lt;/a&gt; - An exception is thrown on the server when attempting to deserialize `HIBERNATE4_TYPE_HIBERNATE_CACHE_ENTRY` value. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/6683\&quot; target=\&quot;_blank\&quot;&gt;[6683]&lt;/a&gt; -   The following are the enhancements performed for 3.6.2 release.  - Hazelcast Docker images are big in size; it would be better to clean them up and reduce their sizes. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7553\&quot; target=\&quot;_blank\&quot;&gt;[7553]&lt;/a&gt; - It would be better to provide an `enterprise-javadoc.jar` in the Hazelcast Enterprise bundle. This way IDEs can auto-import the Javadocs for the Enterprise APIs and provide context sensitive completion/help within the IDE. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7245\&quot; target=\&quot;_blank\&quot;&gt;[7245]&lt;/a&gt; - Management Center WAN Replication metrics take a long time to stabilize. The responsiveness of the Outbound records/sec. metric should be improved. It currently seems to under-report WAN replication performance for 10s of seconds before reaching the same figure as the client side reported metrics.&lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/7244\&quot; target=\&quot;_blank\&quot;&gt;[7244]&lt;/a&gt;"
-});
-
-
-
 documentTitles["3-6-1.html#361"] = "3.6.1";
 index.add({
     url: "3-6-1.html#361",
@@ -664,6 +655,24 @@ index.add({
     url: "2-1.html#fixes",
     title: "Fixes",
     body: "### Fixes   The following are the fixed issues and enhancements for 2.1 release.  - Hazelcast client breaks the lifecycle listeners. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/130\&quot; target=\&quot;_blank\&quot;&gt;[130]&lt;/a&gt; - The Spring bean attributes `lazy-init` and `scope` should be added. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/118\&quot; target=\&quot;_blank\&quot;&gt;[118]&lt;/a&gt; - Spring configuration namespace is missing `lock`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/116\&quot; target=\&quot;_blank\&quot;&gt;[116]&lt;/a&gt; - `MaxSizeHeapPolicy` issue causing improper evictions and freezes. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/110\&quot; target=\&quot;_blank\&quot;&gt;[110]&lt;/a&gt; - `NullPointerException` is thrown by the method `tx.commit()`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/108\&quot; target=\&quot;_blank\&quot;&gt;[108]&lt;/a&gt; - Hazelcast client does not shutdown properly if no connection can be established. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/101\&quot; target=\&quot;_blank\&quot;&gt;[101]&lt;/a&gt; - It would be nice to have \&quot;semi-asynchronous\&quot; replication for Hazelcast. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/92\&quot; target=\&quot;_blank\&quot;&gt;[92]&lt;/a&gt;  "
+});
+
+
+
+documentTitles["2-0-4.html#204"] = "2.0.4";
+index.add({
+    url: "2-0-4.html#204",
+    title: "2.0.4",
+    body: "# 2.0.4   The following are the fixed issues and enhancements for 2.0.4 release.  - `NullPointerException` is thrown by the method `AbstractRecord.getLockCount()`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/166\&quot; target=\&quot;_blank\&quot;&gt;[166]&lt;/a&gt; - There are \&quot;Connection refused\&quot; in Hazelcast 2.0.3. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/140\&quot; target=\&quot;_blank\&quot;&gt;[140]&lt;/a&gt; - Predicate value on the date field should not be converted from a String by the method `getRealObject()`.&lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/135\&quot; target=\&quot;_blank\&quot;&gt;[135]&lt;/a&gt; - Some IMap removed/evicted entries will go back when one cluster node crashes. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/132\&quot; target=\&quot;_blank\&quot;&gt;[132]&lt;/a&gt; - `Predicates.GreaterLesserPredicate`'s `doApply` operation is broken. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/131\&quot; target=\&quot;_blank\&quot;&gt;[131]&lt;/a&gt; - Incorrect selection by predicate with comparison of non-numerical fields and indexing problems. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/98\&quot; target=\&quot;_blank\&quot;&gt;[98]&lt;/a&gt; - Evicted/deleted entries should not be stored to the map store. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/96\&quot; target=\&quot;_blank\&quot;&gt;[96]&lt;/a&gt;  "
+});
+
+
+
+documentTitles["2-0-3.html#203"] = "2.0.3";
+index.add({
+    url: "2-0-3.html#203",
+    title: "2.0.3",
+    body: "# 2.0.3   The following are the fixed issues and enhancements for 2.0.3 release.  - . &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/166\&quot; target=\&quot;_blank\&quot;&gt;[166]&lt;/a&gt;  "
 });
 
 

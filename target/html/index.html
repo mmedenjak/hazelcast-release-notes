@@ -80,11 +80,6 @@
     <ol>
     
         <li>
-            <a href="3-6-2.html">3.6.2</a>
-            
-        </li>
-    
-        <li>
             <a href="3-6-1.html">3.6.1</a>
             
         </li>
@@ -329,6 +324,16 @@
             
         </li>
     
+        <li>
+            <a href="2-0-4.html">2.0.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-0-3.html">2.0.3</a>
+            
+        </li>
+    
 </ol>
 
 	    </nav>
@@ -347,25 +352,21 @@
 	</div>
 
 	        <div id="content">
-	            <a name="362"></a><h1 id="3-6-2">3.6.2</h1>
-<p>The following are the fixed issues for 3.6.2 release.</p>
+	            <a name="361"></a><h1 id="3-6-1">3.6.1</h1>
+<p>The following are the fixed issues for 3.6.1 release.</p>
 <ul>
-<li>Timeout happens at the <code>ClientMapBasicTest</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7718" target="_blank">[7718]</a></li>
-<li>IMap does not send invalidations to the client&#39;s near caches after <code>putAll</code>/<code>loadAll</code> operations at member side. <a href="https://github.com/hazelcast/hazelcast/issues/7715" target="_blank">[7715]</a></li>
-<li>Wildcards do not work with permissions. For example, when a queue permission is defined using wildcard, i.e. <code>&lt;queue-permission name=&quot;secure.*&quot; principal=&quot;admin&quot;&gt;</code> and the queue <code>secure.orders</code> is created at the client, Hazelcast throws <code>AccessControlException</code> is created using that name- <a href="https://github.com/hazelcast/hazelcast/issues/7616" target="_blank">[7616]</a></li>
-<li>The FREE_HEAP_PERCENTAGE eviction policy does not work as documented because the <code>EvictionChecker</code> is incorrectly calculating available memory percentage in <code>checkFreeHeapPercentageEviction</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7599" target="_blank">[7599]</a></li>
-<li><code>DiscoveryStrategy</code>&#39;s <code>destroy()</code> method is not called on shutdown. <a href="https://github.com/hazelcast/hazelcast/issues/7545" target="_blank">[7545]</a></li>
-<li>The method <code>MapStore.storeAll()</code> is never called when the objects are updated with a delay. <a href="https://github.com/hazelcast/hazelcast/issues/7464" target="_blank">[7464]</a></li>
-<li>WebFilter(3.6-RC1): Session attributes are lost or overwritten with old values when using <code>deferred-write</code> by reading them. <a href="https://github.com/hazelcast/hazelcast/issues/7291" target="_blank">[7291]</a></li>
-<li>The method <code>HazelcastHttpSession.getAttributeNames()</code> returns entries that were only read but not written. <a href="https://github.com/hazelcast/hazelcast/issues/7033" target="_blank">[7033]</a></li>
-<li>An exception is thrown on the server when attempting to deserialize <code>HIBERNATE4_TYPE_HIBERNATE_CACHE_ENTRY</code> value. <a href="https://github.com/hazelcast/hazelcast/issues/6683" target="_blank">[6683]</a></li>
-<li></li>
-</ul>
-<p>The following are the enhancements performed for 3.6.2 release.</p>
-<ul>
-<li>Hazelcast Docker images are big in size; it would be better to clean them up and reduce their sizes. <a href="https://github.com/hazelcast/hazelcast/issues/7553" target="_blank">[7553]</a></li>
-<li>It would be better to provide an <code>enterprise-javadoc.jar</code> in the Hazelcast Enterprise bundle. This way IDEs can auto-import the Javadocs for the Enterprise APIs and provide context sensitive completion/help within the IDE. <a href="https://github.com/hazelcast/hazelcast/issues/7245" target="_blank">[7245]</a></li>
-<li>Management Center WAN Replication metrics take a long time to stabilize. The responsiveness of the Outbound records/sec. metric should be improved. It currently seems to under-report WAN replication performance for 10s of seconds before reaching the same figure as the client side reported metrics.<a href="https://github.com/hazelcast/hazelcast/issues/7244" target="_blank">[7244]</a></li>
+<li>Hazelcast 3.6 fails to create <code>ObjectName</code> for an instance created with JCache API. <a href="https://github.com/hazelcast/hazelcast/issues/7548" target="_blank">[7548]</a></li>
+<li>The test <code>com.hazelcast.client.spi.impl.ClientInvocationTest.executionCallback_FailOnShutdown</code> fails. <a href="https://github.com/hazelcast/hazelcast/issues/7462" target="_blank">[7462]</a></li>
+<li>There are failures in <code>SystemClockChangeTest</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7444" target="_blank">[7444]</a></li>
+<li>When you use EntryProcessor with a map interceptor, it does not get the correct value. <a href="https://github.com/hazelcast/hazelcast/issues/7414" target="_blank">[7414]</a></li>
+<li>Backup records also increase the owned cache entry count but they should be ignored. Cache statistics show incorrect entry count via the method <code>getOwnedEntryCount</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7403" target="_blank">[7403]</a></li>
+<li>When getting values from <code>PredicateSupplier</code>, the method <code>DistinctValueAggregation.DistinctValueMapper.map()</code> throws a <code>ClassCastException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7398" target="_blank">[7398]</a></li>
+<li>Timeout is not enough for the test <code>TransferStressTest.testLargePackets</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7393" target="_blank">[7393]</a></li>
+<li>There are failures in the test <code>ClientExceptionFactoryTest.testException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7360" target="_blank">[7360]</a></li>
+<li>The method <code>getReplicationImplObject</code> in <code>WanTargetClusterConfig</code> is not used. <a href="https://github.com/hazelcast/hazelcast/issues/7353" target="_blank">[7353]</a></li>
+<li>Entry processor and map put/remove tests in WAN replication module fail.  <a href="https://github.com/hazelcast/hazelcast/issues/7352" target="_blank">[7352]</a></li>
+<li>Hazelcast namespace for Spring configuration does not support Discovery SPI. <a href="https://github.com/hazelcast/hazelcast/issues/6913" target="_blank">[6913]</a></li>
+<li>When Hazelcast Spring configuration is used for the client and if a serialization configuration is present in the Spring client, then the client hangs forever during the authentication method. <a href="https://github.com/hazelcast/hazelcast/issues/5815" target="_blank">[5815]</a></li>
 </ul>
 
 
