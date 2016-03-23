@@ -362,45 +362,101 @@
 	</div>
 
 	        <div id="content">
-	            <a name="23"></a><h1 id="2-3">2.3</h1>
-<p>This section lists the new features, enhancements and fixed issues for 2.3 release.</p>
-<a name="new-features-and-changes"></a><h3 id="new-features-and-changes">New Features and Changes</h3>
-<p>The following are the new features and changes introduced with 2.3 release.</p>
+	            <a name="1949"></a><h1 id="1-9-4-9">1.9.4.9</h1>
+<p>This section lists the new features, enhancements and fixed issues for the releases starting from 1.9.4.9 to 1.0.</p>
 <ul>
-<li>Changed <code>hazelcast.max.operation.timeout</code> unit from seconds to milliseconds.</li>
-<li>Added <code>hazelcast.max.concurrent.operation.limit</code> property to be able to limit the number of concurrent operations that can be submitted to Hazelcast.</li>
-<li>Added <code>hazelcast.backup.redo.enabled</code> property to enable/disable redo for backup operations.</li>
-<li>Added MultiMap and Distributed ExecutorService statistics to Management Center application.</li>
-<li><code>MigrationListener</code> has now an additional method to receive failed migration events; <code>void migrationFailed(MigrationEvent migrationEvent)</code>.</li>
-<li><code>ItemEvent</code> has now an additional method returning Member firing that event; <code>public Member getMember()</code>.</li>
-<li>Improved out of memory (OOM) error detection and handling. Now it is possible to register a custom hook when OutOfMemoryError is thrown.</li>
-<li>Fixed some issues related to domain name handling and networking/join.</li>
-<li>During cluster merge after a network split-brain, merging side will now fire MERGING and MERGED before and after RESTARTING and RESTARTED LifecycleEvents.</li>
+<li>Added WAN Replication (synchronization of separate active clusters).</li>
+<li>Added Data Affinity (co-location of related entries) feature.</li>
+<li>Added EC2 Auto Discovery for your Hazelcast cluster running on Amazon EC2 platform.</li>
+<li>Implemented Distributed CountDownLatch.</li>
+<li>Implemented Distributed Semaphore implementation.</li>
+<li>Hazelcast distribution now contains HTML and PDF documentation besides Javadoc.</li>
+<li>Better TCP/IP and multicast join support. Handling more edge cases like multiple nodes starting at the same time.</li>
+<li>Memcache protocol: Better integration between Java and Memcache clients. Put from memcache, get from Java client.</li>
+<li>Monitoring Tool is removed from the project.</li>
+<li>Re-implementation of distributed queue:<ul>
+<li>Configurable backup count and synchronous backup.</li>
+<li>Persistence support based on backing MapStore.</li>
+<li>Auto-recovery from backing MapStore on startup.</li>
 </ul>
-<a name="fixes"></a><h3 id="fixes">Fixes</h3>
-<p>The following are the fixed issues and enhancements for 2.3 release.</p>
-<ul>
-<li>Operation exceptions occur randomly while the SQL predicates are stress tested. <a href="https://github.com/hazelcast/hazelcast/issues/263" target="_blank">[263]</a></li>
-<li><code>EOF</code> exception is thrown in Management Center. <a href="https://github.com/hazelcast/hazelcast/issues/252" target="_blank">[252]</a></li>
-<li>The method <code>IMap.flush()</code> delegates map store exceptions to the caller instead of suppressing them. <a href="https://github.com/hazelcast/hazelcast/issues/250" target="_blank">[250]</a></li>
-<li>Node appears to be in multiple clusters. <a href="https://github.com/hazelcast/hazelcast/issues/247" target="_blank">[247]</a></li>
-<li>It would be nice to have Spring support in Runnable tasks. <a href="https://github.com/hazelcast/hazelcast/issues/244" target="_blank">[244]</a></li>
-<li>MERGING and MERGED events should be fired during a split-brain merging process. <a href="https://github.com/hazelcast/hazelcast/issues/241" target="_blank">[241]</a></li>
-<li>A problem occurs during a quick restart of master node. <a href="https://github.com/hazelcast/hazelcast/issues/235" target="_blank">[235]</a></li>
-<li>Distributed <code>tryLock()</code> throws <code>NullPointerException</code> from lite member. <a href="https://github.com/hazelcast/hazelcast/issues/233" target="_blank">[233]</a></li>
-<li>Using domain instead of IP address is problematic. <a href="https://github.com/hazelcast/hazelcast/issues/230" target="_blank">[230]</a></li>
-<li>The method <code>MultiMap.lock()</code> blocks forever. <a href="https://github.com/hazelcast/hazelcast/issues/228" target="_blank">[228]</a></li>
-<li><code>SimpleMapTest</code> uses deprecated method <code>Hazelcast.getLoggingService()</code> and annoys WebLogic 12. <a href="https://github.com/hazelcast/hazelcast/issues/227" target="_blank">[227]</a></li>
-<li><code>ItemEvent</code> should have a <code>getMember</code> method to return the member that offered/polled an item. <a href="https://github.com/hazelcast/hazelcast/issues/226" target="_blank">[226]</a></li>
-<li>The consumers do <code>queue.take()</code> and block until something is put on the queue. In Hazelcast 2.1.2, this was fine, but in 2.2, it causes a massive amount of WARN-level log spam. <a href="https://github.com/hazelcast/hazelcast/issues/225" target="_blank">[225]</a></li>
-<li>The method <code>MultiMap.put()</code> is inconsistent when the key is locked by another node/thread. <a href="https://github.com/hazelcast/hazelcast/issues/223" target="_blank">[223]</a></li>
-<li>FAILED event should be fired when migration fails for some reason. <a href="https://github.com/hazelcast/hazelcast/issues/222" target="_blank">[222]</a></li>
-<li><code>Runtime</code> exception is thrown when accessing to queue after client restarted. <a href="https://github.com/hazelcast/hazelcast/issues/220" target="_blank">[220]</a></li>
-<li>Using the client, once it tries to access the cache while the cache is unavailable, the client cannot be used anymore after the server cache becomes available. <a href="https://github.com/hazelcast/hazelcast/issues/218" target="_blank">[218]</a></li>
-<li>The methods <code>DistributedTask.get()</code> and <code>MultiTask.get()</code> throw <code>OperationTimeoutException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/217" target="_blank">[217]</a></li>
-<li>There are a couple of classes that do not implement <code>toString</code>, that makes the <code>Config.toString</code> message incomplete. <a href="https://github.com/hazelcast/hazelcast/issues/209" target="_blank">[209]</a></li>
-<li>Hazelcast IMap ignores the size capacity. <a href="https://github.com/hazelcast/hazelcast/issues/188" target="_blank">[188]</a></li>
-<li>Hazelcast resource adapter package (version 2.1.2) does not deploy on JBoss 7.1.1. <a href="https://github.com/hazelcast/hazelcast/issues/182" target="_blank">[182]</a></li>
+</li>
+<li>Re-implementation of distributed list supporting index based operations.</li>
+<li>Optimized <code>IMap.putAll</code> for much faster bulk writes.</li>
+<li>Added <code>IMap.getAll</code> for bulk reads which is calling <code>MapLoader.loadAll</code> if necessary.</li>
+<li>Added <code>IMap.tryLockAndGet</code> and <code>IMap.putAndUnlock</code> methods.</li>
+<li>Added <code>IMap.putTransient</code> API for storing only in-memory.</li>
+<li>Added <code>IMap.addLocalEntryListener()</code> for listening locally owned entry events.</li>
+<li>Added <code>IMap.flush()</code> for flushing the dirty entries into MapStore.</li>
+<li>Added <code>MapLoader.getAllKeys</code> API for auto-pre-populating the map when cluster starts.</li>
+<li>Support for minimum initial cluster size to enable equally partitioned start.</li>
+<li>Introduced graceful shutdown.</li>
+<li>Faster dead-member detection.</li>
+<li>Memcache interface support. Memcache clients written in any language can access Hazelcast cluster.</li>
+<li>RESTful access support, e.g. http://<ip>:5701/hazelcast/rest/maps/mymap/key1.</li>
+<li>Added split-brain (network partitioning) handling.</li>
+<li>Added LifecycleService API to restart, pause Hazelcast instances and listen for the lifecycle events.</li>
+<li>Added asynchronous put and get support for IMap via <code>IMap.asyncPut()</code> and <code>IMap.asyncGet()</code>.</li>
+<li>Added AtomicNumber API; distributed implementation of <code>java.util.concurrent.atomic.AtomicLong</code>.</li>
+<li>Significant performance gain for multi-core servers. Higher CPU utilization and lower latency.</li>
+<li>Reduced the cost of map entries by 50 percent.</li>
+<li>Better thread management. No more idle threads.</li>
+<li>Added queue statistics API and the queue statistics panel on the Monitoring Tool.</li>
+<li>Monitoring Tool enhancements. More responsive and robust.</li>
+<li>Hazelcast distribution now contains <code>hazelcast-all-&lt;version&gt;.jar</code> to simplify the JAR dependency.</li>
+<li>Sorted index optimization for map queries.</li>
+<li>Added Hazelcast Cluster Monitoring Tool.</li>
+<li>Added Partition API. Partition and key owner, migration listeners.</li>
+<li>Added <code>IMap.lockMap()</code> method.</li>
+<li>Added Multicast and TCP/IP join feature. Try multicast first, if not found, try TCP/IP.</li>
+<li>Added <code>Hazelcast.getExecutorService(name)</code> API. You can have separate named executor services. Do not let your big tasks blocking your small ones.</li>
+<li>Added <code>Logging</code> API. Build your own logging. or simply use Log4j or get logs as LogEvents.</li>
+<li>Added <code>MapStatistics</code> API. Get statistics for your Map operations and entries.</li>
+<li>Hazelcast client now automatically updates the member list. There is no need to pass the list to all members.</li>
+<li>Added the ability to start the cluster members evenly partitioned. Hence, no migration.</li>
+<li>Added Java clients for accessing the cluster remotely.</li>
+<li>Added Distributed Query for maps. Both Criteria API and SQL are supported.</li>
+<li>Added near cache feature for distributed maps.</li>
+<li>Added TTL (time-to-live) property for each individual map entry.</li>
+<li>Improved the put operation: <code>IMap.put(key,value, ttl, timeunit)</code>.</li>
+<li>Introduced the method <code>IMap.putIfAbsent(key,value, ttl, timeunit)</code>.</li>
+<li>Now, you can have multiple Hazelcast members on the same JVM. Introduced <code>HazelcastInstance</code> API.</li>
+<li>Better API based configuration support.</li>
+<li>Smoother data migration enabling better response times during joins.</li>
+<li>Persistence via Loader/Store interface for distributed map.</li>
+<li>Added Socket level encryption feature. Both symmetric and asymmetric encryption are supported.</li>
+<li>Added support for JMX.</li>
+<li>Added support for Hibernate second level cache provider.</li>
+<li>Added instance events for getting notified when a data structure instance (map, queue, topic, etc.) is created or destroyed.</li>
+<li>Added eviction listener: <code>EntryListener.entryEvicted(EntryEvent)</code>.</li>
+<li>Hazelcast is now fully &quot;maven&quot;ized.</li>
+<li>Added support for synchronous backups and configurable backup-count for maps.</li>
+<li>Added eviction support: Timed eviction for queues. LRU, LFU and time based eviction for maps.</li>
+<li>Added support for statistics/history for entries: create/update time, number of hits, cost.</li>
+<li>Implemented MultiMap structure. Similar to <code>google-collections</code> and <code>apache-common-collections</code>, but distributed and thread-safe.</li>
+<li>Now, you can <code>destroy()</code> the data structures when not needed anymore.</li>
+<li>Now, you can shutdown the local member using <code>Hazelcast.shutdown()</code>.</li>
+<li>Now, you can get the list of all data structure instances via <code>Hazelcast.getInstances()</code>.</li>
+<li>Full implementation of <code>java.util.concurrent.BlockingQueue</code>. Now, queues can have configurable capacity limits.</li>
+<li>Introduced Super Clients (a.k.a LiteMember): Members with no storage. If <code>-Dhazelcast.super.client=true</code> JVM parameter is set, that JVM will join the cluster as a &#39;super client&#39; which will not be a &#39;data partition&#39; (no data on that node) but will have super fast access to the cluster just like any regular member does.</li>
+<li>Added HTTP Session sharing support for Hazelcast Web Manager. Different web applications can share the same sessions.</li>
+<li>Added the ability to separate clusters by creating groups.</li>
+<li>Added <code>java.util.logging</code> support.</li>
+<li>Added the support for adding, removing and updating events for queue, map, set and list data structures.</li>
+<li>Introduced Distributed Topic for pub/sub messaging.</li>
+<li>Added integration with J2EE transactions via JCA complaint resource adapter.</li>
+<li>Added <code>ExecutionCallback</code> interface for distributed tasks.</li>
+<li>Introduced cluster-wide unique ID generator.</li>
+<li>Implemented Transactional Distributed Queue, Map, Set and List.</li>
+<li>Implemented Distributed Executor Service.</li>
+<li>Added support for multi member executions.</li>
+<li>Implemented key based execution routing.</li>
+<li>Added task cancellation support.</li>
+<li>Implemented Session Clustering with Hazelcast Webapp Manager.</li>
+<li>Added full TCP/IP clustering support.</li>
+<li>Introduced distributed implementation of <code>java.util.{Queue,Map,Set,List}</code>.</li>
+<li>Introduced distributed implementation of <code>java.util.concurrency.Lock</code>.</li>
+<li>Added support for retrieving cluster membership events.</li>
+<li>1000+ commits 100+ bug fixes and several other enhancements.</li>
 </ul>
 
 

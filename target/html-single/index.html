@@ -329,6 +329,11 @@
             
         </li>
     
+        <li>
+            <a href="index.html#1949">1.9.4.9</a>
+            
+        </li>
+    
 </ol>
 
    </nav>
@@ -1238,7 +1243,6 @@ package) is declared threadsafe in JavaDocs, but it is not <a href="https://gith
 <li><code>ClientReAuthOperation</code> cannot return response without call ID <a href="https://github.com/hazelcast/hazelcast/issues/1816">[#1816]</a>.</li>
 <li><code>MemberAttributeOperationType</code> should be introduced to remove the dependency to <code>MapOperationType</code> <a href="https://github.com/hazelcast/hazelcast/pull/1811">[#1811]</a>.</li>
 <li>Entry listener removal from MultiMap <a href="https://github.com/hazelcast/hazelcast/pull/1810">[#1810]</a>.</li>
-<li>Change <code>DefaultRecordStore#removeAll</code> to keep &quot;key objects to delete&quot; as a list, not a set <a href="https://github.com/hazelcast/hazelcast/issues/1795">[#1795]</a>.</li>
 </ul>
 <p><strong>RC1 Fixes</strong></p>
 <p>The following are the fixed issues for 3.2-RC1 (Release Candidate 1) release.</p>
@@ -1744,7 +1748,103 @@ since in the client, the client prefix is added to map&#39;s name. <a href="http
 <a name="fixes"></a><h3 id="fixes">Fixes</h3>
 <p>The following are the fixed issues and enhancements for 2.0 release.</p>
 <ul>
-<li><a href="https://github.com/hazelcast/hazelcast/issues/430" target="_blank">[430]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/459" target="_blank">[459]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/471" target="_blank">[471]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/567" target="_blank">[567]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/574" target="_blank">[574]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/582" target="_blank">[582]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/629" target="_blank">[629]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/632" target="_blank">[632]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/646" target="_blank">[646]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/666" target="_blank">[666]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/686" target="_blank">[686]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/669" target="_blank">[669]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/690" target="_blank">[690]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/692" target="_blank">[692]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/693" target="_blank">[693]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/695" target="_blank">[695]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/698" target="_blank">[698]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/705" target="_blank">[705]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/708" target="_blank">[708]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/710" target="_blank">[710]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/711" target="_blank">[711]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/712" target="_blank">[712]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/713" target="_blank">[713]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/714" target="_blank">[714]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/715" target="_blank">[715]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/719" target="_blank">[719]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/721" target="_blank">[721]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/722" target="_blank">[722]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/724" target="_blank">[724]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/727" target="_blank">[727]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/728" target="_blank">[728]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/729" target="_blank">[729]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/730" target="_blank">[730]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/731" target="_blank">[731]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/732" target="_blank">[732]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/733" target="_blank">[733]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/735" target="_blank">[735]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/738" target="_blank">[738]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/739" target="_blank">[739]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/740" target="_blank">[740]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/741" target="_blank">[741]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/742" target="_blank">[742]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/747" target="_blank">[747]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/751" target="_blank">[751]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/754" target="_blank">[752]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/756" target="_blank">[756]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/758" target="_blank">[758]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/759" target="_blank">[759]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/760" target="_blank">[760]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/761" target="_blank">[761]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/765" target="_blank">[765]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/767" target="_blank">[767]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/770" target="_blank">[770]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/773" target="_blank">[773]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/779" target="_blank">[779]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/781" target="_blank">[781]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/782" target="_blank">[782]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/783" target="_blank">[783]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/787" target="_blank">[787]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/790" target="_blank">[790]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/795" target="_blank">[795]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/796" target="_blank">[796]</a></li>
+<li><a href="https://github.com/hazelcast/hazelcast/issues/459" target="_blank">[459]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/471" target="_blank">[471]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/567" target="_blank">[567]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/574" target="_blank">[574]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/582" target="_blank">[582]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/629" target="_blank">[629]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/632" target="_blank">[632]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/646" target="_blank">[646]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/666" target="_blank">[666]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/686" target="_blank">[686]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/669" target="_blank">[669]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/690" target="_blank">[690]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/692" target="_blank">[692]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/693" target="_blank">[693]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/695" target="_blank">[695]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/698" target="_blank">[698]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/705" target="_blank">[705]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/708" target="_blank">[708]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/711" target="_blank">[711]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/714" target="_blank">[714]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/715" target="_blank">[715]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/719" target="_blank">[719]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/721" target="_blank">[721]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/722" target="_blank">[722]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/727" target="_blank">[727]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/728" target="_blank">[728]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/729" target="_blank">[729]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/730" target="_blank">[730]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/731" target="_blank">[731]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/732" target="_blank">[732]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/733" target="_blank">[733]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/735" target="_blank">[735]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/738" target="_blank">[738]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/739" target="_blank">[739]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/740" target="_blank">[740]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/741" target="_blank">[741]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/742" target="_blank">[742]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/747" target="_blank">[747]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/751" target="_blank">[751]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/754" target="_blank">[752]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/758" target="_blank">[758]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/759" target="_blank">[759]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/760" target="_blank">[760]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/761" target="_blank">[761]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/765" target="_blank">[765]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/767" target="_blank">[767]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/770" target="_blank">[770]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/773" target="_blank">[773]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/779" target="_blank">[779]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/781" target="_blank">[781]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/782" target="_blank">[782]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/783" target="_blank">[783]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/787" target="_blank">[787]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/795" target="_blank">[795]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/796" target="_blank">[796]</a></li>
+</ul>
+<a name="1949"></a><h1 id="1-9-4-9">1.9.4.9</h1>
+<p>This section lists the new features, enhancements and fixed issues for the releases starting from 1.9.4.9 to 1.0.</p>
+<ul>
+<li>Added WAN Replication (synchronization of separate active clusters).</li>
+<li>Added Data Affinity (co-location of related entries) feature.</li>
+<li>Added EC2 Auto Discovery for your Hazelcast cluster running on Amazon EC2 platform.</li>
+<li>Implemented Distributed CountDownLatch.</li>
+<li>Implemented Distributed Semaphore implementation.</li>
+<li>Hazelcast distribution now contains HTML and PDF documentation besides Javadoc.</li>
+<li>Better TCP/IP and multicast join support. Handling more edge cases like multiple nodes starting at the same time.</li>
+<li>Memcache protocol: Better integration between Java and Memcache clients. Put from memcache, get from Java client.</li>
+<li>Monitoring Tool is removed from the project.</li>
+<li>Re-implementation of distributed queue:<ul>
+<li>Configurable backup count and synchronous backup.</li>
+<li>Persistence support based on backing MapStore.</li>
+<li>Auto-recovery from backing MapStore on startup.</li>
+</ul>
+</li>
+<li>Re-implementation of distributed list supporting index based operations.</li>
+<li>Optimized <code>IMap.putAll</code> for much faster bulk writes.</li>
+<li>Added <code>IMap.getAll</code> for bulk reads which is calling <code>MapLoader.loadAll</code> if necessary.</li>
+<li>Added <code>IMap.tryLockAndGet</code> and <code>IMap.putAndUnlock</code> methods.</li>
+<li>Added <code>IMap.putTransient</code> API for storing only in-memory.</li>
+<li>Added <code>IMap.addLocalEntryListener()</code> for listening locally owned entry events.</li>
+<li>Added <code>IMap.flush()</code> for flushing the dirty entries into MapStore.</li>
+<li>Added <code>MapLoader.getAllKeys</code> API for auto-pre-populating the map when cluster starts.</li>
+<li>Support for minimum initial cluster size to enable equally partitioned start.</li>
+<li>Introduced graceful shutdown.</li>
+<li>Faster dead-member detection.</li>
+<li>Memcache interface support. Memcache clients written in any language can access Hazelcast cluster.</li>
+<li>RESTful access support, e.g. http://<ip>:5701/hazelcast/rest/maps/mymap/key1.</li>
+<li>Added split-brain (network partitioning) handling.</li>
+<li>Added LifecycleService API to restart, pause Hazelcast instances and listen for the lifecycle events.</li>
+<li>Added asynchronous put and get support for IMap via <code>IMap.asyncPut()</code> and <code>IMap.asyncGet()</code>.</li>
+<li>Added AtomicNumber API; distributed implementation of <code>java.util.concurrent.atomic.AtomicLong</code>.</li>
+<li>Significant performance gain for multi-core servers. Higher CPU utilization and lower latency.</li>
+<li>Reduced the cost of map entries by 50 percent.</li>
+<li>Better thread management. No more idle threads.</li>
+<li>Added queue statistics API and the queue statistics panel on the Monitoring Tool.</li>
+<li>Monitoring Tool enhancements. More responsive and robust.</li>
+<li>Hazelcast distribution now contains <code>hazelcast-all-&lt;version&gt;.jar</code> to simplify the JAR dependency.</li>
+<li>Sorted index optimization for map queries.</li>
+<li>Added Hazelcast Cluster Monitoring Tool.</li>
+<li>Added Partition API. Partition and key owner, migration listeners.</li>
+<li>Added <code>IMap.lockMap()</code> method.</li>
+<li>Added Multicast and TCP/IP join feature. Try multicast first, if not found, try TCP/IP.</li>
+<li>Added <code>Hazelcast.getExecutorService(name)</code> API. You can have separate named executor services. Do not let your big tasks blocking your small ones.</li>
+<li>Added <code>Logging</code> API. Build your own logging. or simply use Log4j or get logs as LogEvents.</li>
+<li>Added <code>MapStatistics</code> API. Get statistics for your Map operations and entries.</li>
+<li>Hazelcast client now automatically updates the member list. There is no need to pass the list to all members.</li>
+<li>Added the ability to start the cluster members evenly partitioned. Hence, no migration.</li>
+<li>Added Java clients for accessing the cluster remotely.</li>
+<li>Added Distributed Query for maps. Both Criteria API and SQL are supported.</li>
+<li>Added near cache feature for distributed maps.</li>
+<li>Added TTL (time-to-live) property for each individual map entry.</li>
+<li>Improved the put operation: <code>IMap.put(key,value, ttl, timeunit)</code>.</li>
+<li>Introduced the method <code>IMap.putIfAbsent(key,value, ttl, timeunit)</code>.</li>
+<li>Now, you can have multiple Hazelcast members on the same JVM. Introduced <code>HazelcastInstance</code> API.</li>
+<li>Better API based configuration support.</li>
+<li>Smoother data migration enabling better response times during joins.</li>
+<li>Persistence via Loader/Store interface for distributed map.</li>
+<li>Added Socket level encryption feature. Both symmetric and asymmetric encryption are supported.</li>
+<li>Added support for JMX.</li>
+<li>Added support for Hibernate second level cache provider.</li>
+<li>Added instance events for getting notified when a data structure instance (map, queue, topic, etc.) is created or destroyed.</li>
+<li>Added eviction listener: <code>EntryListener.entryEvicted(EntryEvent)</code>.</li>
+<li>Hazelcast is now fully &quot;maven&quot;ized.</li>
+<li>Added support for synchronous backups and configurable backup-count for maps.</li>
+<li>Added eviction support: Timed eviction for queues. LRU, LFU and time based eviction for maps.</li>
+<li>Added support for statistics/history for entries: create/update time, number of hits, cost.</li>
+<li>Implemented MultiMap structure. Similar to <code>google-collections</code> and <code>apache-common-collections</code>, but distributed and thread-safe.</li>
+<li>Now, you can <code>destroy()</code> the data structures when not needed anymore.</li>
+<li>Now, you can shutdown the local member using <code>Hazelcast.shutdown()</code>.</li>
+<li>Now, you can get the list of all data structure instances via <code>Hazelcast.getInstances()</code>.</li>
+<li>Full implementation of <code>java.util.concurrent.BlockingQueue</code>. Now, queues can have configurable capacity limits.</li>
+<li>Introduced Super Clients (a.k.a LiteMember): Members with no storage. If <code>-Dhazelcast.super.client=true</code> JVM parameter is set, that JVM will join the cluster as a &#39;super client&#39; which will not be a &#39;data partition&#39; (no data on that node) but will have super fast access to the cluster just like any regular member does.</li>
+<li>Added HTTP Session sharing support for Hazelcast Web Manager. Different web applications can share the same sessions.</li>
+<li>Added the ability to separate clusters by creating groups.</li>
+<li>Added <code>java.util.logging</code> support.</li>
+<li>Added the support for adding, removing and updating events for queue, map, set and list data structures.</li>
+<li>Introduced Distributed Topic for pub/sub messaging.</li>
+<li>Added integration with J2EE transactions via JCA complaint resource adapter.</li>
+<li>Added <code>ExecutionCallback</code> interface for distributed tasks.</li>
+<li>Introduced cluster-wide unique ID generator.</li>
+<li>Implemented Transactional Distributed Queue, Map, Set and List.</li>
+<li>Implemented Distributed Executor Service.</li>
+<li>Added support for multi member executions.</li>
+<li>Implemented key based execution routing.</li>
+<li>Added task cancellation support.</li>
+<li>Implemented Session Clustering with Hazelcast Webapp Manager.</li>
+<li>Added full TCP/IP clustering support.</li>
+<li>Introduced distributed implementation of <code>java.util.{Queue,Map,Set,List}</code>.</li>
+<li>Introduced distributed implementation of <code>java.util.concurrency.Lock</code>.</li>
+<li>Added support for retrieving cluster membership events.</li>
+<li>1000+ commits 100+ bug fixes and several other enhancements.</li>
 </ul>
 
 
