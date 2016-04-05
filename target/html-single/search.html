@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Hazelcast, IMDG, In-Memory Data Grid, Release Notes, Scalable, Clustering, Partitioning, Distributed, Open Source, Hazelcast New Feaures, Bug Fixes, Enhancements">
+    <meta name="description" content="Hazelcast Release Notes document lists the new features, enhancements and fixed issues for all Hazelcast releases.">
     <title>Hazelcast Release Notes</title>
 
     <link type="text/css" rel="stylesheet" href="assets/css/reset.css">
@@ -21,14 +24,14 @@
     <script type="text/javascript"> 
 	$(function () {
 		$.scrollUp({
-			scrollName: 'scrollUp', // Element ID
-			topDistance: '300', // Distance from top before showing element (px)
-			topSpeed: 100, // Speed back to top (ms)
-			animation: 'fade', // Fade, slide, none
-			animationInSpeed: 100, // Animation in speed (ms)
-			animationOutSpeed: 100, // Animation out speed (ms)
-			scrollText: 'Back to Top', // Text for element
-			activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+			scrollName: 'scrollUp',
+			topDistance: '300',
+			topSpeed: 100,
+			animation: 'fade',
+			animationInSpeed: 100,
+			animationOutSpeed: 100,
+			scrollText: 'Back to Top',
+			activeOverlay: false,
 		});
 	});
     </script>    
@@ -53,10 +56,10 @@
 		<div class="content">
 			<div style="overflow:hidden">
 				<div style="float:left">
-					<a href="http://www.hazelcast.org"><img src="assets/img/logo.png" style="width: 199px;padding-top: 18px"/></a>
+					<a href="http://www.hazelcast.org"><img src="assets/img/logo.png" style="width: 199px;padding-top: 18px" alt="Hazelcast Logo"/></a>
 				</div>
 				<div style="float:left;padding-top: 15px;padding-left: 30px;">
-					<h1><a href="">Release Notes<span style="font-size:12px">   Publication Date : Mar 23, 2016 </span></a></h1>
+					<h1><a href="">Release Notes<span style="font-size:12px">   Publication Date : Apr 05, 2016 </span></a></h1>
 				</div>
 			</div>
 		</div>
@@ -68,6 +71,11 @@
            <nav id="toc">
        
     <ol>
+    
+        <li>
+            <a href="index.html#362">3.6.2</a>
+            
+        </li>
     
         <li>
             <a href="index.html#361">3.6.1</a>
@@ -355,29 +363,7 @@
 					<h2>Search results for "<span id="search-q"></span>"</h2>
 <ul id="search-results"></ul>
 <script type="text/javascript" src="lunr-index.js"></script>
-<script type="text/javascript">
-    function getParameterByName(name) {
-        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(location.search);
-        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-
-    $(function() {
-        var q = getParameterByName('q'), 
-            ul = $('#search-results').empty(),
-            results = index.search(q);
-
-        $('#search-q').text(q);
-        if (results.length > 0) {
-            for (var i = 0; i < results.length; i++) {
-                ul.append($('<li><a href="' + results[i].ref + '">' + documentTitles[results[i].ref] + '</a></li>'));
-            }
-        } else {
-            ul.append($('<li class="no-results">No results found</li>'));
-        }
-    })
-</script>
+<script type="text/javascript" src="assets/js/search.js"></script>
 
 			</div>
 		</div>
