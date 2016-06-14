@@ -47,7 +47,7 @@ body {
   width: 170px;
   display: inline-block;
   height: 95%;
-  background-color: #fff4e5;
+  background-color: #F0EEEE;
 }
 #sidebar input#search {
   border: 1px solid #ccc;
@@ -122,6 +122,13 @@ body {
   bottom: 20px;
   right: 20px;
   padding: 10px 20px;
-  background: #555;
+  background: #FF5F00;
+  color: #fff;
+}
+#scrollUp2 {
+  bottom: 20px;
+  right: 150px;
+  padding: 10px 20px;
+  background: #FF5F00;
   color: #fff;
 }
