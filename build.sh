@@ -24,7 +24,6 @@ function init {
 	DATE=`date +%b\ %d\,\ %Y`
 	YEAR=`date +%Y`
 	INDEX=`awk '{gsub(/^[ \t]+|^([#]+.*)|[ \t]+([#]+.*)\$/,""); print;}' documentation.index`
-	MANCENTER_INDEX=`awk '{gsub(/^[ \t]+|([#]+.*)|[ \t]+([#]+.*)\$/,""); print;}' mancenter.index`
 }
 
 function cleanIfExists {
@@ -38,8 +37,6 @@ function cleanIfExists {
 	mkdir ${OUTPUT_DIR}/${MULTI_HTML_OUTPUT_DIR}
 	echo "Creating $OUTPUT_DIR/$SINGLE_HTML_OUTPUT_DIR"
 	mkdir ${OUTPUT_DIR}/${SINGLE_HTML_OUTPUT_DIR}
-	echo "Creating $OUTPUT_DIR/$MANCENTER_OUTPUT_DIR"
-	mkdir ${OUTPUT_DIR}/${MANCENTER_OUTPUT_DIR}
 	echo "Creating $OUTPUT_DIR/$PDF_OUTPUT_DIR"
 	mkdir ${OUTPUT_DIR}/${PDF_OUTPUT_DIR}
 }

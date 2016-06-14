@@ -47,6 +47,7 @@ body {
   width: 170px;
   display: inline-block;
   height: 95%;
+  background-color: #fff4e5;
 }
 #sidebar input#search {
   border: 1px solid #ccc;
@@ -69,12 +70,6 @@ body {
   font-size: 12px;
   font-weight: bold;
   margin-bottom: 10px;
-}
-#sidebar #links {
-  margin-top: 24px;
-  margin-bottom: 10px;
-  border-top: 1px dotted #ddd;
-  padding-top: 10px;
 }
 #content {
   border-left: 1px solid #cccccc;

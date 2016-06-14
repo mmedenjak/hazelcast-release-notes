@@ -10,9 +10,14 @@
     <link type="text/css" rel="stylesheet" href="<%= @baseUrl %>assets/css/reset.css">
     <link type="text/css" rel="stylesheet" href="<%= @baseUrl %>assets/css/docs.css">
     <link type="text/css" rel="stylesheet" href="<%= @baseUrl %>assets/css/print.css" media="print">
+    <!--<link type="text/css" rel="stylesheet" href="<%= @baseUrl %>assets/tocify/jquery.tocify.css">-->
+    <!--<link type="text/css" rel="stylesheet" href="<%= @baseUrl %>assets/tocify/bootstrap.css">-->
     <% if @manifest.options.css: %><link type="text/css" rel="stylesheet" href="<%- @manifest.options.css %>"><% end %>
 
     <script type="text/javascript" src="<%= @baseUrl %>assets/js/jquery-1.10.1.min.js"></script>
+   <!--<script type="text/javascript" src="<%= @baseUrl %>assets/tocify/jquery-1.8.3.min.js"></script>-->
+    <!--<script type="text/javascript" src="<%= @baseUrl %>assets/tocify/jquery-ui-1.9.1.custom.min.js"></script>-->
+    <!--<script type="text/javascript" src="<%= @baseUrl %>assets/tocify/jquery.tocify.min.js"></script>-->
     <script type="text/javascript" src="<%= @baseUrl %>assets/js/JSAfterLoad.js"></script>
 
     <% if @manifest.options.embedly: %>
@@ -24,6 +29,13 @@
     <script type="text/javascript" src="<%= @baseUrl %>assets/js/viewer.js"></script>
     <script type="text/javascript" src="<%= @baseUrl %>assets/js/stick-in-parent.js"></script>
  
+ <!--
+ <script type="text/javascript">
+	$(function() {
+                  $("#toc").tocify();
+              });
+</script>
+ -->
 </head>
 <body>
 	<div id="page">
