@@ -65,7 +65,7 @@
 					
 				</div>	
 				<div style="float:left;padding-top: 15px;padding-left: 30px;">
-<h1><a href="">Documentation <span style="font-size:12px"> Version: Not-Needed - Publication Date : Jun 16, 2016 </span></a></h1>
+<h1><a href="">Documentation <span style="font-size:12px"> Version: Not-Needed - Publication Date : Jun 23, 2016 </span></a></h1>
 				</div>
 			</div>
 			</div>
@@ -382,10 +382,11 @@
 <a name="new-features"></a><h2 id="new-features">New Features</h2>
 <p>The following are the new features introduced with 3.7 release.</p>
 <ul>
-<li><strong>Custom Eviction Policies</strong>: You can implement and use your own eviction policy. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#custom-eviction-policy">Custom Eviction Policy section</a>.</li>
-<li><strong>Discovery SPI Implementation for Microsoft Azure Services</strong>: Hazelcast members can be discovered within your Azure resource group. You can add this implementation as a plugin to your projects. Please refer to  <a href="https://github.com/sedouard/hazelcast-azure">Hazelcast-Azure plugin</a>.</li>
-<li><strong>Hazelcast CLI with Scripting</strong>: A command line interface that supports scripting. You can automate cluster operations such as start, stop, and force start using shell scripting. Please refer to <a href="https://github.com/hazelcast/hazelcast-cli">Hazelcast CLI</a> plugin page.</li>
-<li><strong>Hazelcast for OpenShift</strong>: Hazelcast members on OpenShift can discover each other.</li>
+<li><strong>Custom Eviction Policies</strong>: You can implement and use your own eviction policy. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7-EA/manual/html-single/index.html#custom-eviction-policy" target="_blank">Custom Eviction Policy section</a>.</li>
+<li><strong>Discovery SPI Implementation for Microsoft Azure Services</strong>: Hazelcast members can be discovered within your Azure resource group. You can add this implementation as a plugin to your projects. Please refer to <a href="https://github.com/sedouard/hazelcast-azure" target="_blank">Hazelcast-Azure plugin</a>.</li>
+<li><strong>Hazelcast CLI with Scripting</strong>: A command line interface that supports scripting. You can automate cluster operations such as start, stop, and force start using shell scripting. Please refer to <a href="https://github.com/hazelcast/hazelcast-cli" target="_blank">Hazelcast CLI</a> plugin page.</li>
+<li><strong>Hazelcast for OpenShift and CloudFoundry</strong>: Hazelcast members on OpenShift and CloudFoundry can discover each other. Please refer to <a href="https://hub.docker.com/r/hazelcast/openshift/" target="_blank">Hazelcast OpenShift</a> and <a href="https://github.com/hazelcast/hazelcast-cloudfoundry" target="_blank">Hazelcast CloudFoundry</a>.</li>
+<li><strong>Apache Spark Connector:</strong> A plugin which allows Hazelcast maps and caches to be used as shared RDD caches by Spark using the Spark RDD API. Please refer to the plugin&#39;s repo at <a href="https://github.com/hazelcast/hazelcast-spark" target="_blank">Spark Connector for Hazelcast</a>.</li>
 <li><strong>Alignment of WAN Replication Clusters:</strong> This feature provides a mechanism to align or realign distributed objects in the clusters connected through WAN. WAN replication mirrors changes from a map or cache in one cluster to another. It was maintaining the alignment but was not attaining. Now when the receiving cluster is empty and the sending cluster is not, objects are aligned. And if changes have been dropped for any reason, realignment is attained.</li>
 </ul>
 <a name="enhancements"></a><h2 id="enhancements">Enhancements</h2>
@@ -404,6 +405,7 @@
 <p><br></br></p>
 <p>The following are the the enhancements introduced with 3.7 release.</p>
 <ul>
+<li><strong>Modularized Hazelcast:</strong> As stated in the above note, 3.7 is Hazelcast&#39;s first modularized release. Clients, languages and plugins are now modules which have separate GitHub repositories, Maven modules, and release cycles. Please refer to the <a href="http://hazelcast.org/clients-languages/">Clients &amp; Languages</a> and <a href="http://hazelcast.org/plugins/">Plugins</a> pages.</li>
 <li><strong>Near Cache (JCache) Notification Enhancements:</strong> You can disable the near cache notifications for each entry and enable/disable notifications of full-flush events. Please refer to the <a href="http://docs.hazelcast.org/docs/latest-dev/manual/html-single/index.html#icache-configuration">ICache Configuration section</a> and see definition of the new configuration element <code>disable-per-entry-invalidation-events</code>.</li>
 <li><strong>Migration Algorithm Enhancements:</strong> With these improvements the possibility of a data loss due to a member crash while the partitions are being migrated is eliminated.</li>
 <li><strong>WAN Replication Integrated with Solace</strong>: This integration is achieved through a new JMS endpoint.</li>
