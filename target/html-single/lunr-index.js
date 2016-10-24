@@ -8,6 +8,13 @@ var documentTitles = {};
 
 
 
+documentTitles["index.html#373"] = "3.7.3";
+index.add({
+    url: "index.html#373",
+    title: "3.7.3",
+    body: "# 3.7.3  The following are the fixed issues for 3.7.3 release.  - `NullPointerException` is thrown while deleting an entry through Entry Processor by setting value to NULL. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/9135\&quot; target=\&quot;_blank\&quot;&gt;[9135]&lt;/a&gt; - There is a discrepancy between the Reference Manual and source code in the default value of `hazelcast.heartbeat.interval.seconds`. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/9070\&quot; target=\&quot;_blank\&quot;&gt;[9070]&lt;/a&gt; - When Hazelcast is upgraded from 3.6.5 to 3.7.1, calls to Spring cache generate exceptions. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/9023\&quot; target=\&quot;_blank\&quot;&gt;[9023]&lt;/a&gt; - Hazelcast 3.6.x client cannot obtain cache proxy from 3.7.x cluster. Configuration creation and retrieval seem to be not working on 3.6.x clients when they connect to a 3.7.x cluster. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/9006\&quot; target=\&quot;_blank\&quot;&gt;[9006]&lt;/a&gt; - There is an unnecessary warning about member side near cache invalidation operations. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/8841\&quot; target=\&quot;_blank\&quot;&gt;[8841]&lt;/a&gt;    "
+});
+
 documentTitles["index.html#372"] = "3.7.2";
 index.add({
     url: "index.html#372",

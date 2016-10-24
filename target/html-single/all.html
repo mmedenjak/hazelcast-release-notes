@@ -10,14 +10,9 @@
     <link type="text/css" rel="stylesheet" href="assets/css/reset.css">
     <link type="text/css" rel="stylesheet" href="assets/css/docs.css">
     <link type="text/css" rel="stylesheet" href="assets/css/print.css" media="print">
-    <!--<link type="text/css" rel="stylesheet" href="assets/tocify/jquery.tocify.css">-->
-    <!--<link type="text/css" rel="stylesheet" href="assets/tocify/bootstrap.css">-->
     
 
-    <script type="text/javascript" src="assets/js/jquery-1.10.1.min.js"></script>
-   <!--<script type="text/javascript" src="assets/tocify/jquery-1.8.3.min.js"></script>-->
-    <!--<script type="text/javascript" src="assets/tocify/jquery-ui-1.9.1.custom.min.js"></script>-->
-    <!--<script type="text/javascript" src="assets/tocify/jquery.tocify.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/JSAfterLoad.js"></script>
 
     
@@ -26,13 +21,6 @@
     <script type="text/javascript" src="assets/js/viewer.js"></script>
     <script type="text/javascript" src="assets/js/stick-in-parent.js"></script>
  
- <!--
- <script type="text/javascript">
-	$(function() {
-                  $("#toc").tocify();
-              });
-</script>
- -->
 </head>
 <body>
 	<div id="page">
@@ -50,7 +38,7 @@
 					<a href="http://www.hazelcast.org"><img src="assets/img/logo.png" style="width: 199px;padding-top: 18px" alt="Hazelcast Logo"/></a>
 				</div>
 				<div style="float:left;padding-top: 15px;padding-left: 30px;">
-					<h1><a href="">Release Notes<span style="font-size:12px">   Publication Date : Oct 20, 2016 </span></a></h1>
+					<h1><a href="">Release Notes<span style="font-size:12px">   Publication Date : Oct 24, 2016 </span></a></h1>
 				</div>
 			</div>
 		</div>
@@ -62,6 +50,11 @@
            <nav id="toc">
        
     <ol>
+    
+        <li>
+            <a href="index.html#373">3.7.3</a>
+            
+        </li>
     
         <li>
             <a href="index.html#372">3.7.2</a>
@@ -375,6 +368,11 @@
 <!--          <div id="toc">
        
     <ol>
+    
+        <li>
+            <a href="index.html#373">3.7.3</a>
+            
+        </li>
     
         <li>
             <a href="index.html#372">3.7.2</a>
@@ -696,7 +694,16 @@
 
 			<div id="content">
 				<p>This document includes the new features, enhancements and fixed issues for Hazelcast releases.<p>
-				<a name="372"></a><h1 id="3-7-2">3.7.2</h1>
+				<a name="373"></a><h1 id="3-7-3">3.7.3</h1>
+<p>The following are the fixed issues for 3.7.3 release.</p>
+<ul>
+<li><code>NullPointerException</code> is thrown while deleting an entry through Entry Processor by setting value to NULL. <a href="https://github.com/hazelcast/hazelcast/issues/9135" target="_blank">[9135]</a></li>
+<li>There is a discrepancy between the Reference Manual and source code in the default value of <code>hazelcast.heartbeat.interval.seconds</code>. <a href="https://github.com/hazelcast/hazelcast/issues/9070" target="_blank">[9070]</a></li>
+<li>When Hazelcast is upgraded from 3.6.5 to 3.7.1, calls to Spring cache generate exceptions. <a href="https://github.com/hazelcast/hazelcast/issues/9023" target="_blank">[9023]</a></li>
+<li>Hazelcast 3.6.x client cannot obtain cache proxy from 3.7.x cluster. Configuration creation and retrieval seem to be not working on 3.6.x clients when they connect to a 3.7.x cluster. <a href="https://github.com/hazelcast/hazelcast/issues/9006" target="_blank">[9006]</a></li>
+<li>There is an unnecessary warning about member side near cache invalidation operations. <a href="https://github.com/hazelcast/hazelcast/issues/8841" target="_blank">[8841]</a></li>
+</ul>
+<a name="372"></a><h1 id="3-7-2">3.7.2</h1>
 <p>The following are the fixed issues for 3.7.2 release.</p>
 <ul>
 <li>The container <code>WaitingOperation</code> (which wraps <code>BlockingOperation</code>) is
