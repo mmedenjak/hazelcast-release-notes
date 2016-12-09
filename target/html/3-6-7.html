@@ -412,16 +412,10 @@
 	</div>
 
 	        <div id="content">
-	            <a name="204"></a><h1 id="2-0-4">2.0.4</h1>
-<p>The following are the fixed issues and enhancements for 2.0.4 release.</p>
+	            <a name="367"></a><h1 id="3-6-7">3.6.7</h1>
+<p>The following is the fixed issue for 3.6.7 release.</p>
 <ul>
-<li><code>NullPointerException</code> is thrown by the method <code>AbstractRecord.getLockCount()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/166" target="_blank">[166]</a></li>
-<li>There are &quot;Connection refused&quot; in Hazelcast 2.0.3. <a href="https://github.com/hazelcast/hazelcast/issues/140" target="_blank">[140]</a></li>
-<li>Predicate value on the date field should not be converted from a String by the method <code>getRealObject()</code>.<a href="https://github.com/hazelcast/hazelcast/issues/135" target="_blank">[135]</a></li>
-<li>Some IMap removed/evicted entries will go back when one cluster node crashes. <a href="https://github.com/hazelcast/hazelcast/issues/132" target="_blank">[132]</a></li>
-<li><code>Predicates.GreaterLesserPredicate</code>&#39;s <code>doApply</code> operation is broken. <a href="https://github.com/hazelcast/hazelcast/issues/131" target="_blank">[131]</a></li>
-<li>Incorrect selection by predicate with comparison of non-numerical fields and indexing problems. <a href="https://github.com/hazelcast/hazelcast/issues/98" target="_blank">[98]</a></li>
-<li>Evicted/deleted entries should not be stored to the map store. <a href="https://github.com/hazelcast/hazelcast/issues/96" target="_blank">[96]</a></li>
+<li>When loading keys supplied by the user, <code>keyLoaderState</code> should not be changed. In some cases, <code>MapLoader.loadAll(true)</code> does not reload after reloading with new keys. <a href="https://github.com/hazelcast/hazelcast/pull/9279" target="_blank">[9279]</a></li>
 </ul>
 
 
