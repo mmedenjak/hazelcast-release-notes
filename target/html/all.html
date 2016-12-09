@@ -80,6 +80,11 @@
     <ol>
     
         <li>
+            <a href="3-7-4.html">3.7.4</a>
+            
+        </li>
+    
+        <li>
             <a href="3-7-3.html">3.7.3</a>
             
         </li>
@@ -412,7 +417,29 @@
 	</div>
 
 	        <div id="content">
-	            <a name="373"></a><h1 id="3-7-3">3.7.3</h1>
+	            <a name="374"></a><h1 id="3-7-4">3.7.4</h1>
+<p>The following are the fixed issues for 3.7.4 release.</p>
+<ul>
+<li>Client protocol should be updated to support old .NET clients that have an issue preventing them to connect to 3.7.3 and newer clusters. <a href="https://github.com/hazelcast/hazelcast/pull/9388" target="_blank">[9388]</a> </li>
+<li>Fixed <code>keyStateMarker</code> problems. <a href="https://github.com/hazelcast/hazelcast/pull/9382" target="_blank">[9382]</a></li>
+<li>When nodes terminates concurrently, clusterService.removeAddress can fail because
+target node is already shutdown. <a href="https://github.com/hazelcast/hazelcast/pull/9324" target="_blank">[9324]</a></li>
+<li>Cache event listeners trigger multiple events when the listener is configured declaratively (XML). <a href="https://github.com/hazelcast/hazelcast/issues/9315" target="_blank">[9315]</a></li>
+<li>When client is connected and the client process is paused, e.g., using a debugger, then the member starts printing the warning message (<code>Client heartbeat is timed out</code>) every 10 seconds. <a href="https://github.com/hazelcast/hazelcast/pull/9308" target="_blank">[9308]</a></li>
+<li>Hazelcast client outside the AWS cloud cannot connect to Hazelcast member inside the AWS cloud. <a href="https://github.com/hazelcast/hazelcast/pull/9290" target="_blank">[9290]</a></li>
+<li>In case of a retrying operation, an old heartbeat could still be stored
+on the invocation. If the invocation monitor sees this, it does not
+understand that this is from an old invocation. It concludes that the
+invocation has not received any recent heartbeats and aborts the invocation. <a href="https://github.com/hazelcast/hazelcast/pull/9287" target="_blank">[9287]</a></li>
+<li>Client endpoint may have a different connection than the one it was initially constructed. <a href="https://github.com/hazelcast/hazelcast/pull/9282" target="_blank">[9282]</a></li>
+<li>The method <code>loadAll(keys)</code> has to notify <code>RecordStores</code> about the end of loading. <a href="https://github.com/hazelcast/hazelcast/pull/9260" target="_blank">[9260]</a></li>
+<li>Partitions should be unavailable/inaccessible until <code>MigrationAwareServices</code>
+complete commit/rollback during migration and/or promotion. <a href="https://github.com/hazelcast/hazelcast/pull/9235" target="_blank">[9235]</a></li>
+<li>When backups are reordered and a backup with a version greater than (localVersion + 1)
+is received, backup is applied but partition replica versions are not updated. <a href="https://github.com/hazelcast/hazelcast/pull/9206" target="_blank">[9206]</a></li>
+</ul>
+
+<a name="373"></a><h1 id="3-7-3">3.7.3</h1>
 <p>The following are the fixed issues for 3.7.3 release.</p>
 <ul>
 <li><code>MapLoader.loadAll(true)</code> does not reload after reloading with given keys. <a href="https://github.com/hazelcast/hazelcast/issues/9263" target="_blank">[9263]</a>  </li>

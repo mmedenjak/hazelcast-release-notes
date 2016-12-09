@@ -8,6 +8,15 @@ var documentTitles = {};
 
 
 
+documentTitles["3-7-4.html#374"] = "3.7.4";
+index.add({
+    url: "3-7-4.html#374",
+    title: "3.7.4",
+    body: "# 3.7.4  The following are the fixed issues for 3.7.4 release.  - Client protocol should be updated to support old .NET clients that have an issue preventing them to connect to 3.7.3 and newer clusters. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9388\&quot; target=\&quot;_blank\&quot;&gt;[9388]&lt;/a&gt;  - Fixed `keyStateMarker` problems. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9382\&quot; target=\&quot;_blank\&quot;&gt;[9382]&lt;/a&gt; - When nodes terminates concurrently, clusterService.removeAddress can fail because target node is already shutdown. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9324\&quot; target=\&quot;_blank\&quot;&gt;[9324]&lt;/a&gt; - Cache event listeners trigger multiple events when the listener is configured declaratively (XML). &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/issues/9315\&quot; target=\&quot;_blank\&quot;&gt;[9315]&lt;/a&gt; - When client is connected and the client process is paused, e.g., using a debugger, then the member starts printing the warning message (`Client heartbeat is timed out`) every 10 seconds. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9308\&quot; target=\&quot;_blank\&quot;&gt;[9308]&lt;/a&gt; - Hazelcast client outside the AWS cloud cannot connect to Hazelcast member inside the AWS cloud. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9290\&quot; target=\&quot;_blank\&quot;&gt;[9290]&lt;/a&gt; - In case of a retrying operation, an old heartbeat could still be stored on the invocation. If the invocation monitor sees this, it does not understand that this is from an old invocation. It concludes that the invocation has not received any recent heartbeats and aborts the invocation. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9287\&quot; target=\&quot;_blank\&quot;&gt;[9287]&lt;/a&gt; - Client endpoint may have a different connection than the one it was initially constructed. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9282\&quot; target=\&quot;_blank\&quot;&gt;[9282]&lt;/a&gt; - The method `loadAll(keys)` has to notify `RecordStores` about the end of loading. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9260\&quot; target=\&quot;_blank\&quot;&gt;[9260]&lt;/a&gt; - Partitions should be unavailable/inaccessible until `MigrationAwareServices` complete commit/rollback during migration and/or promotion. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9235\&quot; target=\&quot;_blank\&quot;&gt;[9235]&lt;/a&gt; - When backups are reordered and a backup with a version greater than (localVersion + 1) is received, backup is applied but partition replica versions are not updated. &lt;a href=\&quot;https://github.com/hazelcast/hazelcast/pull/9206\&quot; target=\&quot;_blank\&quot;&gt;[9206]&lt;/a&gt;  "
+});
+
+
+
 documentTitles["3-7-3.html#373"] = "3.7.3";
 index.add({
     url: "3-7-3.html#373",
