@@ -427,18 +427,20 @@
 	</div>
 
 	        <div id="content">
-	            <a name="203"></a><h1 id="2-0-3">2.0.3</h1>
-<p>The following are the fixed issues and enhancements for 2.0.3 release.</p>
+	            <a name="375"></a><h1 id="3-7-5">3.7.5</h1>
+<p>The following are the fixed issues for 3.7.5 release.</p>
 <ul>
-<li>Increasing amount of stuck Hazelcast threads in weblogic; in a clustered environment and also when running a single instance. <a href="https://github.com/hazelcast/hazelcast/issues/160" target="_blank">[160]</a></li>
-<li>Hyphens in the group names confuse the Management Center. It treats the group name as two separate tokens. <a href="https://github.com/hazelcast/hazelcast/issues/128" target="_blank">[128]</a></li>
-<li>Split-brain merge handling causes the locks never to be acquired again. <a href="https://github.com/hazelcast/hazelcast/issues/127" target="_blank">[127]</a></li>
-<li><code>ConfigXmlGenerator</code> does not handle the TTL correctly when multicast joining mechanism is used. <a href="https://github.com/hazelcast/hazelcast/issues/127" target="_blank">[127]</a></li>
-<li>Data is lost in a map when adding a key the second time after a new member joins the cluster. <a href="https://github.com/hazelcast/hazelcast/issues/117" target="_blank">[117]</a></li>
-<li>Listeners are not called when a queue is changed within a transaction. <a href="https://github.com/hazelcast/hazelcast/issues/114" target="_blank">[114]</a></li>
-<li>Programmatic session destruction does not lead to the destruction of the clustered session. <a href="https://github.com/hazelcast/hazelcast/issues/104" target="_blank">[104]</a></li>
-<li>The name for <code>hazelcast.sessionId</code> should be configurable. <a href="https://github.com/hazelcast/hazelcast/issues/103" target="_blank">[103]</a></li>
-<li>There is an issue in concurrent <code>queue.take()</code> and <code>txn.rollback()</code>.<a href="https://github.com/hazelcast/hazelcast/issues/99" target="_blank">[99]</a></li>
+<li>Map statistics are disappeared in Management Center when the member is restarted. <a href="https://github.com/hazelcast/hazelcast/issues/9590" target="_blank">[9590]</a></li>
+<li>Clients are not updated when <code>DistributedObject</code> is removed from the member. <a href="https://github.com/hazelcast/hazelcast/issues/9457" target="_blank">[9457]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/9423" target="_blank">[9423]</a> </li>
+<li>Hazelcast Management Center is not working with Tomcat 8 and higher. <a href="https://github.com/hazelcast/hazelcast/issues/9452" target="_blank">[9452]</a></li>
+<li><code>TextReadHandler</code> (for REST and Memcache) commands has a size restriction. Large responses cannot be handled. There is a hardcoded buffer size in <code>TextReadHandler</code> but it should be converted as dynamic so that it can handle responses of any size. <a href="https://github.com/hazelcast/hazelcast/issues/9355" target="_blank">[9355]</a></li>
+<li>The configuration schema <code>hazelcast-spring.xsd</code> should use <code>&lt;xs:all&gt;</code> instead of <code>&lt;xs:sequence&gt;</code> for &quot;hazelcast-bean&quot; base type. <a href="https://github.com/hazelcast/hazelcast/issues/9289" target="_blank">[9289]</a></li>
+<li>Stuck threads are seen in Hazelcast 3.6.2 client when session replication is used. <a href="https://github.com/hazelcast/hazelcast/issues/9060" target="_blank">[9060]</a></li>
+<li>When cluster service starts when a member starts, it registers itself as the only member and publishes the membership event. <code>QuorumService</code> is a <code>MembershipAwareService</code>, therefore it is expected to update quorums when it receives these membership events. The problem is as follows: services are not registered to <code>ServiceManager</code> yet when the cluster service publishes this event on a member start. So, it seems that <code>QuorumService</code> is missing it and failing to update its internal quorum status. <a href="https://github.com/hazelcast/hazelcast/issues/8820" target="_blank">[8820]</a></li>
+<li>Client disconnection leads to a stuck <code>clusterExecutor</code> shutdown in Hazelcast 3.6.2. <a href="https://github.com/hazelcast/hazelcast/issues/8721" target="_blank">[8721]</a></li>
+<li>Near cache updates may cause <code>OutofMemoryException</code> under high load and high number of <code>ICache.getAsync</code> calls. <a href="https://github.com/hazelcast/hazelcast/issues/8593" target="_blank">[8593]</a></li>
+<li>The tag <code>hot-restart</code> cannot resolve the placeholder for the value of <code>enabled</code> and <code>fsync</code> within Spring context. <a href="https://github.com/hazelcast/hazelcast/issues/8500" target="_blank">[8500]</a></li>
+<li><code>HazelcastInstanceAware</code> should be supported for <code>QuorumFunction</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7499" target="_blank">[7499]</a></li>
 </ul>
 
 
