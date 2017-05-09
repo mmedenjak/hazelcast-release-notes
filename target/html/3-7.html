@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Hazelcast Documentation Version: Not-Needed</title>
+
+    <link type="text/css" rel="stylesheet" href="assets/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/github.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/docs.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/print.css" media="print">
+    
+
+    <script type="text/javascript" src="assets/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.sticky-kit.js"></script>
+    <script type="text/javascript" src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
+    <script type="text/javascript" src="assets/js/lunr.min.js"></script>
+
+    
+
+    <script type="text/javascript">var BASE_URL = "";</script>
+    <script type="text/javascript" src="assets/js/viewer.js"></script>
+    <script type="text/javascript" src="assets/js/toc.scroll.js"></script>
+
+    <script type="text/javascript">
+  	$(function(){
+		$("#sidebar").stick_in_parent()
+	});
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-3921306-1']);
+        _gaq.push(['_setDomainName', 'hazelcast.com']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <script type="text/javascript">
+        setTimeout(function(){var a=document.createElement("script");
+            var b=document.getElementsByTagName("script")[0];
+            a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0020/7413.js?"+Math.floor(new Date().getTime()/3600000);
+            a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>
+
+</head>
+<body>
+    <div id="page">
+        <a name="top" />
+         <div id="sitebar">
+    <div class="content">
+      <p><a href="http://hazelcast.org/documentation">Go to <span style="font-weight:bold">hazelcast.org/documentation</span></a></p>
+      </div>
+  </div>
+
+        <header id="header">
+			<div class="content">
+			<div style="overflow:hidden">
+				<div style="float:left">
+                    <a href="http://www.hazelcast.org"><img src="assets/img/logo.png" style="width: 199px;padding-top: 18px"/></a>
+					
+				</div>	
+				<div style="float:left;padding-top: 15px;padding-left: 30px;">
+<h1><a href="">Documentation <span style="font-size:12px"> Version: Not-Needed - Publication Date : May 08, 2017 </span></a></h1>
+				</div>
+			</div>
+			</div>
+        </header>
+        <div class="content" style="width:1200px; margin: 0 auto">
+	        
+
+	<div id="sidebar" style="overflow-y:auto">
+	    <form action="search.html"><input id="search" type="text" placeholder="Search" name="q" /></form>
+	    <nav id="toc">
+	        
+    <ol>
+    
+        <li>
+            <a href="3-8-1.html">3.8.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-8.html">3.8</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-7-7.html">3.7.7</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-7-6.html">3.7.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-7-5.html">3.7.5</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-7-4.html">3.7.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-7-3.html">3.7.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-7-2.html">3.7.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-7-1.html">3.7.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-7.html">3.7</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-6-7.html">3.6.7</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-6-6.html">3.6.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-6-5.html">3.6.5</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-6-4.html">3.6.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-6-3.html">3.6.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-6-2.html">3.6.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-6-1.html">3.6.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-6.html">3.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-5-5.html">3.5.5</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-5-4.html">3.5.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-5-3.html">3.5.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-5-2.html">3.5.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-5-1.html">3.5.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-5.html">3.5</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-4-6.html">3.4.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-4-5.html">3.4.5</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-4-4.html">3.4.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-4-3.html">3.4.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-4-2.html">3.4.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-4-1.html">3.4.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-4.html">3.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-3-5.html">3.3.5</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-3-4.html">3.3.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-3-3.html">3.3.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-3-2.html">3.3.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-3-1.html">3.3.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-3.html">3.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-2-7.html">3.2.7</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-2-6.html">3.2.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-2-5.html">3.2.5</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-2-4.html">3.2.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-2-3.html">3.2.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-2-2.html">3.2.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-2-1.html">3.2.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-2.html">3.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-1-8.html">3.1.8</a>
+            
+        </li>
+    
+        <li>
+            <a href="3-0-3.html">3.0.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-9.html">2.6.9</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-8.html">2.6.8</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-6.html">2.6.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-3.html">2.6.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-2.html">2.6.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6-1.html">2.6.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-6.html">2.6</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-5-1.html">2.5.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-5.html">2.5</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-4-1.html">2.4.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-4.html">2.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-3-1.html">2.3.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-3.html">2.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-2.html">2.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-1-3.html">2.1.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-1-2.html">2.1.2</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-1-1.html">2.1.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-1.html">2.1</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-0-4.html">2.0.4</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-0-3.html">2.0.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="2-0.html">2.0</a>
+            
+        </li>
+    
+        <li>
+            <a href="1-9-4-9.html">1.9.4.9</a>
+            
+        </li>
+    
+</ol>
+
+	    </nav>
+	    
+	    <nav id="links">
+	        <ul>
+	            
+	        </ul>
+	    </nav>
+	    
+		<div id="copyright">
+			Powered by <a href="http://github.com/maximebf/beautiful-docs">beautiful-docs</a> -
+	        <a href="#top">Back to top</a>
+		</div>
+	
+	</div>
+
+	        <div id="content">
+	            <a name="37"></a><h1 id="3-7">3.7</h1>
+<p>This section lists the new features, enhancements, fixed issues and, removed or deprecated features for 3.7 release.</p>
+<a name="new-features"></a><h2 id="new-features">New Features</h2>
+<p>The following are the new features introduced with 3.7 release.</p>
+<ul>
+<li><strong>Custom Eviction Policies</strong>: You can implement and use your own eviction policy. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#custom-eviction-policy" target="_blank">Custom Eviction Policy section</a>.</li>
+<li><strong>Discovery SPI Implementation for Microsoft Azure Services</strong>: Hazelcast members can be discovered within your Azure resource group. You can add this implementation as a plugin to your projects. Please refer to <a href="https://github.com/sedouard/hazelcast-azure" target="_blank">Hazelcast-Azure</a> plugin page.</li>
+<li><strong>Hazelcast CLI with Scripting</strong>: A command line interface that supports scripting. You can automate cluster operations such as start, stop, and force start using shell scripting. Please refer to <a href="https://github.com/hazelcast/hazelcast-cli" target="_blank">Hazelcast CLI</a> plugin page.</li>
+<li><strong>Hazelcast for OpenShift and CloudFoundry</strong>: Hazelcast members on OpenShift and CloudFoundry can discover each other. Please refer to <a href="https://hub.docker.com/r/hazelcast/openshift/" target="_blank">Hazelcast OpenShift</a> and <a href="https://github.com/hazelcast/hazelcast-cloudfoundry" target="_blank">Hazelcast CloudFoundry</a> plugin pages.</li>
+<li><strong>Apache Spark Connector:</strong> A plugin which allows Hazelcast maps and caches to be used as shared RDD caches by Spark using the Spark RDD API. Please refer to the plugin&#39;s repo at <a href="https://github.com/hazelcast/hazelcast-spark" target="_blank">Spark Connector for Hazelcast</a>.</li>
+<li><strong>Alignment of WAN Replication Clusters:</strong> This feature provides a mechanism to align or realign distributed objects in the clusters connected through WAN. WAN replication mirrors changes from a map or cache in one cluster to another. It was maintaining the alignment but was not attaining. Now when the receiving cluster is empty and the sending cluster is not, objects are aligned. And if changes have been dropped for any reason, realignment is attained. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#synchronizing-wan-target-cluster" target="_blank">Synchronizing WAN Target Cluster section</a>. </li>
+<li><strong>Fault Tolerant Executor Service:</strong> This new data structure is introduced to guarantee that no execution tasks will be lost when a member goes down. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#durable-executor-service" target="_blank">Durable Executor Service section</a>. </li>
+</ul>
+<a name="enhancements"></a><h2 id="enhancements">Enhancements</h2>
+<p>The following are the enhancements introduced with 3.7 release.</p>
+<ul>
+<li><strong>Modularized Hazelcast:</strong> As stated in the above note, 3.7 is Hazelcast&#39;s first modularized release. Clients, languages and plugins are now modules which have separate GitHub repositories, Maven modules, and release cycles. Please refer to the <a href="http://hazelcast.org/clients-languages/">Clients &amp; Languages</a> and <a href="http://hazelcast.org/plugins/">Plugins</a> pages.</li>
+<li><strong>Near Cache (JCache) Notification Enhancements:</strong> You can disable the near cache notifications for each entry and enable/disable notifications of full-flush events. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#icache-configuration">ICache Configuration section</a> and see definition of the new configuration element <code>disable-per-entry-invalidation-events</code>.</li>
+<li><strong>Migration Algorithm Enhancements:</strong> With these improvements the possibility of a data loss due to a member crash while the partitions are being migrated is eliminated.</li>
+<li><strong>WAN Replication Integrated with Solace</strong>: This integration is achieved through a new JMS endpoint. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#solace-integration">Solace Integration section</a>.</li>
+<li><strong>Cloud Discovery SPI Plugin for Multicast:</strong> You can use multicast discovery for your Hazelcast platform with client/server topology. Only Hazelcast Java client is supported for this release. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#discovering-native-clients">Discovering Native Clients section</a>.</li>
+<li><strong>IMap Eviction Sync with JCache:</strong> Hazelcast Map uses now Hazelcast JCache&#39;s eviction algorithm when evicting map entries.</li>
+<li><strong>Docker Image Enhancements:</strong> Hazelcast Docker image is able to integrate with the Service Discovery products such as Zookeeper, Consul, Etcd, and Eureka. Please refer to its repo at <a href="https://github.com/hazelcast/hazelcast-docker">Hazelcast Docker</a>.</li>
+<li><strong>Phone Home Enhancements:</strong> Performed to collect new phone home data to learn more about the environment on which  Hazelcast runs. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#phone-home">Phone Home section</a>.</li>
+<li><strong><code>IMap.putAll()</code> Performance Enhancements:</strong> The performance of <code>putAll</code> operation is improved by reducing the number of remote operations and supporting batching.</li>
+<li><strong>Hazelcast Instance and JCache Integration Enhancements:</strong> A direct relation between a Hazelcast instance and JCache is established with this enhancement. You can retrieve and access caches via the method <code>getCache(String name)</code> over <code>HazelcastInstance</code> API. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#jcache-hazelcast-instance-integration">JCache - Hazelcast Instance Integration section</a>.</li>
+<li><strong>Indexing with Predicates for Entry Processors:</strong> Entry Processor can use indexing when a predicate is used to filter entries that need to be processed. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#using-indexes">Using Indexes section</a>.</li>
+<li><strong>Partition Grouping Enhancements:</strong> You can define partition groups, in the same way as the IP address network configuration with wildcard support. You can also configure zone-aware partition groups for your Hazelcast clusters on AWS. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#partition-group-configuration">Partition Group Configuration section</a>.</li>
+<li><strong>Prevention of Blocking Reads in Transactions:</strong> Now the read operations are blocked only during committing the transactions.</li>
+<li><strong>Jetty and Tomcat Based Web Session Replications:</strong> These features have been made open source. You can reach them at <a href="https://github.com/hazelcast/hazelcast-tomcat-sessionmanager/releases">Tomcat Session Manager</a> and 
+<a href="https://github.com/hazelcast/hazelcast-jetty-sessionmanager/releases">Jetty Session Manager</a> GitHub repos.</li>
+</ul>
+<p>The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.</p>
+<ul>
+<li>Expanded async API support in IMap, IAtomicLong, and IAtomicReference; async methods now return <code>ICompletable</code> and enable a reactive programming style. <a href="https://github.com/hazelcast/hazelcast/pull/8580">[8580]</a>, <a href="https://github.com/hazelcast/hazelcast/pull/7967">[7967]</a>, <a href="https://github.com/hazelcast/hazelcast/pull/7960">[7960]</a></li>
+</ul>
+<ul>
+<li><p>Call reference IDs are included in the Lock operations issued from member to member, to prevent double locking when lock operation is retried. But, Lock at clients does not have these. <a href="https://github.com/hazelcast/hazelcast/issues/8359" target="_blank">[8359]</a></p>
+</li>
+<li><p><code>ReadBackupData</code> and <code>MaxIdleSeconds</code> related documentation should be more clarifying. <a href="https://github.com/hazelcast/hazelcast/issues/8354" target="_blank">[8354]</a></p>
+</li>
+<li><p>Entry listener with predicates should be notified on value entry/exit from the predicate value space. <a href="https://github.com/hazelcast/hazelcast/pull/8340" target="_blank">[8340]</a></p>
+</li>
+<li><p>Collection querying in Portables. This allows querying a collection like <code>car.wheels[0].pressure</code> or <code>car.wheels[any].pressure</code> in the Portable data format. It also allows using a <code>ValueExtractor</code> in the Portable data format. <a href="https://github.com/hazelcast/hazelcast/pull/8132" target="_blank">[8132]</a></p>
+</li>
+<li><p>Performance improvements for the invocation system. <a href="https://github.com/hazelcast/hazelcast/pull/8009" target="_blank">[8009]</a></p>
+</li>
+<li><p>The performance log should have an option to log to the &#39;shared&#39; logger instead of its own file. It would be useful for environments where Hazelcast cannot create or get a performance log file. <a href="https://github.com/hazelcast/hazelcast/issues/7973" target="_blank">[7973]</a></p>
+</li>
+<li><p>The path for performance logs, which is currently fixed to the user&#39;s working directory should be configurable. <a href="https://github.com/hazelcast/hazelcast/issues/7968" target="_blank">[7968]</a></p>
+</li>
+<li><p>Hazelcast <code>IAtomicLong</code> data structure provides synchronous methods only; async versions already exist and are available to Hazelcast members via <code>AsyncAtomicLong</code> interface. Lack of public a async API for IAtomicLong is impeding Hazelcast integrations. <a href="https://github.com/hazelcast/hazelcast/issues/7957" target="_blank">[7957]</a></p>
+</li>
+<li><p>API documentation for <code>QueueStore</code> should be enhanced. <a href="https://github.com/hazelcast/hazelcast/issues/7775" target="_blank">[7775]</a></p>
+</li>
+</ul>
+<ul>
+<li><p>It would be better to have a way where near cache notifications for each entry are disabled, but an ability to enable/disable notifications of full-flush events (clear, etc.). <a href="https://github.com/hazelcast/hazelcast/issues/7580" target="_blank">[7580]</a></p>
+</li>
+<li><p>Hazelcast should support Transaction API of Spring. <a href="https://github.com/hazelcast/hazelcast/issues/7469" target="_blank">[7469]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/611" target="_blank">[611]</a></p>
+</li>
+<li><p>For Hazelcast Topic, even the event service&#39;s pool size is set to a number larger than one, all of the messages are consumed by only one Hazelcast event thread. The use case includes a single Hazelcast member, both producer and consumer being singletons within the member, and message rate of more than 1000 per second. <a href="https://github.com/hazelcast/hazelcast/issues/7443" target="_blank">[7443]</a></p>
+</li>
+<li><p>Partition strategy should be able to be specified not only in the Hazelcast configuration, but also within the Spring context. In addition, an implementing instance should be specified besides the class which implements the partition strategy. <a href="https://github.com/hazelcast/hazelcast/issues/7363" target="_blank">[7363]</a></p>
+</li>
+<li><p>Async put operations should be reflected at near cache as soon as the method <code>future.get()</code> returns. In the case of async put operations and <code>LocalUpdatePolicy</code> being <code>CACHE</code> at the client side, entries are put to the near cache asynchronously from another task when the response is received. But with this way, when <code>future.get()</code> returns, entry might not be inside the near cache (but it will be there eventually). <a href="https://github.com/hazelcast/hazelcast/issues/7155" target="_blank">[7155]</a></p>
+</li>
+<li><p>For <code>ICache.iterator()</code>, <code>fetchSize</code> is not configurable. <a href="https://github.com/hazelcast/hazelcast/issues/7041" target="_blank">[7041]</a></p>
+</li>
+<li><p>Unit tests should have a default timeout. <a href="https://github.com/hazelcast/hazelcast/issues/6978" target="_blank">[6978]</a></p>
+</li>
+<li><p>Outgoing ports on Hazelcast clients should be configurable. <a href="https://github.com/hazelcast/hazelcast/issues/6845" target="_blank">[6845]</a></p>
+</li>
+<li><p>The method <code>IMap.set</code> does not have a corresponding async version, unlike <code>put</code> and <code>putAsync</code>. The method <code>putAsync</code> is not entirely suitable as an async set, since put returns the previous value mapped to the key, and triggers EntryListeners which may not be desirable. IMap should expose a dedicated <code>setAsync</code> to fulfill the contract for set and have the means to do so asynchronously. <a href="https://github.com/hazelcast/hazelcast/issues/6726" target="_blank">[6726]</a></p>
+</li>
+<li><p>Javadoc for <code>EntryProcessor.java</code> should be enhanced by adding notes related to its thread safety. <a href="https://github.com/hazelcast/hazelcast/issues/6593" target="_blank">[6593]</a></p>
+</li>
+<li><p>Custom SPI services should be more Spring-friendly. <a href="https://github.com/hazelcast/hazelcast/issues/6567" target="_blank">[6567]</a></p>
+</li>
+<li><p>The &quot;spring-aware&quot; should be enabled programmatically too. <a href="https://github.com/hazelcast/hazelcast/issues/6514" target="_blank">[6514]</a></p>
+</li>
+<li><p>Hibernate 5 should be supported. <a href="https://github.com/hazelcast/hazelcast/issues/5633" target="_blank">[5633]</a></p>
+</li>
+<li><p>The error &quot;This node is not requested endpoint&quot; is shown in Docker networking. <a href="https://github.com/hazelcast/hazelcast/issues/4537" target="_blank">[4537]</a></p>
+</li>
+<li><p>It would be nice if the type parameters of <code>Predicate</code> were inherited by the <code>IndexAwarePredicate</code>. <a href="https://github.com/hazelcast/hazelcast/issues/1686" target="_blank">[1686]</a></p>
+</li>
+<li><p>The class <code>MigrationEndpoint</code> should be a part of Hazelcast SPI package. <a href="https://github.com/hazelcast/hazelcast/issues/1427" target="_blank">[1427]</a></p>
+</li>
+<li><p>When a task is submitted to all members, and an <code>executeOnEntries</code> is invoked in the call with a predicate that is based on an index, then the index is ignored and a &quot;full scan&quot; of the &quot;local&quot; members is performed. <a href="https://github.com/hazelcast/hazelcast/issues/1156" target="_blank">[1156]</a></p>
+</li>
+<li><p>Inconsistency between the declarative and programmatic configuration of network elements should be solved. <a href="https://github.com/hazelcast/hazelcast/issues/945" target="_blank">[945]</a></p>
+</li>
+</ul>
+<a name="fixes"></a><h2 id="fixes">Fixes</h2>
+<p>The following are the issues solved for Hazelcast 3.7 release.</p>
+<ul>
+<li><p>Issue with continuous query natural filtering event types: When the property <code>hazelcast.map.entry.filtering.natural.event.types</code> is set to <code>true</code>, updating a map entry whose value did not match the predicate to a new value that matches the predicate should publish an event of type <code>ADDED</code> instead of <code>UPDATED</code>. <a href="https://github.com/hazelcast/hazelcast/issues/8648" target="_blank">[8648]</a></p>
+</li>
+<li><p>The method <code>ClientEngineImpl::getConnectedClientStats</code> reuses the operation <code>GetConnectedClientsOperation</code>. This operation should not be reused for multiple invocations. <a href="https://github.com/hazelcast/hazelcast/issues/8628" target="_blank">[8628]</a></p>
+</li>
+<li><p>There is a possible regression in <code>PartitionAwareOperationFactory</code> when missing code coverage of <code>MultipleEntryWithPredicateOperation</code> is tried to be increased. <a href="https://github.com/hazelcast/hazelcast/issues/8622" target="_blank">[8622]</a></p>
+</li>
+<li><p>When a client is inside the cloud, <code>DiscoveryAddressTranslator</code> class does not look for a public/private address flag. Private address should be used when the client is inside the cloud. If not, then public address should be used. <a href="https://github.com/hazelcast/hazelcast/issues/8595" target="_blank">[8595]</a></p>
+</li>
+<li><p><code>MigrationThread</code> can leak after shutting down or even forcefully terminating Hazelcast. It retains the entire <code>HazelcastInstance</code>. <a href="https://github.com/hazelcast/hazelcast/issues/8560" target="_blank">[8560]</a></p>
+</li>
+<li><p><code>QueueOperation</code> keeps the state between executions. If there is a state, then it should always be set, if-null-then-set idiom should not be applied for operation state. <a href="https://github.com/hazelcast/hazelcast/issues/8546" target="_blank">[8546]</a></p>
+</li>
+<li><p>When the connection is made, the connection type is not known yet. But the connection type is used in the metrics ID; this id is used as soon as the connection is made. So it defaults to NONE in the method <code>getMetricsId</code>. It would be better to add a probe &quot;connection type&quot; and remove the connection type from the method <code>TcpIpConnection.getMetricsId</code>. <a href="https://github.com/hazelcast/hazelcast/issues/8540" target="_blank">[8540]</a></p>
+</li>
+<li><p>Commit failure on clients sets the transaction state to ROLLING_BACK, which makes the transaction non-rollbackable. This is not a problem for lock-based data structures (map, multimap, etc.) but it is problematic for collections. State of the transaction should be changed to COMMIT_FAILED rather than ROLLING_BACK upon a commit failure. <a href="https://github.com/hazelcast/hazelcast/issues/8483" target="_blank">[8483]</a></p>
+</li>
+<li><p><code>MapAttributeConfig</code> cannot be loaded in an OSGi environment. <a href="https://github.com/hazelcast/hazelcast/issues/8482" target="_blank">[8482]</a></p>
+</li>
+<li><p>Using Hazelcast out of the box with no configuration creates a Peer-to-Peer cluster. As soon as the configuration file <code>hazelcast.xml</code> is created by the user, in which only the logging type is set, Hazelcast does not create a cluster but starts in standalone mode. <a href="https://github.com/hazelcast/hazelcast/issues/8481" target="_blank">[8481]</a></p>
+</li>
+<li><p><code>NullPointerException</code> at the method <code>HazelcastTimeStamper.getNextTimeStamp</code>. <a href="https://github.com/hazelcast/hazelcast/issues/8465" target="_blank">[8465]</a></p>
+</li>
+<li><p>Portable EntryProcessor is not being called on portable objects. <a href="https://github.com/hazelcast/hazelcast/issues/8365" target="_blank">[8365]</a></p>
+</li>
+<li><p>In Hazelcast Hibernate modules, there is no JCache dependencies in the classpath. When Hazelcast is upgraded to 3.7-SNAPSHOT, <code>java.lang.NoClassDefFoundError: javax/cache/Cache</code> error is thrown when mocking HazelcastInstance. <a href="https://github.com/hazelcast/hazelcast/issues/8352" target="_blank">[8352]</a></p>
+</li>
+<li><p>The method <code>QueryableEntry.serializationService</code> throws <code>NullPointerException</code> when MapReduce is run with extractable entries. Mapping phase of the MapReduce for Portable data formats should be fixed.  <a href="https://github.com/hazelcast/hazelcast/issues/8346" target="_blank">[8346]</a></p>
+</li>
+<li><p>There is an error when configuring Replicated Map. The return of the method <code>getConfig</code> in <code>ReplicatedMapMBean</code> should be fixed.  <a href="https://github.com/hazelcast/hazelcast/issues/8298" target="_blank">[8298]</a></p>
+</li>
+<li><p><code>TargetDisconnectedException</code> is thrown for the clients in 3.7-SNAPSHOT. <a href="https://github.com/hazelcast/hazelcast/issues/8261" target="_blank">[8261]</a></p>
+</li>
+<li><p>TransactionalMap&#39;s <code>removeIfSame</code> test fails. <a href="https://github.com/hazelcast/hazelcast/issues/8238" target="_blank">[8238]</a></p>
+</li>
+<li><p>Distributed Executor Service does not take <code>ExecutorConfig.isStatisticsEnabled</code> into account. <a href="https://github.com/hazelcast/hazelcast/issues/8223" target="_blank">[8223]</a></p>
+</li>
+<li><p>Using <code>MapStoreConfig</code> in a cluster raises the exception <code>Transition not allowed from state NOT_LOADED to LOADED</code>. <a href="https://github.com/hazelcast/hazelcast/issues/8196" target="_blank">[8196]</a></p>
+</li>
+<li><p>The method <code>ICache::destroy</code> should remove the cache itself from the owner <code>CacheManager</code> because, otherwise, it causes memory leaks due to the cache proxies which are dead but deemed as working, in <code>AbstractHazelcastCacheManager::caches</code>. <a href="https://github.com/hazelcast/hazelcast/issues/8186" target="_blank">[8186]</a></p>
+</li>
+<li><p>Partition promotion is skipped when a node is terminated during the commit. <a href="https://github.com/hazelcast/hazelcast/issues/8174" target="_blank">[8174]</a></p>
+</li>
+<li><p>The tests check the messages of <code>InvalidConfigurationExeption</code>s thrown by the <code>XmlConfigBuilder</code>.
+But these messages are often extracted from <code>SAXParseException</code>s which are localized; Maven build is platform dependent and fails. <a href="https://github.com/hazelcast/hazelcast/issues/8169" target="_blank">[8169]</a></p>
+</li>
+<li><p>The method <code>IAtomicReference:alter</code> does not persist the changes. When a reference is tried to be altered, no alteration happens. <a href="https://github.com/hazelcast/hazelcast/issues/8149" target="_blank">[8149]</a></p>
+</li>
+<li><p>Cache should not expire entities when <code>Duration</code> value is 0. <a href="https://github.com/hazelcast/hazelcast/issues/8148" target="_blank">[8148]</a></p>
+</li>
+<li><p>Deserialization of dynamic proxy instances ignores the configured class loader. <a href="https://github.com/hazelcast/hazelcast/issues/8033" target="_blank">[8033]</a></p>
+</li>
+<li><p>The attribute &quot;binary&quot; is missing in the MultiMap configuration within Spring context. It does not exist in Hazelcast configuration schema either. <a href="https://github.com/hazelcast/hazelcast/issues/8000" target="_blank">[8000]</a></p>
+</li>
+</ul>
+<ul>
+<li><p>If you setup an interceptor to change the data being inserted, the entry listeners still fire with the old value. <a href="https://github.com/hazelcast/hazelcast/issues/7991" target="_blank">[7991]</a></p>
+</li>
+<li><p>Unlike the <code>InvocationFuture</code> at the server side, <code>ClientInvocationFuture</code> immediately propagates <code>InterruptedException</code> if the calling thread gets interrupted. This can be a problem when both caller and callee need to agree on whether the operation has executed or not. <a href="https://github.com/hazelcast/hazelcast/issues/7963" target="_blank">[7963]</a></p>
+</li>
+<li><p>Hazelcast 3.2.6 uses too much CPU when it is idle. <a href="https://github.com/hazelcast/hazelcast/issues/7943" target="_blank">[7943]</a></p>
+</li>
+<li><p>Old version of Portable object from a map cannot be read if new <code>UTF_ARRAY</code> type field is added. <a href="https://github.com/hazelcast/hazelcast/issues/7926" target="_blank">[7926]</a></p>
+</li>
+<li><p>The method <code>IMap.size()</code> reports a stale result when blocked by the initialization of  <code>MapStore</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7905" target="_blank">[7905]</a></p>
+</li>
+<li><p>Isolated thread pool for priority generic operations. <a href="https://github.com/hazelcast/hazelcast/pull/7857" target="_blank">[7857]</a></p>
+</li>
+<li><p>There is an issue when detecting JCache in the classpath. The exception <code>NoClassDefFound</code> is thrown when upgrading to a newer Hazelcast version. <a href="https://github.com/hazelcast/hazelcast/issues/7810" target="_blank">[7810]</a></p>
+</li>
+<li><p>Programmatic configuration of logging for Hazelcast client does not work. <a href="https://github.com/hazelcast/hazelcast/issues/7764" target="_blank">[7764]</a></p>
+</li>
+<li><p>Better separators should be used in the exceptions for a clearer read between local and remote stacktraces. <a href="https://github.com/hazelcast/hazelcast/issues/7744" target="_blank">[7744]</a></p>
+</li>
+<li><p>Under the section &quot;Operation Threading&quot; of Hazelcast Reference Manual, it states that the default number of partition-aware operation threads is (2 x number of cores). However, when looking at the code and observing the actual number of threads created runtime, it seems like the default value is instead 1 x number of cores instead. <a href="https://github.com/hazelcast/hazelcast/issues/7741" target="_blank">[7741]</a></p>
+</li>
+<li><p>The method <code>IMap.executeOnKeys()</code> does not support the empty set (it throws a misleading <code>NullPointerException</code>), and is inconsistent with the method <code>getAll()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7631" target="_blank">[7631]</a></p>
+</li>
+</ul>
+<ul>
+<li>Replicated map updates take a very long time. The problematic method is <code>putAll()</code>. The replication logic in this method checks whether the data owners are in sync with the replicas. If they are not, this logic syncs them every 30 seconds. This means, when the updates are not replicated to callers, it takes up to 30 seconds to make all the members synchronized. This period should be configurable. <a href="https://github.com/hazelcast/hazelcast/issues/7617" target="_blank">[7617]</a></li>
+</ul>
+<ul>
+<li><p><code>ScheduledExecutorServiceDelegate</code> violates contract of <code>ScheduledExecutorService</code>. It wraps tasks in <code>ScheduledTaskRunner</code> which delegates to a different executor. As a consequence, a task can be executed concurrently and this is a violation of a contract of <code>ScheduledExecutorService</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7611" target="_blank">[7611]</a></p>
+</li>
+<li><p>If <code>javax.cache.CacheManager</code> is created with the default settings, the underlying <code>HazelcastInstance</code> is not shutdown when the method <code>close</code> is called on the <code>CacheManager</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7606" target="_blank">[7606]</a></p>
+</li>
+<li><p>The method <code>containsKey()</code> of <code>TransactionalMap</code> is blocked when the key was previously locked by the method <code>getForUpdate()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7588" target="_blank">[7588]</a></p>
+</li>
+<li><p>There is an inconsistent behavior when removing from <code>TransactionalMap</code> while the key is locked on IMap. In order to avoid trying to remove an entry that may have already been removed in another uncommitted transaction, <code>IMap.tryLock</code> is used before performing <code>TransactionalMap.remove</code>. This works as expected if the operations occur on a member. But a <code>TransactionException</code> is thrown when it occurs on a client when using XA Transaction. <a href="https://github.com/hazelcast/hazelcast/issues/7587" target="_blank">[7587]</a></p>
+</li>
+</ul>
+<ul>
+<li>Hazelcast instance should be exposed through <code>com.hazelcast.spring.cache.HazelcastCacheManager</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7571" target="_blank">[7571]</a></li>
+</ul>
+<ul>
+<li><p>Instance name should not be overridden while creating cache manager from the specified configuration file. Also, it would be better to specify instance name via (]<code>HazelcastCachingProvider.HAZELCAST_INSTANCE_NAME</code> property when instance configuration is taken from the specified configuration file via <code>HazelcastCachingProvider.HAZELCAST_CONFIG_LOCATION</code>.<a href="https://github.com/hazelcast/hazelcast/issues/7567" target="_blank">[7567]</a></p>
+</li>
+<li><p>The <code>addInterceptor()</code> method in <code>com.hazelcast.map.impl.MapContainer()</code> is not thread safe. For example, if two concurrent attempts are made to inject the same interceptor, these will be different interceptor objects with the same ID. In this case, the call to <code>interceptorMap.put(id, interceptor)</code> will increase the map size by one, but the call to <code>interceptors.add(interceptor)</code> will increase the list size by two. <a href="https://github.com/hazelcast/hazelcast/issues/7520" target="_blank">[7520]</a></p>
+</li>
+<li><p>All JMX Beans disappear when the single Hazelcast instance is shut down in the same JVM. <a href="https://github.com/hazelcast/hazelcast/issues/7467" target="_blank">[7467]</a></p>
+</li>
+<li><p>There are unused elements for Management Center configuration: <code>cluster-id</code> and <code>security-token</code>. <a href="https://github.com/hazelcast/hazelcast/issues/7446" target="_blank">[7446]</a></p>
+</li>
+<li><p>For clients, <code>InitialMembershipListener.init</code> is called after <code>MembershipListener.memberAdded</code>. This contradicts the content in the Reference Manual.  <a href="https://github.com/hazelcast/hazelcast/issues/7430" target="_blank">[7430]</a></p>
+</li>
+<li><p>DiscoveryService&#39;s <code>start</code> and <code>destroy</code> methods should be called during the start and shutdown of client when Discovery SPI is enabled. <a href="https://github.com/hazelcast/hazelcast/issues/7347" target="_blank">[7347]</a></p>
+</li>
+<li><p>Return cache config as response even though found and created cache config could not put into cache configs inside cache service. <a href="https://github.com/hazelcast/hazelcast/issues/7208" target="_blank">[7208]</a></p>
+</li>
+<li><p>In Hazelcast Management Center shutting down a node seems to prevent a node from restarting. <a href="https://github.com/hazelcast/hazelcast/issues/7101" target="_blank">[7101]</a></p>
+</li>
+<li><p><code>MapStoreConfig</code> does not override <code>hashCode</code> and <code>equals</code> methods. Implementation for these two methods should be added. <a href="https://github.com/hazelcast/hazelcast/issues/7035" target="_blank">[7035]</a></p>
+</li>
+<li><p>Data is lost when the member dies during repartitioning. <a href="https://github.com/hazelcast/hazelcast/issues/6628" target="_blank">[6628]</a></p>
+</li>
+</ul>
+<ul>
+<li><p>Some of the map statistics, such as cost and last access time, are calculated by the traversing map entries. Therefore the calculation time exceeds the time interval reserved for management center state sending thread when entry count is too high. <a href="https://github.com/hazelcast/hazelcast/issues/6442" target="_blank">[6442]</a>, <a href="https://github.com/hazelcast/hazelcast/issues/5905" target="_blank">[5905]</a></p>
+</li>
+<li><p>Eviction with &quot;eviction-percentage&quot; does not work. <a href="https://github.com/hazelcast/hazelcast/issues/6432" target="_blank">[6432]</a></p>
+</li>
+<li><p><code>InvocationFuture</code>&#39;s asynchronous calls do not detect the lost operations. <a href="https://github.com/hazelcast/hazelcast/issues/6250" target="_blank">[6250]</a></p>
+</li>
+<li><p>The invocation mechanism for blocking operations relies on a periodic timeout so that the operation gets retried. To prevent the calling thread (the thread for <code>future.get</code>) from waiting indefinitely, it will periodically ask the <code>isstillrunning</code> service if the operation is lost. <a href="https://github.com/hazelcast/hazelcast/issues/6248" target="_blank">[6248]</a></p>
+</li>
+<li><p>Under some circumstances Hazelcast is getting a corrupt value for <code>IAtomicLong</code>s when a member leaves the cluster. <a href="https://github.com/hazelcast/hazelcast/issues/6074" target="_blank">[6074]</a></p>
+</li>
+<li><p>When the client disconnects normally, the server logs an info and a warning message containing the text <code>java.io.EOFException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/6035" target="_blank">[6035]</a></p>
+</li>
+<li><p>Session ID management error (500 HTTP error) is shown by Hazelcast 3.5 filter based replication. <a href="https://github.com/hazelcast/hazelcast/issues/5660" target="_blank">[5660]</a></p>
+</li>
+</ul>
+<ul>
+<li><p>Some operating systems (such as HPUX or Solaris) and hardware platforms have constraints about the aligned memory operations. In these architectures memory operations must be byte-by-byte as implemented in <code>DirectByteBuffer</code>. <a href="https://github.com/hazelcast/hazelcast/issues/5532" target="_blank">[5532]</a></p>
+</li>
+<li><p>Data is lost when a member crashes or is killed during the repartitioning. <a href="https://github.com/hazelcast/hazelcast/issues/5444" target="_blank">[5444]</a></p>
+</li>
+<li><p>Data is lost when a member is terminated. Related scenario is as follows <a href="https://github.com/hazelcast/hazelcast/issues/5388" target="_blank">[5388]</a>:</p>
+<ol>
+<li>Start the first member, and let it populate a map with 100k entries.</li>
+<li>Start the second member, and let it start joining the cluster.</li>
+<li>Terminate the second member during the join operation.</li>
+<li>Observe that data is lost from the first member.
+<br></br>    </li>
+</ol>
+</li>
+<li><p>As for now it is very complicated to listen a <code>getAsync</code> or <code>putAsync</code> result and to integrate it with completable futures or listenable futures. An <code>ICompletableFuture</code> should be returned since it is an interface which seems to extend JDK <code>future</code>s and is returned by an IMap. <a href="https://github.com/hazelcast/hazelcast/issues/5315" target="_blank">[5315]</a></p>
+</li>
+<li><p>If multiple Hazelcast members attempt to remove values from a key of a multimap concurrently, and then the members are shut down, the multimap can remain in an inconsistent state with entries remaining after all have been removed. <a href="https://github.com/hazelcast/hazelcast/issues/5220" target="_blank">[5220]</a></p>
+</li>
+<li><p><code>ClassNotFoundException</code> is thrown when trying to get an entry from a <code>TransactionalMap</code>. <a href="https://github.com/hazelcast/hazelcast/issues/4969" target="_blank">[4969]</a></p>
+</li>
+<li><p>Profiling a Hazelcast application reveals a thread contention in <code>SpringManagedContext</code> on <code>java.lang.Class.getAnnotation()</code>. And this calls a synchronized method called <code>initAnnotationsIfNecessary()</code>. <a href="https://github.com/hazelcast/hazelcast/issues/4506" target="_blank">[4506]</a></p>
+</li>
+<li><p>Hazelcast IMap statistics show negative values. After heavy usage of the cache, the number of misses starts showing up negative. <a href="https://github.com/hazelcast/hazelcast/issues/4022" target="_blank">[4022]</a></p>
+</li>
+<li><p>WebFilter may prevent requests from accessing request input stream. <a href="https://github.com/hazelcast/hazelcast/issues/3829" target="_blank">[3829]</a></p>
+</li>
+<li><p><code>WrongTargetException</code> for <code>PollOperation</code> in Queues. <a href="https://github.com/hazelcast/hazelcast/issues/3754" target="_blank">[3754]</a></p>
+</li>
+<li><p>Hazelcast member continuously logs <code>WrongTargetException</code>. <a href="https://github.com/hazelcast/hazelcast/issues/3395" target="_blank">[3395]</a></p>
+</li>
+<li><p>When there is a map with write-behind mode and a map store is configured (eviction is not needed); when the method <code>flush</code> is called in the IMap, the map store&#39;s <code>store</code> method can be called concurrently for the same key, namely for those keys which are in the write-behind queue and then forcibly stored by the flush. This is because the flush operation storing all entries in the write-behind queue seems to be executed in the operation thread, while the periodic processing of the write-behind queue is done by an executor service defined in the <code>WriteBehindQueueManager</code>. <a href="https://github.com/hazelcast/hazelcast/issues/3338" target="_blank">[3338]</a></p>
+</li>
+</ul>
+<a name="removeddeprecated-features"></a><h2 id="removed-deprecated-features">Removed/Deprecated Features</h2>
+<ul>
+<li><code>WanNoDelayReplication</code> implementation of Hazelcast&#39;s WAN Replication has been removed. You can still achieve this behavior by setting the batch size to <code>1</code> while configuring the <code>WanBatchReplication</code>. Please refer to the <a href="http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#defining-wan-replication">Defining WAN Replication section</a> for more information.</li>
+</ul>
+
+
+
+
+	        </div>
+	        </div>			
+    </div>
+</body>
+</html>
