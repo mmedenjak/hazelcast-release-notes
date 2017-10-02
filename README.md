@@ -1,11 +1,40 @@
-This is the repository containing the files required to build Hazelcast Release Notes.
+This is Hazelcast IMDG's release notes repo.
 
-Required packages to be able to build are listed below.
+## Release Notes Using Daux
 
-- Node.js: http://nodejs.org
-- Bfdocs: http://beautifuldocs.com
-- Pandoc: http://johnmacfarlane.net/pandoc/installing.html
-- BasicTeX: http://www.tug.org/mactex/morepackages.html
+Daux.io is a documentation generator that uses a simple folder structure and Markdown files to create custom documentation on the fly. It helps you create great looking documentation in a developer friendly way.
+
+Please refer to [Daux.io](http://daux.io/) for more information.
 
 
-NOTE: [Beautiful Docs](https://github.com/beautiful-docs/beautiful-docs) repo should be cloned and compiled from source since the latest release does not include recent fixes which is vital for us!
+## Prerequisites
+
+Before installing Daux, you already need to have the following:
+
+- PHP 5.5 or higher = http://php.net/
+- Composer: https://getcomposer.org/ (Install and then add "~/.composer/vendor/bin” to your $PATH)
+
+## Installing dependencies
+
+- `composer install` to install the required dependencies to build the project
+
+## Where Are the Source MarkDown Files
+
+They reside in the **docs** folder of this repo structured with folders and MarkDown files.
+
+## Writing Content
+
+Now you can clone this repo and start writing with MarkDown.
+
+## Building the HTML
+
+Simply run the command `daux` or `daux generate` in the root folder.
+
+## Viewing in Browser
+
+To view the generated HTML in the browser, use the `serve` command and browse
+to the reported URL on your browser. 
+
+## Where Is the Generated HTML
+
+Each time you build the Hazelcast IMDG Release Notes, its HTML output will be put into the **static** folder of this repo. Build process creates this folder automatically if it does not exist.
