@@ -1,74 +1,66 @@
+
+== 3.8.1
+
 The following are the enhancements introduced with 3.8.1 release.
 
--   Mutual authentication with TLS certificates: It allows the clients also to
-    have their keyStores and members to have their trustStores so that the
-    members can know which clients they can trust.
-- Introduced Offloadable and Readonly entry processors in order to significantly improve entry processors' throughput. Please see the [Entry Processor Performance Optimizations section](http://docs.hazelcast.org/docs/3.9/manual/html-single/index.html#entry-processor-performance-optimizations).
-
+* Mutual authentication with TLS certificates: It allows the clients
+also to have their keyStores and members to have their trustStores so
+that the members can know which clients they can trust.
+* Introduced Offloadable and Readonly entry processors in order to
+significantly improve entry processors’ throughput. Please see the
+http://docs.hazelcast.org/docs/3.9/manual/html-single/index.html#entry-processor-performance-optimizations[Entry
+Processor Performance Optimizations section].
 
 The following are the fixed issues for Hazelcast 3.8.1 release.
 
--   `BackupEntryProcessor` returned from `AbstractEntryProcessor` does not
-    support `HazelcastInstanceAware`.
-    [[\#10083]](<https://github.com/hazelcast/hazelcast/issues/10083>)
-
--   Updates performed with IMap's `putTransient` method should trigger
-    `EntryUpdatedListener`.
-    [[\#10077]](<https://github.com/hazelcast/hazelcast/issues/10077>)
-
--   Missing documentation for configuring log4j2 as logging framework.
-    [[\#9970]](<https://github.com/hazelcast/hazelcast/issues/9970>)
-
--   Management Center section in the Reference Manual is misleading when it
-    explains tool's behavior for clusters having more than two members.
-    [[\#9969]](<https://github.com/hazelcast/hazelcast/issues/9969>)
-
--   JCache bootstrap should have a way to reconciliate the existing
-    `HazelcastInstance`.
-    [[\#9958]](<https://github.com/hazelcast/hazelcast/issues/9958>)
-
--   Multicast configuration's `trusted-interfaces` element is not handled
-    properly on startup of the members.
-    [[\#9953]](<https://github.com/hazelcast/hazelcast/issues/9953>)
-
--   For Hazelcast 3.7.\*, MigrationListener's `migrationStarted` and
-    `migrationCompleted` methods are called for all partitions.
-    [[\#9919]](<https://github.com/hazelcast/hazelcast/issues/9919>)
-
--   While performing async operations test, OOME is thrown due to exceeding
-    garbage collection overhead, at the client side.
-    [[\#9665]](<https://github.com/hazelcast/hazelcast/issues/9665>)
-
--   Behavior of aggregators when extracted value is null should be
-    well-documented.
-    [[\#9858]](<https://github.com/hazelcast/hazelcast/issues/9858>)
-
--   Hazelcast Java client disconnects from the cluster with heartbeat problems.
-    [[\#8956]](<https://github.com/hazelcast/hazelcast/issues/8956>)
-
--   Currently the near cache updates does not guarantee the order of events for
-    a certain key. The updates are performed via asynchronous executor runs and
-    it does not guarantee the order of updates. Furthermore, the invalidations
-    via event service is also not ordered.
-    [[\#8652]](<https://github.com/hazelcast/hazelcast/issues/8652>)
-
--   Client's near cache implementation uses `userExecutor` which is also used
-    for other purposes such as making callbacks to lifecycle listeners. A client
-    may block an operation of the near cache updates by a slow lifecycle
-    listener. This needs to be addressed.
-    [[\#8651]](<https://github.com/hazelcast/hazelcast/issues/8651>)
-
--   Client has a configurable `hazelcast.client.max.concurrent.invocations`
-    property which limits the outstanding client requests. It is observed that
-    at some cases, for async calls, it is possible that this limit may not work
-    as expected and this may cause outstanding requests to grow which may cause
-    OOM. [[\#8568]](<https://github.com/hazelcast/hazelcast/issues/8568>)
-
--   When using a Hazelcast Client instance, if the `redoOperation` is set to
-    true, operations which failed to be sent to the cluster are retried, but
-    failures from executing the operation itself in the cluster are not.
-    [[\#8545]](<https://github.com/hazelcast/hazelcast/issues/8545>)
-
--   While updating the Hazelcast maps in the clustered environment, the
-    exception `TargetNotMember` is thrown.
-    [[\#7584]](<https://github.com/hazelcast/hazelcast/issues/7584>)
+* `BackupEntryProcessor` returned from `AbstractEntryProcessor` does not
+support `HazelcastInstanceAware`.
+https://github.com/hazelcast/hazelcast/issues/10083[[#10083]]
+* Updates performed with IMap’s `putTransient` method should trigger
+`EntryUpdatedListener`.
+https://github.com/hazelcast/hazelcast/issues/10077[[#10077]]
+* Missing documentation for configuring log4j2 as logging framework.
+https://github.com/hazelcast/hazelcast/issues/9970[[#9970]]
+* Management Center section in the Reference Manual is misleading when
+it explains tool’s behavior for clusters having more than two members.
+https://github.com/hazelcast/hazelcast/issues/9969[[#9969]]
+* JCache bootstrap should have a way to reconciliate the existing
+`HazelcastInstance`.
+https://github.com/hazelcast/hazelcast/issues/9958[[#9958]]
+* Multicast configuration’s `trusted-interfaces` element is not handled
+properly on startup of the members.
+https://github.com/hazelcast/hazelcast/issues/9953[[#9953]]
+* For Hazelcast 3.7.*, MigrationListener’s `migrationStarted` and
+`migrationCompleted` methods are called for all partitions.
+https://github.com/hazelcast/hazelcast/issues/9919[[#9919]]
+* While performing async operations test, OOME is thrown due to
+exceeding garbage collection overhead, at the client side.
+https://github.com/hazelcast/hazelcast/issues/9665[[#9665]]
+* Behavior of aggregators when extracted value is null should be
+well-documented.
+https://github.com/hazelcast/hazelcast/issues/9858[[#9858]]
+* Hazelcast Java client disconnects from the cluster with heartbeat
+problems. https://github.com/hazelcast/hazelcast/issues/8956[[#8956]]
+* Currently the near cache updates does not guarantee the order of
+events for a certain key. The updates are performed via asynchronous
+executor runs and it does not guarantee the order of updates.
+Furthermore, the invalidations via event service is also not ordered.
+https://github.com/hazelcast/hazelcast/issues/8652[[#8652]]
+* Client’s near cache implementation uses `userExecutor` which is also
+used for other purposes such as making callbacks to lifecycle listeners.
+A client may block an operation of the near cache updates by a slow
+lifecycle listener. This needs to be addressed.
+https://github.com/hazelcast/hazelcast/issues/8651[[#8651]]
+* Client has a configurable
+`hazelcast.client.max.concurrent.invocations` property which limits the
+outstanding client requests. It is observed that at some cases, for
+async calls, it is possible that this limit may not work as expected and
+this may cause outstanding requests to grow which may cause OOM.
+https://github.com/hazelcast/hazelcast/issues/8568[[#8568]]
+* When using a Hazelcast Client instance, if the `redoOperation` is set
+to true, operations which failed to be sent to the cluster are retried,
+but failures from executing the operation itself in the cluster are not.
+https://github.com/hazelcast/hazelcast/issues/8545[[#8545]]
+* While updating the Hazelcast maps in the clustered environment, the
+exception `TargetNotMember` is thrown.
+https://github.com/hazelcast/hazelcast/issues/7584[[#7584]]
