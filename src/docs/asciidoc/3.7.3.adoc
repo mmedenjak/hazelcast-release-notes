@@ -1,3 +1,6 @@
+
+== 3.7.3
+
 The following are the fixed issues for 3.7.3 release.
 
 * `MapLoader.loadAll(true)` does not reload after reloading with given
@@ -21,14 +24,14 @@ you are using ICache) 3.6.x to 3.7.3 then the servers should be started
 with `-Dhazelcast.compatibility.3.6.client=true` to enable existing
 3.6.x clients work properly. When upgrading from 3.7.1 and 3.7.2 to
 3.7.3 this is not needed.[9006]
-
-*_NOTE:_* _Please note that there is no change in the Hazelcast cluster
++
+NOTE: Please note that there is no change in the Hazelcast cluster
 member upgrade procedure; the cluster members cannot have mixed major
 versions (e.g., a cluster of 3.6.x member and 3.7.x member). The above
 change only relates to clients (the mixed clients are supported starting
 from version 3.6 with the Open Binary Client Protocol). Hence, you can
-have a 3.6.x client running with a 3.7.x cluster._
-
+have a 3.6.x client running with a 3.7.x cluster.
++
 * When clients lose connection to the nodes in the cluster, even after
 the clients reconnected to the cluster, the Entry/MessageListeners never
 fired again. When you register a listener, the registration to the

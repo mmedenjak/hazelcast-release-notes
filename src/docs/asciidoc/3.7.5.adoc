@@ -1,3 +1,6 @@
+
+== 3.7.5
+
 The following are the fixed issues for 3.7.5 release.
 
 * Map statistics are disappeared in Management Center when the member is

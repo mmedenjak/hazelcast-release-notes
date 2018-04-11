@@ -12,25 +12,24 @@ The following are the new features introduced with 3.8 release.
 
 * *Rolling Member Upgrades for Minor Releases*: You can upgrade your
 Hazelcast members to the next minor release without service
-interruption. Please refer to the Rolling Member Upgrades chapter.
+interruption. Please refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#rolling-member-upgrades[Rolling Member Upgrades chapter].
 * *Restore Hot Restart Data in a Different Cluster*: You will be able to
 restore Hot Restart data on a completely new cluster with different IP
 addresses or on a cluster of machines formed by existing and new IP
 addresses. Since this is a removal of a restriction or limitation,
 nothing will change for current Hot Restart Store users. Please refer to
-the Moving/Copying Hot Restart Data section.
+the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#moving-copying-hot-restart-data[Moving/Copying Hot Restart Data section].
 
 *_Hazelcast IMDG Open Source Features:_*
 
 * *Continuous Query Cache*: With this release, the previously Enterprise
-feature Continuous Query Cache becomes open source. Please refer to the
-Continuous Query Cache section.
+feature Continuous Query Cache becomes open source. Please refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#continuous-query-cache[Continuous Query Cache section].
 * *Cardinality Estimator*: Cardinality Estimator data structure is
 implemented on top of Hazelcast to estimate cardinality. Please refer to
-the Cardinality Estimator Service section.
+the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#cardinality-estimator-service[Cardinality Estimator Service section].
 * *Scheduled Executor Service*: Distributed implementation of Java’s
-`ScheduledExecutorService` API. Please refer to the Scheduled Executor
-Service section.
+`ScheduledExecutorService` API. Please refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#scheduled-executor-service [Scheduled Executor
+Service section].
 * *User Code Deployment*: Load your new classes to Hazelcast IMDG
 members dynamically without restarting all of them.
 
@@ -38,32 +37,31 @@ members dynamically without restarting all of them.
 
 The following are the enhancements introduced with 3.8 release.
 
-* *Fast Aggregations for Queries*: Please refer to Fast Aggregations
-section.
-* *Projections for Queries*: Please refer to Projections section.
+* *Fast Aggregations for Queries*: Please refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#fast-aggregations[Fast Aggregations
+section].
+* *Projections for Queries*: Please refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#projections[Projections section].
 * *Eventually Consistent Near Cache*: With this improvement, possible
 losses of invalidation events are detected and stale reads are
-prevented. Please refer to the Near Cache Eventual Consistency section.
+prevented. Please refer to the http://docs.hazelcast.org/docs/latest/manual/html-single/index.html#eventual-consistency[Near Cache Eventual Consistency section].
 * *Cluster Split-Brain Protection for Queue and Lock*: Split-brain
 protection is now available for the queue and lock data structures.
-Please refer to the sections Lock Split-Brain Protection and Queue
-Split-Brain Protection.
+Please refer to the sections http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#split-brain-protection-for-lock[Lock Split-Brain Protection] and http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#split-brain-protection-for-queue[Queue
+Split-Brain Protection.]
 * *Unified Near Cache Implementation*: Different near cache
 implementations for JCache, map, client side and member side are
-unified. You can refer to the Near Cache section.
+unified. You can refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#near-cache[Near Cache section].
 * *High Performance Near Cache*: A near cache preloader is introduced to
 preserve the information about which keys are used in a populated near
-cache. You can refer to the Near Cache Preloader section.
+cache. You can refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#near-cache-preloader[Near Cache Preloader section].
 * *`removeAll(predicate)` for Map*: You can remove all map entries that
-match your predicate. You can refer to the Removing Bulk Map Entries
-with Predicates section.
+match your predicate. You can refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#removing-bulk-map-entries-with-predicates[Removing Bulk Map Entries
+with Predicates section].
 * *Ringbuffer with Persistent Datastore*: Implemented for the Ringbuffer
-which is similar to the existing queue store mechanism. Please refer to
-Ringbuffer with Persistent Datastore section.
+which is similar to the existing queue store mechanism. Please refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#ringbuffer-with-persistent-datastore[Ringbuffer with Persistent Datastore section].
 * *Hazelcast Striim Hot Cache Adapter*: Hot Cache functionality based on
 Striim’s Change Data Capture (CDC) for the underlying database updates.
 Please note that this enhancement is available for Hazelcast Enterprise.
-Please refer to the Hazelcast Striim Hot Cache section.
+Please refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#hazelcast-striim-hot-cache[Hazelcast Striim Hot Cache section].
 * *One-off WAN Synchronization with Dynamically Added Endpoint*:
 Improvement to allow copying the maps’ all content to a target cluster
 dynamically in runtime. Please note that this enhancement is available
@@ -71,22 +69,22 @@ for Hazelcast Enterprise.
 * *Hot Restart Usability Improvements*: When a cluster with Hot Restart
 enabled is restarted, it starts in the ACTIVE state. Please note that
 this enhancement is available for Hazelcast Enterprise. Please refer to
-the Hot Restart Types section.
+the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#hot-restart-types[Hot Restart Types section].
 * *Hot Restart with Incomplete Members*: The restart procedure for a
 cluster having Hot Restart enabled is now more flexible by allowing you
 to do a partial start, which basically means that once the cluster is
 shutdown, it can be restarted with some missing members. Please note
 that this enhancement is available for Hazelcast Enterprise. Please
-refer to the Partial Start section.
+refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#partial-start[Partial Start section].
 * *Copy Hot Restart Store data from Source to Target*: You can copy Hot
 Restart Store data from a running cluster to a target without shutting
 down the source cluster. Please note that this enhancement is available
-for Hazelcast Enterprise. Please refer to the Hot Backup section.
+for Hazelcast Enterprise. Please refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#movingcopying-hot-restart-data[Moving/Copying Hot Restart Data section].
 * *Improvement in WAN Queue Full Behavior*: Now, Hazelcast throws an
 exception when the queue is full and replication is active, unless it is
 stopped on the Management Center. Please note that this enhancement is
-available for Hazelcast Enterprise. Please refer to the Queue Full
-Behavior section.
+available for Hazelcast Enterprise. Please refer to the http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#queue-full-behavior[Queue Full
+Behavior section].
 
 The following are the other improvements performed to solve the
 enhancement issues opened by the Hazelcast customers/team.
