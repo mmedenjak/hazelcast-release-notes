@@ -1,0 +1,52 @@
+
+== 3.2.4
+
+The following are the fixed issues for 3.2.4 release.
+
+* Assigning wrong item ID on backup when instance is shutdown in
+QueueStore. https://github.com/hazelcast/hazelcast/issues/2842[[#2842]]
+* `IQueue.take` throws HazelcastException instead of
+InterruptedException.
+https://github.com/hazelcast/hazelcast/issues/2833[[#2833]]
+* Hazelcast distribution has some left-over files.
+https://github.com/hazelcast/hazelcast/issues/2821[[#2821]]
+* Management Center cannot update map configuration on already created
+map proxies. https://github.com/hazelcast/hazelcast/issues/2810[[#2810]]
+* Transient test failure: `IMap.get(k)` returns null.
+https://github.com/hazelcast/hazelcast/issues/2804[[#2804]]
+* `IllegalArgumentException: Target cannot be null!` shows up when
+`MultipleEntryBackupOperationForNullValue` test is run by
+`executeOnKeys()` firstly.
+https://github.com/hazelcast/hazelcast/issues/2754[[#2754]]
+* When creating an instance with EntryProcessor, the backup process does
+not work. https://github.com/hazelcast/hazelcast/issues/2752[[#2752]]
+* Data loss happens in the web filter.
+https://github.com/hazelcast/hazelcast/issues/2746[[#2746]]
+* `BackupEntryProcessor` stores the value even though it is not set
+explicitly. https://github.com/hazelcast/hazelcast/issues/2613[[#2613]]
+* The test `listenerAddStress` fails often.
+https://github.com/hazelcast/hazelcast/issues/2611[[#2611]]
+* Predicate should fail when null argument is passed.
+https://github.com/hazelcast/hazelcast/issues/2577[[#2577]]
+* XAResourceWrapper does not honor contract of
+`XAResource#setTransactionTimeout`.
+https://github.com/hazelcast/hazelcast/issues/2569[[#2569]]
+* Allow `Predicates.and` and `Predicates.or` for more than 2 arguments.
+https://github.com/hazelcast/hazelcast/issues/2563[[#2563]]
+* Semaphore is given to the thread that is coming late.
+https://github.com/hazelcast/hazelcast/issues/2472[[#2472]]
+* `UnknownHostException` is logged when using hostnames for seed
+addresses. https://github.com/hazelcast/hazelcast/issues/2125[[#2125]]
+* The Java client seems to hang if there is blocking of a map call in
+map listener.
+https://github.com/hazelcast/hazelcast/issues/2106[[#2106]]
+* The cluster is not responsive when 2nd node joins.
+https://github.com/hazelcast/hazelcast/issues/2105[[#2105]]
+* Hibernate query caches are not configurable.
+https://github.com/hazelcast/hazelcast/issues/2064[[#2064]]
+* XA Transactions should be explained in the Reference Manual.
+https://github.com/hazelcast/hazelcast/issues/2020[[#2020]]
+* Encryption enabled results in cluster to hang under load.
+https://github.com/hazelcast/hazelcast/issues/1897[[#1897]]
+* SSL connections are unreliable.
+https://github.com/hazelcast/hazelcast/issues/1896[[#1896]]

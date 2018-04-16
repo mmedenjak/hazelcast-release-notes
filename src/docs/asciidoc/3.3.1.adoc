@@ -1,0 +1,52 @@
+
+== 3.3.1
+
+The following are the fixed issues for 3.3.1 release.
+
+* MapReduce Combiner creation is not threadsafe, but certain operations
+on mapping phase might need a concurrent creation of the combiners
+https://github.com/hazelcast/hazelcast/issues/3625[[#3625]].
+* When `connectionTimeout` property in ClientNetworkConfig is set to
+`Integer.MAX_VALUE`, the client could not connect to cluster since a
+default 2000 ms. extra value is added to `connectionTimeout` while
+connecting https://github.com/hazelcast/hazelcast/issues/3615[[#3615]].
+* User provided list results from combiner is colliding with the
+internally used multi-result list
+https://github.com/hazelcast/hazelcast/issues/3614[[#3614]].
+* While committing collection transactions, the collection item is being
+added to the collection container. However, this gives the warning
+``There is no suitable de-serializer for type'' warning. Instead of
+collection item, transactional item should be added to the container
+https://github.com/hazelcast/hazelcast/issues/3603[[#3603]].
+* `MaxSizeConfig` constructor should convert zero size to
+`Integer.MAX_VALUE`
+https://github.com/hazelcast/hazelcast/issues/3579[[#3579]].
+* If deserialization of the client request fails, the exception is not
+propagated back to the client
+https://github.com/hazelcast/hazelcast/issues/3557[[#3557]].
+* ``Lock is not owned by by the transaction'' exception. This exception
+was received while testing how transactions are working with Map and
+MultiMap for some last Hazelcast releases
+https://github.com/hazelcast/hazelcast/issues/3545[[#3545]].
+* Main classes in `manifest.mf` files are not correctly set
+https://github.com/hazelcast/hazelcast/issues/3537[#3537].
+* Count of evicted events may exceed the map size when ``read backup
+data'' feature is enabled
+https://github.com/hazelcast/hazelcast/issues/3515[#3515].
+* `mancenter.war` from Hazelcast release 3.2.5 cannot be deployed to
+Glassfish 3.1.2.2 and it fails to deploy
+https://github.com/hazelcast/hazelcast/issues/3501[#3501].
+* While evicting entries from a map with the method `evictAll`, locked
+keys should stay in the map
+https://github.com/hazelcast/hazelcast/issues/3473[#3473].
+* In `hazelcast-vm` module, before every test, new server container is
+started. And after every test, running server is terminated. This
+behavior causes a long test execution time. Server start-up and
+termination should be done before and after test class initialization
+and finalization
+https://github.com/hazelcast/hazelcast/issues/3473[#3473].
+* The method `IQueue.take()` method should throw InterruptedException,
+but throws HazelcastException instead
+https://github.com/hazelcast/hazelcast/issues/3133[#3133].
+* Multicast discovery doesn’t work without network
+https://github.com/hazelcast/hazelcast/issues/2594[#2594].

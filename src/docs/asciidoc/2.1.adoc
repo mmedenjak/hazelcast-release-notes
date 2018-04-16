@@ -1,0 +1,40 @@
+
+== 2.1
+
+This section lists the new features, enhancements and fixed issues for
+2.1 release.
+
+=== New Features and Changes
+
+The following are the new features and changes introduced with 2.1
+release.
+
+* Hazelcast now supports IPv6 addresses seamlessly.
+* Added async backup support.
+* Hazelcast now can be used as Spring Cache provider.
+* Spring Dependency Injection support: Hazelcast can apply bean
+properties or to apply factory callbacks such as
+ApplicationContextAware, BeanNameAware or to apply bean post-processing
+such as InitializingBean, @PostConstruct like annotations while using
+Hazelcast distributed ExecutorService or DistributedTasks or more
+generally any Hazelcast managed object.
+* Added persistence support with Spring-Data MongoDB and JPA
+integration.
+* `Member.getUuid()` now will return UUID for node.
+* Improved session clustering configuration.
+
+=== Fixes
+
+The following are the fixed issues and enhancements for 2.1 release.
+
+* Hazelcast client breaks the lifecycle listeners. [130]
+* The Spring bean attributes `lazy-init` and `scope` should be added.
+[118]
+* Spring configuration namespace is missing `lock`. [116]
+* `MaxSizeHeapPolicy` issue causing improper evictions and freezes.
+[110]
+* `NullPointerException` is thrown by the method `tx.commit()`. [108]
+* Hazelcast client does not shutdown properly if no connection can be
+established. [101]
+* It would be nice to have ``semi-asynchronous'' replication for
+Hazelcast. [92]

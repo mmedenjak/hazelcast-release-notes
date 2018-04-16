@@ -1,0 +1,8 @@
+
+
+== 2.6.9
+
+The following is the fixed issue for 2.6.9 release.
+
+- Hazelcast cannot match hostnames when wildcards are used in `interfaces` configuration element. [2396]
+

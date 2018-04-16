@@ -1,7 +1,6 @@
 
 == 3.9
 
-[[new-features]]
 === New Features
 
 *_Hazelcast IMDG Enterprise Features:_*
@@ -21,7 +20,6 @@ the
 http://docs.hazelcast.org/docs/3.9/manual/html-single/index.html#dynamically-adding-configuration-on-a-cluster[Dynamically
 Adding Configuration on a Cluster section].
 
-[[enhancements]]
 === Enhancements
 
 *_Hazelcast IMDG Enterprise Enhancements:_*

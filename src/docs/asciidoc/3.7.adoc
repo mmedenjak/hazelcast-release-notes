@@ -9,18 +9,17 @@ removed or deprecated features for 3.7 release.
 The following are the new features introduced with 3.7 release.
 
 * *Custom Eviction Policies*: You can implement and use your own
-eviction policy. Please refer to the Custom Eviction Policy section.
+eviction policy. Please refer to the http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#custom-eviction-policy[Custom Eviction Policy section].
 * *Discovery SPI Implementation for Microsoft Azure Services*: Hazelcast
 members can be discovered within your Azure resource group. You can add
-this implementation as a plugin to your projects. Please refer to
-Hazelcast-Azure plugin page.
+this implementation as a plugin to your projects. Please refer to https://github.com/sedouard/hazelcast-azure[Hazelcast-Azure plugin page].
 * *Hazelcast CLI with Scripting*: A command line interface that supports
 scripting. You can automate cluster operations such as start, stop, and
-force start using shell scripting. Please refer to Hazelcast CLI plugin
+force start using shell scripting. Please refer to https://github.com/hazelcast/hazelcast-cli[Hazelcast CLI] plugin.
 page.
 * *Hazelcast for OpenShift and CloudFoundry*: Hazelcast members on
 OpenShift and CloudFoundry can discover each other. Please refer to
-Hazelcast OpenShift and Hazelcast CloudFoundry plugin pages.
+https://hub.docker.com/r/hazelcast/openshift/[Hazelcast OpenShift] and https://github.com/hazelcast/hazelcast-cloudfoundry[Hazelcast CloudFoundry] plugin pages.
 * *Apache Spark Connector:* A plugin which allows Hazelcast maps and
 caches to be used as shared RDD caches by Spark using the Spark RDD API.
 Please refer to the plugin’s repo at Spark Connector for Hazelcast.
@@ -30,11 +29,10 @@ connected through WAN. WAN replication mirrors changes from a map or
 cache in one cluster to another. It was maintaining the alignment but
 was not attaining. Now when the receiving cluster is empty and the
 sending cluster is not, objects are aligned. And if changes have been
-dropped for any reason, realignment is attained. Please refer to the
-Synchronizing WAN Target Cluster section.
+dropped for any reason, realignment is attained. Please refer to the http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#synchronizing-wan-target-cluster[Synchronizing WAN Target Cluster section].
 * *Fault Tolerant Executor Service:* This new data structure is
 introduced to guarantee that no execution tasks will be lost when a
-member goes down. Please refer to the Durable Executor Service section.
+member goes down. Please refer to the http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#durable-executor-service[Durable Executor Service section].
 
 === Enhancements
 
@@ -72,9 +70,7 @@ Etcd, and Eureka. Please refer to its repo at
 https://github.com/hazelcast/hazelcast-docker[Hazelcast Docker].
 * *Phone Home Enhancements:* Performed to collect new phone home data to
 learn more about the environment on which Hazelcast runs. Please refer
-to the
-http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#phone-home[Phone
-Home section].
+to the http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#phone-home[Phone Home section].
 * *`IMap.putAll()` Performance Enhancements:* The performance of
 `putAll` operation is improved by reducing the number of remote
 operations and supporting batching.
@@ -82,9 +78,7 @@ operations and supporting batching.
 relation between a Hazelcast instance and JCache is established with
 this enhancement. You can retrieve and access caches via the method
 `getCache(String name)` over `HazelcastInstance` API. Please refer to
-the
-http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#jcache-hazelcast-instance-integration[JCache
-- Hazelcast Instance Integration section].
+the http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#jcache-hazelcast-instance-integration[JCache - Hazelcast Instance Integration section].
 * *Indexing with Predicates for Entry Processors:* Entry Processor can
 use indexing when a predicate is used to filter entries that need to be
 processed. Please refer to the

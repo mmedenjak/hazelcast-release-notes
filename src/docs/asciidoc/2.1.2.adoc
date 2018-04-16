@@ -1,0 +1,9 @@
+
+== 2.1.2
+
+The following are the fixed issues and enhancements for 2.1.2 release.
+
+* The method `containsKey()` does not work on a single node with the
+default near cache configuration. [174]
+* The method Transactional `IMap.get(key)` causes the key to be added to
+map. [161]

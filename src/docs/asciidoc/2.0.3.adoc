@@ -1,0 +1,22 @@
+
+== 2.0.3
+
+The following are the fixed issues and enhancements for 2.0.3 release.
+
+* Increasing amount of stuck Hazelcast threads in weblogic; in a
+clustered environment and also when running a single instance. [160]
+* Hyphens in the group names confuse the Management Center. It treats
+the group name as two separate tokens. [128]
+* Split-brain merge handling causes the locks never to be acquired
+again. [127]
+* `ConfigXmlGenerator` does not handle the TTL correctly when multicast
+joining mechanism is used. [127]
+* Data is lost in a map when adding a key the second time after a new
+member joins the cluster. [117]
+* Listeners are not called when a queue is changed within a transaction.
+[114]
+* Programmatic session destruction does not lead to the destruction of
+the clustered session. [104]
+* The name for `hazelcast.sessionId` should be configurable. [103]
+* There is an issue in concurrent `queue.take()` and
+`txn.rollback()`.[99]
