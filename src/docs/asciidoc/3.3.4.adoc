@@ -1,0 +1,71 @@
+
+== 3.3.4
+
+The following are the fixed issues for 3.3.4 release.
+
+* Predicate with short values is not working
+https://github.com/hazelcast/hazelcast/issues/4293[[#4293]].
+* Hits statistics copy and paste error in the method `ReplicatedRecord`
+https://github.com/hazelcast/hazelcast/issues/4254[[#4254]].
+* Serialization error on the ReplicatedMap when in-memory format is set
+to `BINARY` https://github.com/hazelcast/hazelcast/issues/4205[[#4205]].
+* Too long exception stacktraces if the Hazelcast client fails to
+receive data, and this leads to a failure on the client
+https://github.com/hazelcast/hazelcast/issues/4192[[#4192]].
+* Hazelcast client registers the translated public address instead of
+its own private address to the list of connections. This causes the
+client not to be able to remove the connection correctly
+https://github.com/hazelcast/hazelcast/issues/4190[[#4190]].
+* `TransactionType:Local` emits exceptions while committing. The normal
+behavior should be throwing the exceptions to the user
+https://github.com/hazelcast/hazelcast/issues/4160[[#4160]].
+* Map replication should mark expirable recordstore. Otherwise, in some
+situations, if one does not set the map wide expiration or map wide TTL,
+the key based TTL expiration may not work
+https://github.com/hazelcast/hazelcast/issues/4144[[#4144]].
+* The method `BasicInvocationFuture.response` should be cleared when
+`BasicInvocation.WAIT_RESPONSE` is read by the waiter thread. Otherwise,
+when the retry operation takes too much time, the waiting thread sees
+the same wait response multiple times and the operation may not timeout
+forever https://github.com/hazelcast/hazelcast/issues/4123[[#4123]].
+* Topic listeners should be unregistered when topic is destroyed
+https://github.com/hazelcast/hazelcast/issues/4117[[#4117]].
+* Invocations (and their operations) remain in the invocations map
+forever if the operation timeouts without a response
+https://github.com/hazelcast/hazelcast/issues/4113[[#4113]].
+* Timeout is needed for parallel query operations
+https://github.com/hazelcast/hazelcast/issues/4074[[#4074]].
+* Initial map load and `max-size-policy` conflict
+https://github.com/hazelcast/hazelcast/issues/4066[[#4066]].
+* MapStore operations should be retried and performed eventually after a
+temporary failure
+https://github.com/hazelcast/hazelcast/issues/4061[[#4061]].
+* The class `SynchronizedWriteBehindQueue` (from
+`com.hazelcast.map.mapstore.writebehind` package) is declared threadsafe
+in JavaDocs, but it is not
+https://github.com/hazelcast/hazelcast/issues/4039[[#4039]].
+* The method `RemoveIfSameOperation` does not set `dataOldValue` for the
+`entryRemoved` event
+https://github.com/hazelcast/hazelcast/issues/4037[[#4037]].
+* When a new node with a new field is added to a cluster and when a
+query over this node is attempted, the old nodes throw an exception
+(`com.hazelcast.query.QueryException: Unknown Portable field: newFieldName`)
+and the query fails by throwing the same exception.
+https://github.com/hazelcast/hazelcast/issues/3927[[#3927]].
+* At the moment, the internal state fields of a `Reducer` are required
+to be volatile to ensure the memory visibility effects after the
+suspension and continuation of a reducer. This requirement should be
+moved to be handled by the framework itself since it is tend to be
+forgotten https://github.com/hazelcast/hazelcast/issues/3866[[#3866]].
+* The method `executeOnKey` hangs when the server fails to handle a
+query https://github.com/hazelcast/hazelcast/issues/3842[[#3842]].
+* The `GlobalSerializerConfig#setImplementation()` parameter should be
+compatible with the implementation field
+https://github.com/hazelcast/hazelcast/issues/3569[[#3569]].
+* `ClientConsoleApp` should not define the file `hazelcast-client.xml`
+https://github.com/hazelcast/hazelcast/issues/3554[[#3554]].
+* When using a custom partitioning strategy and the configured backup
+count of a map cannot be fulfilled since a node defined in the custom
+partition group is down, a JMX service call is blocked in the while-loop
+at `com.hazelcast.map.MapService.createLocalMapStats`
+https://github.com/hazelcast/hazelcast/issues/3526[[#3526]].

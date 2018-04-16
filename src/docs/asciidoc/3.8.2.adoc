@@ -1,0 +1,48 @@
+
+== 3.8.2
+
+The following are the fixed issues for Hazelcast 3.8.1 release.
+
+* Even though a `CachePermission` already exists, the respective
+`PermissionType` does not exist and cannot be configured
+programmatically or declaratively.
+https://github.com/hazelcast/hazelcast/issues/10503[[#10503]]
+* Management Center reports incorrect values for backups. Given that
+there is one copy of the data across a native map, it is expected to see
+identical memory footprint on the entry and the backups with identical
+sum across a server. But it is not the case.
+https://github.com/hazelcast/hazelcast/issues/10454[[#10454]]
+* There is a memory leak caused by `ThreadGroup`.
+https://github.com/hazelcast/hazelcast/issues/10394[[#10394]]
+* Split-Brain messages still occupy the memory after recovery.
+https://github.com/hazelcast/hazelcast/issues/10325[[#10325]]
+* When shutting down a client with a topic subscription, it logs a
+warning level exception which seems harmless. It is not good to log a
+harmless exception as warning.
+https://github.com/hazelcast/hazelcast/issues/10291[[#10291]]
+* There is a race condition in the back pressure at the client side
+which causes the back pressure not to work.
+https://github.com/hazelcast/hazelcast/issues/10253[[#10253]]
+* Ringbuffer OutOfMemoryError: GC overhead limit exceeded.
+https://github.com/hazelcast/hazelcast/issues/10189[[#10189]]
+* `ClientContext` is created for every proxy and it causes unneeded
+resource allocations.
+https://github.com/hazelcast/hazelcast/issues/10117[[#10117]]
+* Hazelcast terminates listeners incorrectly.
+https://github.com/hazelcast/hazelcast/issues/10101[[#10101]]
+* When hostname is used in the Hazelcast member configuration instead of
+IP address, `NullPointerException` is thrown.
+https://github.com/hazelcast/hazelcast/issues/9884[[#9884]]
+* When using a Hazelcast Client instance, if the `redoOperation` is set
+to true, operations which failed to be sent to the cluster are retried,
+but failures from executing the operation itself in the cluster are not.
+https://github.com/hazelcast/hazelcast/issues/8545[[#8545]]
+
+=== Behavioral Changes
+
+* Starting with 3.8.2, members with the same group name but with
+different group passwords (that do not use authentication) form a
+cluster. Before this release, group passwords needed to be the same too.
+Please see
+http://docs.hazelcast.org/docs/3.8.2/manual/html-single/index.html#creating-cluster-groups[Cluster
+Groups] for more information on creating cluster groups.

@@ -1,0 +1,26 @@
+
+== 3.3.2
+
+The following are the fixed issues for 3.3.2 release.
+
+* Reject multicast messages if the group configuration is not matching
+https://github.com/hazelcast/hazelcast/issues/3806[[#3806]].
+* `Map#getEntryView` should check expiration of a key
+https://github.com/hazelcast/hazelcast/issues/3801[[#3801]].
+* Hazelcast gets stuck in `HazelcastInstanceNotActiveException` loop
+during multicast join
+https://github.com/hazelcast/hazelcast/issues/3732[[#3732]].
+* Hazelcast fails to comply with `maxIdleTime` expiration when running
+EntryProcessors. A delay should be added to expiration times on backups
+https://github.com/hazelcast/hazelcast/issues/3710[[#3710]].
+* `containsKey()` in transactional context returns wrong value for keys
+deleted within transaction
+https://github.com/hazelcast/hazelcast/issues/3682[[#3682]].
+* `TransactionalMap.values()` returns stale values that was updated
+within the transaction boundary
+https://github.com/hazelcast/hazelcast/issues/3668[[#3668]].
+* Number of loaded keys should not exceed map’s maximum size
+https://github.com/hazelcast/hazelcast/issues/3608[[#3608]].
+* During client node shutdown, if the cluster happens to be down,
+Hazelcast logs some extra messages at SEVERE level
+https://github.com/hazelcast/hazelcast/issues/3493[[#3493]].

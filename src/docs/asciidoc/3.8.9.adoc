@@ -1,0 +1,5 @@
+
+== 3.8.9
+
+No changes for the Hazelcast IMDG Open Source edition. This release is
+due to a change in the Hazelcast IMDG Enterprise Edition.

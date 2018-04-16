@@ -1,0 +1,8 @@
+
+== 3.7.7
+
+The following is the fixed issue for 3.7.7 release.
+
+* Servers should throw exception when message type is not known. Client
+protocol is defined to throw an exception when a client sends a client
+message with unknown type to server. [10196], [10203]

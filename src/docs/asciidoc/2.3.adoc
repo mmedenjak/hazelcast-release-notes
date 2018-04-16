@@ -1,0 +1,72 @@
+
+== 2.3
+
+This section lists the new features, enhancements and fixed issues for
+2.3 release.
+
+=== New Features and Changes
+
+The following are the new features and changes introduced with 2.3
+release.
+
+* Changed `hazelcast.max.operation.timeout` unit from seconds to
+milliseconds.
+* Added `hazelcast.max.concurrent.operation.limit` property to be able
+to limit the number of concurrent operations that can be submitted to
+Hazelcast.
+* Added `hazelcast.backup.redo.enabled` property to enable/disable redo
+for backup operations.
+* Added MultiMap and Distributed ExecutorService statistics to
+Management Center application.
+* `MigrationListener` has now an additional method to receive failed
+migration events; `void migrationFailed(MigrationEvent migrationEvent)`.
+* `ItemEvent` has now an additional method returning Member firing that
+event; `public Member getMember()`.
+* Improved out of memory (OOM) error detection and handling. Now it is
+possible to register a custom hook when OutOfMemoryError is thrown.
+* Fixed some issues related to domain name handling and networking/join.
+* During cluster merge after a network split-brain, merging side will
+now fire MERGING and MERGED before and after RESTARTING and RESTARTED
+LifecycleEvents.
+
+=== Fixes
+
+The following are the fixed issues and enhancements for 2.3 release.
+
+* Operation exceptions occur randomly while the SQL predicates are
+stress tested. [263]
+* `EOF` exception is thrown in Management Center. [252]
+* The method `IMap.flush()` delegates map store exceptions to the caller
+instead of suppressing them. [250]
+* Node appears to be in multiple clusters. [247]
+* It would be nice to have Spring support in Runnable tasks. [244]
+* MERGING and MERGED events should be fired during a split-brain merging
+process. [241]
+* A problem occurs during a quick restart of master node. [235]
+* Distributed `tryLock()` throws `NullPointerException` from lite
+member. [233]
+* Using domain instead of IP address is problematic. [230]
+* The method `MultiMap.lock()` blocks forever. [228]
+* `SimpleMapTest` uses deprecated method `Hazelcast.getLoggingService()`
+and annoys WebLogic 12. [227]
+* `ItemEvent` should have a `getMember` method to return the member that
+offered/polled an item. [226]
+* The consumers do `queue.take()` and block until something is put on
+the queue. In Hazelcast 2.1.2, this was fine, but in 2.2, it causes a
+massive amount of WARN-level log spam. [225]
+* The method `MultiMap.put()` is inconsistent when the key is locked by
+another node/thread. [223]
+* FAILED event should be fired when migration fails for some reason.
+[222]
+* `Runtime` exception is thrown when accessing to queue after client
+restarted. [220]
+* Using the client, once it tries to access the cache while the cache is
+unavailable, the client cannot be used anymore after the server cache
+becomes available. [218]
+* The methods `DistributedTask.get()` and `MultiTask.get()` throw
+`OperationTimeoutException`. [217]
+* There are a couple of classes that do not implement `toString`, that
+makes the `Config.toString` message incomplete. [209]
+* Hazelcast IMap ignores the size capacity. [188]
+* Hazelcast resource adapter package (version 2.1.2) does not deploy on
+JBoss 7.1.1. [182]

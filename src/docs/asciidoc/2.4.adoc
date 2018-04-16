@@ -1,0 +1,44 @@
+
+== 2.4
+
+This section lists the new features, enhancements and fixed issues for
+2.4 release.
+
+=== New Features
+
+The following are the new features introduced with 2.4 release.
+
+* Client threads does not have fixed size anymore, now it uses internal
+Hazelcast cached thread pool.
+* Added ability to restrict outbound ports that Hazelcast uses to
+connect to other nodes.
+
+=== Fixes
+
+The following are the fixed issues and enhancements for 2.4 release.
+
+* Hazelcast Management Center’s ``Configuration has been successfully
+updated.'' notification is never removed. [301]
+* Map maximum size does not take into account that some cluster members
+are lite members and cannot hold any data. Thus, the map becomes smaller
+than the size it was configured. [292]
+* The method `map.containsKey()` does not reset the idle time counter.
+[288]
+* In Hazelcast 2.3.1, the property `hazelcast.local.localAddress` is
+used only when provided directly from `System.properties`. [282]
+* Data removed under transaction sometimes could not be removed from the
+backup. [277]
+* Map initialization should not use the default executor service. [276]
+* In Hazelcast 2.3.1, Hazelcast got into a state where the list of
+members on some of the nodes do not match up. [274]
+* Map `EntryListener` is not working correctly if one master is
+restarted. [269]
+* `IMap.tryLockAndGet`: There is a concurrency error when the map has
+map store. [268]
+* Error in `com.hazelcast.query.Predicates.NotEqualPredicate`. [262]
+* Partition Group with group type CUSTOM should honor configured
+backups. [260]
+* Messages are lost while moving them inside a transaction. [259]
+* Enable Hazelcast to use specified port ranges to accommodate firewall
+policies. [251]
+* Seeing multiple concurrent locks on a distributed lock. [168]

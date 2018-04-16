@@ -1,0 +1,18 @@
+
+== 2.1.3
+
+The following are the fixed issues and enhancements for 2.1.3 release.
+
+* Hazelcast IList evicts the items using the default map TTL. [196]
+* Nodes with EC2 auto-discovery do not rejoin the cluster after a
+network outage. [195]
+* The method `remove()` cannot be called on a Hazelcast Set iterator.
+[189]
+* Topic does not receive messages when using Spring injection. [186]
+* The method `IMap.set()` should not load data from map store. [185]
+* `EntryListener` for native clients receives duplicate events. [183]
+* Listeners do not work when used with locks and `remove`. [196]
+* The package `hazelcast-spring` dependencies on Hibernate and MongoDB
+should be optional. [179]
+* Backup entry count is smaller than the owned entries. [177]
+* Queries on enum indexed types return an empty result set. [176]

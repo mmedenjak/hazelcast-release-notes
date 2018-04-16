@@ -1,0 +1,9 @@
+
+== 3.8.8
+
+The following is the enhancement for Hazelcast 3.8.8 release.
+
+* MulticastJoiner’s Split-Brain handler should broadcast a new
+Split-Brain message only when it detects the other side should join, not
+on every merge interval.
+https://github.com/hazelcast/hazelcast/pull/11888[[#11888]]

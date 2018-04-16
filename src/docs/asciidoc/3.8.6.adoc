@@ -1,0 +1,31 @@
+
+== 3.8.6
+
+The following are fixed issues and enhancements for Hazelcast 3.8.6
+release.
+
+* Fixed local execution Spring context injection on the Scheduled
+Executor tasks.
+https://github.com/hazelcast/hazelcast/pull/11374/[[#11374]]
+* `toHeapData` should be used when converting native data to heap data.
+https://github.com/hazelcast/hazelcast/pull/11361/[[#11361]]
+* Prefix for the diagnostics file name should be configurable.
+https://github.com/hazelcast/hazelcast/issues/11345[[#11345]]
+* Client 3.8.4 (and newer versions) with near cache gets
+`java.lang.UnsupportedOperationException` when it is connected to 3.7.x
+cluster. https://github.com/hazelcast/hazelcast/issues/11343[[#11343]]
+* Notifications from a Hazelcast member through ITopic listeners
+(MessageListener) are being lost.
+https://github.com/hazelcast/hazelcast/issues/11264[[#11264]]
+* Address validation for the client network configuration is missing.
+https://github.com/hazelcast/hazelcast/issues/11242[[#11242]]
+* The client is unable to connect to any address in the configuration,
+after some hours.
+https://github.com/hazelcast/hazelcast/issues/11194[[#11194]]
+* There are errors when using discovery strategy in the Hazelcast
+client. https://github.com/hazelcast/hazelcast/issues/11116[[#11116]]
+* Hazelcast terminates the listeners incorrectly (for 3.7.6).
+https://github.com/hazelcast/hazelcast/issues/10101[[#10101]]
+* The explanation for `InvalidConfigurationException` (for query caches)
+should be more clear.
+https://github.com/hazelcast/hazelcast/issues/9988[[#9988]]

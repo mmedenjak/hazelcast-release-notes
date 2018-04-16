@@ -1,0 +1,44 @@
+
+== 3.5.3
+
+The following are the fixed issues for Hazelcast 3.5.3 release.
+
+* `ClientInvocationFuture` may hang when the deserialized response is
+null. https://github.com/hazelcast/hazelcast/issues/6363[[#6363]].
+* The method `CacheStatisticsImpl::getAverageRemoveTime()` uses the
+``get'' count on the cache but it must use the ``remove'' count.
+https://github.com/hazelcast/hazelcast/issues/6314[[#6314]].
+* Hazelcast `console.sh` should support changing namespaces that contain
+space characters.
+https://github.com/hazelcast/hazelcast/issues/6307[[#6307]].
+* The client fails to properly reconnect to a single node cluster after
+the Hazelcast server is restarted.
+https://github.com/hazelcast/hazelcast/issues/6168[[#6168]].
+* Transactional Queue ordering on rollback can be violated. The reason
+is that the `QueueContainer` does not rollback the changes in the order
+that is opposite to the order of the items when they were added. It is a
+random order due to the fact that the changes are stored in a hashmap.
+https://github.com/hazelcast/hazelcast/issues/6156[[#6156]].
+* When a field, that is only available in a subclass of an interface, is
+indexed, Null Pointer Exception is thrown.
+https://github.com/hazelcast/hazelcast/issues/6151[[#6151]].
+* Extra `\r\n` in the body of the REST API responses causing warnings.
+https://github.com/hazelcast/hazelcast/issues/6144[[#6144]].
+* Near cache on the client size for replicated map does not get
+invalidated after replicated map changes.
+https://github.com/hazelcast/hazelcast/issues/5508[[#5694]].
+* `IList.iterator()` and `listIterator()` do not support the method
+`iterator.remove()`.
+https://github.com/hazelcast/hazelcast/issues/5508[[#5508]].
+
+The following are the enhancements performed for Hazelcast 3.5.3
+release.
+
+* Cache statistics are only supported at the server side and exposed by
+`CacheProxy`. At the client side, cache statistics are not calculated
+and supported so `UnsupportedOperationException` is thrown at
+`ClientCacheProxy`
+https://github.com/hazelcast/hazelcast/issues/6262[[#6262]].
+* Added `iam-role` support to Hazelcast Cloud module. So users can use
+Hazelcast Cloud module without configuring access keys.
+https://github.com/hazelcast/hazelcast/issues/2630[[#6262]].

@@ -1,0 +1,7 @@
+
+== 3.3.5
+
+The following is the fixed issue for 3.3.5 release.
+
+* Make write-coalescing configurable for write-behind map-stores
+https://github.com/hazelcast/hazelcast/issues/4438[[#4438]].
