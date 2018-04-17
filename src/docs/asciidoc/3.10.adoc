@@ -25,7 +25,9 @@
 The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
 
 - Split-brain merge policy design issues: the SPI design requires downcasting in the merge policy classes. It is also unclear which merge policy is compatible with which data structure. https://github.com/hazelcast/hazelcast/issues/12721[[#12721]]
+- Added ID count to flake ID generators statistics. https://github.com/hazelcast/hazelcast/pull/12612[[#12612]]
 - `MemberMap.SINGLETON_MEMBER_LIST_VERSION` value should be configurable. https://github.com/hazelcast/hazelcast/issues/12528[[#12528]]
+- It is still required to provide a group and password while configuring with Spring: the attribute `required` should be removed from the tag `group` both for name and password elements. https://github.com/hazelcast/hazelcast/issues/12462[[#12462]]
 - Group passwords should not be serialized in `ConfigCheck`. https://github.com/hazelcast/hazelcast/issues/12303[[#12303]]
 - When custom merge policy is not appropriate, there should be a fail-fast. https://github.com/hazelcast/hazelcast/issues/12284[[#12284]]
 - Code comments for `Hazelcast.shutdownAll()` should be improved: it talks about shutting down all running Hazelcast instances in the JVM. However, native clients, which are also Hazelcast instances, are not shut down when this method is called. https://github.com/hazelcast/hazelcast/issues/12217[[#12217]]
