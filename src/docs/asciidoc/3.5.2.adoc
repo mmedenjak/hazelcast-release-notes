@@ -5,7 +5,7 @@ The following are the fixed issues for Hazelcast 3.5.2 release.
 
 * There is a performance issue: Even when the Spring boot application is
 doing nothing, CPU consumption is very high. A thread named
-``.hazelcast-wm.ensureInstance'' consumes CPU around 70% because of the
+`hazelcast-wm.ensureInstance` consumes CPU around 70% because of the
 method `ClusteredSessionService.run()`
 https://github.com/hazelcast/hazelcast/issues/6052[[#6052]].
 * MapLoader blocks the entire partition when loading a single entry

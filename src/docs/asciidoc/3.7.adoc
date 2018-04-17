@@ -200,7 +200,7 @@ be applied for operation state. [8546]
 * When the connection is made, the connection type is not known yet. But
 the connection type is used in the metrics ID; this id is used as soon
 as the connection is made. So it defaults to NONE in the method
-`getMetricsId`. It would be better to add a probe ``connection type''
+`getMetricsId`. It would be better to add a probe `connection type`
 and remove the connection type from the method
 `TcpIpConnection.getMetricsId`. [8540]
 * Commit failure on clients sets the transaction state to ROLLING_BACK,

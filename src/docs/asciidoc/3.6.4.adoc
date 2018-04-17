@@ -16,7 +16,7 @@ have a proxy in its registry, then it will not fire
 `MapPartitionLostListener`. Before firing a partition lost event,
 proxies should be waited to be created. [8293]
 * Ensure skipping previously removed `CacheEntryListenerConfiguration`
-entries while iterating over added `CacheEntryListenerConfiguration`s in
+entries while iterating over added `CacheEntryListenerConfiguration` s in
 the `CacheConfig` to register listeners. [8283]
 * Hazelcast instance is started without problems but Management Center
 does not launch and throws an exception when bundled Jetty is used with
