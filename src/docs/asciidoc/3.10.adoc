@@ -144,8 +144,8 @@ With 3.10, the method `Config.findCacheConfig` is aligned to behave like the oth
 
 === Removed/Deprecated Features
 
-- The data structure `IdGenerator` is deprecated. It could produce duplicate IDs in case of a network split, even with split-brain protection being enabled. Use http://docs.hazelcast.org/docs/3.10/manual/html-single/index.html#flakeidgenerator[Flake ID Generator] for an alternative implementation which does not suffer from the mentioned issue.
-- Following system properties are deprecated:
-  - `hazelcast.master.confirmation.interval.seconds`
-  - `hazelcast.max.no.master.confirmation.seconds`
-  - `hazelcast.mc.max.visible.instance.count`
+* The data structure `IdGenerator` is deprecated. It could produce duplicate IDs in case of a network split, even with split-brain protection being enabled. Use http://docs.hazelcast.org/docs/3.10/manual/html-single/index.html#flakeidgenerator[Flake ID Generator] for an alternative implementation which does not suffer from the mentioned issue.
+* Following system properties are deprecated:
+** `hazelcast.master.confirmation.interval.seconds`
+** `hazelcast.max.no.master.confirmation.seconds`
+** `hazelcast.mc.max.visible.instance.count`
