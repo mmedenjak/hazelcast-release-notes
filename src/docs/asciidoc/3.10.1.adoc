@@ -1,0 +1,11 @@
+
+
+== 3.10.1
+
+
+=== Fixes
+
+- The method `readManyAsync()` throws different exceptions when there is no quorum: The client fails with `QuorumException`, and member fails with `ExecutionException`. https://github.com/hazelcast/hazelcast/pull/13065[[#13065]]
+- It is expected to get `HazelcastSerializationException` from the method `future.get()`, however, it hangs when the response is not serializable. https://github.com/hazelcast/hazelcast/issues/12956[[#12956]]
+- `CachePutBackupOperation`: When an entry is evicted on the primary member, it is also evicted on the backup members. This causes the method `LocalCacheStats.getCacheEvictions()` to return incorrect numbers. https://github.com/hazelcast/hazelcast/issues/12931[[#12931]]
+- The connections to the members after they are removed from the cluster should be closed. https://github.com/hazelcast/hazelcast/pull/12926[[#12926]]
