@@ -4,7 +4,7 @@
 
 === Enhancements
 
-* Protection for untrusted deserialization has been added using blacklisting and whitelisting the class/package names. Please see the <<untrusted-deserialization-protection, Untrusted Deserialization Protection section>>.
+* Protection for untrusted deserialization has been added using blacklisting and whitelisting the class/package names. Please see the  http://docs.hazelcast.org/docs/3.10.1/manual/html-single/#untrusted-deserialization-protection[Untrusted Deserialization Protection section].
 
 === Fixes
 
