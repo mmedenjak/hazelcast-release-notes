@@ -1,0 +1,8 @@
+== 3.10.3
+
+NOTE: Starting with Hazelcast 3.10.3, Hazelcast IMDG Enterprise license keys are required only for members. You do not need to set a license key for your Java clients for which you want to use Enterprise features.
+
+
+=== Fixes
+
+*  Hazelcast client produces `OutOfMemoryError` when there is no Hazelcast member available at startup. https://github.com/hazelcast/hazelcast/issues/13186[[#13186]]
