@@ -1,10 +1,18 @@
+
 == 3.10.3
 
 NOTE: Starting with Hazelcast 3.10.3, Hazelcast IMDG Enterprise license keys are required only for members. You do not need to set a license key for your Java clients for which you want to use Enterprise features.
 
 
+=== Enhancements
+
+* Descriptive null checks should be added when accessing a data structure on the client. https://github.com/hazelcast/hazelcast/pull/13256[[#13256]]
+
 === Fixes
 
+* When a cache is closed, it is no longer managed by the `CacheManager`;
+its `CacheManager` should be reset to null and the method `getCacheManager()` should
+return null as per specification. https://github.com/hazelcast/hazelcast/pull/13236[[#13236]]
 *  Hazelcast client produces `OutOfMemoryError` when there is no Hazelcast member available at startup. https://github.com/hazelcast/hazelcast/issues/13186[[#13186]]
 
 === Removed/Deprecated Features
