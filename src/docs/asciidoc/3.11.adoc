@@ -30,16 +30,33 @@
 
 The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
 
-* ???. https://github.com/hazelcast/hazelcast/issues/???[[#???]]
+* `WanPublisherConfigDTO` does not handle discovery strategies, so cloud deployed clusters utilizing cloud discovery, like AWS for WAN, cannot be created dynamically. https://github.com/hazelcast/hazelcast/issues/12505[[#12505]]
+* `MigrationRequestOperation` must be improved with the new Offload abstraction. https://github.com/hazelcast/hazelcast/issues/11989[[#11989]]
+* Multicast discovery strategy needs some improvements: either a shared codebase by discovery SPI and native implementation, or only one implementation keeping both configuration options (`multicast` or `discovery-strategies`) should be used. Also an easier client based multicast discovery option should be promoted. https://github.com/hazelcast/hazelcast/issues/11357[[#11357]]
+* The current IMap interface for the operation of putting a value into a map is not clear where the resulting value of the entry's TTL is concerned. https://github.com/hazelcast/hazelcast/issues/10845[[#10845]]
+* There should be a more proper way of heap-data conversion; currently `ToHeapDataConverter` is being used. https://github.com/hazelcast/hazelcast/issues/10249[[#10249]]
+* When writing a `DiscoveryStrategy` that extends `AbstractDiscoveryStrategy`, the Hazelcast instance that invokes this strategy cannot be accessed. https://github.com/hazelcast/hazelcast/issues/6811[[#6811]]
+* The method `EntryListener.entryAdded()` is not called after `IMap.evict()` is triggered followed by the method `IMap.get()`. https://github.com/hazelcast/hazelcast/issues/1542[[#1542]]
+ 
+
 
 
 === Fixes
 
-* ???. https://github.com/hazelcast/hazelcast/issues/???[[#???]]
+* `SerializationServiceBuilder` ignores the method `useNativeByteOrder()`. https://github.com/hazelcast/hazelcast/issues/13410[[#13410]]
+* Attribute extractor does not fallback to user code deployment: it does not use user code deployment to search for the extractor implementation. https://github.com/hazelcast/hazelcast/issues/13400[[#13400]]
+* Built-in predicate implementations do not implement equals/hashCode. https://github.com/hazelcast/hazelcast/issues/13245[[#13245]]
+* `EOFException` is thrown when using `PagingPredicate` with Kryo in Hazelcast 3.8.7. https://github.com/hazelcast/hazelcast/issues/13147[[#13147]]
+* Setting an exception in an IAtomicReference causes it to be thrown when getting it. https://github.com/hazelcast/hazelcast/issues/13138[[#13138]]
+* The exception `Cannot override cache's CacheManager` is thrown after the restart of remote Hazelcast. https://github.com/hazelcast/hazelcast/issues/12975[[#12975]]
+* When a member is killed, events are lost and the method `QueryCache.tryRecover()` is triggered in a loop even if data is not lost. https://github.com/hazelcast/hazelcast/issues/12928[[#12928]]
+* `Ringbuffer.readManyAsync()`: Client unwraps the `ExecutionException` before throwing it to the user code. The member never does it. It also does not happen on other async proxies. Client should not unwrap. https://github.com/hazelcast/hazelcast/issues/12108[[#12108]]
+* The method `MapLoader.load()` does not create an entry event, as it is essentially a get operation. But, the method `MapLoader.loadAll()` uses `IMap.putTransient()` and so it generates `EntryAdded` events. This is inconsistent and the latter is problematic for WAN replicated clusters. https://github.com/hazelcast/hazelcast/issues/7771[[#7771]]
+
 
 ==== Coverity Fixes
 
-* ???. https://github.com/hazelcast/hazelcast/issues/???[[#???]]
+* ???
 
 
 === Behavioral Changes
