@@ -14,6 +14,7 @@ NOTE: Starting with Hazelcast 3.10.3, Hazelcast IMDG Enterprise license keys are
 * In `AbstractInternalQueryCache`, the private method `getQueryCacheConfig()` is called in multiple places. https://github.com/hazelcast/hazelcast/issues/13402[[#13402]]
 * Permission type for PN Counter is missing. https://github.com/hazelcast/hazelcast/issues/13399[[#13399]]
 * Setting `ExpirationTimeMergePolicy` throws exception during configuration validation. https://github.com/hazelcast/hazelcast/issues/13392[[#13392]]
+* Close task problems in `NioOutboundPipeline`: There happens a temporary stall since a task is executed on an I/O thread from that same I/O thread and then the I/O thread waits for it. Because the thread will not execute its own task (yet) there is a 3 seconds of stall in the I/O pipeline. This is a problem since it blocks all the traffic for that I/O thread. Also the close task is scheduled as a packet. If the pipeline already is scheduled, scheduling the close task will not get picked up as part of an optimization. https://github.com/hazelcast/hazelcast/pull/13363[[#13363]]
 * When a cache is closed, it is no longer managed by the `CacheManager`;
 its `CacheManager` should be reset to null and the method `getCacheManager()` should
 return null as per specification. https://github.com/hazelcast/hazelcast/pull/13236[[#13236]]
