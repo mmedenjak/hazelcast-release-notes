@@ -1,0 +1,15 @@
+
+== 3.10.4
+
+
+=== Enhancements
+
+* License information should be sent to Hazelcast Management Center. https://github.com/hazelcast/hazelcast/pull/13451[[#13451]]
+
+=== Fixes
+
+* There are inconsistencies in `mapEventJournal` calls from `DefaultRecordStore`. https://github.com/hazelcast/hazelcast/pull/13470[[#13470]]
+* Index data loss after rolling upgrade: when a rolling update of an application is performed; first instance is turned off, updated and after it is done, the second instance takes place. After such a rolling update (without the downtime) some of the data is lost. It turned out that after the Split-Brain merge process, the index gets corrupted. https://github.com/hazelcast/hazelcast/issues/13456[[#13456]]
+* During the change of cluster state, repartitioning must be triggered only when needed. https://github.com/hazelcast/hazelcast/pull/13446[[#13446]]
+* Attribute extractor does not use User Code Deployment to search extractor implementation. https://github.com/hazelcast/hazelcast/issues/13400[[#13400]]
+
