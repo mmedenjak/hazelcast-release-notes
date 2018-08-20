@@ -20,6 +20,7 @@
 
 
 * **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
+* **Map Index Statistics**: Introduced statistics related to indexes. To achieve this, map statistics have been extended with per index information about indexes associated with a certain map. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#map-index-statistics[Map Index Statistics].
 
 
 
