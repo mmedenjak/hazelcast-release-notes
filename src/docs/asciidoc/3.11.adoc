@@ -19,7 +19,7 @@
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
 
-* **???**: ???. Please see the http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#???[??? section] for more information.
+* **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to.
 
 
 
@@ -61,7 +61,7 @@ The following are the other improvements performed to solve the enhancement issu
 
 === Behavioral Changes
 
-* ???
+* WAN Replication: `LOADED` events are filtered out and not replicated by default anymore.
 
 
 
