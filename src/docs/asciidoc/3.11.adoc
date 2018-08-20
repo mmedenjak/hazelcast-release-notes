@@ -19,7 +19,7 @@
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
 
-* **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to.
+* **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
 
 
 
