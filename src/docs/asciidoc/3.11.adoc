@@ -2,32 +2,25 @@
 
 == 3.11
 
-=== New Features
-
-*_Hazelcast IMDG Enterprise Features:_*
-
-* **???**: ???. Please see the http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#???[??? section].
-
-*_Hazelcast IMDG Open Source Features:_*
-
-* **???**: ???. Please see the http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#???[??? section].
-
-
 
 === Enhancements
 
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
 
+
 * **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
-* **Map Index Statistics**: Introduced statistics related to indexes. To achieve this, map statistics have been extended with per index information about indexes associated with a certain map. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#map-index-statistics[Map Index Statistics].
-
-
+* **License enforcements and warnings**: Introduced a license monitor daemon, that warns about expirations and instructs about next steps. These info, will also be available through REST/JMX APIs.
+* **WAN sync using Merkle Trees**: Introduced WAN anti-entropy mechanism utilising Merkle Tree to sync only affected subsets for Maps, improving network and heap utilization.
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
-* **???**: ???. Please see the http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#???[??? section] for more information.
-
+* **Ability to Set TTL for Map and Cache Entries**: Added a new API to allow interacting with the TTL value of an entry without updating the value
+* **Max Idle support per entry**: Added IMap API support for using a custom Max Idle timeout value per entry. This timeout takes precedence over the map configuration.
+* **Java 9 compliance**: Added support for modularization, Java 9 module system, while maintaining compatibility with Java 6.
+* **Map Index Statistics**: Introduced statistics related to indexes. To achieve this, map statistics have been extended with per index information about indexes associated with a certain map. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#map-index-statistics[Map Index Statistics].
+* **JCache expired entries disposal**: Improved JCache's lazy eviction, with a periodic cleanup that will eventually remove all expired entries, and free up the occupied space.
+* **Improved Network I/O**: Enhanced network I/O to allow TLS handshake in a block-free manner, and allow for offloadable tasks, improving latency and security.
 
 The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
 
@@ -38,8 +31,6 @@ The following are the other improvements performed to solve the enhancement issu
 * There should be a more proper way of heap-data conversion; currently `ToHeapDataConverter` is being used. https://github.com/hazelcast/hazelcast/issues/10249[[#10249]]
 * When writing a `DiscoveryStrategy` that extends `AbstractDiscoveryStrategy`, the Hazelcast instance that invokes this strategy cannot be accessed. https://github.com/hazelcast/hazelcast/issues/6811[[#6811]]
 * The method `EntryListener.entryAdded()` is not called after `IMap.evict()` is triggered followed by the method `IMap.get()`. https://github.com/hazelcast/hazelcast/issues/1542[[#1542]]
- 
-
 
 
 === Fixes
@@ -55,25 +46,15 @@ The following are the other improvements performed to solve the enhancement issu
 * The method `MapLoader.load()` does not create an entry event, as it is essentially a get operation. But, the method `MapLoader.loadAll()` uses `IMap.putTransient()` and so it generates `EntryAdded` events. This is inconsistent and the latter is problematic for WAN replicated clusters. https://github.com/hazelcast/hazelcast/issues/7771[[#7771]]
 
 
-==== Coverity Fixes
-
-* ???
-
-
 === Behavioral Changes
 
 * WAN Replication: `LOADED` events are filtered out and not replicated by default anymore.
-
-
-
-=== Known Problems
-
-* ???
+* Map entries timestamps: Entry timestamps (i.e., `LastAccessedTime`, `LastUpdatedTime`, `CreationTime` etc) are now using `SECONDS` resolution, rather than milliseconds.
 
 
 === Removed/Deprecated Features
 
-* The data structure `IdGenerator` is removed. ???. Use http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#flakeidgenerator[Flake ID Generator]. ???
+* The data structure `IdGenerator` is deprecated. Use http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#flakeidgenerator[Flake ID Generator].
 * Following system properties are removed:
 ** `hazelcast.master.confirmation.interval.seconds`
 ** `hazelcast.max.no.master.confirmation.seconds`
