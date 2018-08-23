@@ -9,7 +9,7 @@
 
 
 * **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See http://docs.hazelcast.org/docs/3.11-BETA-1/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
-* **License Enforcements and Warnings**: Introduced a license monitor daemon that warns about expirations and instructs about next steps. These information is also be available through REST/JMX APIs.
+* **License Enforcements and Warnings**: Introduced a license monitor daemon that warns about expirations and instructs about the next steps. These information are also be available through REST/JMX APIs.
 * **WAN Synchronization using Merkle Trees**: Introduced WAN anti-entropy mechanism utilizing Merkle Tree to synchronize only the affected subsets for Maps, improving network and heap utilization.
 
 *_Hazelcast IMDG Open Source Enhancements:_*
