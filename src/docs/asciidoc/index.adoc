@@ -27,6 +27,8 @@ NOTE: The linked numbers in the square brackets refer to the issue number in Haz
 
 //include::3.11.adoc[]
 
+include::3.11-BETA-1.adoc[]
+
 include::3.10.4.adoc[]
 
 include::3.10.3.adoc[]
