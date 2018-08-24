@@ -50,7 +50,7 @@ The following are the other improvements performed to solve the enhancement issu
 === Behavioral Changes
 
 * WAN Replication: `LOADED` events are filtered out and not replicated by default anymore.
-* Map entries timestamps: Entry timestamps (i.e., `LastAccessedTime`, `LastUpdatedTime`, `CreationTime` etc) are now using `SECONDS` resolution, rather than milliseconds.
+* Map entries timestamps: Entry timestamps (i.e., `LastAccessedTime`, `LastUpdatedTime`, `CreationTime`, etc.) are now using `SECONDS` resolution, rather than milliseconds.
 
 
 === Removed/Deprecated Features
