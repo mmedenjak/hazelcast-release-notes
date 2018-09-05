@@ -8,8 +8,8 @@
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
 
-* **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
-* **License Enforcements and Warnings**: Introduced a license monitor daemon that warns about expirations and instructs about next steps. These information is also be available through REST/JMX APIs.
+* **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See http://docs.hazelcast.org/docs/3.11-BETA-1/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
+* **License Enforcements and Warnings**: Introduced a license monitor daemon that warns about expirations and instructs about the next steps. These information are also available through REST/JMX APIs.
 * **WAN Synchronization using Merkle Trees**: Introduced WAN anti-entropy mechanism utilizing Merkle Tree to synchronize only the affected subsets for Maps, improving network and heap utilization.
 
 *_Hazelcast IMDG Open Source Enhancements:_*
@@ -17,7 +17,8 @@
 * **Ability to Set TTL for Map and Cache Entries**: Added a new method, `setExpiryPolicy(key, expirePolicy)`, to allow interacting with the TTL value of an entry without updating the value. 
 * **Maximum Idle Timeout Support Per Entry**: Added IMap API support to use a custom maximum idle timeout value per entry. This timeout takes precedence over the map configuration.
 * **Java 9 Compliance**: Added support for modularization, Java 9 module system, while maintaining compatibility with Java 6.
-* **Map Index Statistics**: Introduced statistics related to indexes. To achieve this, map statistics have been extended with per index information about indexes associated with a certain map. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#map-index-statistics[Map Index Statistics].
+* **Configurable Backoff Strategy for Client Reconnections**: Introduced a highly configurable exponential backoff mechanism for the client with which you can set the duration for waiting after connection failures, upper limit for the wait, etc. See http://docs.hazelcast.org/docs/3.11-BETA-1/manual/html-single/index.html#configuring-client-connection-retry[Client Connection Retry Configuration section].
+* **Map Index Statistics**: Introduced statistics related to indexes. To achieve this, map statistics have been extended with per index information about indexes associated with a certain map. See http://docs.hazelcast.org/docs/3.11-BETA-1/manual/html-single/index.html#map-index-statistics[Map Index Statistics].
 * **JCache Expired Entries Disposal**: Improved JCache's lazy eviction with a periodic cleanup that eventually removes all expired entries and frees up the occupied space.
 * **Improved Network I/O**: Enhanced network I/O to allow TLS handshake in a block-free manner and to support offloadable tasks, improving the latency and security.
 
@@ -25,7 +26,7 @@ The following are the other improvements performed to solve the enhancement issu
 
 * `MigrationRequestOperation` has been improved with the new Offload abstraction. https://github.com/hazelcast/hazelcast/issues/11989[[#11989]]
 * Improved the multicast discovery strategy for clients. https://github.com/hazelcast/hazelcast/issues/11357[[#11357]]
-* The IMap interface for the operation of putting a value into a map was not clear where the resulting value of the entry's TTL is concerned. This is fixed by adding the method `setTTL()` on both member and client sides. See https://github.com/hazelcast/hazelcast/blob/3.11/hazelcast/src/main/java/com/hazelcast/core/IMap.java#L3005[here]. https://github.com/hazelcast/hazelcast/issues/10845[[#10845]]
+* The IMap interface for the operation of putting a value into a map was not clear where the resulting value of the entry's TTL is concerned. This is fixed by adding the method `setTTL()` on both member and client sides. See https://github.com/hazelcast/hazelcast/blob/3.11-BETA-1/hazelcast/src/main/java/com/hazelcast/core/IMap.java#L3005[here]. https://github.com/hazelcast/hazelcast/issues/10845[[#10845]]
 * Introduced a more proper way of heap-data conversion: the method `toHeapData`. Before, `ToHeapDataConverter` was being used. https://github.com/hazelcast/hazelcast/issues/10249[[#10249]]
 * The method `EntryListener.entryAdded()` is not called after `IMap.evict()` is triggered followed by the method `IMap.get()`. To fix this, a new entry event type has been introduced: `LOADED`. https://github.com/hazelcast/hazelcast/issues/1542[[#1542]]
 
@@ -48,8 +49,11 @@ The following are the other improvements performed to solve the enhancement issu
 
 === Behavioral Changes
 
-* WAN Replication: `LOADED` events are filtered out and not replicated by default anymore.
-* Map entries timestamps: Entry timestamps (i.e., `LastAccessedTime`, `LastUpdatedTime`, `CreationTime` etc) are now using `SECONDS` resolution, rather than milliseconds.
+* WAN Replication:
+** Loaded entries were listened using `EntryAddedListener`. Now, a new event type for the loaded entries is introduced (`LOADED`) and they are listened using the new `EntryLoadedListener`.
+** Loaded entries are not replicated to the target cluster by default anymore.
+** Replicated entries were being persisted at the target cluster (in its map store). Now, they are not being persisted by default anymore. You can use the newly introduced configuration element `persist-wan-replicated-data` and set it to "true" (the default is "false") to make these entries to be persisted.
+* Map entries timestamps: Entry timestamps (i.e., `LastAccessedTime`, `LastUpdatedTime`, `CreationTime`, etc.) are now using `SECONDS` resolution, rather than milliseconds.
 
 
 === Removed/Deprecated Features
