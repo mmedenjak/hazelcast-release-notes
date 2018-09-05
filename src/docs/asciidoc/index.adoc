@@ -1,5 +1,4 @@
 include::attributes.adoc[]
-= Hazelcast IMDG Release Notes
 :icons: font
 :idprefix:
 :idseparator: -
@@ -12,11 +11,16 @@ include::attributes.adoc[]
 :source-language: java
 :stylesheet: stylesheets/hazelcast.css
 :toc: left
-:toc-title: Hazelcast IMDG Release Notes
 :toclevels: 1
+:docinfo: shared-head
+
+image::logo_dark.png[]
+
+== Hazelcast IMDG Release Notes
+
 
 Welcome to the Hazelcast IMDG Release Notes. This document includes the new features, enhancements and fixed issues for
-Hazelcast IMDG, Open Source edition releases.
+Hazelcast IMDG Open Source edition releases.
 
 Please select a release from the Table of Contents on the left panel to see its release notes.
 
