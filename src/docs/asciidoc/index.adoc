@@ -1,4 +1,5 @@
 include::attributes.adoc[]
+= Hazelcast IMDG Release Notes 
 :icons: font
 :idprefix:
 :idseparator: -
@@ -13,10 +14,6 @@ include::attributes.adoc[]
 :toc: left
 :toclevels: 1
 :docinfo: shared-head
-
-image::logo_dark.png[]
-
-== Hazelcast IMDG Release Notes
 
 
 Welcome to the Hazelcast IMDG Release Notes. This document includes the new features, enhancements and fixed issues for
