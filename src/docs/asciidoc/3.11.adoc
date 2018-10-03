@@ -2,23 +2,24 @@
 
 == 3.11
 
+NOTE: Hazelcast IMDG 3.11 and the upcoming releases are fully compatible with JDK 9, 10 and 11. For information on the other JDK compatibility details, see the https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#supported-jvms[Supported Java Virtual Machines section] in Hazelcast IMDG Reference Manual.
 
 === Enhancements
 
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
 
-* **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
-* **License Enforcements and Warnings**: Introduced a license monitor daemon that warns about expirations and instructs about the next steps. These information are also available through REST/JMX APIs. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#license-info[License Information section].
-* **WAN Synchronization using Merkle Trees**: Introduced WAN anti-entropy mechanism utilizing Merkle Tree to synchronize only the affected subsets for Maps, improving network and heap utilization. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#synchronizing-wan-clusters-using-merkle-trees[Synchronizing WAN Clusters Using Merkle Trees section].
+* **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
+* **License Enforcements and Warnings**: Introduced a license monitor daemon that warns about expirations and instructs about the next steps. These information are also available through REST/JMX APIs. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#license-info[License Information section].
+* **WAN Synchronization using Merkle Trees**: Introduced WAN anti-entropy mechanism utilizing Merkle Tree to synchronize only the affected subsets for Maps, improving network and heap utilization. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#synchronizing-wan-clusters-using-merkle-trees[Synchronizing WAN Clusters Using Merkle Trees section].
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
 * **Ability to Set Custom TTL for Map and Cache Entries**: Added a new method, `setExpiryPolicy(key, expirePolicy)`, to allow interacting with the TTL value of an entry without updating the value. Also, the IMap interface for the operation of putting a value into a map was not clear where the resulting value of the entry's TTL is concerned. This is fixed by adding the method `setTTL()` on both member and client sides. See https://github.com/hazelcast/hazelcast/blob/3.11/hazelcast/src/main/java/com/hazelcast/core/IMap.java#L3005[here].
 * **Ability to Set Custom Maximum Idle Timeouts for Map Entries**: Extended the put operation so that now it has a `maxIdle` parameter that represents the idleness seconds for specific entries. See the https://docs.hazelcast.org/docs/3.11/manual/html-single/#evicting-specific-entries[Evicting Specific Entries section].
 * **Java 8/9/10/11 Compliance**: Added support for Hazelcast IMDG to work smoothly on these Java versions.
-* **Configurable Backoff Strategy for Client Reconnections**: Introduced a highly configurable exponential backoff mechanism for the client with which you can set the duration for waiting after connection failures, upper limit for the wait, etc. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-client-connection-retry[Client Connection Retry Configuration section].
-* **Map Index Statistics**: Introduced statistics related to indexes. To achieve this, map statistics have been extended with per index information about indexes associated with a certain map. See http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#map-index-statistics[Map Index Statistics].
+* **Configurable Backoff Strategy for Client Reconnections**: Introduced a highly configurable exponential backoff mechanism for the client with which you can set the duration for waiting after connection failures, upper limit for the wait, etc. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-client-connection-retry[Client Connection Retry Configuration section].
+* **Map Index Statistics**: Introduced statistics related to indexes. To achieve this, map statistics have been extended with per index information about indexes associated with a certain map. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#map-index-statistics[Map Index Statistics].
 * **JCache Expired Entries Disposal**: Improved JCache's lazy eviction with a periodic cleanup that eventually removes all expired entries and frees up the occupied space.
 * **Improved Network I/O**: Enhanced network I/O to allow TLS handshake in a block-free manner and to support offloadable tasks, improving the latency and security.
 * Now, Hazelcast supports discovering members in the GCP Compute Engine environment. See the https://github.com/hazelcast/hazelcast-gcp/blob/master/README.md[documentation] for more information.
@@ -42,7 +43,7 @@ The following are the other improvements performed to solve the enhancement issu
 ** start a second member
 ** kill the first member
 +
-PN counter from the first member are lost. This is fixed by removing PN counter statistics on migrations. https://github.com/hazelcast/hazelcast/issues/13793[[#13793]]
+PN counter data from the first member is lost. This is fixed by removing PN counter statistics on migrations. https://github.com/hazelcast/hazelcast/issues/13793[[#13793]]
 +
 * Fixed the incorrect TCP connection probe registration in outgoing member connections. It was `[null->null]` instead of `[address->address]`. https://github.com/hazelcast/hazelcast/issues/13768[[#13768]]
 * Clients were sometimes failing to reconnect to another owner member with the `ExecutionException`. This is fixed by making `ClientReauthOperation` to be retryable. https://github.com/hazelcast/hazelcast/issues/13758[[#13758]]
@@ -82,7 +83,7 @@ PN counter from the first member are lost. This is fixed by removing PN counter 
 
 === Removed/Deprecated Features
 
-* The data structure `IdGenerator` is deprecated. Use http://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#flakeidgenerator[Flake ID Generator].
+* The data structure `IdGenerator` is deprecated. Use https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#flakeidgenerator[Flake ID Generator].
 * Following system properties are removed:
 ** `hazelcast.master.confirmation.interval.seconds`
 ** `hazelcast.max.no.master.confirmation.seconds`
