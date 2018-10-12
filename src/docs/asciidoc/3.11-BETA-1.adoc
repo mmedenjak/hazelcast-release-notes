@@ -26,7 +26,6 @@ The following are the other improvements performed to solve the enhancement issu
 
 * `MigrationRequestOperation` has been improved with the new Offload abstraction. https://github.com/hazelcast/hazelcast/issues/11989[[#11989]]
 * Improved the multicast discovery strategy for clients. https://github.com/hazelcast/hazelcast/issues/11357[[#11357]]
-* The IMap interface for the operation of putting a value into a map was not clear where the resulting value of the entry's TTL is concerned. This is fixed by adding the method `setTTL()` on both member and client sides. See https://github.com/hazelcast/hazelcast/blob/3.11-BETA-1/hazelcast/src/main/java/com/hazelcast/core/IMap.java#L3005[here]. https://github.com/hazelcast/hazelcast/issues/10845[[#10845]]
 * Introduced a more proper way of heap-data conversion: the method `toHeapData`. Before, `ToHeapDataConverter` was being used. https://github.com/hazelcast/hazelcast/issues/10249[[#10249]]
 * The method `EntryListener.entryAdded()` is not called after `IMap.evict()` is triggered followed by the method `IMap.get()`. To fix this, a new entry event type has been introduced: `LOADED`. https://github.com/hazelcast/hazelcast/issues/1542[[#1542]]
 
