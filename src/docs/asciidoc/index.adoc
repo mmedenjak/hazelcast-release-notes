@@ -26,7 +26,7 @@ NOTE: The linked numbers in the square brackets refer to the issue number in Haz
 
 :numbered!:
 
-//include::3.11.adoc[]
+include::3.11.adoc[]
 
 //include::3.11-BETA-1.adoc[]
 
