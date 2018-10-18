@@ -11,7 +11,7 @@ NOTE: Hazelcast IMDG 3.11 and the upcoming releases are fully compatible with JD
 
 * **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
 * **License Enforcements and Warnings**: Introduced a license monitor daemon that warns about expirations and instructs about the next steps. These information are also available through REST/JMX APIs. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#license-info[License Information section].
-* **WAN Synchronization using Merkle Trees**: Introduced WAN anti-entropy mechanism utilizing Merkle Tree to synchronize only the affected subsets for Maps, improving network and heap utilization. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#synchronizing-wan-clusters-using-merkle-trees[Synchronizing WAN Clusters Using Merkle Trees section].
+* **Delta WAN Synchronization**: Introduced WAN anti-entropy mechanism utilizing Merkle Tree to synchronize only the affected subsets for Maps, improving network and heap utilization. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#delta-wan-synchronization[Delta WAN Synchronization section].
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
