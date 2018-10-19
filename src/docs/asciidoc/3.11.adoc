@@ -22,6 +22,7 @@ NOTE: Hazelcast IMDG 3.11 and the upcoming releases are fully compatible with JD
 * **JCache Expired Entries Disposal**: Improved JCache's lazy eviction with a periodic cleanup that eventually removes all expired entries and frees up the occupied space.
 * **Improved Network I/O**: Enhanced network I/O to allow TLS handshake in a block-free manner and to support offloadable tasks, improving the latency and security.
 * Now, Hazelcast supports discovering members in the GCP Compute Engine environment. See the https://github.com/hazelcast/hazelcast-gcp/blob/master/README.md[documentation] for more information.
+* Introduced the ability which allows adding the user libraries to the classpath. See https://docs.hazelcast.org/docs/3.11/manual/html-single/#adding-user-library-to-classpath[Adding User Library to CLASSPATH section].
 
 The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
 
