@@ -1,0 +1,15 @@
+
+
+== 3.11.1
+
+
+=== Fixes
+
+* Fixed an issue where the `mapEvictionPolicy` configuration became null, when the JSON file is used to start a Hazelcast instance on the PCF environment.  https://github.com/hazelcast/hazelcast/issues/14086[[#14086]]
+* Fixed an issue where the failed store operations was filling the write-behind queues by duplicating themselves, in each run of the store-worker thread (this was happening when `write-batch-size` is larger than 1 and `write-coalescing` is disabled, there was and is no issue for the default values of these properties). https://github.com/hazelcast/hazelcast/issues/14019[[#14019]]
+
+=== Behavioral Changes
+
+* When you enable TLS/SSL and do not provide the `trustStore` property, the default trusted certificates are used, i.e., the Java provided list of trusted CA certificates.
+
+
