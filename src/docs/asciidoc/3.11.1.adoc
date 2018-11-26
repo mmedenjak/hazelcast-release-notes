@@ -5,11 +5,15 @@
 
 === Fixes
 
-* Fixed an issue where the `mapEvictionPolicy` configuration became null, when the JSON file is used to start a Hazelcast instance on the PCF environment.  https://github.com/hazelcast/hazelcast/issues/14086[[#14086]]
+* When the client (having a Reliable Topic) reconnects to the cluster, the `MessageListener` added to the client was no longer receiving messages, unlike the `MapListener`. This has been fixed by making the Reliable Topic structure to continue from the last known sequence ID, in case
+of an `HazelcastClientOfflineException`. https://github.com/hazelcast/hazelcast/issues/14123[[#14123]]
+* Fixed an issue where the members and clients were not disconnecting the connection as soon as a heartbeat timeout is detected. The member side heartbeat monitor was still checking if the connection is the owner connection. This activity has also been removed. https://github.com/hazelcast/hazelcast/issues/14094[[#14094]]
+* Fixed an issue where the `mapEvictionPolicy` configuration became null, when the JSON file is used to start a Hazelcast instance on the PCF environment. https://github.com/hazelcast/hazelcast/issues/14086[[#14086]]
 * Fixed an issue where the failed store operations was filling the write-behind queues by duplicating themselves, in each run of the store-worker thread (this was happening when `write-batch-size` is larger than 1 and `write-coalescing` is disabled, there was and is no issue for the default values of these properties). https://github.com/hazelcast/hazelcast/issues/14019[[#14019]]
+* Fixed an issue where the querying performance dropped when running Hazelcast within OSGi. https://github.com/hazelcast/hazelcast/issues/13785[[#13785]]
 
 === Behavioral Changes
 
-* When you enable TLS/SSL and do not provide the `trustStore` property, the default trusted certificates are used, i.e., the Java provided list of trusted CA certificates.
+* Starting with Hazelcast IMDG 3.11.1 and for the future releases, when you enable TLS/SSL and do not provide the `trustStore` property, the default trusted certificates are/will be used, i.e., the Java provided list of trusted CA certificates.
 
 
