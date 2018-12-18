@@ -2,6 +2,11 @@
 
 == 3.11.1
 
+=== Enhancements
+
+* *Toggle Scripting Support*: Introduced the `scripting-enabled` configuration attribute so that you can allow or prevent sending commands to the members from the Hazelcast Management Center. See the https://docs.hazelcast.org/docs/3.11.1/manual/html-single/index.html#toggle-scripting-support[Toggle Scripting Support section] for information on how to configure it.
+
+
 === Fixes
 
 * Fixed an issue where the client's Near Cache on Replicated Map with `Binary` storage was causing an exception on the member. https://github.com/hazelcast/hazelcast/issues/14210[[#14210]]
