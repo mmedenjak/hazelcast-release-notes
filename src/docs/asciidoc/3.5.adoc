@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 3.5 release.
 
+[[features-35]]
 === New Features
 
 The following are the new features introduced with 3.5 release.
@@ -75,6 +76,7 @@ Query Cache section]
 * Dynamic Selector Rebalancing
 * Management of Unbounded Return Values
 
+[[enhancements-35]]
 === Enhancements
 
 The following are the enhancements introduced with 3.5 release.
@@ -167,6 +169,7 @@ https://github.com/hazelcast/hazelcast/issues/2266[[#2266]].
 * Back pressure feature should be added
 https://github.com/hazelcast/hazelcast/issues/1781[[#1781]].
 
+[[fixes-35]]
 === Fixes
 
 The following are the issues solved for Hazelcast 3.5 release.

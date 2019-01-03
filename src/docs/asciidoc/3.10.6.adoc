@@ -1,10 +1,12 @@
 
 == 3.10.6
 
+[[enh-3106]]
 === Enhancements
 
 * Added the ability to log `IOException`s thrown by the ICMP ping task as ping failures. https://github.com/hazelcast/hazelcast/pull/13826[[#13826]]
 
+[[fixes-3106]]
 === Fixes
 
 * Entry processors equipped with predicates try to utilize global indexes to

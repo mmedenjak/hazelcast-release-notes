@@ -1,6 +1,7 @@
 
 == 3.9.3
 
+[[enhancements-393]]
 === Enhancements
 
 - **Ping Failure Detector for Hazelcast Java Client:** Ping Failure Detector provides a quicker and more deterministic detection of hardware and other lower level events. It has been available for Hazelcast members; now, it can also be used for Hazelcast Java clients. The related PR is https://github.com/hazelcast/hazelcast/pull/12049[[#12049]]. Please see the http://docs.hazelcast.org/docs/3.9.3/manual/html-single/index.html#client-ping-failure-detector[Client Ping Failure Detector section].
@@ -12,9 +13,7 @@ counters for sent and received WAN events. Please note that WAN Replication is a
 - Introduced a system property to allow overriding the configured serialization byte order for better testing. https://github.com/hazelcast/hazelcast/issues/12145[[#12145]]
 - Performed updates for JCache 1.1 compatibility. https://github.com/hazelcast/hazelcast/pull/12014[[#12014]]
 
-
-
-
+[[fixes-393]]
 === Fixes
 
 - `CacheMergeOperation` does not publish WAN events. https://github.com/hazelcast/hazelcast/issues/12186[[#12186]]
@@ -28,7 +27,7 @@ counters for sent and received WAN events. Please note that WAN Replication is a
 - There is a race condition in the client's Near Cache: "File is already being used by this Hazelcast instance". This was caused by the a problem with the synchronization between Near Cache creation and the `destroy` inside the Near Cache manager. https://github.com/hazelcast/hazelcast/issues/11648[[#11648]]
 - The map screen of Management Center does not show throughput info for `TransactionalMap`s. https://github.com/hazelcast/hazelcast/issues/11640[[#11640]]
 
-
+[[bc-393]]
 === Behavioral Changes
 
 - Default value of the system property `hazelcast.mc.max.visible.instance.count` changed from 100 to Integer.MAX_VALUE. So you may see more than usual data in your Management Center, if you have more than 100 data structures in your Hazelcast cluster.

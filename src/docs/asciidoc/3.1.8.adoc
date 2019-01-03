@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 3.1 and 3.1.x releases.
 
+[[features-318]]
 === New Features
 
 This section provides the new features introduced with Hazelcast 3.1
@@ -37,6 +38,7 @@ be configured using config API, XML and Spring.
 * `HazelcastInstance.shutdown()` method added back.
 * OSGI compatibility is improved significantly.
 
+[[fixes-318]]
 === Fixes
 
 This section lists issues solved for 3.1 and 3.1.x releases.

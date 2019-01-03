@@ -2,11 +2,12 @@
 
 == 3.10.2
 
-
+[[enh-3102]]
 === Enhancements
 
 * Added utility methods to drain a queue. https://github.com/hazelcast/hazelcast/pull/13108[[#13108]]
 
+[[fixes-3102]]
 === Fixes
 
 * If the inner predicate of the paging predicate returns an empty result set, the paging predicate returns null as the indexed query result: this is interpreted as an absence of the indexed result by the query engine and the execution falls back to the full scan. https://github.com/hazelcast/hazelcast/issues/13159[[#13159]]

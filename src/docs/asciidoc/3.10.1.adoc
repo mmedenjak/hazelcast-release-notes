@@ -2,10 +2,12 @@
 
 == 3.10.1
 
+[[enhancements-3101]]
 === Enhancements
 
 * Protection for untrusted deserialization has been added using blacklisting and whitelisting the class/package names. Please see the  http://docs.hazelcast.org/docs/3.10.1/manual/html-single/#untrusted-deserialization-protection[Untrusted Deserialization Protection section].
 
+[[fixes-3101]]
 === Fixes
 
 - The method `readManyAsync()` throws different exceptions when there is no quorum: The client fails with `QuorumException`, and member fails with `ExecutionException`. https://github.com/hazelcast/hazelcast/pull/13065[[#13065]]

@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 2.2 release.
 
+[[features-22]]
 === New Features and Changes
 
 The following are the new features and changes introduced with 2.2
@@ -15,6 +16,7 @@ addresses/domain-names in TCP-IP Config as they are, without resolving
 an IP address.
 * Added Cluster Health Check to Management Center application.
 
+[[fixes-22]]
 === Fixes
 
 The following are the fixed issues and enhancements for 2.2 release.

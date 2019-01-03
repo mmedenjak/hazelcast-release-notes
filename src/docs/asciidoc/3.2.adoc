@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 3.2 release.
 
+[[features-32]]
 === New Features
 
 * *NIO Client*: New architecture based on NIO introduced to support more
@@ -26,6 +27,7 @@ Native Java client developed. Please see
 http://docs.hazelcast.org/docs/3.2/manual/html-single/hazelcast-documentation.html#native-clients[Native
 Clients].
 
+[[enhancements-32]]
 === Enhancements
 
 * Size of a distributed queue via REST API can be returned.
@@ -44,6 +46,7 @@ https://github.com/hazelcast/hazelcast/pull/1423[[1423]]
 * `getNearCacheStats()` introduced. Statistics for near cache can be
 retrieved. https://github.com/hazelcast/hazelcast/issues/30[[#30]]
 
+[[fixes-32]]
 === Fixes
 
 * `LocalMapStats.getNearCacheStats()` can return null when it is called

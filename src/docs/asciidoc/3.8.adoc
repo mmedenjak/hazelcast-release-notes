@@ -4,6 +4,7 @@
 This section lists the new features, enhancements, fixed issues and,
 removed or deprecated features for 3.8 release.
 
+[[features-38]]
 === New Features
 
 The following are the new features introduced with 3.8 release.
@@ -33,6 +34,7 @@ Service section].
 * *User Code Deployment*: Load your new classes to Hazelcast IMDG
 members dynamically without restarting all of them.
 
+[[enhancements-38]]
 === Enhancements
 
 The following are the enhancements introduced with 3.8 release.
@@ -138,6 +140,7 @@ the system can lookup TraceableOperations. [4889]
 `shutdown()`. [4648]
 * Hazelcast should support `ScheduledExecutorService`. [115]
 
+[[fixes-38]]
 === Fixes
 
 The following are the issues solved for Hazelcast 3.8 release.
@@ -321,6 +324,7 @@ value. [2010]
 configuration XSD are out of sync. They must have the same elements.
 [5034]
 
+[[bc-38]]
 === Behavioral Changes
 
 * A separate thread pool for query requests coming from the clients has
@@ -328,6 +332,7 @@ been introduced. The goal for this is to avoid `OutOfMemoryException` s
 under heavy query load. This separate thread pool’s size is configurable
 via the system property `hazelcast.clientengine.query.thread.count`.
 
+[[rd-38]]
 === Removed/Deprecated Features
 
 * Aggregators feature is deprecated. Instead, Fast-Aggregations feature

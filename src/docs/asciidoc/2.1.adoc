@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 2.1 release.
 
+[[features-21]]
 === New Features and Changes
 
 The following are the new features and changes introduced with 2.1
@@ -23,6 +24,7 @@ integration.
 * `Member.getUuid()` now will return UUID for node.
 * Improved session clustering configuration.
 
+[[fixes-21]]
 === Fixes
 
 The following are the fixed issues and enhancements for 2.1 release.

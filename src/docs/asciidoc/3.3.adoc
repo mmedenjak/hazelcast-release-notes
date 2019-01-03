@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 3.3 release.
 
+[[features-33]]
 === New Features
 
 The following are the new features introduced with 3.3 release.
@@ -43,6 +44,7 @@ All Keys to be Loaded] sections for more information.
 http://docs.hazelcast.org/docs/3.3/manual/html-single/hazelcast-documentation.html#hazelcast-jcache-implementation[Hazelcast
 JCache Implementation] for details.
 
+[[fixes-33]]
 === Fixes
 
 The following are the fixed issues 3.3 release.

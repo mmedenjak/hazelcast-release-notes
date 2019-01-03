@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 3.4 release.
 
+[[features-34]]
 === New Features
 
 The following are the new features introduced with 3.4 release.
@@ -36,6 +37,7 @@ asynchronous backups. For more information, please see
 http://docs.hazelcast.org/docs/3.4/manual/html-single/index.html#back-pressure[Back
 Pressure section].
 
+[[enhancements-34]]
 === Enhancements
 
 The following are the enhancements performed for 3.4 release.
@@ -71,6 +73,7 @@ https://github.com/hazelcast/hazelcast/issues/1906[[#1906]].
 backups are up to date
 https://github.com/hazelcast/hazelcast/issues/963[[#963]].
 
+[[fixes-34]]
 === Fixes
 
 The following are the fixed issues for 3.4 release.

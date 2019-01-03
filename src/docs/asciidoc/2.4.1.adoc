@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 2.4.1 release.
 
+[[features-241]]
 === New Features
 
 The following are the new features introduced with 2.4.1 release.
@@ -11,6 +12,7 @@ The following are the new features introduced with 2.4.1 release.
 * Added Hibernate 2nd level cache local/invalidation mode.
 * Added quick clear feature for maps.
 
+[[fixes-241]]
 === Fixes
 
 The following are the fixed issues and enhancements for 2.4.1 release.

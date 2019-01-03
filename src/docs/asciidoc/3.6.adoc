@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 3.6 release.
 
+[[features-36]]
 === New Features
 
 The following are the new features introduced with 3.6 release.
@@ -90,6 +91,7 @@ refer to the
 http://docs.hazelcast.org/docs/3.6/manual/html-single/index.html#monitoring-wan-replication[Monitoring
 WAN Replication section].
 
+[[enhancements-36]]
 === Enhancements
 
 The following are the enhancements introduced with 3.6 release.
@@ -184,6 +186,7 @@ be of type `xs:string`. [4700]
 * Hazelcast has `lock` with lease time feature but does not support
 `tryLock` with lease time. [1564]
 
+[[fixes-36]]
 === Fixes
 
 The following are the fixed issues solved for 3.6 release.

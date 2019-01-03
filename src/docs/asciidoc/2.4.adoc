@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 2.4 release.
 
+[[features-24]]
 === New Features
 
 The following are the new features introduced with 2.4 release.
@@ -13,6 +14,7 @@ Hazelcast cached thread pool.
 * Added ability to restrict outbound ports that Hazelcast uses to
 connect to other nodes.
 
+[[fixes-24]]
 === Fixes
 
 The following are the fixed issues and enhancements for 2.4 release.

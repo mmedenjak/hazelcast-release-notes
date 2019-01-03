@@ -1,6 +1,7 @@
 
 == 3.9
 
+[[features-39]]
 === New Features
 
 *_Hazelcast IMDG Enterprise Features:_*
@@ -20,6 +21,7 @@ the
 http://docs.hazelcast.org/docs/3.9/manual/html-single/index.html#dynamically-adding-configuration-on-a-cluster[Dynamically
 Adding Configuration on a Cluster section].
 
+[[enhancements-39]]
 === Enhancements
 
 *_Hazelcast IMDG Enterprise Enhancements:_*
@@ -112,6 +114,7 @@ properly. [#2506]
 * There should be the ability to configure the distributed objects on
 the fly. https://github.com/hazelcast/hazelcast/issues/592[[#592]]
 
+[[fixes-39]]
 === Fixes
 
 * Members cannot join to 3.9 cluster when using cache with a key/value
@@ -386,6 +389,7 @@ https://github.com/hazelcast/hazelcast/issues/5253[[#5253]]
 * Multicast discovery does not work after loading some data.
 https://github.com/hazelcast/hazelcast/issues/4721[[#4721]]
 
+[[bc-39]]
 === Behavioral Changes
 
 * Maximum timeout of heartbeat for a member to assume it is dead was 300

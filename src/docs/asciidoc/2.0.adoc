@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 2.0 release.
 
+[[features-20]]
 === New Features and Changes
 
 The following are the new features and changes introduced with 2.0

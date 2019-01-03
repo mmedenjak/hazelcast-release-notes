@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 2.5 release.
 
+[[features-25]]
 === New Features
 
 The following are the new features introduced with 2.5 release.
@@ -16,6 +17,7 @@ in OSGI environment.
 * Nodes can be easily shutdown or restarted using Management Center
 interface.
 
+[[fixes-25]]
 === Fixes
 
 The following are the fixed issues and enhancements for 2.5 release.

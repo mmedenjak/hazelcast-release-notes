@@ -2,11 +2,12 @@
 
 == 3.11.1
 
+[[enh-3111]]
 === Enhancements
 
 * *Toggle Scripting Support*: Introduced the `scripting-enabled` configuration attribute so that you can allow or prevent sending commands to the members from the Hazelcast Management Center. See the https://docs.hazelcast.org/docs/3.11.1/manual/html-single/index.html#toggle-scripting-support[Toggle Scripting Support section] for information on how to configure it.
 
-
+[[fixes-3111]]
 === Fixes
 
 * Fixed an issue where the client's Near Cache on Replicated Map with `Binary` storage was causing an exception on the member. https://github.com/hazelcast/hazelcast/issues/14210[[#14210]]
@@ -18,6 +19,7 @@ of an `HazelcastClientOfflineException`. https://github.com/hazelcast/hazelcast/
 * Fixed an issue where the failed store operations was filling the write-behind queues by duplicating themselves, in each run of the store-worker thread (this was happening when `write-batch-size` is larger than 1 and `write-coalescing` is disabled, there was and is no issue for the default values of these properties). https://github.com/hazelcast/hazelcast/issues/14019[[#14019]]
 * Fixed an issue where the querying performance dropped when running Hazelcast within OSGi. https://github.com/hazelcast/hazelcast/issues/13785[[#13785]]
 
+[[bc-3111]]
 === Behavioral Changes
 
 * Starting with Hazelcast IMDG 3.11.1 and for the future releases, when you enable TLS/SSL and do not provide the `trustStore` property, the default trusted certificates are/will be used, i.e., the Java provided list of trusted CA certificates.

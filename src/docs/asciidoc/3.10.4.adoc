@@ -1,11 +1,12 @@
 
 == 3.10.4
 
-
+[[enh-3104]]
 === Enhancements
 
 * License information was not sent to Hazelcast Management Center. With this enhancement, Hazelcast Management Center shows information about the cluster license. https://github.com/hazelcast/hazelcast/pull/13451[[#13451]]
 
+[[fixes-3104]]
 === Fixes
 
 * Fixed inconsistencies in `mapEventJournal` calls coming from `DefaultRecordStore`. https://github.com/hazelcast/hazelcast/pull/13470[[#13470]]

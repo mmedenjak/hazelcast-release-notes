@@ -1,5 +1,6 @@
 == 3.9.1
 
+[[features-391]]
 === New Features
 
 * *Ping Failure Detector:* Ping Failure Detector provides a quicker and
@@ -8,6 +9,7 @@ Please see the
 http://docs.hazelcast.org/docs/3.9.1/manual/html-single/index.html#ping-failure-detector[Ping
 Failure Detector section].
 
+[[fixes-391]]
 === Fixes
 
 * `MulticastJoiner` may cause `OutOfMemoryException` due to the
@@ -57,6 +59,7 @@ https://github.com/hazelcast/hazelcast/issues/11196[[#11196]]
 * `HashSet` and `HashMap` are initialized with a too small size.
 https://github.com/hazelcast/hazelcast/issues/9445[[#9445]]
 
+[[cf-391]]
 ==== Coverity Fixes
 
 * Dereference null return value in the

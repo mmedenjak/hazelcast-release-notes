@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 2.3 release.
 
+[[features-2.3]]
 === New Features and Changes
 
 The following are the new features and changes introduced with 2.3
@@ -29,6 +30,7 @@ possible to register a custom hook when OutOfMemoryError is thrown.
 now fire MERGING and MERGED before and after RESTARTING and RESTARTED
 LifecycleEvents.
 
+[[fixes-23]]
 === Fixes
 
 The following are the fixed issues and enhancements for 2.3 release.

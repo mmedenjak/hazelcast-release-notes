@@ -4,6 +4,7 @@
 This section lists the new features, enhancements and fixed issues for
 3.0 and 3.0.x releases.
 
+[[features-303]]
 === New Features
 
 This section provides the new features introduced with Hazelcast 3.0
@@ -50,6 +51,7 @@ clients.
 maintain a connection to only one member, whereas the smart client can
 route the operations to the node that owns the data.
 
+[[fixes-303]]
 === Fixes
 
 This section lists issues solved for 3.0 and 3.0.x releases.
