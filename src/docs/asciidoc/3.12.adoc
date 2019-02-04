@@ -1,0 +1,38 @@
+
+
+== 3.12
+
+[[enh-312]]
+=== Enhancements
+
+*_Hazelcast IMDG Enterprise Enhancements:_*
+
+* **Sharing Hot Restart `base-dir` among Multiple Members:** The base directory for the Hot Restart feature (`bade-dir`) is now used as a shared directory between
+multiple members, and each member uses a unique sub-directory
+inside this base directory. This allows using the same configuration
+on all the members. Previously, each member had to use a separate directory which complicated the deployments on cloud-like environments. During the restart, a member tries to lock an already existing Hot Restart directory inside the base directory. If it cannot acquire any, then it creates a fresh new directory. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html##configuring-hot-restart[Configuring Hot Restart section].
+
+* ???. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html#???[??? section].
+
+*_Hazelcast IMDG Open Source Enhancements:_*
+
+* **???**: ???. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/#???[??? section].
+
+The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
+
+* ???. https://github.com/hazelcast/hazelcast/issues/???[[#???]]
+
+[[fixes-312]]
+=== Fixes
+
+* ???. https://github.com/hazelcast/hazelcast/issues/???[[#???]]
+
+[[bc-312]]
+=== Behavioral Changes
+
+* ???
+
+[[rd-312]]
+=== Removed/Deprecated Features
+
+* ???
