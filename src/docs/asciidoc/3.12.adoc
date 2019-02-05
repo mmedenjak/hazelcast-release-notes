@@ -11,12 +11,13 @@
 multiple members, and each member uses a unique sub-directory
 inside this base directory. This allows using the same configuration
 on all the members. Previously, each member had to use a separate directory which complicated the deployments on cloud-like environments. During the restart, a member tries to lock an already existing Hot Restart directory inside the base directory. If it cannot acquire any, then it creates a fresh new directory. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html##configuring-hot-restart[Configuring Hot Restart section].
+* **Add/Remove WAN Publishers in a Running Cluster:** Introduced the ability to dynamically add or remove WAN publishers (target clusters). See the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html#dynamically-adding-wan-publishers[Dynamically Adding WAN Publishers section].
+* **Automatic Removal of Stale Hot Restart Data:** Introduced an option that allows the stale Hot Restart data to be removed automatically. See the description of the `auto-remove-stale-data` configuration element in the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html#configuring-hot-restart[Configuring Hot Restart section].
 
-* ???. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html#???[??? section].
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
-* **???**: ???. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/#???[??? section].
+* **Client Instance Names and Attributes**: You can now retrieve the names of client instances on the member side. Moreover, client attributes have been introduced so that you can group your clients and/or perform special operations for specific clients. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html#defining-client-attributes[Defining Client Attributes section].
 
 The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
 
