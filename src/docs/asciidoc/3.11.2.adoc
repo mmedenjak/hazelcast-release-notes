@@ -2,6 +2,11 @@
 
 == 3.11.2
 
+[[enh-3112]]
+=== Enhancements 
+
+* Introduced a new system property (`hazelcast.security.permissions.operation.on-join`) that allows to choose whether a new member joining to a cluster will apply the client permissions stored in its own configuration, or will use the ones defined in the cluster. See the https://docs.hazelcast.org/docs/3.11.2/manual/html-single/#permissions[Permission section].
+
 [[fixes-3112]]
 === Fixes
 
