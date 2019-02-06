@@ -17,7 +17,7 @@ on all the members. Previously, each member had to use a separate directory whic
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
-* **CP Subsystem:** Implementing the https://raft.github.io/[Raft consensus algorithm], Hazelcast introduces its CP subsystem which runs within a Hazelcast cluster and offers linearizable implementations of Hazelcast's concurrency APIs. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html#cp-subsystem[CP Subsystem chapter].
+* **CP Subsystem:** Implementing the https://raft.github.io/[Raft consensus algorithm], Hazelcast introduces its CP subsystem which runs within a Hazelcast cluster and offers linearizable implementations of Hazelcast's concurrency APIs. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html#cp-subsystem-beta[CP Subsystem chapter].
 * **Client Instance Names and Attributes:** You can now retrieve the names of client instances on the member side. Moreover, client attributes have been introduced so that you can group your clients and/or perform special operations for specific clients. See the https://docs.hazelcast.org/docs/3.12/manual/html-single/index.html#defining-client-attributes[Defining Client Attributes section].
 
 The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
