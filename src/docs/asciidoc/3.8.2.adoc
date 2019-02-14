@@ -1,7 +1,7 @@
 
 == 3.8.2
 
-The following are the fixed issues for Hazelcast 3.8.1 release.
+The following are the fixed issues for Hazelcast 3.8.2 release.
 
 * Even though a `CachePermission` already exists, the respective
 `PermissionType` does not exist and cannot be configured
