@@ -50,3 +50,8 @@ The following are the other improvements performed to solve the enhancement issu
 * Fixed an issue where the `IMap.get()` method was not resetting the idle time counter when `read-backup-data` is enabled. https://github.com/hazelcast/hazelcast/issues/14026[[#14026]]
 * Fixed an issue where the `addIndex()` method was performing a full copy of entries when a new member joins the cluster, which is not needed. https://github.com/hazelcast/hazelcast/issues/13964[[#13964]]
 * `PagingPredicate` with comparator was failing to serialize when sending from the client or member when the cluster size is more than 1. This has been fixed by making the `PagingPredicateQuery` comparator serializable. https://github.com/hazelcast/hazelcast/issues/12208[[#12208]]
+
+[[rdf-312]]
+=== Removed/Deprecated Features
+
+* `ILock` interface and implementation of `ILock` has been deprecated, and `FencedLock` has been introduced.
