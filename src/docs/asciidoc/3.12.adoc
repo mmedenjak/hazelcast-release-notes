@@ -7,8 +7,7 @@
 
 *_Hazelcast IMDG Enterprise New Features:_*
 
-* **Blue-Green and Disaster Recovery for Java Clients:** Introduced the support for Hazelcast Java clients to switch between alternative clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/
-index.html#blue-green-deployment-and-disaster-recovery[Blue Green Deployment and Disaster Recovery section].
+* **Blue-Green and Disaster Recovery for Java Clients:** Introduced the support for Hazelcast Java clients to switch between alternative clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#blue-green-deployment-and-disaster-recovery[Blue Green Deployment and Disaster Recovery section].
 
 *_Hazelcast IMDG Open Source New Features:_*
 
