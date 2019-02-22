@@ -7,7 +7,14 @@
 
 *_Hazelcast IMDG Enterprise New Features:_*
 
-* **Blue-Green and Disaster Recovery for Java Clients:** Introduced the support for Hazelcast Java clients to switch between alternative clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#blue-green-deployment-and-disaster-recovery[Blue Green Deployment and Disaster Recovery section].
+* **Blue-Green and Disaster Recovery for Java Clients:** Introduced the support for Hazelcast Java clients to switch between alternative clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/
+index.html#blue-green-deployment-and-disaster-recovery[Blue Green Deployment and Disaster Recovery section].
+
+*_Hazelcast IMDG Open Source New Features:_*
+
+* **CP Subsystem:** Implementing the https://raft.github.io/[Raft consensus algorithm], Hazelcast introduces its CP subsystem which runs within a Hazelcast cluster and offers linearizable implementations of Hazelcast's concurrency APIs. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#cp-subsystem-beta[CP Subsystem chapter].
+* **Querying JSON Strings:**  You can now query JSON strings stored inside your Hazelcast clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#using-rest-api-for-cluster-management[Querying JSON Strings section].
+
 
 [[enh-312]]
 === Enhancements
@@ -26,7 +33,6 @@ on all the members. Previously, each member had to use a separate directory whic
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
-* **CP Subsystem:** Implementing the https://raft.github.io/[Raft consensus algorithm], Hazelcast introduces its CP subsystem which runs within a Hazelcast cluster and offers linearizable implementations of Hazelcast's concurrency APIs. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#cp-subsystem-beta[CP Subsystem chapter].
 * **Client Instance Names and Attributes:** You can now retrieve the names of client instances on the member side. Moreover, client attributes have been introduced so that you can group your clients and/or perform special operations for specific clients. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#defining-client-attributes[Defining Client Attributes section].
 * **Composite Indexes:** Introduced the ability to recognize the queries that use all the indexed properties and treat them as a composite, e.g., `foo = 1 and bar = 2 and foobar = 3`. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#composite-indexes[Composite Indexes section].
 
