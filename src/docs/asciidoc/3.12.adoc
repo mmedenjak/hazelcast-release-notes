@@ -41,6 +41,12 @@ on all the members. Previously, each member had to use a separate directory whic
 
 * **Client Instance Names and Attributes:** You can now retrieve the names of client instances on the member side. Moreover, client attributes have been introduced so that you can group your clients and/or perform special operations for specific clients. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#defining-client-attributes[Defining Client Attributes section].
 * **Composite Indexes:** Introduced the ability to recognize the queries that use all the indexed properties and treat them as a composite, e.g., `foo = 1 and bar = 2 and foobar = 3`. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#composite-indexes[Composite Indexes section].
+* **REST Endpoint Groups:** With this enhancement you can enable or disable:
+** REST API completely
+** Memcache protocol
+** REST endpoint groups 
++
+See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#using-the-rest-endpoint-groups[Using the REST Endpoint Groups section].
 
 The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
 
@@ -68,3 +74,8 @@ The following are the other improvements performed to solve the enhancement issu
 
 * `ILock` interface and implementation of `ILock` has been deprecated, and `FencedLock` has been introduced.
 * The original implementations of `IAtomicLong`, `IAtomicReference`, `ISemaphore` and `ICountDownLatch` have been deprecated. Instead, the implementations provided by the CP Subsystem have been introduced.
+* The following system properties are deprecated:
+** `hazelcast.rest.enabled`
+** `hazelcast.mc.url.change.enabled`
+** `hazelcast.memcache.enabled`
+** `hazelcast.http.healthcheck.enabled`
