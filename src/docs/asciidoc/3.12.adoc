@@ -5,7 +5,7 @@
 [[bc-312]]
 === Breaking Changes
 
-* Support for JDK 6 and 7 has been dropped. The minimum Java version that Hazelcast supports now is Java 8.
+* Support for JDK 6 and 7 has been dropped. The minimum Java version that Hazelcast supports now is Java 8. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#supported-jvms[Supports JVMs section].
 
 [[nf-312]]
 === New Features
