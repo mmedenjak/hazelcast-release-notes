@@ -16,7 +16,7 @@
 
 *_Hazelcast IMDG Open Source New Features:_*
 
-* **CP Subsystem:** Implementing the https://raft.github.io/[Raft consensus algorithm], Hazelcast introduces its CP subsystem which runs within a Hazelcast cluster and offers linearizable implementations of Hazelcast's concurrency APIs. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#cp-subsystem-beta[CP Subsystem chapter].
+* **CP Subsystem:** Implementing the https://raft.github.io/[Raft consensus algorithm], Hazelcast introduces its CP subsystem which runs within a Hazelcast cluster and offers linearizable implementations of Hazelcast's concurrency APIs. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#cp-subsystem[CP Subsystem chapter].
 * **Querying JSON Strings:**  You can now query JSON strings stored inside your Hazelcast clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#using-rest-api-for-cluster-management[Querying JSON Strings section].
 * **Support for Multiple Endpoints When Configuring Member’s Networking:** Added the ability to configure the Hazelcast members with separate server sockets for different protocols. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#advanced-network-configuration[Advanced Network Configuration section].
 * **YAML Configuration Support:** Added the support for configuring Hazelcast in YAML. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#configuring-declaratively-yaml[Configuring Declaratively with YAML section].
