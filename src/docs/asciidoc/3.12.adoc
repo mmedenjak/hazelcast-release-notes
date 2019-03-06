@@ -1,26 +1,26 @@
 
 
-== 3.12-BETA-1
+== 3.12-BETA-2
 
 [[bc-312]]
 === Breaking Changes
 
-* Support for JDK 6 and 7 has been dropped. The minimum Java version that Hazelcast supports now is Java 8. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#supported-jvms[Supports JVMs section].
+* Support for JDK 6 and 7 has been dropped. The minimum Java version that Hazelcast supports now is Java 8. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/#supported-jvms[Supports JVMs section].
 
 [[nf-312]]
 === New Features
 
 *_Hazelcast IMDG Enterprise New Features:_*
 
-* **Blue-Green and Disaster Recovery for Java Clients:** Introduced the support for Hazelcast Java clients to switch between alternative clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#blue-green-deployment-and-disaster-recovery[Blue Green Deployment and Disaster Recovery section].
+* **Blue-Green and Disaster Recovery for Java Clients:** Introduced the support for Hazelcast Java clients to switch between alternative clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/index.html#blue-green-deployment-and-disaster-recovery[Blue Green Deployment and Disaster Recovery section].
 
 *_Hazelcast IMDG Open Source New Features:_*
 
-* **CP Subsystem:** Implementing the https://raft.github.io/[Raft consensus algorithm], Hazelcast introduces its CP subsystem which runs within a Hazelcast cluster and offers linearizable implementations of Hazelcast's concurrency APIs. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#cp-subsystem[CP Subsystem chapter].
-* **Querying JSON Strings:**  You can now query JSON strings stored inside your Hazelcast clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#querying-json-strings[Querying JSON Strings section].
-* **Pipelining:** Introduced pipelining mechanism using which you can send multiple requests in parallel to Hazelcast members or clients, and read the responses in a single step. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#pipelining[Pipelining section].
-* **Support for Multiple Endpoints When Configuring Member’s Networking:** Added the ability to configure the Hazelcast members with separate server sockets for different protocols. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#advanced-network-configuration[Advanced Network Configuration section].
-* **YAML Configuration Support:** Added the support for configuring Hazelcast in YAML. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#configuring-declaratively-yaml[Configuring Declaratively with YAML section].
+* **CP Subsystem:** Implementing the https://raft.github.io/[Raft consensus algorithm], Hazelcast introduces its CP subsystem which runs within a Hazelcast cluster and offers linearizable implementations of Hazelcast's concurrency APIs. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/index.html#cp-subsystem[CP Subsystem chapter].
+* **Querying JSON Strings:**  You can now query JSON strings stored inside your Hazelcast clusters. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/#querying-json-strings[Querying JSON Strings section].
+* **Pipelining:** Introduced pipelining mechanism using which you can send multiple requests in parallel to Hazelcast members or clients, and read the responses in a single step. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/index.html#pipelining[Pipelining section].
+* **Support for Multiple Endpoints When Configuring Member’s Networking:** Added the ability to configure the Hazelcast members with separate server sockets for different protocols. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/#advanced-network-configuration[Advanced Network Configuration section].
+* **YAML Configuration Support:** Added the support for configuring Hazelcast in YAML. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/#configuring-declaratively-yaml[Configuring Declaratively with YAML section].
 
 [[enh-312]]
 === Enhancements
@@ -30,26 +30,32 @@
 * **Sharing Hot Restart `base-dir` among Multiple Members:** The base directory for the Hot Restart feature (`base-dir`) is now used as a shared directory between
 multiple members, and each member uses a unique sub-directory
 inside this base directory. This allows using the same configuration
-on all the members. Previously, each member had to use a separate directory which complicated the deployments on cloud-like environments. During the restart, a member tries to lock an already existing Hot Restart directory inside the base directory. If it cannot acquire any, then it creates a fresh new directory. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html##configuring-hot-restart[Configuring Hot Restart section].
-* **Lower Latencies and Higher Throughput in WAN Replication:** Improved the design of the WAN replication mechanism to allow configuring it for lower latencies and higher throughput. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html##tune-wr[Tuning WAN Replication For Lower Latencies and Higher Throughput section].
-* **Add/Remove WAN Publishers in a Running Cluster:** Introduced the ability to dynamically add or remove WAN publishers (target clusters). See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#dynamically-adding-wan-publishers[Dynamically Adding WAN Publishers section].
-* **Automatic Removal of Stale Hot Restart Data:** Introduced an option that allows the stale Hot Restart data to be removed automatically. See the description of the `auto-remove-stale-data` configuration element in the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#configuring-hot-restart[Configuring Hot Restart section].
-* **Client Permission Handling When a New Member Joins:** Introduced a declarative configuration attribute `on-join-operation` for the client permission in the Security configuration (its programmatic configuration equivalent is the `setOnJoinPermissionOperation()` method). This attribute allows to choose whether a new member joining to a cluster will apply the client permissions stored in its own configuration, or will use the ones defined in the cluster. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#handling-permissions-when-a-new-member-joins[Handling Permissions When a New Member Joins section].
-* **Automatic Cluster Version Change after a Rolling Upgrade:** Introduced the ability to automatically upgrade the cluster version after a rolling upgrade. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#upgrading-cluster-version[Upgrading Cluster Version section].
-* **FIPS 140-2 Validation:** Hazelcast now can be configured to use a FIPS 140-2 validated module. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#fips-140-2[FIPS 140-2 section].
+on all the members. Previously, each member had to use a separate directory which complicated the deployments on cloud-like environments. During the restart, a member tries to lock an already existing Hot Restart directory inside the base directory. If it cannot acquire any, then it creates a fresh new directory. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/index.html##configuring-hot-restart[Configuring Hot Restart section].
+* **Lower Latencies and Higher Throughput in WAN Replication:** Improved the design of the WAN replication mechanism to allow configuring it for lower latencies and higher throughput. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/index.html##tune-wr[Tuning WAN Replication For Lower Latencies and Higher Throughput section].
+* **Add/Remove WAN Publishers in a Running Cluster:** Introduced the ability to dynamically add or remove WAN publishers (target clusters). See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/index.html#dynamically-adding-wan-publishers[Dynamically Adding WAN Publishers section].
+* **Automatic Removal of Stale Hot Restart Data:** Introduced an option that allows the stale Hot Restart data to be removed automatically. See the description of the `auto-remove-stale-data` configuration element in the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/index.html#configuring-hot-restart[Configuring Hot Restart section].
+* **Client Permission Handling When a New Member Joins:** Introduced a declarative configuration attribute `on-join-operation` for the client permission in the Security configuration (its programmatic configuration equivalent is the `setOnJoinPermissionOperation()` method). This attribute allows to choose whether a new member joining to a cluster will apply the client permissions stored in its own configuration, or will use the ones defined in the cluster. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/#handling-permissions-when-a-new-member-joins[Handling Permissions When a New Member Joins section].
+* **Automatic Cluster Version Change after a Rolling Upgrade:** Introduced the ability to automatically upgrade the cluster version after a rolling upgrade. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/#upgrading-cluster-version[Upgrading Cluster Version section].
+* **FIPS 140-2 Validation:** Hazelcast now can be configured to use a FIPS 140-2 validated module. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/#fips-140-2[FIPS 140-2 section].
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
-* **Client Instance Names and Attributes:** You can now retrieve the names of client instances on the member side. Moreover, client attributes have been introduced so that you can group your clients and/or perform special operations for specific clients. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#defining-client-attributes[Defining Client Attributes section].
-* **Composite Indexes:** Introduced the ability to recognize the queries that use all the indexed properties and treat them as a composite, e.g., `foo = 1 and bar = 2 and foobar = 3`. See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/index.html#composite-indexes[Composite Indexes section].
+* **Client Instance Names and Attributes:** You can now retrieve the names of client instances on the member side. Moreover, client attributes have been introduced so that you can group your clients and/or perform special operations for specific clients. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/index.html#defining-client-attributes[Defining Client Attributes section].
+* **Composite Indexes:** Introduced the ability to recognize the queries that use all the indexed properties and treat them as a composite, e.g., `foo = 1 and bar = 2 and foobar = 3`. See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/index.html#composite-indexes[Composite Indexes section].
 * **REST Endpoint Groups:** With this enhancement you can enable or disable:
 ** REST API completely
 ** Memcache protocol
 ** REST endpoint groups 
 +
-See the https://docs.hazelcast.org/docs/3.12-BETA-1/manual/html-single/#using-the-rest-endpoint-groups[Using the REST Endpoint Groups section].
+See the https://docs.hazelcast.org/docs/3.12-BETA-2/manual/html-single/#using-the-rest-endpoint-groups[Using the REST Endpoint Groups section].
 
 The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
+
+**3.12-BETA-2**
+
+* Removed group password from the Hazelcast’s default XML configuration file. Also improved the non-empty password `INFO` message. It's now only logged if security is disabled, password is not empty and password is not the Hazelcast default one. https://github.com/hazelcast/hazelcast/pull/14603[[#14603]]
+
+**3.12-BETA-1**
 
 * Improved the Javadoc of `HazelcastClient` so that the code comments now use "unisocket client" instead of "dumb client". https://github.com/hazelcast/hazelcast/issues/14213[[#14213]]
 * Introduced the `/ready` endpoint to the REST API to allow checking a member if it is ready to be used after it joins to the cluster. https://github.com/hazelcast/hazelcast/issues/14089[[#14089]]
@@ -59,6 +65,16 @@ The following are the other improvements performed to solve the enhancement issu
 
 [[fixes-312]]
 === Fixes
+
+**3.12-BETA-2**
+
+* Fixed the wording of a misleading error in the first attempt to connect to a wrongly configured cluster. The error message has been changed to “Unable to connect to any cluster”.  https://github.com/hazelcast/hazelcast/issues/14574[[#14574]]
+* Fixed an issue where the collection attributes indexed with `[any]` were causing incorrect SQL query results, if the first data inserted to the map has no value for the attribute or the collection is empty. https://github.com/hazelcast/hazelcast/issues/14358[[#14358]]
+* Fixed an issue where `mapEvictionPolicy` couldn’t be specified in the JSON configuration file. https://github.com/hazelcast/hazelcast/issues/14092[[#14092]]
+* Fixed the discrepancy between the XSD on the website and the one in the download package. https://github.com/hazelcast/hazelcast/issues/13011[[#13011]]
+* Fixed an issue where `TcpIpConnectionManager` was putting the connections in a map under the remote endpoint bind address but not under the address to which Hazelcast connects. https://github.com/hazelcast/hazelcast/issues/11256[[#11256]]
+
+**3.12-BETA-1**
 
 * Fixed an issue where the REST API was not handling the HTTP requests without headers correctly: when a client sends an HTTP request without headers to the Hazelcast REST API, the `HttpCommand` class was wrongly expecting an additional new line. https://github.com/hazelcast/hazelcast/issues/14353[[#14353]]
 * Fixed an issue where `QueryCache` was not returning the copies of the found objects. https://github.com/hazelcast/hazelcast/issues/14280[[#14280]]
