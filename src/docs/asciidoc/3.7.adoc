@@ -14,9 +14,9 @@ eviction policy. Please refer to the http://docs.hazelcast.org/docs/3.7/manual/h
 * *Discovery SPI Implementation for Microsoft Azure Services*: Hazelcast
 members can be discovered within your Azure resource group. You can add
 this implementation as a plugin to your projects. Please refer to https://github.com/sedouard/hazelcast-azure[Hazelcast-Azure plugin page].
-* *Hazelcast for OpenShift and CloudFoundry*: Hazelcast members on
-OpenShift and CloudFoundry can discover each other. Please refer to
-https://hub.docker.com/r/hazelcast/openshift/[Hazelcast OpenShift] and https://github.com/hazelcast/hazelcast-cloudfoundry[Hazelcast CloudFoundry] plugin pages.
+* *Hazelcast for OpenShift*: Hazelcast members on
+OpenShift can discover each other. Please refer to
+https://hub.docker.com/r/hazelcast/openshift/[Hazelcast OpenShift] plugin page.
 * *Apache Spark Connector:* A plugin which allows Hazelcast maps and
 caches to be used as shared RDD caches by Spark using the Spark RDD API.
 Please refer to the plugin’s repo at Spark Connector for Hazelcast.

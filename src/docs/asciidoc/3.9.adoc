@@ -346,7 +346,7 @@ block methods. [#10021]
 wildcard usage `mapName` configuration.
 https://github.com/hazelcast/hazelcast/issues/9990[[#9990]]
 * When health check is enabled, the user can send a garbage request like
-`http://<your member's host IP>:5701/hazelcast/healthqqq` and it returns
+`\http://<your member's host IP>:5701/hazelcast/healthqqq` and it returns
 a correct response. [#9967]
 * Durable Executor Service re-executes the completed tasks in case of a
 member failure. [#9965]
