@@ -11,7 +11,7 @@ and supported so `UnsupportedOperationException` is thrown at
 https://github.com/hazelcast/hazelcast/issues/6262[#6262]
 * Added `iam-role` support to Hazelcast Cloud module. So users can use
 Hazelcast Cloud module without configuring access keys.
-https://github.com/hazelcast/hazelcast/issues/2630[#6262]
+https://github.com/hazelcast/hazelcast/issues/2630[#2630]
 
 The following are the fixed issues for Hazelcast 3.5.3 release.
 
