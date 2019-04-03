@@ -4,14 +4,13 @@
 The following are the fixed issues and enhancements for 2.0.4 release.
 
 * `NullPointerException` is thrown by the method
-`AbstractRecord.getLockCount()`. [166]
-* There are ``Connection refused'' in Hazelcast 2.0.3. [140]
+`AbstractRecord.getLockCount()`. https://github.com/hazelcast/hazelcast/issues/166[#166]
+* There are ``Connection refused'' in Hazelcast 2.0.3. https://github.com/hazelcast/hazelcast/issues/140[#140]
 * Predicate value on the date field should not be converted from a
-String by the method `getRealObject()`.[135]
+String by the method `getRealObject()`. https://github.com/hazelcast/hazelcast/issues/135[#135]
 * Some IMap removed/evicted entries will go back when one cluster node
-crashes. [132]
-* `Predicates.GreaterLesserPredicate`’s `doApply` operation is broken.
-[131]
+crashes. https://github.com/hazelcast/hazelcast/issues/132[#132]
+* `Predicates.GreaterLesserPredicate`’s `doApply` operation is broken. https://github.com/hazelcast/hazelcast/issues/131[#131]
 * Incorrect selection by predicate with comparison of non-numerical
-fields and indexing problems. [98]
-* Evicted/deleted entries should not be stored to the map store. [96]
+fields and indexing problems. https://github.com/hazelcast/hazelcast/issues/98[#98]
+* Evicted/deleted entries should not be stored to the map store. https://github.com/hazelcast/hazelcast/issues/96[#96]

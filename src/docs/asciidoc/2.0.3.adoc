@@ -4,19 +4,18 @@
 The following are the fixed issues and enhancements for 2.0.3 release.
 
 * Increasing amount of stuck Hazelcast threads in weblogic; in a
-clustered environment and also when running a single instance. [160]
+clustered environment and also when running a single instance. https://github.com/hazelcast/hazelcast/issues/160[#160]
 * Hyphens in the group names confuse the Management Center. It treats
-the group name as two separate tokens. [128]
+the group name as two separate tokens. https://github.com/hazelcast/hazelcast/issues/128[#128]
 * Split-brain merge handling causes the locks never to be acquired
-again. [127]
+again. https://github.com/hazelcast/hazelcast/issues/127[#127]
 * `ConfigXmlGenerator` does not handle the TTL correctly when multicast
-joining mechanism is used. [127]
+joining mechanism is used. https://github.com/hazelcast/hazelcast/issues/119[#119]
 * Data is lost in a map when adding a key the second time after a new
-member joins the cluster. [117]
-* Listeners are not called when a queue is changed within a transaction.
-[114]
+member joins the cluster. https://github.com/hazelcast/hazelcast/issues/117[#117]
+* Listeners are not called when a queue is changed within a transaction. https://github.com/hazelcast/hazelcast/issues/114[#114]
 * Programmatic session destruction does not lead to the destruction of
-the clustered session. [104]
-* The name for `hazelcast.sessionId` should be configurable. [103]
+the clustered session. https://github.com/hazelcast/hazelcast/issues/104[#104]
+* The name for `hazelcast.sessionId` should be configurable. https://github.com/hazelcast/hazelcast/issues/103[#103]
 * There is an issue in concurrent `queue.take()` and
-`txn.rollback()`.[99]
+`txn.rollback()`. https://github.com/hazelcast/hazelcast/issues/99[#99]

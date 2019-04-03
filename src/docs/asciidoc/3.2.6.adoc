@@ -3,23 +3,23 @@
 
 The following are the fixed issues for 3.2.6 release.
 
-* MapStore in write-behind mode throws Exception (Spring configured)
-https://github.com/hazelcast/hazelcast/issues/3397[[#3397]].
+* MapStore in write-behind mode throws Exception (Spring configured).
+https://github.com/hazelcast/hazelcast/issues/3397[#3397]
 * Wildcard pattern of the map (map is configured with a wildcard in its
-name) should be respected during evictions
-https://github.com/hazelcast/hazelcast/issues/3345[[#3345]].
-* Map eviction does not work when the policy is ``USED_HEAP_PERCENTAGE''
-or ``USED_HESAP SIZE''
-https://github.com/hazelcast/hazelcast/issues/3321[[#3321]].
-* Exceptions when using Portable serialization
-https://github.com/hazelcast/hazelcast/issues/3313[[#3313]].
+name) should be respected during evictions.
+https://github.com/hazelcast/hazelcast/issues/3345[#3345]
+* Map eviction does not work when the policy is `USED_HEAP_PERCENTAGE`
+or `USED_HESAP SIZE`.
+https://github.com/hazelcast/hazelcast/issues/3321[#3321]
+* Exceptions when using Portable serialization.
+https://github.com/hazelcast/hazelcast/issues/3313[#3313]
 * When Hazelcast is used as drop-in replacement for Memcached, it causes
-errors https://github.com/hazelcast/hazelcast/issues/3182[[#3182]].
-* Null Pointer Exception is thrown by `MapService.dispatchEvent`
-https://github.com/hazelcast/hazelcast/issues/3101[[#3101]].
+errors. https://github.com/hazelcast/hazelcast/issues/3182[#3182]
+* Null Pointer Exception is thrown by `MapService.dispatchEvent`.
+https://github.com/hazelcast/hazelcast/issues/3101[#3101]
 * PagingPredicate returns duplicated elements which result in an
-infinite loop
-https://github.com/hazelcast/hazelcast/issues/3047[[#3047]].
+infinite loop.
+https://github.com/hazelcast/hazelcast/issues/3047[#3047]
 * `ContextClassLoader` is by default only set on some cached operation
-threads, not on most others
-https://github.com/hazelcast/hazelcast/issues/2721[[#2721]].
+threads, not on most others.
+https://github.com/hazelcast/hazelcast/issues/2721[#2721]

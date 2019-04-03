@@ -6,22 +6,22 @@ NOTE: Starting with Hazelcast 3.10.3, Hazelcast IMDG Enterprise license keys are
 [[enh-3103]]
 === Enhancements
 
-* Descriptive null checks should be added when accessing a data structure on the client. https://github.com/hazelcast/hazelcast/pull/13256[[#13256]]
+* Descriptive null checks should be added when accessing a data structure on the client. https://github.com/hazelcast/hazelcast/pull/13256[#13256]
 
 [[fixes-3103]]
 === Fixes
 
-* There is a memory leak in `SecondsBasedEntryTaskScheduler` of Replicated Map: assuming a TTL is set when an entry is put into the Replicated Map; when the map is cleared, the heap still contains a lot of instances of `SecondsBasedEntryTaskScheduler`. https://github.com/hazelcast/hazelcast/issues/13409[[#13409]]
-* In `AbstractInternalQueryCache`, the private method `getQueryCacheConfig()` is called in multiple places. https://github.com/hazelcast/hazelcast/issues/13402[[#13402]]
-* Permission type for PN Counter is missing. https://github.com/hazelcast/hazelcast/issues/13399[[#13399]]
-* Setting `ExpirationTimeMergePolicy` throws exception during configuration validation. https://github.com/hazelcast/hazelcast/issues/13392[[#13392]]
-* Close task problems in `NioOutboundPipeline`: There happens a temporary stall since a task is executed on an I/O thread from that same I/O thread and then the I/O thread waits for it. Because the thread will not execute its own task (yet) there is a 3 seconds of stall in the I/O pipeline. This is a problem since it blocks all the traffic for that I/O thread. Also the close task is scheduled as a packet. If the pipeline already is scheduled, scheduling the close task will not get picked up as part of an optimization. https://github.com/hazelcast/hazelcast/pull/13363[[#13363]]
+* There is a memory leak in `SecondsBasedEntryTaskScheduler` of Replicated Map: assuming a TTL is set when an entry is put into the Replicated Map; when the map is cleared, the heap still contains a lot of instances of `SecondsBasedEntryTaskScheduler`. https://github.com/hazelcast/hazelcast/issues/13409[#13409]
+* In `AbstractInternalQueryCache`, the private method `getQueryCacheConfig()` is called in multiple places. https://github.com/hazelcast/hazelcast/issues/13402[#13402]
+* Permission type for PN Counter is missing. https://github.com/hazelcast/hazelcast/issues/13399[#13399]
+* Setting `ExpirationTimeMergePolicy` throws exception during configuration validation. https://github.com/hazelcast/hazelcast/issues/13392[#13392]
+* Close task problems in `NioOutboundPipeline`: There happens a temporary stall since a task is executed on an I/O thread from that same I/O thread and then the I/O thread waits for it. Because the thread will not execute its own task (yet) there is a 3 seconds of stall in the I/O pipeline. This is a problem since it blocks all the traffic for that I/O thread. Also the close task is scheduled as a packet. If the pipeline already is scheduled, scheduling the close task will not get picked up as part of an optimization. https://github.com/hazelcast/hazelcast/pull/13363[#13363]
 * When a cache is closed, it is no longer managed by the `CacheManager`;
 its `CacheManager` should be reset to null and the method `getCacheManager()` should
-return null as per specification. https://github.com/hazelcast/hazelcast/pull/13236[[#13236]]
-*  Hazelcast client produces `OutOfMemoryError` when there is no Hazelcast member available at startup. https://github.com/hazelcast/hazelcast/issues/13186[[#13186]]
+return null as per specification. https://github.com/hazelcast/hazelcast/pull/13236[#13236]
+*  Hazelcast client produces `OutOfMemoryError` when there is no Hazelcast member available at startup. https://github.com/hazelcast/hazelcast/issues/13186[#13186]
 
-[[rd-3103]]
+[rd-3103]
 === Removed/Deprecated Features
 
 * The method 'ClientConfig.setLicenseKey()' is deprecated.

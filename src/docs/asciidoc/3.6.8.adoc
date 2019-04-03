@@ -5,4 +5,4 @@ The following is the fixed issue for 3.6.8 release.
 
 * Servers should throw exception when message type is not known. Client
 protocol is defined to throw an exception when a client sends a client
-message with unknown type to server. [10196], [10202]
+message with unknown type to server. https://github.com/hazelcast/hazelcast/issues/10196[#10196], https://github.com/hazelcast/hazelcast/issues/10202[#10202]

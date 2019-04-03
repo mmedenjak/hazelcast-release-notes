@@ -6,28 +6,28 @@ The following are the fixed issues for 3.6.5 release.
 * When a client is inside the cloud, `DiscoveryAddressTranslator` class
 does not look for a public/private address flag. Private address should
 be used when the client is inside the cloud. If not, then public address
-should be used. [8595]
+should be used. https://github.com/hazelcast/hazelcast/issues/8595[#8595]
 * The method `ClusterMergeTask::waitOnFutureInterruptible` has an almost
-endless loop. [8527]
+endless loop. https://github.com/hazelcast/hazelcast/issues/8527[#8527]
 * Cluster state should not be allowed to change before startup is
 completed. Normally, the method `NodeExtension.isStartCompleted()`
 returns `true` when a member is joined successfully. However, when Hot
 Restart Store is enabled, it returns `false` until Hot Restart process
-completes on the whole cluster. [8523]
+completes on the whole cluster. https://github.com/hazelcast/hazelcast/issues/8523[#8523]
 * `MapPartitionLostListener` is not working. Upon migration commit, the
-flag `SYNC_WAITING_REPLICA` should not be overwritten. [8505]
+flag `SYNC_WAITING_REPLICA` should not be overwritten. https://github.com/hazelcast/hazelcast/issues/8505[#8505]
 * `PartitonServiceBeanDTO` always tries to resolve the domain name.
 Instead of calling the method `getSocketAddress()` every time, it can
-use the method `getLocalAddress()`. [8463]
+use the method `getLocalAddress()`. https://github.com/hazelcast/hazelcast/issues/8463[#8463]
 * Hazelcast Demo application depends on JDK. JRE should be enough on all
-platforms. [8445]
+platforms. https://github.com/hazelcast/hazelcast/issues/8445[#8445]
 * Excessive logging of `is-executing': true` checks against long running
-operations. [8386]
+operations. https://github.com/hazelcast/hazelcast/issues/8386[#8386]
 * There is a deadlock in `MigrationQueue`. The internal queue and
 counter are not synced in some situations and this causes deadlock.
-Usually it happens when there is a migration task failure. [8217]
+Usually it happens when there is a migration task failure. https://github.com/hazelcast/hazelcast/issues/8217[#8217]
 * The method `ClientSmartInvocationServiceImpl#invokeOnTarget` does not
-throw `TargetNotMemberException`. [7997]
+throw `TargetNotMemberException`. https://github.com/hazelcast/hazelcast/issues/7997[#7997]
 * Access data is not updated by local reads when reading from backup is
-enabled. [7354]
-* Missing dependency for JSPC plugin should be added. [297]
+enabled. https://github.com/hazelcast/hazelcast/issues/7354[#7354]
+* Missing dependency for JSPC plugin should be added. https://github.com/hazelcast/hazelcast/issues/297[#297]

@@ -5,44 +5,44 @@ The following are fixed issues and enhancements for Hazelcast 3.8.5
 release.
 
 * Fix for map-loader put in case of size-based eviction NPE.
-https://github.com/hazelcast/hazelcast/pull/11253/[[#11253]]
+https://github.com/hazelcast/hazelcast/pull/11253/[#11253]
 * Checked existence of key in-memory before proceeding.
-https://github.com/hazelcast/hazelcast/pull/11251/[[#11251]]
+https://github.com/hazelcast/hazelcast/pull/11251/[#11251]
 * Registration objects cause memory leak while using ScheduledExecutor.
-https://github.com/hazelcast/hazelcast/pull/11227/[[#11227]]
+https://github.com/hazelcast/hazelcast/pull/11227/[#11227]
 * Implement HTTPCommunicator using Apache HttpClient.
-https://github.com/hazelcast/hazelcast/pull/11214/[[#11214]]
+https://github.com/hazelcast/hazelcast/pull/11214/[#11214]
 * Notify invocations when a member leaves in FROZEN/PASSIVE cluster
-state. https://github.com/hazelcast/hazelcast/pull/11202/[[#11202]]
+state. https://github.com/hazelcast/hazelcast/pull/11202/[#11202]
 * The client should not use localhost if it is not explicitly configured
 and the discovery is configured.
-https://github.com/hazelcast/hazelcast/pull/11199/[[#11199]]
+https://github.com/hazelcast/hazelcast/pull/11199/[#11199]
 * Query cache fix for map destroy.
-https://github.com/hazelcast/hazelcast/pull/11197/[[#11197]]
+https://github.com/hazelcast/hazelcast/pull/11197/[#11197]
 * Add system property to process WAN map remove events as delete.
-https://github.com/hazelcast/hazelcast/pull/11178/[[#11178]]
+https://github.com/hazelcast/hazelcast/pull/11178/[#11178]
 * Add forgotten public address check from cache.
-https://github.com/hazelcast/hazelcast/pull/11169/[[#11169]]
+https://github.com/hazelcast/hazelcast/pull/11169/[#11169]
 * `CacheDestroyOperation` must be invoked from generic operation thread.
-https://github.com/hazelcast/hazelcast/pull/11165/[[#11165]]
+https://github.com/hazelcast/hazelcast/pull/11165/[#11165]
 * `RemoveOperation` returns old value causing `SerializationException`
 in WAN replication when sources are not available and the store type is
-binary. https://github.com/hazelcast/hazelcast/issues/11157/[[#11157]]
-* Error in Spring configuration: ```${hazelcast.queue.capacity}` is not
+binary. https://github.com/hazelcast/hazelcast/issues/11157/[#11157]
+* Error in Spring configuration: `${hazelcast.queue.capacity}` is not
 a valid value for ’integer''. The property `queue-capacity`’s type
 should be changed.
-https://github.com/hazelcast/hazelcast/issues/11150/[[#11150]]
+https://github.com/hazelcast/hazelcast/issues/11150/[#11150]
 * The Javadoc for the method `MapEvictionPolicy.compare` is not correct.
-https://github.com/hazelcast/hazelcast/issues/11074/[[#11074]]
+https://github.com/hazelcast/hazelcast/issues/11074/[#11074]
 * When handling multiple migration requests on the same source,
 `NullPointerException` can be thrown due to the null future reference
 from the previous migration processing.
-https://github.com/hazelcast/hazelcast/pull/11067/[[#11067]]
+https://github.com/hazelcast/hazelcast/pull/11067/[#11067]
 * An exception can’t be rethrown from a different thread; it will lead
 to exceptions with very obscure stacktraces.
-https://github.com/hazelcast/hazelcast/issues/11022/[[#11022]]
+https://github.com/hazelcast/hazelcast/issues/11022/[#11022]
 * Wrong property name `partition.count` in XSD files.
-https://github.com/hazelcast/hazelcast/issues/10544/[[#10544]]
+https://github.com/hazelcast/hazelcast/issues/10544/[#10544]
 * Hazelcast 3.7: `PollOperation` invocation fails to complete due to
 `operation-heartbeat-timeout`.
-https://github.com/hazelcast/hazelcast/issues/8831/[[#8831]]
+https://github.com/hazelcast/hazelcast/issues/8831/[#8831]

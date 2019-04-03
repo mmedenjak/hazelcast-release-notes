@@ -49,35 +49,35 @@ JCache Implementation] for details.
 
 The following are the fixed issues 3.3 release.
 
-* TxQueue cannot find reserved items upon ownership changes
-https://github.com/hazelcast/hazelcast/issues/3432[[#3432]].
+* TxQueue cannot find reserved items upon ownership changes.
+https://github.com/hazelcast/hazelcast/issues/3432[#3432]
 * Documentation update is needed to tell that PagingPredicate is only
-supported for Comparable objects if there is no comparator
-https://github.com/hazelcast/hazelcast/issues/3432[[#3428]].
+supported for Comparable objects if there is no comparator.
+https://github.com/hazelcast/hazelcast/issues/3432[#3428]
 * `java.lang.NullPointerException` is thrown when publishing an event in
-ClientEndPointImpl
-https://github.com/hazelcast/hazelcast/issues/3407[[#3407]].
+`ClientEndPointImpl`.
+https://github.com/hazelcast/hazelcast/issues/3407[#3407]
 * The `entryUpdated()` callback of a listener during a transaction
-always has a null `oldValue` in the EntryEvent
-https://github.com/hazelcast/hazelcast/issues/3406[[#3406]].
+always has a null `oldValue` in the EntryEvent.
+https://github.com/hazelcast/hazelcast/issues/3406[#3406]
 * Documentation update with the links to code samples for integration
-modules https://github.com/hazelcast/hazelcast/issues/3389[[#3389]].
-* Hazelcast write-behind with `map.replace()` stores replaced items
-https://github.com/hazelcast/hazelcast/issues/3386[[#3386]].
+modules. https://github.com/hazelcast/hazelcast/issues/3389[#3389]
+* Hazelcast write-behind with `map.replace()` stores replaced items.
+https://github.com/hazelcast/hazelcast/issues/3386[#3386]
 * XAResource’s `setTransactionTimeout()` method is not correctly
-implemented https://github.com/hazelcast/hazelcast/issues/3384[[#3384]].
-* Hazelcast web session replication filter may die if response committed
-https://github.com/hazelcast/hazelcast/issues/3360[[#3360]].
+implemented. https://github.com/hazelcast/hazelcast/issues/3384[#3384]
+* Hazelcast web session replication filter may die if response committed.
+https://github.com/hazelcast/hazelcast/issues/3360[#3360]
 * Resource adapter state is never reset to `isStarted == false`,
-resulting in errors down the line
-https://github.com/hazelcast/hazelcast/issues/3350[[#3350]].
-* `PagingPredicate.getAnchor` does not return the correct value
-https://github.com/hazelcast/hazelcast/issues/3241[[#3241]].
-* If deserialization fails, calling node is not informed
-https://github.com/hazelcast/hazelcast/issues/2509[[#2509]].
+resulting in errors down the line.
+https://github.com/hazelcast/hazelcast/issues/3350[#3350]
+* `PagingPredicate.getAnchor` does not return the correct value.
+https://github.com/hazelcast/hazelcast/issues/3241[#3241]
+* If deserialization fails, calling node is not informed.
+https://github.com/hazelcast/hazelcast/issues/2509[#2509]
 * CallerNotMemberException and WrongTargetException exceptions are
-thrown at random intervals
-https://github.com/hazelcast/hazelcast/issues/2253[[#2253]].
+thrown at random intervals.
+https://github.com/hazelcast/hazelcast/issues/2253[#2253]
 
 *RC3 Fixes*
 
@@ -85,135 +85,135 @@ This section lists issues solved for 3.3-RC3 (Release Candidate 3)
 release.
 
 * Parallel execution of `MapStore#store` method for the same key
-triggered by `IMap#flush`
-https://github.com/hazelcast/hazelcast/issues/3338[[#3338]].
+triggered by `IMap#flush`.
+https://github.com/hazelcast/hazelcast/issues/3338[#3338]
 * When offering null argument in queue throws an exception but it adds
 null argument to collection, then `addAll()` performed on this list does
-not throw an exception
-https://github.com/hazelcast/hazelcast/issues/3330[[#3330]].
+not throw an exception.
+https://github.com/hazelcast/hazelcast/issues/3330[#3330].
 * `java.io.FileNotFoundException` thrown by MapLoaderTest
-https://github.com/hazelcast/hazelcast/issues/3324[[#3324]].
-* MapMaxSizeTest Stabilizer test with SoftKill
-https://github.com/hazelcast/hazelcast/issues/3291[[#3291]].
-* Incompatible Spring and Hazelcast configuration XSDs
-https://github.com/hazelcast/hazelcast/issues/3275[[#3275]].
-* `ExpirationManager` partition sorting can fail
-https://github.com/hazelcast/hazelcast/issues/3271[[#3271]].
-* Configuration validation is broken
-https://github.com/hazelcast/hazelcast/issues/3257[[#3257]].
-* Code Samples for Spring Security and WebFilter Integration
-https://github.com/hazelcast/hazelcast/issues/3252[[#3252]].
-* WebFilter Test Cases are slow
-https://github.com/hazelcast/hazelcast/issues/3250[[#3250]].
-* Management Center and Weblogic Deployment Problem
-https://github.com/hazelcast/hazelcast/issues/3247[[#3247]].
+https://github.com/hazelcast/hazelcast/issues/3324[#3324]
+* MapMaxSizeTest Stabilizer test with SoftKill.
+https://github.com/hazelcast/hazelcast/issues/3291[#3291]
+* Incompatible Spring and Hazelcast configuration XSDs.
+https://github.com/hazelcast/hazelcast/issues/3275[#3275]
+* `ExpirationManager` partition sorting can fail.
+https://github.com/hazelcast/hazelcast/issues/3271[#3271]
+* Configuration validation is broken.
+https://github.com/hazelcast/hazelcast/issues/3257[#3257]
+* Code Samples for Spring Security and WebFilter Integration.
+https://github.com/hazelcast/hazelcast/issues/3252[#3252]
+* WebFilter Test Cases are slow.
+https://github.com/hazelcast/hazelcast/issues/3250[#3250]
+* Management Center and Weblogic Deployment Problem.
+https://github.com/hazelcast/hazelcast/issues/3247[#3247]
 * Enabling Multicast and TCP/IP node discovery methods freeze the
-instances https://github.com/hazelcast/hazelcast/issues/3246[[#3246]].
+instances. https://github.com/hazelcast/hazelcast/issues/3246[#3246]
 * `getOldValue` and `getValue` returns the same value when removing item
-from IMap https://github.com/hazelcast/hazelcast/issues/3198[[#3198]].
+from IMap. https://github.com/hazelcast/hazelcast/issues/3198[#3198]
 * MapTransactionContextTest: member SoftKill and then
 HazelcastSerializationException and IegalStateException: Nested are
-thrown https://github.com/hazelcast/hazelcast/issues/3196[[#3196]].
+thrown. https://github.com/hazelcast/hazelcast/issues/3196[#3196]
 * `IMap.delete()` should not call
-`MapLoader.load()`https://github.com/hazelcast/hazelcast/issues/3178[[#3178]].
-* 3.3-RC3+: NPE in the method `connectionMarkedAsNotResponsive`
-https://github.com/hazelcast/hazelcast/issues/3169[[#3169]].
+`MapLoader.load()`. https://github.com/hazelcast/hazelcast/issues/3178[#3178]
+* 3.3-RC3+: NPE in the method `connectionMarkedAsNotResponsive`.
+https://github.com/hazelcast/hazelcast/issues/3169[#3169]
 * `WebFilter.HazelcastHttpSession.isNew()` does not check the Hazelcast
-Session Cache
-https://github.com/hazelcast/hazelcast/issues/3132[[#3132]].
-* Hazelcast Spring XSD files are not version agnostic
-https://github.com/hazelcast/hazelcast/issues/3131[[#3131]].
+Session Cache.
+https://github.com/hazelcast/hazelcast/issues/3132[#3132]
+* Hazelcast Spring XSD files are not version agnostic.
+https://github.com/hazelcast/hazelcast/issues/3131[#3131]
 * `ClassCastException: java.lang.Integer` cannot be cast to
-`java.lang.String` Query
-https://github.com/hazelcast/hazelcast/issues/3091[[#3091]].
-* Predicate returns a value not matching the predicate
-https://github.com/hazelcast/hazelcast/issues/3090[[#3090]].
-* Modifications made by Entry Processor are lost in 3.3-RC-2
-https://github.com/hazelcast/hazelcast/issues/3062[[#3062]].
-* Hazelcast Session Clustering with Spring Security Problem
-https://github.com/hazelcast/hazelcast/issues/3049[[#3049]].
-* PagingPredicate returning duplicated elements results in an infinite
-loop https://github.com/hazelcast/hazelcast/issues/3047[[#3047]].
-* `expirationTime` on EntryView is not set
-https://github.com/hazelcast/hazelcast/issues/3038[[#3038]].
-* `BasicRecordStoreLoader` cannot handle retry responses
-https://github.com/hazelcast/hazelcast/issues/3033[[#3033]].
+`java.lang.String` Query.
+https://github.com/hazelcast/hazelcast/issues/3091[#3091]
+* Predicate returns a value not matching the predicate.
+https://github.com/hazelcast/hazelcast/issues/3090[#3090]
+* Modifications made by Entry Processor are lost in 3.3-RC-2.
+https://github.com/hazelcast/hazelcast/issues/3062[#3062]
+* Hazelcast Session Clustering with Spring Security Problem.
+https://github.com/hazelcast/hazelcast/issues/3049[#3049]
+* PagingPredicate returning duplicated elements results in an infinite.
+loop https://github.com/hazelcast/hazelcast/issues/3047[#3047]
+* `expirationTime` on EntryView is not set.
+https://github.com/hazelcast/hazelcast/issues/3038[#3038]
+* `BasicRecordStoreLoader` cannot handle retry responses.
+https://github.com/hazelcast/hazelcast/issues/3033[#3033]
 * Short `await()` on condition of contended lock causes
-IllegalStateException
-https://github.com/hazelcast/hazelcast/issues/3025[[#3025]].
-* Indices and Comparable: not documented
-https://github.com/hazelcast/hazelcast/issues/3024[[#3024]].
-* Marking Heartbeat as healthy is too late
-https://github.com/hazelcast/hazelcast/issues/3014[[#3014]].
-* 3.3-RC2: `IMap#keySet` triggers value deserialization
-https://github.com/hazelcast/hazelcast/issues/3008[[#3008]].
-* `map.destroy()` throws DistributedObjectDestroyedException
-https://github.com/hazelcast/hazelcast/issues/3001[[#3001]].
+IllegalStateException.
+https://github.com/hazelcast/hazelcast/issues/3025[#3025]
+* Indices and Comparable: not documented.
+https://github.com/hazelcast/hazelcast/issues/3024[#3024]
+* Marking Heartbeat as healthy is too late.
+https://github.com/hazelcast/hazelcast/issues/3014[#3014]
+* 3.3-RC2: `IMap#keySet` triggers value deserialization.
+https://github.com/hazelcast/hazelcast/issues/3008[#3008]
+* `map.destroy()` throws DistributedObjectDestroyedException.
+https://github.com/hazelcast/hazelcast/issues/3001[#3001]
 * Stabilizer tests Final profile, Xlarge cluster
-OperationTimeoutException
-https://github.com/hazelcast/hazelcast/issues/2999[[#2999]].
+`OperationTimeoutException`.
+https://github.com/hazelcast/hazelcast/issues/2999[#2999]
 * `com.hazelcast.jca.HazelcastConnection::getExecutorService` returns
-plain ExecutorService
-https://github.com/hazelcast/hazelcast/issues/2986[[#2986]].
-* Serialization NPE in MapStoreTest stabilizer, 3.3-RC3-SNAPSHOT
-https://github.com/hazelcast/hazelcast/issues/2985[[#2985]].
-* Bug with `IMap.getAll()`
-https://github.com/hazelcast/hazelcast/issues/2982[[#2982]].
-* Client deadlock on single core machines
-https://github.com/hazelcast/hazelcast/issues/2971[[#2971]].
-* Retrieve number of futures in loop in calling thread
-https://github.com/hazelcast/hazelcast/issues/2964[[#2964]].
+plain ExecutorService.
+https://github.com/hazelcast/hazelcast/issues/2986[#2986]
+* Serialization NPE in MapStoreTest stabilizer, 3.3-RC3-SNAPSHOT.
+https://github.com/hazelcast/hazelcast/issues/2985[#2985]
+* Bug with `IMap.getAll()`.
+https://github.com/hazelcast/hazelcast/issues/2982[#2982]
+* Client deadlock on single core machines.
+https://github.com/hazelcast/hazelcast/issues/2971[#2971]
+* Retrieve number of futures in loop in calling thread.
+https://github.com/hazelcast/hazelcast/issues/2964[#2964]
 
 *RC2 Fixes*
 
 This section lists issues solved for 3.3-RC2 (Release Candidate 2)
 release.
 
-* `evictAll` should flush to staging area
-https://github.com/hazelcast/hazelcast/issues/2969[#2969].
-* NPE exception in MapStoreTest
-https://github.com/hazelcast/hazelcast/issues/2956[[#2956]].
-* Fixed `AddSessionEntryProcessor`
-https://github.com/hazelcast/hazelcast/issues/2955[[#2955]].
-* Added `StripedExecutor` to WanReplicationService
-https://github.com/hazelcast/hazelcast/issues/2947[[#2947]].
-* All read operations of map should respect expired keys
-https://github.com/hazelcast/hazelcast/issues/2946[[#2946]].
-* Fix test EvictionTest#testMapWideEviction
-https://github.com/hazelcast/hazelcast/issues/2944[[#2944]].
-* Heartbeat check of clients from nodes
-https://github.com/hazelcast/hazelcast/issues/2936[[#2936]].
-* WebFilter does not clean up timed- out sessions
-https://github.com/hazelcast/hazelcast/issues/2930[[#2930]].
-* Fix leaking empty concurrent hashmaps
-https://github.com/hazelcast/hazelcast/issues/2929[[#2929]].
-* Data loss fix in _hazelcast-wm_ module
-https://github.com/hazelcast/hazelcast/issues/2927[[#2927]].
-* Configured event queue capacity
-https://github.com/hazelcast/hazelcast/issues/2924[[#2924]].
+* `evictAll` should flush to staging area.
+https://github.com/hazelcast/hazelcast/issues/2969[#2969]
+* NPE exception in MapStoreTest.
+https://github.com/hazelcast/hazelcast/issues/2956[#2956]
+* Fixed `AddSessionEntryProcessor`.
+https://github.com/hazelcast/hazelcast/issues/2955[#2955]
+* Added `StripedExecutor` to WanReplicationService.
+https://github.com/hazelcast/hazelcast/issues/2947[#2947]
+* All read operations of map should respect expired keys.
+https://github.com/hazelcast/hazelcast/issues/2946[#2946]
+* Fix test EvictionTest#testMapWideEviction.
+https://github.com/hazelcast/hazelcast/issues/2944[#2944]
+* Heartbeat check of clients from nodes.
+https://github.com/hazelcast/hazelcast/issues/2936[#2936]
+* WebFilter does not clean up timed- out sessions.
+https://github.com/hazelcast/hazelcast/issues/2930[#2930]
+* Fix leaking empty concurrent hashmaps.
+https://github.com/hazelcast/hazelcast/issues/2929[#2929]
+* Data loss fix in _hazelcast-wm_ module.
+https://github.com/hazelcast/hazelcast/issues/2927[#2927]
+* Configured event queue capacity.
+https://github.com/hazelcast/hazelcast/issues/2924[#2924].
 * Client closes owner connection when a connection to the same address
-is closed https://github.com/hazelcast/hazelcast/issues/2921[[#2921]].
-* Close the owner connection if heartbeat timeout when client is smart
-https://github.com/hazelcast/hazelcast/issues/2916[[#2916]].
-* Set application buffer size to not exceed `tls` record size
-https://github.com/hazelcast/hazelcast/issues/2914[[#2914]].
-* EntryProcessor makes unnecessary serialization
-https://github.com/hazelcast/hazelcast/issues/2913[[#2913]].
-* Make evictable time window configurable
-https://github.com/hazelcast/hazelcast/issues/2910[[#2910]].
+is closed. https://github.com/hazelcast/hazelcast/issues/2921[#2921]
+* Close the owner connection if heartbeat timeout when client is smart.
+https://github.com/hazelcast/hazelcast/issues/2916[#2916]
+* Set application buffer size to not exceed `tls` record size.
+https://github.com/hazelcast/hazelcast/issues/2914[#2914]
+* EntryProcessor makes unnecessary serialization.
+https://github.com/hazelcast/hazelcast/issues/2913[#2913]
+* Make evictable time window configurable.
+https://github.com/hazelcast/hazelcast/issues/2910[#2910]
 * Fixes data loss issue when partition table is being synced and a node
-is gracefully shutdown
-https://github.com/hazelcast/hazelcast/issues/2908[[#2908]].
+is gracefully shutdown.
+https://github.com/hazelcast/hazelcast/issues/2908[#2908]
 * MapStoreConfig; implementation instance is not set, when configured
-via XML https://github.com/hazelcast/hazelcast/issues/2898[[#2898]].
-* LocalMapStats does not record stats about locked entries in 3.x
-https://github.com/hazelcast/hazelcast/issues/2876[[#2876]].
-* Concurrency security interceptor
-https://github.com/hazelcast/hazelcast/issues/2874[[#2874]].
-* Client hangs during split, if split occurs due to network error
-https://github.com/hazelcast/hazelcast/issues/2850[[#2850]].
-* Network connection loss does not release lock
-https://github.com/hazelcast/hazelcast/issues/2818[[#2818]].
+via XML. https://github.com/hazelcast/hazelcast/issues/2898[#2898]
+* LocalMapStats does not record stats about locked entries in 3.x.
+https://github.com/hazelcast/hazelcast/issues/2876[#2876]
+* Concurrency security interceptor.
+https://github.com/hazelcast/hazelcast/issues/2874[#2874]
+* Client hangs during split, if split occurs due to network error.
+https://github.com/hazelcast/hazelcast/issues/2850[#2850]
+* Network connection loss does not release lock.
+https://github.com/hazelcast/hazelcast/issues/2818[#2818]
 
 *RC1 Fixes*
 
@@ -221,26 +221,26 @@ This section lists issues solved for 3.3-RC1 (Release Candidate 1)
 release.
 
 * It is not possible to copy the link from
-_http://hazelcast.org/download/_ and run `wget` on it
-https://github.com/hazelcast/hazelcast/issues/2814[[#2814]].
-* `mapCleared` method for EntryListener is needed
-https://github.com/hazelcast/hazelcast/issues/2789[[#2789]].
-* The method `keySet` with predicate should trigger loading of MapStore
-https://github.com/hazelcast/hazelcast/issues/2692[[#2692]].
+_http://hazelcast.org/download/_ and run `wget` on it.
+https://github.com/hazelcast/hazelcast/issues/2814[#2814]
+* `mapCleared` method for EntryListener is needed.
+https://github.com/hazelcast/hazelcast/issues/2789[#2789]
+* The method `keySet` with predicate should trigger loading of MapStore.
+https://github.com/hazelcast/hazelcast/issues/2692[#2692]
 * MapStore with write-behind: The method `IMap.remove()` followed by
-`IMap.putIfAbsent(key,value)` still returns the old value
-https://github.com/hazelcast/hazelcast/issues/2685[[#2685]].
-* Hazelcast cannot read UTF-8 String if ``multiple-byte'' characters end
-up at position that is an even multiple of buffer size
-https://github.com/hazelcast/hazelcast/issues/2674[[#2674]].
+`IMap.putIfAbsent(key,value)` still returns the old value.
+https://github.com/hazelcast/hazelcast/issues/2685[#2685]
+* Hazelcast cannot read UTF-8 String if `multiple-byte` characters end
+up at position that is an even multiple of buffer size.
+https://github.com/hazelcast/hazelcast/issues/2674[#2674]
 * Current implementation of record expiration relies on undefined
-behavior of `System.nanoTime()`
-https://github.com/hazelcast/hazelcast/issues/2666[[#2666]].
-* Inconsistency at Hazelcast Bootup ``Editions'' message
-https://github.com/hazelcast/hazelcast/issues/2641[[#2641]].
-* `AbstractReachabilityHandler` writes to standard output
-https://github.com/hazelcast/hazelcast/issues/2591[[#2591]].
+behavior of `System.nanoTime()`.
+https://github.com/hazelcast/hazelcast/issues/2666[#2666]
+* Inconsistency at Hazelcast Bootup `Editions` message.
+https://github.com/hazelcast/hazelcast/issues/2641[#2641]
+* `AbstractReachabilityHandler` writes to standard output.
+https://github.com/hazelcast/hazelcast/issues/2591[#2591]
 * `IMap.set()` does not not remove a key from write behind deletions
-queue https://github.com/hazelcast/hazelcast/issues/2588[[#2588]].
+queue. https://github.com/hazelcast/hazelcast/issues/2588[#2588]
 * `com.hazelcast.core.EntryView#getLastAccessTime` is
-invalidhttps://github.com/hazelcast/hazelcast/issues/2581[[#2581]].
+invalid. https://github.com/hazelcast/hazelcast/issues/2581[#2581]

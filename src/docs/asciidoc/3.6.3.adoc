@@ -4,68 +4,68 @@
 The following are the fixed issues for 3.6.3 release.
 
 * `MapStatisticsAwareService` should obtain the map names from proxy
-registry. [8209]
+registry. https://github.com/hazelcast/hazelcast/issues/8209[#8209]
 * Cache should not expire the entities when `Duration` value is set to
-`0`. [8148], [8206]
-* Collection querying in Portables. [8172]
+`0`. https://github.com/hazelcast/hazelcast/issues/[#8148], https://github.com/hazelcast/hazelcast/issues/8206[#8206]
+* Collection querying in Portables. https://github.com/hazelcast/hazelcast/issues/8172[#8172]
 * Type extraction by the method `extractedMultiResult` should be fixed
-when the extraction result is null. [8134]
+when the extraction result is null. https://github.com/hazelcast/hazelcast/issues/8134[#8134]
 * Expiration time for the map entries should be calculated based on
-their latest update times. [8111], [8113]
-* Support for the usage of IAM role’s defaults should be added. [8100]
+their latest update times. https://github.com/hazelcast/hazelcast/issues/8111[#8111], https://github.com/hazelcast/hazelcast/issues/8113[#8113]
+* Support for the usage of IAM role’s defaults should be added. https://github.com/hazelcast/hazelcast/issues/8100[#8100]
 * Binary property for MultiMap should be added to XmlConfigBuilder.
-[8094]
+https://github.com/hazelcast/hazelcast/issues/8094[#8094]
 * EC2 auto-discovery in China throws an exception due to a bug in host
-header handling mechanism. [8073]
-* The method `Cluster.shutdown()` ignores lifecycle listeners. [8070]
+header handling mechanism. https://github.com/hazelcast/hazelcast/issues/8073[#8073]
+* The method `Cluster.shutdown()` ignores lifecycle listeners. https://github.com/hazelcast/hazelcast/issues/8070[#8070]
 * Resource adapters should not cast to implementation when using a
-container to get a connection. [8019]
+container to get a connection. https://github.com/hazelcast/hazelcast/issues/8019[#8019]
 * Unnecessary deserialization step during the execution of put
-operations should be removed. [8018]
-* A URL text with spaces should not be transformed into a URI. [8016]
+operations should be removed. https://github.com/hazelcast/hazelcast/issues/8018[#8018]
+* A URL text with spaces should not be transformed into a URI. https://github.com/hazelcast/hazelcast/issues/8016[#8016]
 * Unnecessary deserialization step in the replicated map data structure
-should be removed. [8014]
+should be removed. https://github.com/hazelcast/hazelcast/issues/8014[#8014]
 * When using `InstanceOfPredicate`, the method `toObject` at the server
 side causes `NullPointerException`, since the class loader is not set
 and it is null. Default class loader should be used if it is not set by
-the configuration to avoid the exception. [7977]
+the configuration to avoid the exception. https://github.com/hazelcast/hazelcast/issues/7977[#7977]
 * There may be cases when the server may return a list of entries larger
 than the requested page size. In this case the client should not put any
 anchor into the list that is on a page greater than the requested page.
-[7976]
+https://github.com/hazelcast/hazelcast/issues/7976[#7976]
 * When a remote invocation waits indefinitely on the internal executor,
 a deadlock may occur since its response would use the same executor and
-since the invocation monitor runs on the same executor. [7944]
+since the invocation monitor runs on the same executor. https://github.com/hazelcast/hazelcast/issues/7944[#7944]
 * Already published messages should be retrieved after
 `StaleSequenceException` occurs when `ReliableMessageListener` is
-registered at the client side. [7928]
+registered at the client side. https://github.com/hazelcast/hazelcast/issues/7928[#7928]
 * The case of response being equal to null in the class
-`ClientDelegatingFuture` should be handled. [7901]
+`ClientDelegatingFuture` should be handled. https://github.com/hazelcast/hazelcast/issues/7901[#7901]
 * Detection of JCache should be improved. Currently Hazelcast checks if
 the class `javax.cache.Caching` is available and, if so, Hazelcast
 creates the JCache service and configures the client protocol messages.
 However, some older snapshots of JCache JARs have the Caching class
 available, but other classes are missing. This causes `Class not found`
-exceptions when members are started. [7899]
+exceptions when members are started. https://github.com/hazelcast/hazelcast/issues/7899[#7899]
 * When connection gets an exception from the socket and the method
 `destroyConnection` is called before connection is authenticated, the
 client does not have an endpoint and it is not in the map of
-connections. Hence, the connection cannot be closed. [7866]
+connections. Hence, the connection cannot be closed. https://github.com/hazelcast/hazelcast/issues/7866[#7866]
 * Upon subsequent destroy and create operations of IMap, there can be
 more than one map container referenced by different record stores at the
 same time. Therefore, indexes can be created in an unexpected map
 container and this can lead to return less than expected number of
-results when IMap is queried. [7838]
+results when IMap is queried. https://github.com/hazelcast/hazelcast/issues/7838[#7838]
 * After the client is shut down, there should be no invocations left.
-The method `assert()` of `ClientInvocationServiceSupport` fails. [7836]
+The method `assert()` of `ClientInvocationServiceSupport` fails. https://github.com/hazelcast/hazelcast/issues/7836[#7836]
 
 The following are the enhancements performed for 3.6.3 release.
 
 * Phone home should include environment information, such as the
-operating system name, version and kernel architecture. [7970]
+operating system name, version and kernel architecture. https://github.com/hazelcast/hazelcast/issues/7970[#7970]
 * Exceptions, which are thrown when the method `isMemberSafe()` is
 called, should go into finest level. When there are topology changes
 some exceptions are expected. The method `getFutureResult()` should log
-exceptions as `finest()`, not `warn()`. [7904]
+exceptions as `finest()`, not `warn()`. https://github.com/hazelcast/hazelcast/issues/7904[#7904]
 * Protocol version should be 1 instead of 0. It was set as 0 for the
-response messages. [7900]
+response messages. https://github.com/hazelcast/hazelcast/issues/7900[#7900]

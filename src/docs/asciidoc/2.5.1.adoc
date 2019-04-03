@@ -3,36 +3,36 @@
 
 The following are the fixed issues and enhancements for 2.5.1 release.
 
-* Deadlock happens when Hazelcast client is shut down. [466]
+* Deadlock happens when Hazelcast client is shut down. https://github.com/hazelcast/hazelcast/issues/466[#466]
 * There is a data inconsistency and loss following the
-`ClassCastException: CONCURRENT_MAP_REPLACE_IF_SAME`. [462]
-* Put operations with zero TTL does not prevent the eviction. [455]
+`ClassCastException: CONCURRENT_MAP_REPLACE_IF_SAME`. https://github.com/hazelcast/hazelcast/issues/462[#462]
+* Put operations with zero TTL does not prevent the eviction. https://github.com/hazelcast/hazelcast/issues/455[#455]
 * `NullPointerException` is thrown at
 `com.hazelcast.query.MapIndexService.remove` during
-CONCURRENT_MAP_REMOVE operation. [454]
+CONCURRENT_MAP_REMOVE operation. https://github.com/hazelcast/hazelcast/issues/454[#454]
 * The exception `Failed migrating from Member` is thrown when two
 clients are started in Eclipse and one is stopped before it is
-completely initialized. [452]
-* The method `IList.destroy()` does not empty the list. [449]
+completely initialized. https://github.com/hazelcast/hazelcast/issues/452[#452]
+* The method `IList.destroy()` does not empty the list. https://github.com/hazelcast/hazelcast/issues/449[#449]
 * The package `hazelcast-all.jar` should build its manifest dynamically.
-[448]
+https://github.com/hazelcast/hazelcast/issues/448[#448]
 * The package `hazelcast-client.jar` does not deploy as OSGi bundle in
-JBoss7. [447]
+JBoss7. https://github.com/hazelcast/hazelcast/issues/447[#447]
 * The package `hazelcast-wm.jar` should not require `servlet-api` v3.0.
-[432]
+https://github.com/hazelcast/hazelcast/issues/432[#432]
 * `NullPointerException` is thrown when trying to run the method
 `clear()` on an empty distributed set when migrating from Hazelcast
-2.1.2 to 2.4 and 2.5 [430]
+2.1.2 to 2.4 and 2.5 https://github.com/hazelcast/hazelcast/issues/430[#430]
 * The method `getOldValue()` consistently returns wrong results for
 `entryUpdated` listener notifications after the `replace()` operation.
-[418]
+https://github.com/hazelcast/hazelcast/issues/418[#418]
 * In the Hazelcast configuration schema XSD, the `tcp-ip` and `aws`
-elements do not have `conn-timeout-seconds` sub-element. [410]
+elements do not have `conn-timeout-seconds` sub-element. https://github.com/hazelcast/hazelcast/issues/410[#410]
 * It would be nice if the `hazelcast.config` option can be used in
-combination with the classpath. [408]
+combination with the classpath. https://github.com/hazelcast/hazelcast/issues/408[#408]
 * Deadlock happens when adding an index to a map that is not empty.
-[310]
+https://github.com/hazelcast/hazelcast/issues/310[#310]
 * When custom loader is used with write-behind persistence mode, every
 time `store()` is called in loader and then `remove()` is called on
 locked map, value for the key is read from the store and not from map.
-Consequently, put/set/update is overridden and data is lost. [187]
+Consequently, put/set/update is overridden and data is lost. https://github.com/hazelcast/hazelcast/issues/187[#187]

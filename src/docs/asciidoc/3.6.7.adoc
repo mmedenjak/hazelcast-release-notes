@@ -5,4 +5,4 @@ The following is the fixed issue for 3.6.7 release.
 
 * When loading keys supplied by the user, `keyLoaderState` should not be
 changed. In some cases, `MapLoader.loadAll(true)` does not reload after
-reloading with new keys. [9279]
+reloading with new keys. https://github.com/hazelcast/hazelcast/issues/9279[#9279]

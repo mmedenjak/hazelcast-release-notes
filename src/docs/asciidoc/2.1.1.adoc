@@ -3,9 +3,9 @@
 
 The following are the fixed issues and enhancements for 2.1.1 release.
 
-* Item listener does not work when using client. [158]
-* The method `IMap.remove(key)` returns incorrect object. [149]
-* Map eviction policies are not documented. [148]
+* Item listener does not work when using client. https://github.com/hazelcast/hazelcast/issues/158[#158]
+* The method `IMap.remove(key)` returns incorrect object. https://github.com/hazelcast/hazelcast/issues/149[#149]
+* Map eviction policies are not documented. https://github.com/hazelcast/hazelcast/issues/148[#148]
 * When calling the method `IQueue.remove(object)`, the item listener
-added for that queue is not invoked. [146]
-* List is not keeping the order in transactional context. [73]
+added for that queue is not invoked. https://github.com/hazelcast/hazelcast/issues/146[#146]
+* List is not keeping the order in transactional context. https://github.com/hazelcast/hazelcast/issues/73[#73]

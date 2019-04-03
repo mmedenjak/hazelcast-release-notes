@@ -4,14 +4,14 @@
 The following are the fixed issues for 2.6.2 release.
 
 * Client Listener: the `Client` argument has null `Socketaddress` for
-`ClientDisconnected` listener. [756]
+`ClientDisconnected` listener. https://github.com/hazelcast/hazelcast/issues/756[#756]
 * Entries put by the method `IMap.putAll` were never evicted from the
-map with the TTL configured. [670]
+map with the TTL configured. https://github.com/hazelcast/hazelcast/issues/670[#670]
 * The Java client is initialized with two cluster members. After killing
 one member in the cluster where it is connected, the client is unable to
-reconnect. [653]
+reconnect. https://github.com/hazelcast/hazelcast/issues/653[#653]
 * Put operation after a missed get operation in a transaction does not
-have any effect. [644]
+have any effect. https://github.com/hazelcast/hazelcast/issues/644[#644]
 * Near cache functionality does not work for Java client. `MapConfig`
 always returns the generic map name since in the client, the client
-prefix is added to map’s name. [620]
+prefix is added to map’s name. https://github.com/hazelcast/hazelcast/issues/620[#620]

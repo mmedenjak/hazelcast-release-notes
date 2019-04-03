@@ -18,39 +18,37 @@ The following are the new features introduced with 2.4.1 release.
 The following are the fixed issues and enhancements for 2.4.1 release.
 
 * After a split-brain syndrome, states sent by a non-member should be
-ignored. [374]
+ignored. https://github.com/hazelcast/hazelcast/issues/374[#374]
 * Indexing: Negative double values comparison causes problems in SQL
-predicate. [368]
-* Query on Hazelcast IMap with indexes returns stale data. [359]
+predicate. https://github.com/hazelcast/hazelcast/issues/368[#368]
+* Query on Hazelcast IMap with indexes returns stale data. https://github.com/hazelcast/hazelcast/issues/359[#359]
 * By default, the method `map.clear()` clears the map entry by entry
 since the entries should be checked if they have a related lock, should
 be persisted, etc. If you do not use map store and can assume that there
 is no locked entries, then there should be an option to clear the map
-directly. [356]
-* System logs should be optional. [351]
-* Management center should show the Hazelcast version. [349]
+directly. https://github.com/hazelcast/hazelcast/issues/356[#356]
+* System logs should be optional. https://github.com/hazelcast/hazelcast/issues/351[#351]
+* Management center should show the Hazelcast version. https://github.com/hazelcast/hazelcast/issues/349[#349]
 * `UnsupportedOperationException` is thrown when the method
 `getConfig()` is called during the startup of the web application. Used
-versions are Hazelcast 2.4 and Hibernate 3.6.6. [339]
+versions are Hazelcast 2.4 and Hibernate 3.6.6. https://github.com/hazelcast/hazelcast/issues/339[#339]
 * Documentation is wrong. Hazelcast supports `REPEATABLE_READ` instead
-of `READ_COMMITTED`. [337]
+of `READ_COMMITTED`. https://github.com/hazelcast/hazelcast/issues/337[#337]
 * When you need a lite member, since it cannot be specified in the
-configuration file, you need to do the whole loading mechanism yourself.
-[333]
+configuration file, you need to do the whole loading mechanism yourself. https://github.com/hazelcast/hazelcast/issues/333[#333]
 * In the local map statistics, currently there is only `getHits()`.
 There should be statistics for misses (get requests which return null)
-to see hit/miss ratio. [328]
+to see hit/miss ratio. https://github.com/hazelcast/hazelcast/issues/328[#328]
 * When Hazelcast OSGi bundle is used in Glassfish 3.1.2,
-`ClassNotFoundException` is thrown. [322]
-* The method `MapConfig.toString()` should report `mapIndexConfig` too.
-[321]
+`ClassNotFoundException` is thrown. https://github.com/hazelcast/hazelcast/issues/322[#322]
+* The method `MapConfig.toString()` should report `mapIndexConfig` too. https://github.com/hazelcast/hazelcast/issues/321[#321]
 * When the connection between the client and member is lost, the client
 does not notice it and tries to send the data for a very long time and
-it does not shut down.[315]
+it does not shut down. https://github.com/hazelcast/hazelcast/issues/315[#315]
 * Hazelcast tends to consume large amounts of memory in
-`com.hazelcast.nio.Packet` instances. [312]
+`com.hazelcast.nio.Packet` instances. https://github.com/hazelcast/hazelcast/issues/312[#312]
 * Map index entries are not deleted upon migration. When using SQL
 predicate in the method `localKeySet()`, the same key can be retrieved
-on different nodes. [308]
+on different nodes. https://github.com/hazelcast/hazelcast/issues/308[#308]
 * Hazelcast IMap entries are evicted even they are touched by the method
-`put()`. [466]
+`put()`. https://github.com/hazelcast/hazelcast/issues/466[#466]

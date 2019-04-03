@@ -9,33 +9,32 @@ NOTE: Hazelcast IMDG 3.11 and the upcoming releases are fully compatible with JD
 
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
-
-* **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
-* **License Enforcements and Warnings**: Introduced a license monitor daemon that warns about expirations and instructs about the next steps. These information are also available through REST/JMX APIs. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#license-info[License Information section].
-* **Delta WAN Synchronization**: Introduced WAN anti-entropy mechanism utilizing Merkle Tree to synchronize only the affected subsets for Maps, improving network and heap utilization. See https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#delta-wan-synchronization[Delta WAN Synchronization section].
+* **Fine-Grained Control over WAN Replication Events**: Introduced the new event type `LOADED` and the class `EntryLoadedListener` through which all the loads can be listened to. Also introduced the new configuration element `persist-wan-replicated-data` to specify whether to persist an incoming event over WAN replication or not. See the https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-consumer[Configuring Consumer section].
+* **License Enforcements and Warnings**: Introduced a license monitor daemon that warns about expirations and instructs about the next steps. These information are also available through REST/JMX APIs. See the https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#license-info[License Information section].
+* **Delta WAN Synchronization**: Introduced WAN anti-entropy mechanism utilizing Merkle Tree to synchronize only the affected subsets for Maps, improving network and heap utilization. See the https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#delta-wan-synchronization[Delta WAN Synchronization section].
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
-* **Ability to Set Custom TTL for Map and Cache Entries**: Added a new method, `setExpiryPolicy(key, expirePolicy)`, to allow interacting with the TTL value of an entry without updating the value. Also, the IMap interface for the operation of putting a value into a map was not clear where the resulting value of the entry's TTL is concerned. This is fixed by adding the method `setTTL()` on both the member and client sides. See https://docs.hazelcast.org/docs/3.11/javadoc/com/hazelcast/core/IMap.html#setTtl-K-long-java.util.concurrent.TimeUnit-[here].
+* **Ability to Set Custom TTL for Map and Cache Entries**: Added a new method, `setExpiryPolicy(key, expirePolicy)`, to allow interacting with the TTL value of an entry without updating the value. Also, the IMap interface for the operation of putting a value into a map was not clear where the resulting value of the entry's TTL is concerned. This is fixed by adding the method `setTTL()` on both the member and client sides. See the https://docs.hazelcast.org/docs/3.11/javadoc/com/hazelcast/core/IMap.html#setTtl-K-long-java.util.concurrent.TimeUnit-[here].
 * **Ability to Set Custom Maximum Idle Timeouts for Map Entries**: Extended the put operation so that now it has a `maxIdle` parameter that represents the idleness seconds for specific entries. See the https://docs.hazelcast.org/docs/3.11/manual/html-single/#evicting-specific-entries[Evicting Specific Entries section].
 * **Configurable Backoff Strategy for Client Reconnections**: Introduced a highly configurable exponential backoff mechanism for the client with which you can set the duration for waiting after connection failures, upper limit for the wait, etc. See the https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#configuring-client-connection-retry[Client Connection Retry Configuration section].
 * **Map Index Statistics**: Introduced statistics related to indexes. To achieve this, map statistics have been extended with per index information about indexes associated with a certain map. See the https://docs.hazelcast.org/docs/3.11/manual/html-single/index.html#map-index-statistics[Map Index Statistics section].
 * **JCache Expired Entries Disposal**: Improved JCache's lazy eviction with a periodic cleanup that eventually removes all expired entries and frees up the occupied space.
 * **Improved Network I/O**: Enhanced network I/O to allow TLS handshake in a block-free manner and to support offloadable tasks, improving the latency and security.
 * Now, Hazelcast supports discovering members in the GCP Compute Engine environment. See the https://github.com/hazelcast/hazelcast-gcp/blob/master/README.md[documentation] for more information.
-* Introduced the ability which allows adding the user libraries to the classpath. See https://docs.hazelcast.org/docs/3.11/manual/html-single/#adding-user-library-to-classpath[Adding User Library to CLASSPATH section].
+* Introduced the ability which allows adding the user libraries to the classpath. See the https://docs.hazelcast.org/docs/3.11/manual/html-single/#adding-user-library-to-classpath[Adding User Library to CLASSPATH section].
 
 The following are the other improvements performed to solve the enhancement issues opened by the Hazelcast customers/team.
 
-* Added support to capture `LOADED` events for `MapEventJournal`.  https://github.com/hazelcast/hazelcast/issues/13667[[#13667]]
-* The method `ClientCloudConfig.setEnabled()` has been improved so that now it returns its own instance. https://github.com/hazelcast/hazelcast/issues/13640[[#13640]]
-* The client was always constructed with an empty `userContext`. This has been improved by adding the method `setUserContext()` for the object `ClientConfig`. https://github.com/hazelcast/hazelcast/issues/13398[[#13398]]
-* Added Java 9+ support (modularization), hence improved the user experience on Java versions 9+ which are based on Java Platform Module System. https://github.com/hazelcast/hazelcast/issues/13182[[#13182]]
-* `MigrationRequestOperation` has been improved with the new Offload abstraction. https://github.com/hazelcast/hazelcast/issues/11989[[#11989]]
-* Improved the multicast discovery strategy for clients. https://github.com/hazelcast/hazelcast/issues/11357[[#11357]]
-* Removed group `password` from Hazelcast configuration. The password is not checked anymore during member joins. https://github.com/hazelcast/hazelcast/issues/11667[[#11667]]
-* Introduced a more proper way of heap-data conversion: the method `toHeapData`. Before, `ToHeapDataConverter` was being used. https://github.com/hazelcast/hazelcast/issues/10249[[#10249]]
-* The method `EntryListener.entryAdded()` is not called after `IMap.evict()` is triggered followed by the method `IMap.get()`. To fix this, a new entry event type has been introduced: `LOADED`. https://github.com/hazelcast/hazelcast/issues/1542[[#1542]]
+* Added support to capture `LOADED` events for `MapEventJournal`.  https://github.com/hazelcast/hazelcast/issues/13667[#13667]
+* The method `ClientCloudConfig.setEnabled()` has been improved so that now it returns its own instance. https://github.com/hazelcast/hazelcast/issues/13640[#13640]
+* The client was always constructed with an empty `userContext`. This has been improved by adding the method `setUserContext()` for the object `ClientConfig`. https://github.com/hazelcast/hazelcast/issues/13398[#13398]
+* Added Java 9+ support (modularization), hence improved the user experience on Java versions 9+ which are based on Java Platform Module System. https://github.com/hazelcast/hazelcast/issues/13182[#13182]
+* `MigrationRequestOperation` has been improved with the new Offload abstraction. https://github.com/hazelcast/hazelcast/issues/11989[#11989]
+* Improved the multicast discovery strategy for clients. https://github.com/hazelcast/hazelcast/issues/11357[#11357]
+* Removed group `password` from Hazelcast configuration. The password is not checked anymore during member joins. https://github.com/hazelcast/hazelcast/issues/11667[#11667]
+* Introduced a more proper way of heap-data conversion: the method `toHeapData`. Before, `ToHeapDataConverter` was being used. https://github.com/hazelcast/hazelcast/issues/10249[#10249]
+* The method `EntryListener.entryAdded()` is not called after `IMap.evict()` is triggered followed by the method `IMap.get()`. To fix this, a new entry event type has been introduced: `LOADED`. https://github.com/hazelcast/hazelcast/issues/1542[#1542]
 
 [[fixes-311]]
 === Fixes
@@ -46,37 +45,37 @@ The following are the other improvements performed to solve the enhancement issu
 ** start a second member
 ** kill the first member
 +
-PN counter data from the first member was lost. This is fixed by removing PN counter statistics on migrations. https://github.com/hazelcast/hazelcast/issues/13793[[#13793]]
+PN counter data from the first member was lost. This is fixed by removing PN counter statistics on migrations. https://github.com/hazelcast/hazelcast/issues/13793[#13793]
 +
-* Fixed the incorrect TCP connection probe registration in outgoing member connections. It was `[null->null]` instead of `[address->address]`. https://github.com/hazelcast/hazelcast/issues/13768[[#13768]]
-* Clients were sometimes failing to reconnect to another owner member with the `ExecutionException`. This is fixed by making `ClientReauthOperation` to be retryable. https://github.com/hazelcast/hazelcast/issues/13758[[#13758]]
-* Event Journal was throwing `StaleSequenceException` when TTL is greater than 0. This is fixed by skipping expired events in the journal during reading. https://github.com/hazelcast/hazelcast/issues/13746[[#13746]]
-* Fixed the `HazelcastOverloadException` when trying to shutdown the cluster. It was also not performing a graceful shutdown. Now cluster state operations are marked as `UrgentSystemOperation` since otherwise, these operations might get rejected by backpressure. https://github.com/hazelcast/hazelcast/issues/13730[[#13730]]
-* Fixed the noisy health check logging when starting Hazelcast. https://github.com/hazelcast/hazelcast/issues/13662[[#13662]]
-* When an `unserializableResponse` is tried to be sent to the client as a response from the executor service tasks, the exception was logged on the server side and there was no response returned back to the client. This has been fixed by removing the logging and  sending `HazelcastSerializationException` to the client. https://github.com/hazelcast/hazelcast/issues/13639[[#13639]]
-* Fixed the issue where IMap entries having a `max-idle-timeout` were not expiring when the member shuts down. https://github.com/hazelcast/hazelcast/issues/13630[[#13630]]
-* Reliable Topic was not working after the correct partition migration to previous owner member (where it was created the first time and message listener was attached); there were no exceptions or warnings. This is fixed by removing stale caching of Ringbuffer in `AbstractRingBufferOperation`. https://github.com/hazelcast/hazelcast/issues/13602[[#13602]]
-* Fixed the repeatedly thrown `IllegalAccessException` when the client statistics is enabled. https://github.com/hazelcast/hazelcast/issues/13565[[#13565]]
-* Fixed the accidental leakage of `InternalSerializationService` through `DataSerializable` interface. https://github.com/hazelcast/hazelcast/issues/13505[[#13505]]
-* Fixed the `InaccessibleObjectException` which is caused by the operating system level metrics silently dropping on Java 9 when a Hazelcast member is started. https://github.com/hazelcast/hazelcast/issues/13463[[#13463]]
-* `SerializationServiceBuilder` does not ignore the method `useNativeByteOrder()` anymore. https://github.com/hazelcast/hazelcast/issues/13410[[#13410]]
-* Attribute extractor now falls back to the user code deployment: it was not using the user code deployment to search for the extractor implementation. https://github.com/hazelcast/hazelcast/issues/13400[[#13400]]
-* Fixed the connected clients being slow when the server port is connected without receiving anything. https://github.com/hazelcast/hazelcast/issues/13298[[#13298]]
-* When using the `hazelcast-all` artifact for 3.10.1, the version of `hazelcast-hibernate` included within is the one built using Hibernate 3. This is fixed by updating the default Hibernate version to 5. https://github.com/hazelcast/hazelcast/issues/13250[[#13250]]
-* Built-in predicate implementations now implement the equals/hashCode. https://github.com/hazelcast/hazelcast/issues/13245[[#13245]]
-* When adding a dynamic data structure configuration, Hazelcast fails fast when the same structure is already configured statically (even when both configurations are equal. This is fixed so that the submitted dynamic configuration is silently ignored when it is equal to an existing static configuration, or Hazelcast fails with a `ConfigurationException` when a conflicting static configuration already exists. https://github.com/hazelcast/hazelcast/issues/13158[[#13158]]
-* There was a warning when Hazelcast is used on Java 10 JRE: `An illegal reflective access operation has occurred`. This is fixed by making Hazelcast fully compatible with Java 10. https://github.com/hazelcast/hazelcast/issues/13151[[#13151]]
-* Fixed the `EOFException` which is thrown when using `PagingPredicate` with Kryo in Hazelcast 3.8.7. https://github.com/hazelcast/hazelcast/issues/13147[[#13147]]
-* Fixed the exception `Cannot override cache's CacheManager` which is thrown when a cache is recreated after the restart of remote Hazelcast. https://github.com/hazelcast/hazelcast/issues/12975[[#12975]]
-* When a member is killed, events are lost and the method `QueryCache.tryRecover()` is triggered in a loop even if data is not lost. This is fixed by resetting the query cache sequence numbers by the local promotions. https://github.com/hazelcast/hazelcast/issues/12928[[#12928]]
-* Fixed the memory leak on `NonBlockingSocketWriter` when the client disconnects: the member instance was holding onto a write buffer when a client disconnects abruptly, while there is pending data to be sent. https://github.com/hazelcast/hazelcast/issues/12353[[#12353]]
-* The comparison of values during the operation `CacheRecordStore.merge()` was incorrect. This is fixed by not firing an update event when merging values are equal. https://github.com/hazelcast/hazelcast/issues/12175[[#12175]]
-* Hazelcast lacks a mechanism for the client/server recovery within Spring cache context. This is fixed by recreating the local cache configurations when the client is connecting to a restarted member. https://github.com/hazelcast/hazelcast/issues/12128[[#12128]]
-* `Ringbuffer.readManyAsync()`: Client unwraps the `ExecutionException` before throwing it to the user cod; the member never does it. It also does not happen on other async proxies. This is fixed so that the client does not unwrap this exception. https://github.com/hazelcast/hazelcast/issues/12108[[#12108]]
-* Removed group `password` based credentials check in for the client connections. https://github.com/hazelcast/hazelcast/issues/11867[[#11867]]
-* When IPv6 is enabled for Hazelcast, the started member was still setting an IPv4 as a local address by default. This is fixed by improving the IPv6 bind address selection mechanism. https://github.com/hazelcast/hazelcast/issues/11820[[#11820]]
-* Fixed an issue for hostname and local network interface matching in the `DefaultAddressPicker`. The member was picking the hostname which resolves to an IP not present locally. https://github.com/hazelcast/hazelcast/issues/8211[[#8211]]
-* The method `MapLoader.load()` does not create an entry event, as it is essentially a get operation. But, the method `MapLoader.loadAll()` uses `IMap.putTransient()` and so it generates `EntryAdded` events. This was inconsistent and the latter was problematic for WAN replicated clusters. It is fixed  by avoiding the invocation of MapLoader on `containsKey()`. https://github.com/hazelcast/hazelcast/issues/7771[[#7771]]
+* Fixed the incorrect TCP connection probe registration in outgoing member connections. It was `[null->null]` instead of `[address->address]`. https://github.com/hazelcast/hazelcast/issues/13768[#13768]
+* Clients were sometimes failing to reconnect to another owner member with the `ExecutionException`. This is fixed by making `ClientReauthOperation` to be retryable. https://github.com/hazelcast/hazelcast/issues/13758[#13758]
+* Event Journal was throwing `StaleSequenceException` when TTL is greater than 0. This is fixed by skipping expired events in the journal during reading. https://github.com/hazelcast/hazelcast/issues/13746[#13746]
+* Fixed the `HazelcastOverloadException` when trying to shutdown the cluster. It was also not performing a graceful shutdown. Now cluster state operations are marked as `UrgentSystemOperation` since otherwise, these operations might get rejected by backpressure. https://github.com/hazelcast/hazelcast/issues/13730[#13730]
+* Fixed the noisy health check logging when starting Hazelcast. https://github.com/hazelcast/hazelcast/issues/13662[#13662]
+* When an `unserializableResponse` is tried to be sent to the client as a response from the executor service tasks, the exception was logged on the server side and there was no response returned back to the client. This has been fixed by removing the logging and  sending `HazelcastSerializationException` to the client. https://github.com/hazelcast/hazelcast/issues/13639[#13639]
+* Fixed the issue where IMap entries having a `max-idle-timeout` were not expiring when the member shuts down. https://github.com/hazelcast/hazelcast/issues/13630[#13630]
+* Reliable Topic was not working after the correct partition migration to previous owner member (where it was created the first time and message listener was attached); there were no exceptions or warnings. This is fixed by removing stale caching of Ringbuffer in `AbstractRingBufferOperation`. https://github.com/hazelcast/hazelcast/issues/13602[#13602]
+* Fixed the repeatedly thrown `IllegalAccessException` when the client statistics is enabled. https://github.com/hazelcast/hazelcast/issues/13565[#13565]
+* Fixed the accidental leakage of `InternalSerializationService` through `DataSerializable` interface. https://github.com/hazelcast/hazelcast/issues/13505[#13505]
+* Fixed the `InaccessibleObjectException` which is caused by the operating system level metrics silently dropping on Java 9 when a Hazelcast member is started. https://github.com/hazelcast/hazelcast/issues/13463[#13463]
+* `SerializationServiceBuilder` does not ignore the method `useNativeByteOrder()` anymore. https://github.com/hazelcast/hazelcast/issues/13410[#13410]
+* Attribute extractor now falls back to the user code deployment: it was not using the user code deployment to search for the extractor implementation. https://github.com/hazelcast/hazelcast/issues/13400[#13400]
+* Fixed the connected clients being slow when the server port is connected without receiving anything. https://github.com/hazelcast/hazelcast/issues/13298[#13298]
+* When using the `hazelcast-all` artifact for 3.10.1, the version of `hazelcast-hibernate` included within is the one built using Hibernate 3. This is fixed by updating the default Hibernate version to 5. https://github.com/hazelcast/hazelcast/issues/13250[#13250]
+* Built-in predicate implementations now implement the equals/hashCode. https://github.com/hazelcast/hazelcast/issues/13245[#13245]
+* When adding a dynamic data structure configuration, Hazelcast fails fast when the same structure is already configured statically (even when both configurations are equal. This is fixed so that the submitted dynamic configuration is silently ignored when it is equal to an existing static configuration, or Hazelcast fails with a `ConfigurationException` when a conflicting static configuration already exists. https://github.com/hazelcast/hazelcast/issues/13158[#13158]
+* There was a warning when Hazelcast is used on Java 10 JRE: `An illegal reflective access operation has occurred`. This is fixed by making Hazelcast fully compatible with Java 10. https://github.com/hazelcast/hazelcast/issues/13151[#13151]
+* Fixed the `EOFException` which is thrown when using `PagingPredicate` with Kryo in Hazelcast 3.8.7. https://github.com/hazelcast/hazelcast/issues/13147[#13147]
+* Fixed the exception `Cannot override cache's CacheManager` which is thrown when a cache is recreated after the restart of remote Hazelcast. https://github.com/hazelcast/hazelcast/issues/12975[#12975]
+* When a member is killed, events are lost and the method `QueryCache.tryRecover()` is triggered in a loop even if data is not lost. This is fixed by resetting the query cache sequence numbers by the local promotions. https://github.com/hazelcast/hazelcast/issues/12928[#12928]
+* Fixed the memory leak on `NonBlockingSocketWriter` when the client disconnects: the member instance was holding onto a write buffer when a client disconnects abruptly, while there is pending data to be sent. https://github.com/hazelcast/hazelcast/issues/12353[#12353]
+* The comparison of values during the operation `CacheRecordStore.merge()` was incorrect. This is fixed by not firing an update event when merging values are equal. https://github.com/hazelcast/hazelcast/issues/12175[#12175]
+* Hazelcast lacks a mechanism for the client/server recovery within Spring cache context. This is fixed by recreating the local cache configurations when the client is connecting to a restarted member. https://github.com/hazelcast/hazelcast/issues/12128[#12128]
+* `Ringbuffer.readManyAsync()`: Client unwraps the `ExecutionException` before throwing it to the user cod; the member never does it. It also does not happen on other async proxies. This is fixed so that the client does not unwrap this exception. https://github.com/hazelcast/hazelcast/issues/12108[#12108]
+* Removed group `password` based credentials check in for the client connections. https://github.com/hazelcast/hazelcast/issues/11867[#11867]
+* When IPv6 is enabled for Hazelcast, the started member was still setting an IPv4 as a local address by default. This is fixed by improving the IPv6 bind address selection mechanism. https://github.com/hazelcast/hazelcast/issues/11820[#11820]
+* Fixed an issue for hostname and local network interface matching in the `DefaultAddressPicker`. The member was picking the hostname which resolves to an IP not present locally. https://github.com/hazelcast/hazelcast/issues/8211[#8211]
+* The method `MapLoader.load()` does not create an entry event, as it is essentially a get operation. But, the method `MapLoader.loadAll()` uses `IMap.putTransient()` and so it generates `EntryAdded` events. This was inconsistent and the latter was problematic for WAN replicated clusters. It is fixed  by avoiding the invocation of MapLoader on `containsKey()`. https://github.com/hazelcast/hazelcast/issues/7771[#7771]
 
 [[bc-311]]
 === Behavioral Changes
@@ -85,7 +84,7 @@ PN counter data from the first member was lost. This is fixed by removing PN cou
 * WAN Replication:
 ** Loaded entries were listened using `EntryAddedListener`. Now, a new event type for the loaded entries is introduced (`LOADED`) and they are listened using the new `EntryLoadedListener`.
 ** Loaded entries are not replicated to the target cluster by default anymore.
-** Replicated entries were being persisted at the target cluster (in its map store). Now, they are not being persisted by default anymore. You can use the newly introduced configuration element `persist-wan-replicated-data` and set it to "true" (the default is "false") to make these entries to be persisted.
+** Replicated entries were being persisted at the target cluster (in its map store). Now, they are not being persisted by default anymore. You can use the newly introduced configuration element `persist-wan-replicated-data` and set it to `true` (the default is "false") to make these entries to be persisted.
 * Map entries timestamps: Entry timestamps (i.e., `LastAccessedTime`, `LastUpdatedTime`, `CreationTime`, etc.) are now using `SECONDS` resolution, rather than milliseconds.
 
 [[rd-311]]

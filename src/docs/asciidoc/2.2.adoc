@@ -21,15 +21,15 @@ an IP address.
 
 The following are the fixed issues and enhancements for 2.2 release.
 
-* The Hazelcast manual show a default config for WAN replication that
+* Hazelcast IMDG Reference Manual shows a default config for WAN replication that
 includes the config item
 `<replication-impl>com.hazelcast.impl.wan.WanNoDelayReplication</replication-impl>`.
 This item appears to be used for configuring WAN replication
 implementation to be used. This item is not being used at all. Instead
 the replication implementation is hard coded in
-`WanReplicationService.java`. [152]
+`WanReplicationService.java`. https://github.com/hazelcast/hazelcast/issues/152[#152]
 * It would be nice to have possibilities to instantiate native client
 from `java.util.Properties` and/or from classpath-located configuration
-file. [93]
+file. https://github.com/hazelcast/hazelcast/issues/93[#93]
 * The method `ILock.isLocked()` should have the ability to implement a
-spin lock / wait for a lock release to perform non-blocking code. [39]
+spin lock / wait for a lock release to perform non-blocking code. https://github.com/hazelcast/hazelcast/issues/39[#39]

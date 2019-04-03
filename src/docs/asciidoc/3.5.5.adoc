@@ -10,43 +10,43 @@ object with the method `destroy()`,
 `DistributedObjectDestroyedException` and stops the process of
 unregistering MBeans. MBeans are left forever causing memory leaks and
 they can be seen in VisualVM.
-https://github.com/hazelcast/hazelcast/issues/7329[[#7329]]
+https://github.com/hazelcast/hazelcast/issues/7329[#7329]
 * `IdGenerator` sometimes generates duplicate IDs if it is put under
-stress. https://github.com/hazelcast/hazelcast/issues/7299[[#7299]]
+stress. https://github.com/hazelcast/hazelcast/issues/7299[#7299]
 * The method `IAtomicLong.compareAndSet()` does not properly backup its
 updated state. In a two node cluster, if you use this method and then
 shutdown the owner of the `IAtomicLong`, the remaining node no longer
 sees the updated value.
-https://github.com/hazelcast/hazelcast/issues/7290[[#7290]]
+https://github.com/hazelcast/hazelcast/issues/7290[#7290]
 * `InvocationMonitor` checks for the same invocations continuously.
-https://github.com/hazelcast/hazelcast/issues/7170[[#7170]]
+https://github.com/hazelcast/hazelcast/issues/7170[#7170]
 * The methods `IMap.getAsync` and `IMap.putAsync` should update the
 statistics `getCount` and `putCount`, etc.
-https://github.com/hazelcast/hazelcast/issues/7109[[#7109]]
+https://github.com/hazelcast/hazelcast/issues/7109[#7109]
 * `NullPointerException` is thrown for
 `CoalescedWriteBehindQueue.removeFirstOccurrence()`.
-https://github.com/hazelcast/hazelcast/issues/7082[[#7082]]
+https://github.com/hazelcast/hazelcast/issues/7082[#7082]
 * The quorum definition in the Spring context is not correct.
-https://github.com/hazelcast/hazelcast/issues/6946[[#6946]]
+https://github.com/hazelcast/hazelcast/issues/6946[#6946]
 * While publishing events, IMap operations convert the value to data
 even if the registered listener does not request the value.
-https://github.com/hazelcast/hazelcast/issues/6866[[#6866]]
+https://github.com/hazelcast/hazelcast/issues/6866[#6866]
 * Map entry event listeners are not invoked on the clients of WAN
 replication target cluster.
-https://github.com/hazelcast/hazelcast/issues/6802[[#6802]]
+https://github.com/hazelcast/hazelcast/issues/6802[#6802]
 * The method `putAsync` does not affect
 `LocalMapStats.getPutOperationCount()`.
-https://github.com/hazelcast/hazelcast/issues/6731[[#6731]]
+https://github.com/hazelcast/hazelcast/issues/6731[#6731]
 * Possible memory leak when using `IMap.containsKey`. Problem happens
 when `containsKey` is used for a value that exists in the `MapStore`.
 Entry is loaded from the store but it does not get added to the map (no
 event is triggered in this case), eventually the system crashes with no
-memory. https://github.com/hazelcast/hazelcast/issues/6517[[#6517]]
+memory. https://github.com/hazelcast/hazelcast/issues/6517[#6517]
 * Performance test with Spring Batch throws
 `TargetDisconnectedException`.
-https://github.com/hazelcast/hazelcast/issues/4230[[#4230]]
+https://github.com/hazelcast/hazelcast/issues/4230[#4230]
 * Web session replication does not work as expected during a shutdown.
-https://github.com/hazelcast/hazelcast/issues/3362[[#3362]]
+https://github.com/hazelcast/hazelcast/issues/3362[#3362]
 * The parameter `session-ttl-seconds` is set after the instance
 creation. It should be set before the instance is created.
-https://github.com/hazelcast/hazelcast/issues/2377[[#2377]]
+https://github.com/hazelcast/hazelcast/issues/2377[#2377]

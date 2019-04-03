@@ -40,7 +40,7 @@ start.
 * Memcache interface support. Memcache clients written in any language
 can access Hazelcast cluster.
 * RESTful access support,
-e.g. http://:5701/hazelcast/rest/maps/mymap/key1.
+e.g., \http://:5701/hazelcast/rest/maps/mymap/key1.
 * Added split-brain (network partitioning) handling.
 * Added LifecycleService API to restart, pause Hazelcast instances and
 listen for the lifecycle events.
@@ -93,7 +93,7 @@ encryption are supported.
 * Added instance events for getting notified when a data structure
 instance (map, queue, topic, etc.) is created or destroyed.
 * Added eviction listener: `EntryListener.entryEvicted(EntryEvent)`.
-* Hazelcast is now fully ``maven''ized.
+* Hazelcast is now fully ``Maven``ized.
 * Added support for synchronous backups and configurable backup-count
 for maps.
 * Added eviction support: Timed eviction for queues. LRU, LFU and time

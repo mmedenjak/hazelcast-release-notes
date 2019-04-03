@@ -8,9 +8,9 @@ The following are the fixed issues and enhancements for 2.3.1 release.
 * The method `ILock.newCondition()` now throws
 `UnsupportedOperationException`.
 * After upgrading Hazelcast to 2.3, IPv6 is no longer supported in TCP
-join mechanism. [258]
+join mechanism. https://github.com/hazelcast/hazelcast/issues/258[#258]
 * `ClassCastException` is thrown when the method `MultiMap.get()` is
-run. [256]
+run. https://github.com/hazelcast/hazelcast/issues/256[#256]
 * Currently, the method `MultiMap.get(K key)` returns null if there are
 no values associated with the key. However, it should return an empty
-collection instead. [167]
+collection instead. https://github.com/hazelcast/hazelcast/issues/167[#167]

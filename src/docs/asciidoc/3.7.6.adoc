@@ -5,8 +5,8 @@ The following are the fixed issues for 3.7.6 release.
 
 * In the case of using multiple lite members with near cache, when a
 `clear` is called it tries to use the same operation and results in
-`IllegalStateException`. [9879]
-* Near cache eviction does not work. [9723]
+`IllegalStateException`. https://github.com/hazelcast/hazelcast/issues/9879[#9879]
+* Near cache eviction does not work. https://github.com/hazelcast/hazelcast/issues/9723[#9723]
 * Connection exception is logged in `ClientListenerSupport` after the
-client disconnects. [9709]
-* IMap entry eviction issue; some keys stay forever. [9095]
+client disconnects. https://github.com/hazelcast/hazelcast/issues/9709[#9709]
+* IMap entry eviction issue; some keys stay forever. https://github.com/hazelcast/hazelcast/issues/9095[#9095]

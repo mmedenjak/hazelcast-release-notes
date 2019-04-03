@@ -4,55 +4,55 @@
 The following are the enhancements performed for 3.4.1 release.
 
 * When the near cache is used, cached entries from the remote node are
-evicted by idleness, despite being read
-https://github.com/hazelcast/hazelcast/issues/4358[[#4358]].
+evicted by idleness, despite being read.
+https://github.com/hazelcast/hazelcast/issues/4358[#4358]
 * HazelcastQueryResultsRegion is never expired/evicted. The cleanup()
 method in LocalRegionCache for the query cache instances is never
-called, thus the query cache lives forever
-https://github.com/hazelcast/hazelcast/issues/3882[[#3882]].
+called, thus the query cache lives forever.
+https://github.com/hazelcast/hazelcast/issues/3882[#3882]
 
 The following are the fixed issues for 3.4.1 release.
 
 * IMap.getAll does not put data to RecordStore upon loading from map
-store https://github.com/hazelcast/hazelcast/issues/4458[[#4458]].
+store. https://github.com/hazelcast/hazelcast/issues/4458[#4458]
 * In the ClientNearCache class, there is a comparator which is used in a
 TreeSet to find the entries that should be evicted. If there are
 CacheRecords with the same hit count or lastAccessTime (depending on the
-policy, i.e. LFU or LRU), all of them should be evicted
-https://github.com/hazelcast/hazelcast/issues/4451[[#4451]].
+policy, i.e., LFU or LRU), all of them should be evicted.
+https://github.com/hazelcast/hazelcast/issues/4451[#4451]
 * When using write-behind and the entries, which have not been stored
-yet, are evicted, duplicate calls to the map store is made
-https://github.com/hazelcast/hazelcast/issues/4448[[#4448]].
+yet, are evicted, duplicate calls to the map store is made.
+https://github.com/hazelcast/hazelcast/issues/4448[#4448]
 * There is a memory leak caused by the empty await queues in
-WaitNotifyService. When more then one thread try to lock on an IMap key
-at the same time, a memory leak occurs
-https://github.com/hazelcast/hazelcast/issues/4432[[#4432]].
-* ClientListener is not configurable via ListenerConfig.
-HazelcastInstanceImpl.initializeListeners(Config config) does not honor
-ClientListener instances
-https://github.com/hazelcast/hazelcast/issues/4429[[#4429]].
-* The CacheConfig(CacheSimpleConfig simpleConfig) constructor is broken.
-Variable assignments should be fixed
-https://github.com/hazelcast/hazelcast/issues/4423[[#4423]].
-* In ReplicatedMap, the containsKey method should return false on the
-removed keys
-https://github.com/hazelcast/hazelcast/issues/4420[[#4420]].
-* During the Hazelcast.shutdownAll() process, LockService is shut down
+`WaitNotifyService`. When more then one thread try to lock on an IMap key
+at the same time, a memory leak occurs.
+https://github.com/hazelcast/hazelcast/issues/4432[#4432]
+* ClientListener is not configurable via `ListenerConfig`.
+`HazelcastInstanceImpl.initializeListeners(Config config)` does not honor
+`ClientListener` instances.
+https://github.com/hazelcast/hazelcast/issues/4429[#4429]
+* The `CacheConfig(CacheSimpleConfig simpleConfig)` constructor is broken.
+Variable assignments should be fixed.
+https://github.com/hazelcast/hazelcast/issues/4423[#4423]
+* In ReplicatedMap, the `containsKey` method should return false on the
+removed keys.
+https://github.com/hazelcast/hazelcast/issues/4420[#4420]
+* During the `Hazelcast.shutdownAll()` process, `LockService` is shut down
 before the MapService and this may cause null pointer exception if there
-is something like isLocked check in some internal IMap operations
-https://github.com/hazelcast/hazelcast/issues/4382[[#4382]].
+is something like `isLocked` check in some internal IMap operations.
+https://github.com/hazelcast/hazelcast/issues/4382[#4382]
 * Hazelcast clients shut down in the case of an IP change of one or more
-of the configured node (DNS) addresses
-https://github.com/hazelcast/hazelcast/issues/4349[[#4349]].
+of the configured node (DNS) addresses.
+https://github.com/hazelcast/hazelcast/issues/4349[#4349]
 * Write-behind system coalesces all operations on a specific key in a
-configured write-delay-seconds window and it should also store only the
+configured `write-delay-seconds` window and it should also store only the
 latest change on that key in that window. Problem with the current
 behavior is; a continuously updated key may not be persisted ever due to
-the shifted store time during the updates
-https://github.com/hazelcast/hazelcast/issues/4341[[#4341]].
-* Issue with contains pattern in Config.getXXXConfig(). Since the actual
+the shifted store time during the updates.
+https://github.com/hazelcast/hazelcast/issues/4341[#4341]
+* Issue with `contains` pattern in `Config.getXXXConfig()`. Since the actual
 wildcard search always does a contains matching, you cannot set a
-configuration for startsWith, for instance
-https://github.com/hazelcast/hazelcast/issues/4315[[#4315]].
-* ReplicatedMapMBean is not present in JMX
-https://github.com/hazelcast/hazelcast/issues/4173[[#4173]].
+configuration for startsWith, for instance.
+https://github.com/hazelcast/hazelcast/issues/4315[#4315]
+* ReplicatedMapMBean is not present in JMX.
+https://github.com/hazelcast/hazelcast/issues/4173[#4173]

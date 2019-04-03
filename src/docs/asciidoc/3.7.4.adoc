@@ -5,29 +5,29 @@ The following are the fixed issues for 3.7.4 release.
 
 * Client protocol should be updated to support old .NET clients that
 have an issue preventing them to connect to 3.7.3 and newer clusters.
-[9388]
-* Fixed `keyStateMarker` problems. [9382]
+https://github.com/hazelcast/hazelcast/issues/9388[#9388]
+* Fixed `keyStateMarker` problems. https://github.com/hazelcast/hazelcast/issues/9382[#9382]
 * When nodes terminates concurrently, clusterService.removeAddress can
-fail because target node is already shutdown. [9324]
+fail because target node is already shutdown. https://github.com/hazelcast/hazelcast/issues/9324[#9324]
 * Cache event listeners trigger multiple events when the listener is
-configured declaratively (XML). [9315]
+configured declaratively (XML). https://github.com/hazelcast/hazelcast/issues/9315[#9315]
 * When client is connected and the client process is paused, e.g., using
 a debugger, then the member starts printing the warning message
-(`Client heartbeat is timed out`) every 10 seconds. [9308]
+(`Client heartbeat is timed out`) every 10 seconds. https://github.com/hazelcast/hazelcast/issues/9308[#9308]
 * Hazelcast client outside the AWS cloud cannot connect to Hazelcast
-member inside the AWS cloud. [9290]
+member inside the AWS cloud. https://github.com/hazelcast/hazelcast/issues/9290[#9290]
 * In case of a retrying operation, an old heartbeat could still be
 stored on the invocation. If the invocation monitor sees this, it does
 not understand that this is from an old invocation. It concludes that
 the invocation has not received any recent heartbeats and aborts the
-invocation. [9287]
+invocation. https://github.com/hazelcast/hazelcast/issues/9287[#9287]
 * Client endpoint may have a different connection than the one it was
-initially constructed. [9282]
+initially constructed. https://github.com/hazelcast/hazelcast/issues/9282[#9282]
 * The method `loadAll(keys)` has to notify `RecordStores` about the end
-of loading. [9260]
+of loading. https://github.com/hazelcast/hazelcast/issues/9260[#9260]
 * Partitions should be unavailable/inaccessible until
 `MigrationAwareServices` complete commit/rollback during migration
-and/or promotion. [9235]
+and/or promotion. https://github.com/hazelcast/hazelcast/issues/9235[#9235]
 * When backups are reordered and a backup with a version greater than
 (localVersion + 1) is received, backup is applied but partition replica
-versions are not updated. [9206]
+versions are not updated. https://github.com/hazelcast/hazelcast/issues/9206[#9206]

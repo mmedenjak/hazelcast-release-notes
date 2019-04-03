@@ -4,4 +4,4 @@
 The following is the fixed issue for 2.6.8 release.
 
 * `OperationTimeoutException`: [CONCURRENT_MAP_SET] Redo threshold[90]
-exceeded! Last redo cause: REDO_MAP_OVER_CAPACITY. [1685]
+exceeded! Last redo cause: REDO_MAP_OVER_CAPACITY. https://github.com/hazelcast/hazelcast/issues/1685[#1685]

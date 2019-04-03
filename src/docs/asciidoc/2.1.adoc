@@ -29,14 +29,12 @@ integration.
 
 The following are the fixed issues and enhancements for 2.1 release.
 
-* Hazelcast client breaks the lifecycle listeners. [130]
-* The Spring bean attributes `lazy-init` and `scope` should be added.
-[118]
-* Spring configuration namespace is missing `lock`. [116]
-* `MaxSizeHeapPolicy` issue causing improper evictions and freezes.
-[110]
-* `NullPointerException` is thrown by the method `tx.commit()`. [108]
+* Hazelcast client breaks the lifecycle listeners. https://github.com/hazelcast/hazelcast/issues/130[#130]
+* The Spring bean attributes `lazy-init` and `scope` should be added. https://github.com/hazelcast/hazelcast/issues/118[#118]
+* Spring configuration namespace is missing `lock`. https://github.com/hazelcast/hazelcast/issues/116[#116]
+* `MaxSizeHeapPolicy` issue causing improper evictions and freezes. https://github.com/hazelcast/hazelcast/issues/110[#110]
+* `NullPointerException` is thrown by the method `tx.commit()`. https://github.com/hazelcast/hazelcast/issues/108[#108]
 * Hazelcast client does not shutdown properly if no connection can be
-established. [101]
+established. https://github.com/hazelcast/hazelcast/issues/101[#101]
 * It would be nice to have ``semi-asynchronous'' replication for
-Hazelcast. [92]
+Hazelcast. https://github.com/hazelcast/hazelcast/issues/92[#92]

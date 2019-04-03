@@ -4,6 +4,6 @@
 The following are the fixed issues for 2.6.6 release.
 
 * Hazelcast 2.6.5 throws `NullPointerException` if the method
-`MapStore.load()` returns null during `IMap.getAll()` execution. [1605]
+`MapStore.load()` returns null during `IMap.getAll()` execution. https://github.com/hazelcast/hazelcast/issues/1605[#1605]
 * In Hazelcast 2.x branch, Hazelcast instance is shutdown but exception
-is not logged. [1488]
+is not logged. https://github.com/hazelcast/hazelcast/issues/1488[#1488]

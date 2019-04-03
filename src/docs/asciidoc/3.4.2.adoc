@@ -3,14 +3,14 @@
 
 The following is the enhancement performed for 3.4.2 release.
 
-* The method `contains` for ISet scans all the items
-https://github.com/hazelcast/hazelcast/issues/4620[[#4620]].
+* The method `contains` for ISet scans all the items.
+https://github.com/hazelcast/hazelcast/issues/4620[#4620]
 
 The following are the fixed issues for 3.4.2 release.
 
 * While executing unit tests, `SlowOperationDetectorThread` and
-`CleanupThread` may not be terminated before the next test is started
-https://github.com/hazelcast/hazelcast/issues/4757[[#4757]].
+`CleanupThread` may not be terminated before the next test is started.
+https://github.com/hazelcast/hazelcast/issues/4757[#4757]
 * When multiple nodes join sequentially after partitions are
 assigned/distributed, old nodes fail to clean backup replicas larger
 than the configured backup count. This causes a memory leak. Also, when
@@ -18,23 +18,23 @@ multiple nodes leave the cluster at the same time (or in a short
 period), the new partition owner looses some partition replica versions
 and this causes backup nodes for those specific replica indexes to fail
 synchronizing data from the owner node, although the owner node holds
-the whole partition data
-https://github.com/hazelcast/hazelcast/issues/4687[[#4687]].
+the whole partition data.
+https://github.com/hazelcast/hazelcast/issues/4687[#4687]
 * After cluster merges due to a network-split, Hazelcast infinitely logs
-`WaitNotifyServiceImpl$WaitingOp::WrongTargetException` warnings
-https://github.com/hazelcast/hazelcast/issues/4676[[#4676]].
+`WaitNotifyServiceImpl$WaitingOp::WrongTargetException` warnings.
+https://github.com/hazelcast/hazelcast/issues/4676[#4676]
 * A strange `mapName` parameter occurred when using wildcard
-configuration for a custom `MapStoreFactory`
-https://github.com/hazelcast/hazelcast/issues/4667[[#4667]].
+configuration for a custom `MapStoreFactory`.
+https://github.com/hazelcast/hazelcast/issues/4667[#4667]
 * The method `IExecutorService.submitToKeyOwner` encountered two errors:
 the `onResponse` method is invoked with null and a cast exception is
-thrown in a Hazelcast thread
-https://github.com/hazelcast/hazelcast/issues/4627[[#4627]].
+thrown in a Hazelcast thread.
+https://github.com/hazelcast/hazelcast/issues/4627[#4627]
 * The method `init` in an implementation of the
-`MapLoaderLifecyleSupport` interface is not invoked
-https://github.com/hazelcast/hazelcast/issues/4623[[#4623]].
-* The method `readData` in `NearCacheConfig` reads the `maxSize` twice
-https://github.com/hazelcast/hazelcast/issues/4609[[#4609]].
+`MapLoaderLifecyleSupport` interface is not invoked.
+https://github.com/hazelcast/hazelcast/issues/4623[#4623]
+* The method `readData` in `NearCacheConfig` reads the `maxSize` twice.
+https://github.com/hazelcast/hazelcast/issues/4609[#4609]
 * The system property `hazelcast.client.request.retry.count` is not
-handled properly
-https://github.com/hazelcast/hazelcast/issues/4592[[#4592]].
+handled properly.
+https://github.com/hazelcast/hazelcast/issues/4592[#4592]

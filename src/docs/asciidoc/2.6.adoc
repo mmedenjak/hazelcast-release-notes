@@ -3,16 +3,16 @@
 
 The following are the fixed issues and enhancements for 2.6 release.
 
-* Issues with Spring configuration and merge policies. [488]
+* Issues with Spring configuration and merge policies. https://github.com/hazelcast/hazelcast/issues/488[#488]
 * Trying to create a configuration object by API, serializing and
 deserializing the objects (by Hazelcast builder), due to an error of
 PartitionGroup, `RuntimeException` is thrown. If set by API, it works.
-[487]
+https://github.com/hazelcast/hazelcast/issues/487[#487]
 * OSGi: The manifest data in `hazelcast-all.jar` for 2.5.1 is not
-correct. [484]
+correct. https://github.com/hazelcast/hazelcast/issues/484[#484]
 * Consistency of the set of members in the cluster should be guaranteed.
-[477]
+https://github.com/hazelcast/hazelcast/issues/477[#477]
 * Hazelcast IMap’s `containsKey()`method does not reset the idle
-timeout. [472]
+timeout. https://github.com/hazelcast/hazelcast/issues/472[#472]
 * `@SpringAware` annotation leads to memory leak when using Hazelcast
-distributed executor service. [470]
+distributed executor service. https://github.com/hazelcast/hazelcast/issues/470[#470]

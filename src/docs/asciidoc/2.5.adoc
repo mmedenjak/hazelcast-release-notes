@@ -23,8 +23,7 @@ interface.
 The following are the fixed issues and enhancements for 2.5 release.
 
 * Management Center does not respond for the maps with names having
-underscore characters. [394]
+underscore characters. https://github.com/hazelcast/hazelcast/issues/394[#394]
 * MultiTask operation returns `Constants$Object$6` instead of a map.
-[392]
-* In the method `forceUnlock()`, local lock is not removed. [386]
-* Deadlock happens when the cluster is being initialized. [386]
+https://github.com/hazelcast/hazelcast/issues/392[#392]
+* In the method `forceUnlock()`, local lock is not removed. https://github.com/hazelcast/hazelcast/issues/386[#386]

@@ -6,12 +6,12 @@ The following are the fixed issues for 3.7.2 release.
 * The container `WaitingOperation` (which wraps `BlockingOperation`) is
 asked for call ID/caller address. But this container object does not
 have any sensible information, so the heartbeat is not constructed
-correctly for a blocked operation. [8979]
+correctly for a blocked operation. https://github.com/hazelcast/hazelcast/issues/8979[#8979]
 * JCache backup operation does not propagate the exception
-`CacheNotExists`. [8955]
-* The log message ``unsafe unavailable'' is at WARNING level and it also
-displays the full stack trace. [8852]
+`CacheNotExists`. https://github.com/hazelcast/hazelcast/issues/8955[#8955]
+* The log message `unsafe unavailable` is at WARNING level and it also
+displays the full stack trace. https://github.com/hazelcast/hazelcast/issues/8852[#8852]
 * When a predicate for distributed query is executed on a lite member it
-throws the exception `ClassNotFound`. [8849]
+throws the exception `ClassNotFound`. https://github.com/hazelcast/hazelcast/issues/8849[#8849]
 * While running under non-HotSpot JVM, the exception `NoSuchField` is
-thrown. [8835]
+thrown. https://github.com/hazelcast/hazelcast/issues/8835[#8835]

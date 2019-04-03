@@ -36,39 +36,38 @@ LifecycleEvents.
 The following are the fixed issues and enhancements for 2.3 release.
 
 * Operation exceptions occur randomly while the SQL predicates are
-stress tested. [263]
-* `EOF` exception is thrown in Management Center. [252]
+stress tested. https://github.com/hazelcast/hazelcast/issues/263[#263]
+* `EOF` exception is thrown in Management Center. https://github.com/hazelcast/hazelcast/issues/252[#252]
 * The method `IMap.flush()` delegates map store exceptions to the caller
-instead of suppressing them. [250]
-* Node appears to be in multiple clusters. [247]
-* It would be nice to have Spring support in Runnable tasks. [244]
+instead of suppressing them. https://github.com/hazelcast/hazelcast/issues/250[#250]
+* Node appears to be in multiple clusters. https://github.com/hazelcast/hazelcast/issues/247[#247]
+* It would be nice to have Spring support in Runnable tasks. https://github.com/hazelcast/hazelcast/issues/244[#244]
 * MERGING and MERGED events should be fired during a split-brain merging
-process. [241]
-* A problem occurs during a quick restart of master node. [235]
+process. https://github.com/hazelcast/hazelcast/issues/241[#241]
+* A problem occurs during a quick restart of master node. https://github.com/hazelcast/hazelcast/issues/241[#235]
 * Distributed `tryLock()` throws `NullPointerException` from lite
-member. [233]
-* Using domain instead of IP address is problematic. [230]
-* The method `MultiMap.lock()` blocks forever. [228]
+member. https://github.com/hazelcast/hazelcast/issues/233[#233]
+* Using domain instead of IP address is problematic. https://github.com/hazelcast/hazelcast/issues/230[#230]
+* The method `MultiMap.lock()` blocks forever. https://github.com/hazelcast/hazelcast/issues/228[#228]
 * `SimpleMapTest` uses deprecated method `Hazelcast.getLoggingService()`
-and annoys WebLogic 12. [227]
+and annoys WebLogic 12. https://github.com/hazelcast/hazelcast/issues/227[#227]
 * `ItemEvent` should have a `getMember` method to return the member that
-offered/polled an item. [226]
+offered/polled an item. https://github.com/hazelcast/hazelcast/issues/226[#226]
 * The consumers do `queue.take()` and block until something is put on
 the queue. In Hazelcast 2.1.2, this was fine, but in 2.2, it causes a
-massive amount of WARN-level log spam. [225]
+massive amount of WARN-level log spam. https://github.com/hazelcast/hazelcast/issues/225[#225]
 * The method `MultiMap.put()` is inconsistent when the key is locked by
-another node/thread. [223]
-* FAILED event should be fired when migration fails for some reason.
-[222]
+another node/thread. https://github.com/hazelcast/hazelcast/issues/223[#223]
+* FAILED event should be fired when migration fails for some reason. https://github.com/hazelcast/hazelcast/issues/222[#222]
 * `Runtime` exception is thrown when accessing to queue after client
-restarted. [220]
+restarted. https://github.com/hazelcast/hazelcast/issues/220[#220]
 * Using the client, once it tries to access the cache while the cache is
 unavailable, the client cannot be used anymore after the server cache
-becomes available. [218]
+becomes available. https://github.com/hazelcast/hazelcast/issues/218[#218]
 * The methods `DistributedTask.get()` and `MultiTask.get()` throw
-`OperationTimeoutException`. [217]
+`OperationTimeoutException`. https://github.com/hazelcast/hazelcast/issues/217[#217]
 * There are a couple of classes that do not implement `toString`, that
-makes the `Config.toString` message incomplete. [209]
-* Hazelcast IMap ignores the size capacity. [188]
+makes the `Config.toString` message incomplete. https://github.com/hazelcast/hazelcast/issues/209[#209]
+* Hazelcast IMap ignores the size capacity. https://github.com/hazelcast/hazelcast/issues/188[#188]
 * Hazelcast resource adapter package (version 2.1.2) does not deploy on
-JBoss 7.1.1. [182]
+JBoss 7.1.1. https://github.com/hazelcast/hazelcast/issues/182[#182]

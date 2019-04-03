@@ -4,22 +4,22 @@
 The following are the fixed issues for 3.2.1 release.
 
 * JCA problems have been fixed.
-https://github.com/hazelcast/hazelcast/issues/2025[#2025].
+https://github.com/hazelcast/hazelcast/issues/2025[#2025]
 * C++ client compilation problems are fixed.
 * Redo problem about Java dummy client is fixed.
 * Round robin load balancer of Java client is improved.
 * Initial timeout is for the initial connections in Java clients.
 * Wildcard configuration improvement in near cache configuration.
 * Unneeded serializations in EntryProcessor should be removed when the
-object format is _In-Memory_
-https://github.com/hazelcast/hazelcast/issues/2139[#2139].
+object format is _In-Memory_.
+https://github.com/hazelcast/hazelcast/issues/2139[#2139]
 * Race condition in near cache has been solved, immediate invalidation
-of local near cache was needed
-https://github.com/hazelcast/hazelcast/issues/2163[#2163].
+of local near cache was needed.
+https://github.com/hazelcast/hazelcast/issues/2163[#2163]
 * Predicate issue seen in transactions is solved.
 * Comparator issue in map eviction is solved.
 * Map eviction part has been refactored due to a race condition on map
-listener https://github.com/hazelcast/hazelcast/issues/2324[#2324].
-* Stale data problem in client near cache has been solved
-https://github.com/hazelcast/hazelcast/issues/2065[#2065].
+listener. https://github.com/hazelcast/hazelcast/issues/2324[#2324]
+* Stale data problem in client near cache has been solved.
+https://github.com/hazelcast/hazelcast/issues/2065[#2065]
 * Many checkstyle and findbugs issues are solved.

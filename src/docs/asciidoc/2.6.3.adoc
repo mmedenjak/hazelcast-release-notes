@@ -4,6 +4,6 @@
 The following are the fixed issues for 2.6.3 release.
 
 * Memcache client content in the Reference Manual needs to be improved .
-[1047]
-* Hazelcast Hibernate `pom` is using a retired maven repo. [831]
-* ``Marked for removal'' mechanism should be more clarified. [792]
+https://github.com/hazelcast/hazelcast/issues/1047[#1047]
+* Hazelcast Hibernate `pom` is using a retired Maven repo. https://github.com/hazelcast/hazelcast/issues/831[#831]
+* "Marked for removal" mechanism should be more clarified. https://github.com/hazelcast/hazelcast/issues/792[#792]

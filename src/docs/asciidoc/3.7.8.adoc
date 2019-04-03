@@ -7,4 +7,4 @@ The following is the fixed issue for 3.7.8 release.
 can get an exception (in `ClearExpiredOperation`) during execution. But
 after the cluster state transitions to `ACTIVE`, it should continue to
 process. The task’s progress conditions should be reset in case of any
-execution exception. [10636]
+execution exception. https://github.com/hazelcast/hazelcast/issues/10636[#10636]

@@ -19,28 +19,27 @@ connect to other nodes.
 
 The following are the fixed issues and enhancements for 2.4 release.
 
-* Hazelcast Management Center’s ``Configuration has been successfully
-updated.'' notification is never removed. [301]
+* Hazelcast Management Center’s `Configuration has been successfully
+updated` notification is never removed. https://github.com/hazelcast/hazelcast/issues/301[#301]
 * Map maximum size does not take into account that some cluster members
 are lite members and cannot hold any data. Thus, the map becomes smaller
-than the size it was configured. [292]
-* The method `map.containsKey()` does not reset the idle time counter.
-[288]
+than the size it was configured. https://github.com/hazelcast/hazelcast/issues/292[#292]
+* The method `map.containsKey()` does not reset the idle time counter. https://github.com/hazelcast/hazelcast/issues/288[#288]
 * In Hazelcast 2.3.1, the property `hazelcast.local.localAddress` is
-used only when provided directly from `System.properties`. [282]
+used only when provided directly from `System.properties`. https://github.com/hazelcast/hazelcast/issues/282[#282]
 * Data removed under transaction sometimes could not be removed from the
-backup. [277]
-* Map initialization should not use the default executor service. [276]
+backup. https://github.com/hazelcast/hazelcast/issues/277[#277]
+* Map initialization should not use the default executor service. https://github.com/hazelcast/hazelcast/issues/276[#276]
 * In Hazelcast 2.3.1, Hazelcast got into a state where the list of
-members on some of the nodes do not match up. [274]
+members on some of the nodes do not match up. https://github.com/hazelcast/hazelcast/issues/274[#274]
 * Map `EntryListener` is not working correctly if one master is
-restarted. [269]
+restarted. https://github.com/hazelcast/hazelcast/issues/269[#269]
 * `IMap.tryLockAndGet`: There is a concurrency error when the map has
-map store. [268]
-* Error in `com.hazelcast.query.Predicates.NotEqualPredicate`. [262]
+map store. https://github.com/hazelcast/hazelcast/issues/268[#268]
+* Error in `com.hazelcast.query.Predicates.NotEqualPredicate`. https://github.com/hazelcast/hazelcast/issues/262[#262]
 * Partition Group with group type CUSTOM should honor configured
-backups. [260]
-* Messages are lost while moving them inside a transaction. [259]
+backups. https://github.com/hazelcast/hazelcast/issues/260[#260]
+* Messages are lost while moving them inside a transaction. https://github.com/hazelcast/hazelcast/issues/259[#259]
 * Enable Hazelcast to use specified port ranges to accommodate firewall
-policies. [251]
-* Seeing multiple concurrent locks on a distributed lock. [168]
+policies. https://github.com/hazelcast/hazelcast/issues/251[#251]
+* Seeing multiple concurrent locks on a distributed lock. https://github.com/hazelcast/hazelcast/issues/168[#168]

@@ -3,6 +3,5 @@
 
 The following is the enhancement performed for 3.1.9 release.
 
-
 * Exposed `TcpIpJoiner.MAX_PORT_TRIES` as a configurable system
-property. https://github.com/hazelcast/hazelcast/pull/9734[[#9734]]
+property. https://github.com/hazelcast/hazelcast/pull/9734[#9734]

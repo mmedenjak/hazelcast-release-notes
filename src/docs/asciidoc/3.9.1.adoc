@@ -5,7 +5,7 @@
 
 * *Ping Failure Detector:* Ping Failure Detector provides a quicker and
 more deterministic detection of hardware and other lower level events.
-Please see the
+See the
 http://docs.hazelcast.org/docs/3.9.1/manual/html-single/index.html#ping-failure-detector[Ping
 Failure Detector section].
 
@@ -14,59 +14,59 @@ Failure Detector section].
 
 * `MulticastJoiner` may cause `OutOfMemoryException` due to the
 self-amplification in `SplitBrainJoinMessage` sending.
-https://github.com/hazelcast/hazelcast/issues/11836[[#11836]]
+https://github.com/hazelcast/hazelcast/issues/11836[#11836]
 * Dynamic configuration added on the lite member is not found after a
 Split-Brain healing.
-https://github.com/hazelcast/hazelcast/issues/11815[[#11815]]
+https://github.com/hazelcast/hazelcast/issues/11815[#11815]
 * Client transactions does not respect to unisocket behavior.
-https://github.com/hazelcast/hazelcast/issues/11802[[#11802]]
+https://github.com/hazelcast/hazelcast/issues/11802[#11802]
 * Incorrect null log message in `DelegatingAddressPicker`.
-https://github.com/hazelcast/hazelcast/issues/11783[[#11783]]
+https://github.com/hazelcast/hazelcast/issues/11783[#11783]
 * A high number of `EntryEventType[]` is created in a client application
 which receives many entry events. In a specific application,
 `EntryEventType[]` dominates the application’s overall memory
 allocation.
-https://github.com/hazelcast/hazelcast/issues/11777[[#11777]]
+https://github.com/hazelcast/hazelcast/issues/11777[#11777]
 * Hazelcast client fails to connect to the cluster if the first cluster
 member is down.
-https://github.com/hazelcast/hazelcast/issues/11735[[#11735]]
+https://github.com/hazelcast/hazelcast/issues/11735[#11735]
 * After promoting a member
 (`HazelcastInstance.getCluster().promoteLocalLiteMember()`) the instance
 of the member retrieved by `getMembers()` is not updated.
-https://github.com/hazelcast/hazelcast/issues/11720[[#11720]]
+https://github.com/hazelcast/hazelcast/issues/11720[#11720]
 * Enqueued item gets lost when the client stops and reconnects sooner
 than `hazelcast.client.endpoint.remove.delay.seconds`.
-https://github.com/hazelcast/hazelcast/issues/11700[[#11700]]
+https://github.com/hazelcast/hazelcast/issues/11700[#11700]
 * While trying to setup Hazelcast on AWS, the order of member
 initialization is wrong.
-https://github.com/hazelcast/hazelcast/issues/11681[[#11681]]
+https://github.com/hazelcast/hazelcast/issues/11681[#11681]
 * Query cache on an IMap that is subsequently destroyed and recreated
 does not work.
-https://github.com/hazelcast/hazelcast/issues/11666[[#11666]]
+https://github.com/hazelcast/hazelcast/issues/11666[#11666]
 * The method `DefaultQueryCache::getAll` does not check for null values.
-https://github.com/hazelcast/hazelcast/issues/11665[[#11665]]
+https://github.com/hazelcast/hazelcast/issues/11665[#11665]
 * When the method `HazelcastInstance.shutdown()` is called, the
-following error is thrown: ``Could not retrieve ringbuffer service to
-destroy event journal''.
-https://github.com/hazelcast/hazelcast/issues/11662[[#11662]]
+following error is thrown: `Could not retrieve ringbuffer service to
+destroy event journal`.
+https://github.com/hazelcast/hazelcast/issues/11662[#11662]
 * Defining management center in the configuration causes partition
 migrations even though there is no data.
-https://github.com/hazelcast/hazelcast/issues/11598[[#11598]]
+https://github.com/hazelcast/hazelcast/issues/11598[#11598]
 * Weird Split-Brain like issue with Hazelcast 3.8.4.
-https://github.com/hazelcast/hazelcast/issues/11533[[#11533]]
+https://github.com/hazelcast/hazelcast/issues/11533[#11533]
 * Consider logging new HTTP connections with DEBUG or lower level.
-https://github.com/hazelcast/hazelcast/issues/11196[[#11196]]
+https://github.com/hazelcast/hazelcast/issues/11196[#11196]
 * `HashSet` and `HashMap` are initialized with a too small size.
-https://github.com/hazelcast/hazelcast/issues/9445[[#9445]]
+https://github.com/hazelcast/hazelcast/issues/9445[#9445]
 
 [[cf-391]]
 ==== Coverity Fixes
 
 * Dereference null return value in the
 method`ClientConnectionManagerImpl.encodeAuthenticationRequest()`.
-https://github.com/hazelcast/hazelcast/issues/11767[[#11767]]
+https://github.com/hazelcast/hazelcast/issues/11767[#11767]
 * Using invalid iterator in the method
 `SmartClientListenerService.deregisterListenerInternal(String)`.
-https://github.com/hazelcast/hazelcast/issues/11760[[#11760]]
+https://github.com/hazelcast/hazelcast/issues/11760[#11760]
 * Resource leak in client’s `ProxyManager`.
-https://github.com/hazelcast/hazelcast/issues/11751[[#11751]]
+https://github.com/hazelcast/hazelcast/issues/11751[#11751]

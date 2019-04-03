@@ -4,29 +4,29 @@
 The following are the fixed issues for 3.6.1 release.
 
 * Hazelcast 3.6 fails to create `ObjectName` for an instance created
-with JCache API. [7548]
+with JCache API. https://github.com/hazelcast/hazelcast/issues/7548[#7548]
 * The test
 `com.hazelcast.client.spi.impl.ClientInvocationTest.executionCallback_FailOnShutdown`
-fails. [7462]
-* There are failures in `SystemClockChangeTest`. [7444]
+fails. https://github.com/hazelcast/hazelcast/issues/7462[#7462]
+* There are failures in `SystemClockChangeTest`. https://github.com/hazelcast/hazelcast/issues/7444[#7444]
 * When you use EntryProcessor with a map interceptor, it does not get
-the correct value. [7414]
+the correct value. https://github.com/hazelcast/hazelcast/issues/7414[#7414]
 * Backup records also increase the owned cache entry count but they
 should be ignored. Cache statistics show incorrect entry count via the
-method `getOwnedEntryCount`. [7403]
+method `getOwnedEntryCount`. https://github.com/hazelcast/hazelcast/issues/7403[#7403]
 * When getting values from `PredicateSupplier`, the method
 `DistinctValueAggregation.DistinctValueMapper.map()` throws a
-`ClassCastException`. [7398]
+`ClassCastException`. https://github.com/hazelcast/hazelcast/issues/7398[#7398]
 * Timeout is not enough for the test
-`TransferStressTest.testLargePackets`. [7393]
+`TransferStressTest.testLargePackets`. https://github.com/hazelcast/hazelcast/issues/7393[#7393]
 * There are failures in the test
-`ClientExceptionFactoryTest.testException`. [7360]
+`ClientExceptionFactoryTest.testException`. https://github.com/hazelcast/hazelcast/issues/7360[#7360]
 * The method `getReplicationImplObject` in `WanTargetClusterConfig` is
-not used. [7353]
+not used. https://github.com/hazelcast/hazelcast/issues/7353[#7353]
 * Entry processor and map put/remove tests in WAN replication module
-fail. [7352]
+fail. https://github.com/hazelcast/hazelcast/issues/7352[#7352]
 * Hazelcast namespace for Spring configuration does not support
-Discovery SPI. [6913]
+Discovery SPI. https://github.com/hazelcast/hazelcast/issues/6913[#6913]
 * When Hazelcast Spring configuration is used for the client and if a
 serialization configuration is present in the Spring client, then the
-client hangs forever during the authentication method. [5815]
+client hangs forever during the authentication method. https://github.com/hazelcast/hazelcast/issues/5815[#5815]
