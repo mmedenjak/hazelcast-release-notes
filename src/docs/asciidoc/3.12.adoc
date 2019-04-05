@@ -96,6 +96,8 @@ See the https://docs.hazelcast.org/docs/3.12/manual/html-single/#using-the-rest-
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Improved the YAML configuration so that you can configure multiple WAN
+member sockets. https://github.com/hazelcast/hazelcast/issues/14800[#14800] 
 * Members now fail fast when the `max-idle-seconds` element for the entries
 in a map is set to 1 second. See the note in the
 https://docs.hazelcast.org/docs/latest-dev/manual/html-single/#configuring-map-eviction[Configuring Map Eviction section]
@@ -128,6 +130,11 @@ https://github.com/hazelcast/hazelcast/issues/11946[#11946]
 [[fixes-312]]
 === Fixes
 
+* Fixed an issue where the outbound pipeline was not waking up properly after 
+merging the write-through changes. https://github.com/hazelcast/hazelcast/issues/14830[#14830]
+* Fixed an issue where a Hazelcast Java client was not able to connect to the cluster
+(which has the `advanced-network` configuration) after a split-brain syndrome
+is healed. https://github.com/hazelcast/hazelcast/issues/14768[#14768]
 * Fixed an issue where the `like` and `ilike` predicates didn’t catch any
 entity with the `text` field containing the `\n` character.
 https://github.com/hazelcast/hazelcast/issues/14751[#14751]
@@ -159,12 +166,6 @@ IP addresses. https://github.com/hazelcast/hazelcast/issues/14088[#14088]
 * Fixed an issue where the resources were not wholly cleared when destroying
 `DurableExecutorService` causing some resources to be left in the heap.
 https://github.com/hazelcast/hazelcast/issues/14087[#14087]
-* Fixed the discrepancy between the XSD on the website and the one in the download package.
-https://github.com/hazelcast/hazelcast/issues/13011[#13011]
-* Fixed an issue where `TcpIpConnectionManager` was putting the connections in a map
-under the remote endpoint bind address but not under the address to which Hazelcast
-connects. https://github.com/hazelcast/hazelcast/issues/11256[#11256]
-
 * Fixed an issue where the REST API was not handling the HTTP requests without
 headers correctly: when a client sends an HTTP request without headers to the
 Hazelcast REST API, the `HttpCommand` class was wrongly expecting an additional
@@ -186,10 +187,18 @@ time counter when `read-backup-data` is enabled. https://github.com/hazelcast/ha
 * Fixed an issue where the `addIndex()` method was performing a full copy of
 entries when a new member joins the cluster, which is not needed.
 https://github.com/hazelcast/hazelcast/issues/13964[#13964]
+* Fixed an issue where the initialization failure of `discoveryService`
+was causing some threads to remain open and the JVM could not be terminated
+because of these threads. https://github.com/hazelcast/hazelcast/issues/13821[#13821]
+* Fixed the discrepancy between the XSD on the website and the one in the download package.
+https://github.com/hazelcast/hazelcast/issues/13011[#13011]
 * `PagingPredicate` with comparator was failing to serialize when sending
 from the client or member when the cluster size is more than 1. This has been
 fixed by making the `PagingPredicateQuery` comparator serializable.
 https://github.com/hazelcast/hazelcast/issues/12208[#12208]
+* Fixed an issue where `TcpIpConnectionManager` was putting the connections in a map
+under the remote endpoint bind address but not under the address to which Hazelcast
+connects. https://github.com/hazelcast/hazelcast/issues/11256[#11256]
 
 [[rdf-312]]
 === Removed/Deprecated Features
