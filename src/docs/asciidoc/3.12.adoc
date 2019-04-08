@@ -130,6 +130,8 @@ https://github.com/hazelcast/hazelcast/issues/11946[#11946]
 [[fixes-312]]
 === Fixes
 
+* Fixed an issue where the state of member list on the clients were broken after a hot
+restart in the cluster.https://github.com/hazelcast/hazelcast/issues/14839[#14839]
 * Fixed an issue where the outbound pipeline was not waking up properly after 
 merging the write-through changes. https://github.com/hazelcast/hazelcast/issues/14830[#14830]
 * Fixed an issue where a Hazelcast Java client was not able to connect to the cluster
