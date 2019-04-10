@@ -1,0 +1,9 @@
+
+
+== 3.11.3
+
+[[fixes-3113]]
+=== Fixes
+
+* Fixed an issue where the map statistics are not updated when the `IMap.delete()` method is called from the client. https://github.com/hazelcast/hazelcast/issues/14471[#14471]
+* Fixed the issues that occurred on the client map when the remote members are shut down. https://github.com/hazelcast/hazelcast/issues/13396[#13396]
