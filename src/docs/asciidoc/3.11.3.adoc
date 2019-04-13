@@ -2,8 +2,36 @@
 
 == 3.11.3
 
+[[enh-3113]]
+=== Enhancements
+
+* Added the security manager protection to member configuration methods so
+that the user code deployments can be used in a more secure way.
+https://github.com/hazelcast/hazelcast/pull/14634[#14634]
+
 [[fixes-3113]]
 === Fixes
 
-* Fixed an issue where the map statistics are not updated when the `IMap.delete()` method is called from the client. https://github.com/hazelcast/hazelcast/issues/14471[#14471]
-* Fixed the issues that occurred on the client map when the remote members are shut down. https://github.com/hazelcast/hazelcast/issues/13396[#13396]
+* Fixed an issue where the partition table was not being
+updated correctly on the client side when the connection
+was changed due to the changes in the member list.
+https://github.com/hazelcast/hazelcast/pull/14793[#14793]
+* Disabled the migrations while the mastership claim is in
+progress to prevent the creation and submission of migrations
+before its claim is approved by all the final cluster
+members. https://github.com/hazelcast/hazelcast/pull/14745[#14745]
+* Fixed an issue where some of the operation statistics
+were incorrectly reporting operations per partition.
+https://github.com/hazelcast/hazelcast/pull/14726[#14726]
+* Fixed an issue where the entries in the Transactional Map were
+ignored while promoting from the backups.
+https://github.com/hazelcast/hazelcast/pull/14714[#14714]
+* Fixed an issue where there was a leak in the socket channel
+when the networking is restarted after the cluster merge.
+https://github.com/hazelcast/hazelcast/pull/14699[#14699]
+* Fixed an issue during the backup expirations of maps with
+High-Density Memory Store when there is no eviction configured.
+https://github.com/hazelcast/hazelcast/pull/14626[#14626]
+* Fixed an issue where the map statistics are not updated when the
+`IMap.delete()` method is called from the client.
+https://github.com/hazelcast/hazelcast/issues/14471[#14471]
