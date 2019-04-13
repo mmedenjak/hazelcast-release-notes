@@ -12,6 +12,9 @@ https://github.com/hazelcast/hazelcast/pull/14634[#14634]
 [[fixes-3113]]
 === Fixes
 
+* Fixed an issue where there was a leak in the socket channel
+when the networking is restarted after the cluster merge.
+https://github.com/hazelcast/hazelcast/pull/14699[#14699]
 * Fixed an issue where the partition table was not being
 updated correctly on the client side when the connection
 was changed due to the changes in the member list.
@@ -26,9 +29,6 @@ https://github.com/hazelcast/hazelcast/pull/14726[#14726]
 * Fixed an issue where the entries in the Transactional Map were
 ignored while promoting from the backups.
 https://github.com/hazelcast/hazelcast/pull/14714[#14714]
-* Fixed an issue where there was a leak in the socket channel
-when the networking is restarted after the cluster merge.
-https://github.com/hazelcast/hazelcast/pull/14699[#14699]
 * Fixed an issue during the backup expirations of maps with
 High-Density Memory Store when there is no eviction configured.
 https://github.com/hazelcast/hazelcast/pull/14626[#14626]
