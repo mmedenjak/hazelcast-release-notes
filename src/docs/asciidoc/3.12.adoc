@@ -134,9 +134,6 @@ https://github.com/hazelcast/hazelcast/issues/11946[#11946]
 restart in the cluster.https://github.com/hazelcast/hazelcast/issues/14839[#14839]
 * Fixed an issue where the outbound pipeline was not waking up properly after 
 merging the write-through changes. https://github.com/hazelcast/hazelcast/issues/14830[#14830]
-* Fixed an issue where a Hazelcast Java client was not able to connect to the cluster
-(which has the `advanced-network` configuration) after a split-brain syndrome
-is healed. https://github.com/hazelcast/hazelcast/issues/14768[#14768]
 * Fixed an issue where the `like` and `ilike` predicates didn’t catch any
 entity with the `text` field containing the `\n` character.
 https://github.com/hazelcast/hazelcast/issues/14751[#14751]
@@ -151,11 +148,6 @@ https://github.com/hazelcast/hazelcast/issues/14654[#14654]
 * Fixed the wording of a misleading error in the first attempt to connect to a wrongly
 configured cluster. The error message has been changed to “Unable to connect to any cluster”.
 https://github.com/hazelcast/hazelcast/issues/14574[#14574]
-* Fixed an issue where a connection configured using `AdvancedNetworkConfig`
-was not denied correctly for some inappropriate endpoints.
-https://github.com/hazelcast/hazelcast/issues/14532[#14532]
-* Fixed the REST service which was not working when the REST endpoint is configured
-for `AdvancedNetworkConfig`. https://github.com/hazelcast/hazelcast/issues/14516[#14516]
 * Fixed an issue where the `setAsync()` method was throwing `NullPointerException`.
 https://github.com/hazelcast/hazelcast/issues/14445[#14445]
 * Fixed an issue where the collection attributes indexed with `[any]` were causing
