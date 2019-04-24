@@ -1,0 +1,48 @@
+
+
+== 4.0
+
+[[bc-40]]
+=== Breaking Changes
+
+* ???. See the 
+https://docs.hazelcast.org/docs/4.0/manual/html-single/#???[???].
+
+[[nf-40]]
+=== New Features
+
+*_Hazelcast IMDG Enterprise New Features:_*
+
+* **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+
+*_Hazelcast IMDG Open Source New Features:_*
+
+* **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+
+[[enh-40]]
+=== Enhancements
+
+*_Hazelcast IMDG Enterprise Enhancements:_*
+
+* **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+
+*_Hazelcast IMDG Open Source Enhancements:_*
+
+* **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+
+The following are the other improvements performed to solve the enhancement
+issues opened by the Hazelcast customers/team.
+
+* ???. https://github.com/hazelcast/hazelcast/issues/???[#???] 
+
+[[fixes-40]]
+=== Fixes
+
+* Fixed an issue where ???.https://github.com/hazelcast/hazelcast/issues/???[#???]
+
+[[rdf-40]]
+=== Removed/Deprecated Features
+
+* ???.
+* The following system properties are deprecated:
+** `???`
