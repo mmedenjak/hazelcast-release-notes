@@ -1,0 +1,34 @@
+== 3.11.2
+
+[[enh-3121]]
+=== Enhancements 
+
+* ??? See the https://docs.hazelcast.org/docs/3.12.1/manual/html-single/#???[??? section].
+* Updated the Hazelcast Kubernetes dependency to the latest version.
+https://github.com/hazelcast/hazelcast/pull/14899[#14899]
+* Added the getter method for the YAML configuration builder properties.
+https://github.com/hazelcast/hazelcast/pull/14884[#14884]
+* Eliminated the excessive logging when NIO networking is shutdown by
+deregistering the IO threads.
+https://github.com/hazelcast/hazelcast/pull/14837[#14837] 
+* Introduced a warning log for illegal reflective access operation when
+using Java 9 and higher, and OpenJ 9.
+https://github.com/hazelcast/hazelcast/pull/14835[#14835]
+* Updated the Hazelcast web session manager dependency to the latest version.
+https://github.com/hazelcast/hazelcast/pull/14822[#14822]
+
+[[fixes-3121]]
+=== Fixes
+
+* Fixed an issue where the client was not considering the new
+address of a restarted member, which has the same UUID but could
+have a different IP address after it is restarted.
+https://github.com/hazelcast/hazelcast/pull/14843[#14843]
+* Fixed an issue where the migration operations were running
+before the previous finalization is completed.
+https://github.com/hazelcast/hazelcast/pull/14834[#14834]
+
+[[bc-3121]]
+=== Behavioral Changes
+
+* ???
