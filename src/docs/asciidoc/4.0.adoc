@@ -2,12 +2,6 @@
 
 == 4.0
 
-[[bc-40]]
-=== Breaking Changes
-
-* ???. See the 
-https://docs.hazelcast.org/docs/4.0/manual/html-single/#???[???].
-
 [[nf-40]]
 === New Features
 
@@ -18,6 +12,13 @@ https://docs.hazelcast.org/docs/4.0/manual/html-single/#???[???].
 *_Hazelcast IMDG Open Source New Features:_*
 
 * **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+
+[[bc-40]]
+=== Breaking Changes
+
+* Removed the `java.util.function` back ports.
+https://github.com/hazelcast/hazelcast/pull/14912[#14912]
+
 
 [[enh-40]]
 === Enhancements
@@ -33,12 +34,35 @@ https://docs.hazelcast.org/docs/4.0/manual/html-single/#???[???].
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
-* ???. https://github.com/hazelcast/hazelcast/issues/???[#???] 
+* Introduced `PartitionIdSet`. This is a mutable set of partition IDs
+which can be efficiently represented by a fixed size leading to a
+better performance.
+https://github.com/hazelcast/hazelcast/pull/14925[#14925]
+* Made `AssertTask` an interface to enable lambdas to be used in
+assert-eventually methods.
+https://github.com/hazelcast/hazelcast/pull/14923[#14923]
+* Cleaned up the Maven repositories in Hazelcast's `pom.xml`
+to simplify the usage of Maven proxies.
+https://github.com/hazelcast/hazelcast/pull/14850[#14850]
+* Separated the statistic gathering for `IMap.set(K, V)` and
+`IMap.put(K, V) operations`.
+https://github.com/hazelcast/hazelcast/issues/14663[#14663]
 
 [[fixes-40]]
 === Fixes
 
-* Fixed an issue where ???.https://github.com/hazelcast/hazelcast/issues/???[#???]
+* Fixed an issue caused by the cache being not ready to be used
+immediately after the cache proxy was created.
+https://github.com/hazelcast/hazelcast/pull/14821[#14821]
+* Fixed an issue where the locked entries with a time-to-live were not evicted.
+With this fix, the lock operation checks if an entry has already expired.
+https://github.com/hazelcast/hazelcast/issues/13272[#13272]
+* Fixed a leak in the query cache due to `ListenerRegistrationHelper`, which
+has been removed with this fix.
+https://github.com/hazelcast/hazelcast/pull/11914[#11914]
+* Fixed an issue where the `IMap.replace()` method was not loading entries
+from the MapLoader when the keys could not be found in the memory.
+https://github.com/hazelcast/hazelcast/issues/11300[#11300]
 
 [[rdf-40]]
 === Removed/Deprecated Features
