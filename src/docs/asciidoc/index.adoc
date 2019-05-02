@@ -36,6 +36,8 @@ NOTE: The linked numbers refer to the issue number in the Hazelcast IMDG GitHub 
 
 include::3.12.adoc[]
 
+include::3.11.4.adoc[]
+
 include::3.11.3.adoc[]
 
 include::3.11.2.adoc[]

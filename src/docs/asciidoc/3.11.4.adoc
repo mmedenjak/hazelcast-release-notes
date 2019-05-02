@@ -1,0 +1,15 @@
+
+
+== 3.11.4
+
+
+[[fixes-3114]]
+=== Fixes
+
+* Some operations such as heartbeat checks and partition
+migrations share common threads with the client login module.
+In case of the long running client login module implementations,
+some symptoms such as split brain syndrome can be seen. This has
+been fixed by introducing a blocking executor which is used only
+for the client authentications.
+https://github.com/hazelcast/hazelcast/pull/14941[#14941]
