@@ -2,6 +2,8 @@
 
 == 3.11.4
 
+NOTE: If you do not use `LoginModule`, you can safely skip
+this release.
 
 [[fixes-3114]]
 === Fixes
