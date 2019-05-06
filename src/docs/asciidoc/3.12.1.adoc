@@ -20,6 +20,11 @@ https://github.com/hazelcast/hazelcast/pull/14822[#14822]
 [[fixes-3121]]
 === Fixes
 
+* Fixed an issue where the Hazelcast IMDG configuration files, that
+have an extension other than `.xml`, `.yaml` or `.yml` or do not have
+an extension, were ignored silently. This was happening
+when the configuration file is set by using the `hazelcast.config`
+system property. https://github.com/hazelcast/hazelcast/pull/14945[#14945]
 * Fixed an issue where the client was not considering the new
 address of a restarted member, which has the same UUID but could
 have a different IP address after it is restarted.
