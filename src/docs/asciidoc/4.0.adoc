@@ -13,13 +13,6 @@
 
 * **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
 
-[[bc-40]]
-=== Breaking Changes
-
-* Removed the `java.util.function` back ports.
-https://github.com/hazelcast/hazelcast/pull/14912[#14912]
-
-
 [[enh-40]]
 === Enhancements
 
@@ -48,12 +41,30 @@ https://github.com/hazelcast/hazelcast/pull/14850[#14850]
 `IMap.put(K, V) operations`.
 https://github.com/hazelcast/hazelcast/issues/14663[#14663]
 
+[[bc-40]]
+=== Breaking Changes
+
+* Changed the `application/javascript` "Content-Type" header used
+by REST API to respond to the JSON documents. Now, it uses
+`application/json`.
+https://github.com/hazelcast/hazelcast/pull/14972[#14972]
+* Changed the `non-space-string` XSD type to collapse all
+whitespaces, so they are handled correctly in the declarative
+Hazelcast IMDG configuration files.
+https://github.com/hazelcast/hazelcast/issues/14919[#14919]
+* Removed the `java.util.function` back ports.
+https://github.com/hazelcast/hazelcast/pull/14912[#14912]
+
+
 [[fixes-40]]
 === Fixes
 
 * Fixed an issue caused by the cache being not ready to be used
 immediately after the cache proxy was created.
 https://github.com/hazelcast/hazelcast/pull/14821[#14821]
+* Fixed a performance issue where there were unneeded iterations and
+object creations while converting the client messages to user objects.
+https://github.com/hazelcast/hazelcast/pull/13784[#13784]
 * Fixed an issue where the locked entries with a time-to-live were not evicted.
 With this fix, the lock operation checks if an entry has already expired.
 https://github.com/hazelcast/hazelcast/issues/13272[#13272]
@@ -64,9 +75,16 @@ https://github.com/hazelcast/hazelcast/pull/11914[#11914]
 from the MapLoader when the keys could not be found in the memory.
 https://github.com/hazelcast/hazelcast/issues/11300[#11300]
 
-[[rdf-40]]
-=== Removed/Deprecated Features
+[[deprecated-40]]
+=== Deprecated Features
 
 * ???.
 * The following system properties are deprecated:
 ** `???`
+* The following Hazelcast IMDG interfaces are deprecated and replaced
+with the ones provided by the Hazelcast IMDG CP Subsystem:
+** `???`
+
+[[removed-40]]
+=== Removed Features
+
