@@ -27,6 +27,11 @@
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Enhanced the queries (read-only operations) in the CP Subsystem so that
+they are executed with linearizability but they are not appended to the Raft log.
+By this way, the grow of Raft logs and snapshots of read-only operations are
+prevented, leading to throughput improvement
+https://github.com/hazelcast/hazelcast/pull/14986[#14986]
 * Introduced `PartitionIdSet`. This is a mutable set of partition IDs
 which can be efficiently represented by a fixed size leading to a
 better performance.
@@ -44,6 +49,14 @@ https://github.com/hazelcast/hazelcast/issues/14663[#14663]
 [[bc-40]]
 === Breaking Changes
 
+* Removed the `hazelcast.executionservice.taskscheduler.remove.oncancel`
+system property and related methods.
+https://github.com/hazelcast/hazelcast/pull/14998[#14998]
+* Removed the `LegacyAsyncMap` interface.
+https://github.com/hazelcast/hazelcast/pull/14994[#14994]
+* Removed the support for primitives for `setAttribute` and `getAttribute` operations.
+All member attributes support only string attributes now.
+https://github.com/hazelcast/hazelcast/pull/14974[#14974]
 * Changed the `application/javascript` "Content-Type" header used
 by REST API to respond to the JSON documents. Now, it uses
 `application/json`.
