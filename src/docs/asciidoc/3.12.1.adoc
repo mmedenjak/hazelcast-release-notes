@@ -3,7 +3,14 @@
 [[enh-3121]]
 === Enhancements 
 
-* ??? See the https://docs.hazelcast.org/docs/3.12.1/manual/html-single/#???[??? section].
+* Updated Hazelcast JCache implementation to support
+JCache 1.1.1. This version of JCache does not introduce new
+functionalities; it resolves the errata and issues in JCache 1.1.0.
+See the https://docs.hazelcast.org/docs/3.12.1/manual/html-single/#???[??? section].
+
+The following are the other improvements performed to solve the enhancement
+issues opened by the Hazelcast customers/team.
+
 * Updated the Hazelcast Kubernetes dependency to the latest version.
 https://github.com/hazelcast/hazelcast/pull/14899[#14899]
 * Added the getter method for the YAML configuration builder properties.
