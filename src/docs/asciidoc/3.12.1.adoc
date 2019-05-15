@@ -27,11 +27,22 @@ https://github.com/hazelcast/hazelcast/pull/14822[#14822]
 [[fixes-3121]]
 === Fixes
 
+* Fixed the authentication mechanism between the clients and members
+by adding a check to prevent re-verification while the client is changing
+its owner member.
+https://github.com/hazelcast/hazelcast/pull/15015[#15015]
 * Fixed an issue where the Hazelcast IMDG configuration files, that
 have an extension other than `.xml`, `.yaml` or `.yml` or do not have
 an extension, were ignored silently. This was happening
 when the configuration file is set by using the `hazelcast.config`
 system property. https://github.com/hazelcast/hazelcast/pull/14945[#14945]
+* Some operations such as heartbeat checks and partition
+migrations share common threads with the client login module.
+In case of the long running client login module implementations,
+some symptoms such as split brain syndrome can be seen. This has
+been fixed by introducing a blocking executor which is used only
+for the client authentications.
+https://github.com/hazelcast/hazelcast/pull/14941[#14941]
 * Fixed an issue where the client was not considering the new
 address of a restarted member, which has the same UUID but could
 have a different IP address after it is restarted.
