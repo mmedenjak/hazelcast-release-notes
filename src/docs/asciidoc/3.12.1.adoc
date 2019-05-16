@@ -41,7 +41,7 @@ migrations share common threads with the client login module.
 In case of the long running client login module implementations,
 some symptoms such as split brain syndrome can be seen. This has
 been fixed by introducing a blocking executor which is used only
-for the client authentications.
+for the client JAAS authentications.
 https://github.com/hazelcast/hazelcast/pull/14941[#14941]
 * Fixed an issue where the client was not considering the new
 address of a restarted member, which has the same UUID but could
