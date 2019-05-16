@@ -1,5 +1,14 @@
 == 3.12.1
 
+[[new-features-3121]]
+=== New Features
+
+*_Hazelcast IMDG Enterprise New Features:_*
+
+* Introduced a `POST` request in the REST API to update the licenses
+of all the running members of a Hazelcast IMDG cluster. See the
+link:https://docs.hazelcast.org/docs/3.12.1/manual/html-single/#rest-update-license[License Information section^].
+
 [[enh-3121]]
 === Enhancements 
 
