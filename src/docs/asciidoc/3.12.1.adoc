@@ -36,6 +36,9 @@ https://github.com/hazelcast/hazelcast/pull/14822[#14822]
 [[fixes-3121]]
 === Fixes
 
+* Fixed an issue which was causing `OutOfMemoryException` in a
+split-brain situation, due to the client listeners.
+https://github.com/hazelcast/hazelcast/pull/15042[#15042]
 * Fixed the authentication mechanism between the clients and members
 by adding a check to prevent re-verification while the client is changing
 its owner member.
@@ -51,7 +54,7 @@ In case of the long running client login module implementations,
 some symptoms such as split brain syndrome can be seen. This has
 been fixed by introducing a blocking executor which is used only
 for the client JAAS authentications.
-https://github.com/hazelcast/hazelcast/pull/14941[#14941]
+https://github.com/hazelcast/hazelcast/pull/14957[#14957]
 * Fixed an issue where the client was not considering the new
 address of a restarted member, which has the same UUID but could
 have a different IP address after it is restarted.
