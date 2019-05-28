@@ -23,6 +23,9 @@ See the link:https://docs.hazelcast.org/docs/3.12.1/manual/html-single/#jcache-1
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Updated the client failover XSD to include `targetNamespace` that
+has been delivered with Hazelcast IMDG 3.12.
+https://github.com/hazelcast/hazelcast/pull/15057
 * Updated the Hazelcast Kubernetes dependency to the latest version.
 https://github.com/hazelcast/hazelcast/pull/14899[#14899]
 * Added the getter method for the YAML configuration builder properties.
