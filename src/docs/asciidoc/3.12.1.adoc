@@ -5,9 +5,9 @@
 
 *_Hazelcast IMDG Enterprise New Features:_*
 
-* Introduced a `POST` request in the REST API to update the licenses
-of all the running members of a Hazelcast IMDG cluster. See the
-link:https://docs.hazelcast.org/docs/3.12.1/manual/html-single/#rest-update-license[License Information section^].
+* Added support for updating the licenses of all the running
+members of a Hazelcast IMDG cluster using the REST API.
+See the link:https://docs.hazelcast.org/docs/3.12.1/manual/html-single/#rest-update-license[License Information section^].
 
 [[enh-3121]]
 === Enhancements 
@@ -23,9 +23,13 @@ See the link:https://docs.hazelcast.org/docs/3.12.1/manual/html-single/#jcache-1
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Improved ``Config#getConfigurationUrl()``'s Javadoc to mention
+that it returns `null` if the `Config` instance has been built from
+a source different than URL or file.
+https://github.com/hazelcast/hazelcast/pull/15109[#15109]
 * Updated the client failover XSD to include `targetNamespace` that
 has been delivered with Hazelcast IMDG 3.12.
-https://github.com/hazelcast/hazelcast/pull/15057
+https://github.com/hazelcast/hazelcast/pull/15057[#15057]
 * Updated the Hazelcast Kubernetes dependency to the latest version.
 https://github.com/hazelcast/hazelcast/pull/14899[#14899]
 * Added the getter method for the YAML configuration builder properties.
@@ -69,7 +73,3 @@ https://github.com/hazelcast/hazelcast/pull/14843[#14843]
 before the previous finalization is completed.
 https://github.com/hazelcast/hazelcast/pull/14834[#14834]
 
-[[bc-3121]]
-=== Behavioral Changes
-
-* ???
