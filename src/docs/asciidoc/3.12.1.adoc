@@ -27,6 +27,9 @@ issues opened by the Hazelcast customers/team.
 that it returns `null` if the `Config` instance has been built from
 a source different than URL or file.
 https://github.com/hazelcast/hazelcast/pull/15109[#15109]
+* Improved the Raft snapshotting so that the old log entries are not
+kept when there is no follower with an unknown match index.
+https://github.com/hazelcast/hazelcast/pull/15068[#15068]
 * Updated the client failover XSD to include `targetNamespace` that
 has been delivered with Hazelcast IMDG 3.12.
 https://github.com/hazelcast/hazelcast/pull/15057[#15057]
@@ -46,6 +49,10 @@ https://github.com/hazelcast/hazelcast/pull/14822[#14822]
 [[fixes-3121]]
 === Fixes
 
+* Fixed an issue where the queries like `labels[any] = 0` and `labels[any] = 1`
+were optimized only to `false` since `labels[any]` was interpreted as a
+regular attribute name having a single value.
+https://github.com/hazelcast/hazelcast/issues/15138[#15138]
 * Fixed an issue which was causing `OutOfMemoryException` in a
 split-brain situation, due to the client listeners.
 https://github.com/hazelcast/hazelcast/pull/15042[#15042]
