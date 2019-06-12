@@ -27,6 +27,11 @@
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added support for `HazelcastJsonValue` over REST API: When a
+`HazelcastJsonValue` is requested, now a UTF8 encoded JSON value is returned. The
+response  has the JSON string in the payload and "Content-Type"
+header is set to `application/json`.
+https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 * Enhanced the queries (read-only operations) in the CP Subsystem so that
 they are executed with linearizability but they are not appended to the Raft log.
 By this way, the grow of Raft logs and snapshots of read-only operations are
@@ -88,6 +93,26 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed the authentication mechanism between the clients and members
+by adding a check to prevent re-verification while the client is changing
+its owner member.
+https://github.com/hazelcast/hazelcast/pull/15030[#15030]
+* Fixed an issue where the client user code deployment was
+becoming non-operational when assertions are enabled.
+https://github.com/hazelcast/hazelcast/pull/15006[#15006]
+* Some operations such as heartbeat checks and partition
+migrations share common threads with the client login module.
+In case of the long running client login module implementations,
+some symptoms such as split brain syndrome can be seen. This has
+been fixed by introducing a blocking executor which is used only
+for the client authentications.
+https://github.com/hazelcast/hazelcast/pull/14956
+* Fixed an issue where the Hazelcast IMDG configuration files, that
+have an extension other than `.xml`, `.yaml` or `.yml` or do not have
+an extension, were ignored silently. This was happening
+when the configuration file is set by using the `hazelcast.config`
+system property.
+https://github.com/hazelcast/hazelcast/pull/14953[#14953]
 * Fixed an issue where the client was not considering the new
 address of a restarted member, which has the same UUID but could
 have a different IP address after it is restarted.
@@ -127,4 +152,7 @@ with the ones provided by the Hazelcast IMDG CP Subsystem:
 
 [[removed-40]]
 === Removed Features
+
+* Removed the deprecated methods in the `Member` and `AddressPicker` classes.
+* Removed the deprecated diagnostics property names.
 
