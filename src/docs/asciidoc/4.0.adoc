@@ -39,12 +39,28 @@ https://github.com/hazelcast/hazelcast/pull/14925[#14925]
 * Made `AssertTask` an interface to enable lambdas to be used in
 assert-eventually methods.
 https://github.com/hazelcast/hazelcast/pull/14923[#14923]
+* Updated the Hazelcast Kubernetes dependency to version 1.5.
+https://github.com/hazelcast/hazelcast/pull/14898[#14898]
+* Updated the map package so that it uses the Java 8 features.
+https://github.com/hazelcast/hazelcast/pull/14891[#14891]
 * Cleaned up the Maven repositories in Hazelcast's `pom.xml`
 to simplify the usage of Maven proxies.
 https://github.com/hazelcast/hazelcast/pull/14850[#14850]
+* Eliminated the excessive logging when NIO networking is shutdown by
+deregistering the IO threads.
+https://github.com/hazelcast/hazelcast/pull/14823[#14823]
+* Updated the web session manager dependency to its latest
+version.
+https://github.com/hazelcast/hazelcast/pull/14822[#14822]
+* Introduced a warning log for illegal reflective access operation when
+using Java 9 and higher, and OpenJ 9.
+https://github.com/hazelcast/hazelcast/pull/14798[#14798]
 * Separated the statistic gathering for `IMap.set(K, V)` and
 `IMap.put(K, V) operations`.
 https://github.com/hazelcast/hazelcast/issues/14663[#14663]
+* Improved the fluent interface of configuration classes by adding
+the `return this` statements to the setter methods.
+https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 
 [[bc-40]]
 === Breaking Changes
@@ -72,6 +88,17 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where the client was not considering the new
+address of a restarted member, which has the same UUID but could
+have a different IP address after it is restarted.
+https://github.com/hazelcast/hazelcast/pull/14842[#14842]
+* Fixed an issue where the migration operations were running
+before the previous finalization is completed.
+https://github.com/hazelcast/hazelcast/pull/14832[#14832]
+* Fixed an issue where the outbound pipeline was not waking up
+properly after various optimizations for write-through
+persistence is made.
+https://github.com/hazelcast/hazelcast/pull/14831[#14831]
 * Fixed an issue caused by the cache being not ready to be used
 immediately after the cache proxy was created.
 https://github.com/hazelcast/hazelcast/pull/14821[#14821]
