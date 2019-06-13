@@ -27,6 +27,15 @@
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Improved the Raft snapshotting so that the old log entries are not
+kept when there is no follower with an unknown match index.
+https://github.com/hazelcast/hazelcast/pull/15062[#15062]
+* Added the full example configuration files (XML and YAML) for the
+Hazelcast Java client.
+https://github.com/hazelcast/hazelcast/pull/15056[#15056]
+* Hazelcast IMDG now sends error messages and stack trace separately
+(for WAN consistency check) to the Management Center.
+https://github.com/hazelcast/hazelcast/pull/15052[#15052]
 * Added support for `HazelcastJsonValue` over REST API: When a
 `HazelcastJsonValue` is requested, now a UTF8 encoded JSON value is returned. The
 response  has the JSON string in the payload and "Content-Type"
@@ -37,6 +46,8 @@ they are executed with linearizability but they are not appended to the Raft log
 By this way, the grow of Raft logs and snapshots of read-only operations are
 prevented, leading to throughput improvement
 https://github.com/hazelcast/hazelcast/pull/14986[#14986]
+* Fixed the Javadoc markup issues.
+https://github.com/hazelcast/hazelcast/pull/14971[#14971]
 * Introduced `PartitionIdSet`. This is a mutable set of partition IDs
 which can be efficiently represented by a fixed size leading to a
 better performance.
@@ -57,6 +68,8 @@ https://github.com/hazelcast/hazelcast/pull/14823[#14823]
 * Updated the web session manager dependency to its latest
 version.
 https://github.com/hazelcast/hazelcast/pull/14822[#14822]
+* Separated the statistics for `IMap.set()` and `IMap.put()` methods.
+https://github.com/hazelcast/hazelcast/pull/14811[#14811]
 * Introduced a warning log for illegal reflective access operation when
 using Java 9 and higher, and OpenJ 9.
 https://github.com/hazelcast/hazelcast/pull/14798[#14798]
@@ -70,6 +83,31 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
+* Moved the Ringbuffer classes from the `com.hazelcast.core`
+package to `com.hazelcast.ringbuffer`.
+https://github.com/hazelcast/hazelcast/pull/15121[#15121]
+* Moved the `Operation` interface in the `com.hazelcast.spi`
+package to `com.hazelcast.spi.impl.operationservice`.
+https://github.com/hazelcast/hazelcast/pull/15115[#15115]
+* Moved the partition SPI classes to the
+`com.hazelcast.spi.partition` package.
+https://github.com/hazelcast/hazelcast/pull/15088[#15088]
+* Refactored and cleaned up the internal partition/migration listeners:
+** Renamed `PartitionListener` to `PartitionReplicaInterceptor` and
+removed registering child listeners, which is not used.
+** Renamed `InternalMigrationListener` to `MigrationInterceptor` and
+converted to interface with default methods.
++
+https://github.com/hazelcast/hazelcast/pull/15051[#15051]
++
+* Moved the partition related classes in the `com.hazelcast.core` package
+to `com.hazelcast.partition`.
+https://github.com/hazelcast/hazelcast/pull/15039[#15039]
+* Made the collection clones of IMap immutable so that
+`UnsupportedOperationException` is thrown consistently
+upon the attempts to update a collection returned by the `keySet`,
+`entrySet`, `localKeySet`, `values` and `getAll` methods.
+https://github.com/hazelcast/hazelcast/pull/15013[#15013]
 * Removed the `hazelcast.executionservice.taskscheduler.remove.oncancel`
 system property and related methods.
 https://github.com/hazelcast/hazelcast/pull/14998[#14998]
@@ -82,6 +120,12 @@ https://github.com/hazelcast/hazelcast/pull/14974[#14974]
 by REST API to respond to the JSON documents. Now, it uses
 `application/json`.
 https://github.com/hazelcast/hazelcast/pull/14972[#14972]
+* Moved the `OperationService` from the `com.hazelcast.spi` package
+to `com.hazelcast.spi.impl`.
+https://github.com/hazelcast/hazelcast/pull/14969[#14969]
+* Removed the backward compatible `ADDED` event from the
+`loadAll` method.
+https://github.com/hazelcast/hazelcast/pull/14964[#14964]
 * Changed the `non-space-string` XSD type to collapse all
 whitespaces, so they are handled correctly in the declarative
 Hazelcast IMDG configuration files.
@@ -93,6 +137,17 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where `ExecutorServiceProxy` was unnecessarily
+serializing the same task multiple times before submitting it
+to multiple members.
+https://github.com/hazelcast/hazelcast/pull/15069[#15069]
+* Added the missing user code deployment section to the configuration
+which is sent to Management Center.
+https://github.com/hazelcast/hazelcast/pull/15044[#15044]
+* Fixed an issue where two client listeners are not registered since
+they listen on a single connection (not cluster wide listeners) by
+adding cleanups for them.
+https://github.com/hazelcast/hazelcast/pull/15041[#15041]
 * Fixed the authentication mechanism between the clients and members
 by adding a check to prevent re-verification while the client is changing
 its owner member.
@@ -133,6 +188,9 @@ https://github.com/hazelcast/hazelcast/pull/13784[#13784]
 * Fixed an issue where the locked entries with a time-to-live were not evicted.
 With this fix, the lock operation checks if an entry has already expired.
 https://github.com/hazelcast/hazelcast/issues/13272[#13272]
+* Fixed an issue where there was an inconsistent `removeIf` behavior among the
+collection views of IMap.
+https://github.com/hazelcast/hazelcast/issues/12198[#12198]
 * Fixed a leak in the query cache due to `ListenerRegistrationHelper`, which
 has been removed with this fix.
 https://github.com/hazelcast/hazelcast/pull/11914[#11914]
@@ -153,6 +211,11 @@ with the ones provided by the Hazelcast IMDG CP Subsystem:
 [[removed-40]]
 === Removed Features
 
-* Removed the deprecated methods in the `Member` and `AddressPicker` classes.
+* Removed the methods in the `Member` and `AddressPicker` classes.
 * Removed the deprecated diagnostics property names.
+* Removed the `ILock` interface. The `ILock implementation is still being kept
+as the development/unsafe mode of CP Subsystem's `FencedLock`.
+* Removed the deprecated cache eviction configurations.
+* Removed the MapReduce feature.
+
 
