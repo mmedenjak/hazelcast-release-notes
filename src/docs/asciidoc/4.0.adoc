@@ -83,15 +83,9 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
-* Moved the Ringbuffer classes from the `com.hazelcast.core`
-package to `com.hazelcast.ringbuffer`.
-https://github.com/hazelcast/hazelcast/pull/15121[#15121]
-* Moved the `Operation` interface in the `com.hazelcast.spi`
-package to `com.hazelcast.spi.impl.operationservice`.
-https://github.com/hazelcast/hazelcast/pull/15115[#15115]
-* Moved the partition SPI classes to the
-`com.hazelcast.spi.partition` package.
-https://github.com/hazelcast/hazelcast/pull/15088[#15088]
+* Renamed the `getId` method of `IdentifiedDataSerializable`
+to `getClassId`.
+https://github.com/hazelcast/hazelcast/pull/15127[#15127]
 * Refactored and cleaned up the internal partition/migration listeners:
 ** Renamed `PartitionListener` to `PartitionReplicaInterceptor` and
 removed registering child listeners, which is not used.
@@ -100,9 +94,6 @@ converted to interface with default methods.
 +
 https://github.com/hazelcast/hazelcast/pull/15051[#15051]
 +
-* Moved the partition related classes in the `com.hazelcast.core` package
-to `com.hazelcast.partition`.
-https://github.com/hazelcast/hazelcast/pull/15039[#15039]
 * Made the collection clones of IMap immutable so that
 `UnsupportedOperationException` is thrown consistently
 upon the attempts to update a collection returned by the `keySet`,
@@ -111,18 +102,18 @@ https://github.com/hazelcast/hazelcast/pull/15013[#15013]
 * Removed the `hazelcast.executionservice.taskscheduler.remove.oncancel`
 system property and related methods.
 https://github.com/hazelcast/hazelcast/pull/14998[#14998]
+* Made the `EntryProcessor` interface lambda friendly.
+https://github.com/hazelcast/hazelcast/pull/14995[#14995]
 * Removed the `LegacyAsyncMap` interface.
 https://github.com/hazelcast/hazelcast/pull/14994[#14994]
-* Removed the support for primitives for `setAttribute` and `getAttribute` operations.
+* Removed the support for primitives for `setAttribute` and
+`getAttribute` operations.
 All member attributes support only string attributes now.
 https://github.com/hazelcast/hazelcast/pull/14974[#14974]
 * Changed the `application/javascript` "Content-Type" header used
 by REST API to respond to the JSON documents. Now, it uses
 `application/json`.
 https://github.com/hazelcast/hazelcast/pull/14972[#14972]
-* Moved the `OperationService` from the `com.hazelcast.spi` package
-to `com.hazelcast.spi.impl`.
-https://github.com/hazelcast/hazelcast/pull/14969[#14969]
 * Removed the backward compatible `ADDED` event from the
 `loadAll` method.
 https://github.com/hazelcast/hazelcast/pull/14964[#14964]
@@ -132,6 +123,42 @@ Hazelcast IMDG configuration files.
 https://github.com/hazelcast/hazelcast/issues/14919[#14919]
 * Removed the `java.util.function` back ports.
 https://github.com/hazelcast/hazelcast/pull/14912[#14912]
+* The packages of the following classes have been changed:
++
+[cols="3a,2,3,1a"]
+|===
+Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
+
+|`IQueue`, `IList`, `ISet`, `ItemEvent`, `ItemListener`
+|`com.hazelcast.core`
+|`com.hazelcast.collection`
+|https://github.com/hazelcast/hazelcast/pull/15127[#15127]
+
+|`ITopic`, `Message`, `MessageListener`
+|`com.hazelcast.core`
+|`com.hazelcast.topic`
+|https://github.com/hazelcast/hazelcast/pull/15122[#15122]
+
+|`RingbufferStoreFactory`, `RingbufferStore`
+|`com.hazelcast.core`
+|`com.hazelcast.ringbuffer`
+|https://github.com/hazelcast/hazelcast/pull/15121[#15121]
+
+|Operation classes
+|`com.hazelcast.spi`
+|`com.hazelcast.spi.impl.operationservice`
+|https://github.com/hazelcast/hazelcast/pull/15115[#15115]
+
+|Partition SPI classes
+|`com.hazelcast.spi`
+|`com.hazelcast.spi.partition`
+|https://github.com/hazelcast/hazelcast/pull/15088[#15088]
+
+|Partition classes
+|`com.hazelcast.core`
+|`com.hazelcast.partition`
+|https://github.com/hazelcast/hazelcast/pull/15039[#15039]
+|===
 
 
 [[fixes-40]]
