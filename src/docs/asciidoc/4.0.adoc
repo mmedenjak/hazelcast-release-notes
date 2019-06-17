@@ -46,6 +46,12 @@ they are executed with linearizability but they are not appended to the Raft log
 By this way, the grow of Raft logs and snapshots of read-only operations are
 prevented, leading to throughput improvement
 https://github.com/hazelcast/hazelcast/pull/14986[#14986]
+* Improved the WAN feature so that now lazy deserialization is used
+when merging entries received via WAN. Otherwise, the unconditional
+deserialization was causing overhead.
+https://github.com/hazelcast/hazelcast/pull/14982[#14982]
+* Added the support for Java 8 `Optionals` in the queries.
+https://github.com/hazelcast/hazelcast/pull/14827[#14827]
 * Fixed the Javadoc markup issues.
 https://github.com/hazelcast/hazelcast/pull/14971[#14971]
 * Introduced `PartitionIdSet`. This is a mutable set of partition IDs
@@ -99,6 +105,8 @@ https://github.com/hazelcast/hazelcast/pull/15051[#15051]
 upon the attempts to update a collection returned by the `keySet`,
 `entrySet`, `localKeySet`, `values` and `getAll` methods.
 https://github.com/hazelcast/hazelcast/pull/15013[#15013]
+* Added `Nullable` and `Nonnull` annotations to IMap.
+https://github.com/hazelcast/hazelcast/pull/15003[#15003]
 * Removed the `hazelcast.executionservice.taskscheduler.remove.oncancel`
 system property and related methods.
 https://github.com/hazelcast/hazelcast/pull/14998[#14998]
@@ -127,12 +135,33 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 +
 [cols="3a,2,3,1a"]
 |===
-Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
 
-|`IQueue`, `IList`, `ISet`, `ItemEvent`, `ItemListener`
+|Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
+
+|`ReplicatedMap`
+|`com.hazelcast.core`
+|`com.hazelcast.replicatedmap`
+|https://github.com/hazelcast/hazelcast/pull/15146[#15146]
+
+|`IAtomicLong`, `IAtomicReference`, `ILock`, `ICondition`, `ISemaphore`, `ICountDownLatch`
+|`com.hazelcast.core`
+|`com.hazelcast.cp`
+|https://github.com/hazelcast/hazelcast/pull/15143[#15143]
+
+|Transaction collection classes (`TransactionalMap`, `TransactionalList`, etc.)
+|`com.hazelcast.core`
+|`com.hazelcast.transaction`
+|https://github.com/hazelcast/hazelcast/pull/15129[#15129]
+
+|`IQueue`, `QueueStore`, `IList`, `ISet`, `ItemEvent`, `ItemListener`
 |`com.hazelcast.core`
 |`com.hazelcast.collection`
 |https://github.com/hazelcast/hazelcast/pull/15127[#15127]
+
+|`MultiMap`
+|`com.hazelcast.core`
+|`com.hazelcast.multimap`
+|https://github.com/hazelcast/hazelcast/pull/15123[#15123]
 
 |`ITopic`, `Message`, `MessageListener`
 |`com.hazelcast.core`
@@ -154,11 +183,22 @@ Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
 |`com.hazelcast.spi.partition`
 |https://github.com/hazelcast/hazelcast/pull/15088[#15088]
 
+|Member and membership classes (`Cluster`, `Member`, etc.)
+|`com.hazelcast.core`
+|`com.hazelcast.cluster`
+.2+^.^|https://github.com/hazelcast/hazelcast/pull/15046[#15046]
+
+|Client classes (`Client`, `ClientService`, etc.)
+|`com.hazelcast.core`
+|`com.hazelcast.client.api`
+
 |Partition classes
 |`com.hazelcast.core`
 |`com.hazelcast.partition`
 |https://github.com/hazelcast/hazelcast/pull/15039[#15039]
+
 |===
+
 
 
 [[fixes-40]]
@@ -188,7 +228,10 @@ In case of the long running client login module implementations,
 some symptoms such as split brain syndrome can be seen. This has
 been fixed by introducing a blocking executor which is used only
 for the client authentications.
-https://github.com/hazelcast/hazelcast/pull/14956
+https://github.com/hazelcast/hazelcast/pull/14956[#14956]
+* Fixed an issue where the `IMap.removeInterceptor()` method
+was returning `void`.
+https://github.com/hazelcast/hazelcast/pull/14955[#14955]
 * Fixed an issue where the Hazelcast IMDG configuration files, that
 have an extension other than `.xml`, `.yaml` or `.yml` or do not have
 an extension, were ignored silently. This was happening
@@ -231,9 +274,11 @@ https://github.com/hazelcast/hazelcast/issues/11300[#11300]
 * ???.
 * The following system properties are deprecated:
 ** `???`
-* The following Hazelcast IMDG interfaces are deprecated and replaced
+* The following Hazelcast IMDG interfaces/classes are deprecated and replaced
 with the ones provided by the Hazelcast IMDG CP Subsystem:
 ** `???`
+* The following classes are deprecated:
+** `com.hazelcast.core.Member`
 
 [[removed-40]]
 === Removed Features
@@ -242,6 +287,7 @@ with the ones provided by the Hazelcast IMDG CP Subsystem:
 * Removed the deprecated diagnostics property names.
 * Removed the `ILock` interface. The `ILock implementation is still being kept
 as the development/unsafe mode of CP Subsystem's `FencedLock`.
+* Removed the deprecated `AsyncAtomicLong` and `AsyncAtomicReference` classes.
 * Removed the deprecated cache eviction configurations.
 * Removed the MapReduce feature.
 
