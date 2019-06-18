@@ -8,6 +8,9 @@
 *_Hazelcast IMDG Enterprise New Features:_*
 
 * **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+* **X.509 Certificate Authentication:** Added support for credential retrieval by the members
+from the X.509 certificates configured on the clients.
+See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
 
 *_Hazelcast IMDG Open Source New Features:_*
 
@@ -19,6 +22,11 @@
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
 * **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+* **Improvements in the JAAS Authentication Mechanism:**
+** Added support for the standard JAAS callbacks, i.e., `NameCallback` and `PasswordCallback`
+** Secrets, if not necessary, are not stored now
+** Cleaned up the `Credentials` object.
+
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
@@ -89,6 +97,8 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
+* Removed the XSDs for Hazelcast IMDG 3.x versions.
+https://github.com/hazelcast/hazelcast/pull/15177[#15177]
 * Renamed the `getId` method of `IdentifiedDataSerializable`
 to `getClassId`.
 https://github.com/hazelcast/hazelcast/pull/15127[#15127]
@@ -204,6 +214,10 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where the queries like `labels[any] = 0` and `labels[any] = 1`
+were optimized only to `false` since `labels[any]` was interpreted as a
+regular attribute name having a single value.
+https://github.com/hazelcast/hazelcast/pull/15163[#15163]
 * Fixed an issue where `ExecutorServiceProxy` was unnecessarily
 serializing the same task multiple times before submitting it
 to multiple members.
@@ -232,6 +246,10 @@ https://github.com/hazelcast/hazelcast/pull/14956[#14956]
 * Fixed an issue where the `IMap.removeInterceptor()` method
 was returning `void`.
 https://github.com/hazelcast/hazelcast/pull/14955[#14955]
+* Removed the `entryEvicted` event from the event firing mechanism
+in the case of eviction. Before, both `entryEvicted` and `entryExpired`
+events were being fired.
+https://github.com/hazelcast/hazelcast/pull/14954[#14954]
 * Fixed an issue where the Hazelcast IMDG configuration files, that
 have an extension other than `.xml`, `.yaml` or `.yml` or do not have
 an extension, were ignored silently. This was happening
@@ -278,7 +296,6 @@ https://github.com/hazelcast/hazelcast/issues/11300[#11300]
 with the ones provided by the Hazelcast IMDG CP Subsystem:
 ** `???`
 * The following classes are deprecated:
-** `com.hazelcast.core.Member`
 
 [[removed-40]]
 === Removed Features
