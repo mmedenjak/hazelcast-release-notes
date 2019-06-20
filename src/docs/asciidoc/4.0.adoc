@@ -97,6 +97,13 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
+* Moved various classes (`Node`, `NodeContext`, etc.)
+from the `com.hazelcast.instance` package to
+the newly introduced `com.hazelcast.instance.impl`.
+https://github.com/hazelcast/hazelcast/pull/15151[#15151]
+* Removed the usage of `com.hazelcast.core.IBifunction`, replaced
+it with `java.util.function.Bifunction`.
+https://github.com/hazelcast/hazelcast/pull/15201[#15201]
 * Removed the XSDs for Hazelcast IMDG 3.x versions.
 https://github.com/hazelcast/hazelcast/pull/15177[#15177]
 * Renamed the `getId` method of `IdentifiedDataSerializable`
@@ -135,6 +142,8 @@ https://github.com/hazelcast/hazelcast/pull/14972[#14972]
 * Removed the backward compatible `ADDED` event from the
 `loadAll` method.
 https://github.com/hazelcast/hazelcast/pull/14964[#14964]
+* Added `EntryExpiredListener` to the `EntryListener` interface.
+https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 * Changed the `non-space-string` XSD type to collapse all
 whitespaces, so they are handled correctly in the declarative
 Hazelcast IMDG configuration files.
@@ -148,6 +157,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
 
+|`ClassNameFilter`, `SerializationClassNameFilter` 
+|`com.hazelcast.nio`
+|`com.hazelcast.nio.serialization`
+|https://github.com/hazelcast/hazelcast/pull/15171[#15171]
+
 |`ReplicatedMap`
 |`com.hazelcast.core`
 |`com.hazelcast.replicatedmap`
@@ -157,6 +171,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 |`com.hazelcast.core`
 |`com.hazelcast.cp`
 |https://github.com/hazelcast/hazelcast/pull/15143[#15143]
+
+|`IndexAwarePredicate`, `VisitablePredicate`
+|`com.hazelcast.query`
+|`com.hazelcast.query.impl.predicates`
+|https://github.com/hazelcast/hazelcast/pull/15142[#15142]
 
 |Transaction collection classes (`TransactionalMap`, `TransactionalList`, etc.)
 |`com.hazelcast.core`
@@ -214,6 +233,9 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where `SimpleTokenCredentials` could not be
+deserialized due to the missing handling in `SpiPortableHook`.
+https://github.com/hazelcast/hazelcast/issues/15196[#15196]
 * Fixed an issue where the queries like `labels[any] = 0` and `labels[any] = 1`
 were optimized only to `false` since `labels[any]` was interpreted as a
 regular attribute name having a single value.
@@ -307,5 +329,7 @@ as the development/unsafe mode of CP Subsystem's `FencedLock`.
 * Removed the deprecated `AsyncAtomicLong` and `AsyncAtomicReference` classes.
 * Removed the deprecated cache eviction configurations.
 * Removed the MapReduce feature.
+* Removed the deprecated `LOCAL` transaction type (`TransactionType.LOCAL`)
+
 
 
