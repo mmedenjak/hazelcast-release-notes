@@ -108,6 +108,15 @@ security is disabled, password is not empty and password is not the Hazelcast
 default one. https://github.com/hazelcast/hazelcast/pull/14603[#14603]
 * Improved the code comments for the `HazelcastInstance` interface.
 https://github.com/hazelcast/hazelcast/issues/14439[#14439]
+* Improved the speed of partition migrations. This has been achieved by
+sharing only the latest completed migration information with the members,
+instead of sending the whole partition table after each migration.
+Additionally, there was no need to send the completed migrations
+to all cluster members after each migration. Instead, completed migrations
+are sent to the source and destination members of the migration
+inside migration operations. Remaining members, now, receive
+the completed migrations in batches asynchronously.
+https://github.com/hazelcast/hazelcast/pull/14351[#14351]
 * Improved the Javadoc of `HazelcastClient` so that the code comments now use
 "unisocket client" instead of "dumb client".
 https://github.com/hazelcast/hazelcast/issues/14213[#14213]
