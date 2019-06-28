@@ -97,15 +97,20 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
+* Made `Projection` a functional interface so that it has becomes
+lambda friendly.
+https://github.com/hazelcast/hazelcast/pull/15204[#15204]
+* Removed the usage of `com.hazelcast.core.IBifunction`, replaced
+it with `java.util.function.Bifunction`.
+https://github.com/hazelcast/hazelcast/pull/15201[#15201]
+* Separated WAN private and public classes into different packages.
+https://github.com/hazelcast/hazelcast/pull/15195[#15195]
+* Removed the XSDs for Hazelcast IMDG 3.x versions.
+https://github.com/hazelcast/hazelcast/pull/15177[#15177]
 * Moved various classes (`Node`, `NodeContext`, etc.)
 from the `com.hazelcast.instance` package to
 the newly introduced `com.hazelcast.instance.impl`.
 https://github.com/hazelcast/hazelcast/pull/15151[#15151]
-* Removed the usage of `com.hazelcast.core.IBifunction`, replaced
-it with `java.util.function.Bifunction`.
-https://github.com/hazelcast/hazelcast/pull/15201[#15201]
-* Removed the XSDs for Hazelcast IMDG 3.x versions.
-https://github.com/hazelcast/hazelcast/pull/15177[#15177]
 * Renamed the `getId` method of `IdentifiedDataSerializable`
 to `getClassId`.
 https://github.com/hazelcast/hazelcast/pull/15127[#15127]
@@ -233,6 +238,9 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed a `NullPointerException` in the query caches by setting
+the `publisher-listener-id` if a query cache has already one.
+https://github.com/hazelcast/hazelcast/pull/15215[#15215]
 * Fixed an issue where `SimpleTokenCredentials` could not be
 deserialized due to the missing handling in `SpiPortableHook`.
 https://github.com/hazelcast/hazelcast/issues/15196[#15196]
@@ -240,6 +248,10 @@ https://github.com/hazelcast/hazelcast/issues/15196[#15196]
 were optimized only to `false` since `labels[any]` was interpreted as a
 regular attribute name having a single value.
 https://github.com/hazelcast/hazelcast/pull/15163[#15163]
+* For on-heap indexes, fixed an issue where a record's `lastAccessTime`
+was not updated when it is being accessed through an index. 
+Now, this way, the expiration `maxIdle` mechanism takes this into account.
+https://github.com/hazelcast/hazelcast/pull/15136[#15136]
 * Fixed an issue where `ExecutorServiceProxy` was unnecessarily
 serializing the same task multiple times before submitting it
 to multiple members.
