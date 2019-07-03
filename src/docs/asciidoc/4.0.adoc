@@ -31,10 +31,17 @@ See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??
 *_Hazelcast IMDG Open Source Enhancements:_*
 
 * **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+* Updated Hazelcast JCache implementation to support JCache 1.1.1.
+This version of JCache does not introduce new functionalities;
+it resolves the errata and issues in JCache 1.1.0.
+See the https://docs.hazelcast.org/docs/4.0/manual/html-single/#jcache-111[Upgrading to JCache 1.1.1 section].
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added transaction specific backup operations: `TxnSetBackupOperation`
+and `TxnDeleteBackupOperation`.
+https://github.com/hazelcast/hazelcast/pull/15236[#15236]
 * Improved the Raft snapshotting so that the old log entries are not
 kept when there is no follower with an unknown match index.
 https://github.com/hazelcast/hazelcast/pull/15062[#15062]
@@ -105,6 +112,8 @@ it with `java.util.function.Bifunction`.
 https://github.com/hazelcast/hazelcast/pull/15201[#15201]
 * Separated WAN private and public classes into different packages.
 https://github.com/hazelcast/hazelcast/pull/15195[#15195]
+* Moved the Merkle tree configuration under map configuration.
+https://github.com/hazelcast/hazelcast/pull/15180[#15180] 
 * Removed the XSDs for Hazelcast IMDG 3.x versions.
 https://github.com/hazelcast/hazelcast/pull/15177[#15177]
 * Moved various classes (`Node`, `NodeContext`, etc.)
@@ -127,6 +136,9 @@ https://github.com/hazelcast/hazelcast/pull/15051[#15051]
 upon the attempts to update a collection returned by the `keySet`,
 `entrySet`, `localKeySet`, `values` and `getAll` methods.
 https://github.com/hazelcast/hazelcast/pull/15013[#15013]
+* Removed deprecated client configuration methods such as
+`isInsideAws()` and `newAliasedDiscoveryConfig()`.
+https://github.com/hazelcast/hazelcast/pull/15012[#15012]
 * Added `Nullable` and `Nonnull` annotations to IMap.
 https://github.com/hazelcast/hazelcast/pull/15003[#15003]
 * Removed the `hazelcast.executionservice.taskscheduler.remove.oncancel`
@@ -166,6 +178,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 |`com.hazelcast.nio`
 |`com.hazelcast.nio.serialization`
 |https://github.com/hazelcast/hazelcast/pull/15171[#15171]
+
+| All IMap classes
+| `com.hazelcast.core`
+| `com.hazelcast.map`
+| https://github.com/hazelcast/hazelcast/pull/15149[#15149]
 
 |`ReplicatedMap`
 |`com.hazelcast.core`
@@ -238,6 +255,10 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where storing `MapStore` instances in `MapStoreConfig`
+could cause member failures when the configuration is added
+dynamically.
+https://github.com/hazelcast/hazelcast/pull/15224[#15224]
 * Fixed a `NullPointerException` in the query caches by setting
 the `publisher-listener-id` if a query cache has already one.
 https://github.com/hazelcast/hazelcast/pull/15215[#15215]
@@ -267,6 +288,9 @@ https://github.com/hazelcast/hazelcast/pull/15041[#15041]
 by adding a check to prevent re-verification while the client is changing
 its owner member.
 https://github.com/hazelcast/hazelcast/pull/15030[#15030]
+* Added support for the missing aliased discovery strategies,
+e.g., `gcp` and `kubernetes`, to `ClientConfigXmlGenerator`.
+https://github.com/hazelcast/hazelcast/issues/15010[#15010]
 * Fixed an issue where the client user code deployment was
 becoming non-operational when assertions are enabled.
 https://github.com/hazelcast/hazelcast/pull/15006[#15006]
