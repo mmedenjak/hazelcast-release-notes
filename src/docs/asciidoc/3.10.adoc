@@ -2,7 +2,7 @@
 
 == 3.10
 
-[[features-310]
+[[features-310]]
 === New Features
 
 * **PN Counter**: Introduced CRDT PN Counter (Positive-Negative Counter), which allows incrementing and decrementing a counter value and propagating the results to all cluster members. See the http://docs.hazelcast.org/docs/3.10/manual/html-single/index.html#pn-counter[PN Counter section].
@@ -151,3 +151,9 @@ With 3.10, the method `Config.findCacheConfig` is aligned to behave like the oth
 ** `hazelcast.master.confirmation.interval.seconds`
 ** `hazelcast.max.no.master.confirmation.seconds`
 ** `hazelcast.mc.max.visible.instance.count`
+** `hazelcast.icmp.enabled`
+** `hazelcast.icmp.parallel.mode`
+** `hazelcast.icmp.timeout`
+** `hazelcast.icmp.max.attempts`
+** `hazelcast.icmp.interval`
+** `hazelcast.icmp.ttl`
