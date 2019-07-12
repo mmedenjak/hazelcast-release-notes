@@ -11,8 +11,10 @@ See the link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#???[??? 
 [[enh-3122]]
 === Enhancements 
 
-* ???. See the
-link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#???[??? section^].
+* Enabled the REST endpoints for the `cluster.sh` and
+`healthcheck.sh` scripts to use HTTPS. Before, they were
+using HTTP. See the
+link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#health-check-script[healtcheck.sh^] sections.
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
