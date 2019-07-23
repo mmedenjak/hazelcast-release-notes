@@ -1,20 +1,23 @@
 == 3.12.2
 
-[[new-features-3122]]
-=== New Features
-
-*_Hazelcast IMDG Enterprise New Features:_*
-
-* ???.
-See the link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#???[??? section^].
-
 [[enh-3122]]
 === Enhancements 
 
-* Enabled the REST endpoints for the `cluster.sh` and
+*_Hazelcast IMDG Enterprise Enhancements:_*
+
+
+* Enabled the REST endpoints for the `cluster.sh`, `cp-subsystem.sh` and
 `healthcheck.sh` scripts to use HTTPS. Before, they were
 using HTTP. See the
-link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#health-check-script[healtcheck.sh^] sections.
+link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#using-the-script-cluster-sh[cluster.sh^],
+link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#cp-subsystem-management-apis[cp-subsystem.sh^]
+and link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#health-check-script[healtcheck.sh^] sections.
+
+*_Hazelcast IMDG Open Source Enhancements:_*
+
+* Introduced complete example configurations (XML and YAML) for
+Hazelcast Java client and client failover.
+See the link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#configuring-declaratively[Configuring Declaratively section^].
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
@@ -25,6 +28,27 @@ https://github.com/hazelcast/hazelcast/pull/???[#???]
 [[fixes-3122]]
 === Fixes
 
-* Fixed an issue where ???.
-https://github.com/hazelcast/hazelcast/issues/???[#???]
+* Fixed an issue where the comparators were not able to act on both keys and values.
+A custom paging predicate comparator may act on keys and values at the
+same time even if only the keys are requested, e.g., using the `IMap.keySet()`
+method. Before this fix only the keys were fetched for this method, making
+comparators unable to act on values.
+https://github.com/hazelcast/hazelcast/pull/15324[#15324]
+* Fixed an issue where the locked entries with a time-to-live were not evicted.
+With this fix, the lock operation checks if an entry has already expired.
+https://github.com/hazelcast/hazelcast/pull/15310[#15310]
+* Fixed an issue where the named scheduled tasks was not respecting
+the `HazelcastInstanceAware` marker.
+https://github.com/hazelcast/hazelcast/pull/15233[#15233]
+* Fixed an issue where storing `MapStore` instances in `MapStoreConfig`
+could cause member failures when the configuration is added
+dynamically.
+https://github.com/hazelcast/hazelcast/pull/15225[#15225]
+* Fixed an issue where IMap's `localLockedEntryCount` metric was not considering
+the entries with null values.
+https://github.com/hazelcast/hazelcast/issues/15218[#15218]
+* Fixed an issue where an executor was serialized multiple times when it
+is sent to multiple members by a Java client. Now, it is serialized
+only once as expected.
+https://github.com/hazelcast/hazelcast/issues/15007[#15007]
 
