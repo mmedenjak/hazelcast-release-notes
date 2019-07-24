@@ -5,7 +5,6 @@
 
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
-
 * Enabled the REST endpoints for the `cluster.sh`, `cp-subsystem.sh` and
 `healthcheck.sh` scripts to use HTTPS. Before, they were
 using HTTP. See the
@@ -19,15 +18,23 @@ and link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#health-check
 Hazelcast Java client and client failover.
 See the link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#configuring-declaratively[Configuring Declaratively section^].
 
-The following are the other improvements performed to solve the enhancement
-issues opened by the Hazelcast customers/team.
-
-* ???.
-https://github.com/hazelcast/hazelcast/pull/???[#???]
 
 [[fixes-3122]]
 === Fixes
 
+* Fixed an issue where the `UNKNOWN` current runtime version in
+the `JavaVersion.isAtLeast()` method was not handled properly.
+To avoid having runtime functionality, that relies on
+this method, broken with each new major Java release, `UNKNOWN`
+as a detected current runtime version is now considered to be at least any
+other version.
+https://github.com/hazelcast/hazelcast/pull/15362[#15362]
+* Updated the `JavaVersion` class to support JDK 13 and 14 builds.
+https://github.com/hazelcast/hazelcast/pull/15354[#15354]
+* Fixed the deserialization filtering for Externalizables and Deadlock in the
+map index. The deserialization filter was not properly protecting against the
+vulnerable Externalizable classes. The filtering has been extended.
+https://github.com/hazelcast/hazelcast/issues/15346[#15346]
 * Fixed an issue where the comparators were not able to act on both keys and values.
 A custom paging predicate comparator may act on keys and values at the
 same time even if only the keys are requested, e.g., using the `IMap.keySet()`
@@ -47,8 +54,10 @@ https://github.com/hazelcast/hazelcast/pull/15225[#15225]
 * Fixed an issue where IMap's `localLockedEntryCount` metric was not considering
 the entries with null values.
 https://github.com/hazelcast/hazelcast/issues/15218[#15218]
+* Fixed a possible `NullPointerException` for the `remove` variable in
+`DeafultRecordStore`.
+https://github.com/hazelcast/hazelcast/issues/15217[#15217]
 * Fixed an issue where an executor was serialized multiple times when it
 is sent to multiple members by a Java client. Now, it is serialized
 only once as expected.
 https://github.com/hazelcast/hazelcast/issues/15007[#15007]
-
