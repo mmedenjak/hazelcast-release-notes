@@ -30,7 +30,7 @@ See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
-* Enabled the REST endpoints for the `cluster.sh` and
+* **HTTPS for scripts:**Enabled the REST endpoints for the `cluster.sh` and
 `healthcheck.sh` scripts to use HTTPS. Before, they were
 using HTTP. See the
 link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and
@@ -38,10 +38,12 @@ link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#health-check-script
 * **MapLoader with custom time-to-live:** Introduced the `EntryStore` and `EntryLoader`
 interfaces (adding expiration support for MapStore). See the
 https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#loading-and-storing-persistent-data[Loading and Storing Persistent Data section].
-* Updated Hazelcast JCache implementation to support JCache 1.1.1.
+* **JCache 1.1.1:**Updated Hazelcast JCache implementation to support JCache 1.1.1.
 This version of JCache does not introduce new functionalities;
 it resolves the errata and issues in JCache 1.1.0.
 See the https://docs.hazelcast.org/docs/4.0/manual/html-single/#jcache-111[Upgrading to JCache 1.1.1 section].
+* **Moby naming:** Introduced friendly names for the Hazelcast instances to be shown
+in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#checking-the-name-of-the-instance-for-rest-client[Checking the Instances' Name section^]. Also, a new system property, `hazelcast.member.naming.moby.enabled`, is introduced for this purpose.
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
@@ -49,6 +51,9 @@ issues opened by the Hazelcast customers/team.
 * Added transaction specific backup operations: `TxnSetBackupOperation`
 and `TxnDeleteBackupOperation`.
 https://github.com/hazelcast/hazelcast/pull/15236[#15236]
+* Fixed ``MemberAttributeEvent``s `getMembers()` method to return
+the correct members list for the client.
+https://github.com/hazelcast/hazelcast/pull/15231[#15231]
 * Added `Nullable` and `Nonnull` annotations to IQueue.
 https://github.com/hazelcast/hazelcast/pull/15156[#15156]
 * Added support for null keys for the client side implementations of
@@ -122,10 +127,21 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 === Breaking Changes
 
 
+* Removed the deprecated configuration parameters from the Near
+Cache configuration.
+https://github.com/hazelcast/hazelcast/pull/15313[#15313]
 * Added null checks and annotations to the IList, ISet, ITopic and
 MultiMap interfaces.
 https://github.com/hazelcast/hazelcast/pull/15220[#15220]
-* Made `Projection` a functional interface so that it has becomes
+* Converted the following custom query attribute abstract classes to
+functional interfaces so that they have become
+lambda friendly.
+** `ArgumentParser`
+** `ValueCallback`
+** `ValueCollector`
+** `ValueReader`
+** `ValueExtractor`
+* Converted `Projection` to a functional interface so that it has become
 lambda friendly.
 https://github.com/hazelcast/hazelcast/pull/15204[#15204]
 * Removed the usage of `com.hazelcast.core.IBifunction`, replaced
@@ -133,8 +149,8 @@ it with `java.util.function.Bifunction`.
 https://github.com/hazelcast/hazelcast/pull/15201[#15201]
 * Separated WAN private and public classes into different packages.
 https://github.com/hazelcast/hazelcast/pull/15195[#15195]
-* Moved the Event Journal configuration inside the map or
-cache configuration. Before, it was configured as a parent-level
+* Moved the Event Journal configuration inside the map/cache
+configuration. Before, it was configured as a parent-level
 element.
 https://github.com/hazelcast/hazelcast/pull/15185[#15185]
 * Moved the Merkle tree configuration under map configuration.
@@ -198,6 +214,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 |===
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
+
+| `Joiner` and `TcpIpJoiner`
+| `com.hazelcast.cluster` and `com.hazelcast.cluster.impl`
+| `com.hazelcast.internal.cluster` and `com.hazelcast.internal.cluster.impl`
+| https://github.com/hazelcast/hazelcast/pull/15335[#15335]
 
 |`ClassNameFilter`, `SerializationClassNameFilter` 
 |`com.hazelcast.nio`
@@ -280,6 +301,13 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed the deserialization filtering for Externalizables and Deadlock in the
+map index. The deserialization filter was not properly protecting against the
+vulnerable Externalizable classes. The filtering has been extended.
+https://github.com/hazelcast/hazelcast/pull/15358[#15358]
+* Fixed an issue where the named scheduled tasks was not respecting
+the `HazelcastInstanceAware` marker.
+https://github.com/hazelcast/hazelcast/pull/15352[#15352]
 * Fixed an issue where storing `MapStore` instances in `MapStoreConfig`
 could cause member failures when the configuration is added
 dynamically.
