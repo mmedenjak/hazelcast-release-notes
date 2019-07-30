@@ -10,7 +10,7 @@
 using HTTP. See the
 link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#using-the-script-cluster-sh[cluster.sh^],
 link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#cp-subsystem-management-apis[cp-subsystem.sh^]
-and link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#health-check-script[healtcheck.sh^] sections.
+and link:https://docs.hazelcast.org/docs/3.12.2/manual/html-single/#health-check-script[healthcheck.sh^] sections.
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
