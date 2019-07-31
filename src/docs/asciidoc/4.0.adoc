@@ -48,6 +48,8 @@ in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Updated the `JavaVersion` class to support JDK 13 and 14 builds.
+https://github.com/hazelcast/hazelcast/pull/15372[#15372]
 * Added transaction specific backup operations: `TxnSetBackupOperation`
 and `TxnDeleteBackupOperation`.
 https://github.com/hazelcast/hazelcast/pull/15236[#15236]
@@ -59,6 +61,9 @@ https://github.com/hazelcast/hazelcast/pull/15156[#15156]
 * Added support for null keys for the client side implementations of
 `IMap.addEntryListener()`.
 https://github.com/hazelcast/hazelcast/issues/15155[#15155]
+* Improved the generics for the API with Projection, Predicate and EntryListener
+by adding lower bounded wildcards to accept a wider range of parameters.
+https://github.com/hazelcast/hazelcast/pull/15153[#15153]
 * Improved the Raft snapshotting so that the old log entries are not
 kept when there is no follower with an unknown match index.
 https://github.com/hazelcast/hazelcast/pull/15062[#15062]
@@ -308,6 +313,9 @@ https://github.com/hazelcast/hazelcast/pull/15358[#15358]
 * Fixed an issue where the named scheduled tasks was not respecting
 the `HazelcastInstanceAware` marker.
 https://github.com/hazelcast/hazelcast/pull/15352[#15352]
+* Fixed a possible `NullPointerException` for the `remove` variable in
+`DeafultRecordStore`.
+https://github.com/hazelcast/hazelcast/pull/15344[#15344]
 * Fixed an issue where storing `MapStore` instances in `MapStoreConfig`
 could cause member failures when the configuration is added
 dynamically.
