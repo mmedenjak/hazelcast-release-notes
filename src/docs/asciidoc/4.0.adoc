@@ -56,6 +56,10 @@ https://github.com/hazelcast/hazelcast/pull/15236[#15236]
 * Fixed ``MemberAttributeEvent``s `getMembers()` method to return
 the correct members list for the client.
 https://github.com/hazelcast/hazelcast/pull/15231[#15231]
+* Improved the WAN replication mechanism so that the WAN synchronization
+now reports the progress based on target acknowledgments instead of
+reporting based on enqueueing the WAN synchronization events in the local cluster.
+https://github.com/hazelcast/hazelcast/pull/15221[#15221]
 * Added `Nullable` and `Nonnull` annotations to IQueue.
 https://github.com/hazelcast/hazelcast/pull/15156[#15156]
 * Added support for null keys for the client side implementations of
@@ -131,10 +135,17 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
-
+* Merged the client module into the core module: All the classes
+in the `hazelcast-client` module have been moved to `hazelcast`.
+`hazelcast-client.jar` will not be created anymore.
+https://github.com/hazelcast/hazelcast/pull/15366[#15366]
 * Removed the deprecated configuration parameters from the Near
 Cache configuration.
 https://github.com/hazelcast/hazelcast/pull/15313[#15313]
+* The previously known `WanPublisherConfig` has been separated into
+two configuration elements/classes to be used for built-in and
+custom WAN publishers: `batch-publisher` and `custom-publisher`.
+https://github.com/hazelcast/hazelcast/pull/15309[#15309]
 * Added null checks and annotations to the IList, ISet, ITopic and
 MultiMap interfaces.
 https://github.com/hazelcast/hazelcast/pull/15220[#15220]
@@ -215,10 +226,28 @@ https://github.com/hazelcast/hazelcast/issues/14919[#14919]
 https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 * The packages of the following classes have been changed:
 +
-[cols="3a,2,3,1a"]
+[cols="3a,2a,3a,1a"]
 |===
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
+
+| Private client classes
+| 
+
+* `client.connection`
+* `client.proxy`
+* `client.spi.properties`
+* `client.spi`
+* `client.util.ClientDelegatingFuture`
+* `client.api`
+|
+* `client.impl.connection`
+* `client.impl.proxy`
+* `client.properties`
+* `client.impl.spi`
+* `client.impl.ClientDelegatingFuture`
+* `client`
+| https://github.com/hazelcast/hazelcast/pull/15377[#15377]
 
 | `Joiner` and `TcpIpJoiner`
 | `com.hazelcast.cluster` and `com.hazelcast.cluster.impl`
@@ -306,6 +335,10 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Optimized the shutdown for on-heap indexes: These indexes are cleaned on shutdown and
+the index entries are removed one by one. For large indexes, e.g.,
+for array/collection attribute indexes, this was taking a considerable amount of time.
+https://github.com/hazelcast/hazelcast/issues/15340[#15340]
 * Fixed the deserialization filtering for Externalizables and Deadlock in the
 map index. The deserialization filter was not properly protecting against the
 vulnerable Externalizable classes. The filtering has been extended.
