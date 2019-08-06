@@ -2,6 +2,9 @@
 
 == 4.0
 
+NOTE: See the https://docs.hazelcast.org/docs/4.0/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Hazelcast IMDG 4.0 Migration Guide]
+for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
+
 [[nf-40]]
 === New Features
 
@@ -135,10 +138,41 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
+* Moved the capability interfaces from `com.hazelcast.spi` to
+`com.hz.internal.services`.
+https://github.com/hazelcast/hazelcast/pull/15403[#15403]
+Classes like AbstractDistributedObject have been moved to com.hz.spi.impl
+* Made all the classes/interfaces in the `com.hazelcast.spi` package
+`PrivateAPI`.
+https://github.com/hazelcast/hazelcast/pull/15401[#15401]
+* Added support for the following default Java serializers for collections:
+** `ArrayDeque`
+** `HashSet`
+** `TreeSet`
+** `TreeMap`
+** `LinkedHashSet`
+** `LinkedHashMap`
+** `LinkedBlockingQueue`
+** `ArrayBlockingQueue`
+** `PriorityBlockingQueue`
+** `DelayQueue`
+** `SynchronousQueue`
+** `LinkedBlockingDeque`
+** `LinkedTransferQueue`
+** `CopyOnWriteArrayList`
+** `CopyOnWriteArraySet`
+** `ConcurrentSkipListSet`
+** `ConcurrentHashMap`
+** `ConcurrentSkipListMap`
++
+https://github.com/hazelcast/hazelcast/pull/15371[#15371]
++
 * Merged the client module into the core module: All the classes
 in the `hazelcast-client` module have been moved to `hazelcast`.
 `hazelcast-client.jar` will not be created anymore.
 https://github.com/hazelcast/hazelcast/pull/15366[#15366]
+* Added null checks to `Cluster`, `Ringbuffer` and `ReplicatedMap`.
+https://github.com/hazelcast/hazelcast/pull/15351[#15351]
 * Removed the deprecated configuration parameters from the Near
 Cache configuration.
 https://github.com/hazelcast/hazelcast/pull/15313[#15313]
@@ -146,6 +180,14 @@ https://github.com/hazelcast/hazelcast/pull/15313[#15313]
 two configuration elements/classes to be used for built-in and
 custom WAN publishers: `batch-publisher` and `custom-publisher`.
 https://github.com/hazelcast/hazelcast/pull/15309[#15309]
+* Removed the legacy merge policies:
+** PASS_THROUGH
+** PUT_IF_ABSENT
+** HIGHER_HITS
+** LATEST_ACCESS
++
+https://github.com/hazelcast/hazelcast/pull/15292[#15292]
++
 * Added null checks and annotations to the IList, ISet, ITopic and
 MultiMap interfaces.
 https://github.com/hazelcast/hazelcast/pull/15220[#15220]
@@ -254,6 +296,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 | `com.hazelcast.internal.cluster` and `com.hazelcast.internal.cluster.impl`
 | https://github.com/hazelcast/hazelcast/pull/15335[#15335]
 
+| All IExecutor classes
+| `com.hazelcast.core`
+| `com.hazelcast.executor`
+| https://github.com/hazelcast/hazelcast/pull/15187[#15187]
+
 |`ClassNameFilter`, `SerializationClassNameFilter` 
 |`com.hazelcast.nio`
 |`com.hazelcast.nio.serialization`
@@ -335,6 +382,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Moved the `checkWanReplicationQueues` operation from the caller side
+to the callee. https://github.com/hazelcast/hazelcast/pull/15412[#15412]
+* Fixed an issue where `WanConsistencyCheckIgnoredEvent`, when it is
+sent to Management Center, was throwing a `NullPointerException`.
+https://github.com/hazelcast/hazelcast/pull/15400[#15400]
 * Optimized the shutdown for on-heap indexes: These indexes are cleaned on shutdown and
 the index entries are removed one by one. For large indexes, e.g.,
 for array/collection attribute indexes, this was taking a considerable amount of time.
@@ -462,6 +514,8 @@ as the development/unsafe mode of CP Subsystem's `FencedLock`.
 * Removed the deprecated `LOCAL` transaction type (`TransactionType.LOCAL`)
 * Removed the unused `newTransaction()` method.
 * Removed the deprecated `optimizeQueries` map configuration parameter.
+* Removed the deprecated `ClearNearCacheOperation`.
+
 
 
 
