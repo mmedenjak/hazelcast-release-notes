@@ -51,6 +51,10 @@ in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* To be shown on Management Center, the clients now send both its IP
+address and canonical hostname. Before, only the hostname of the
+client was shown.
+https://github.com/hazelcast/hazelcast/pull/15421[#15421]
 * Updated the `JavaVersion` class to support JDK 13 and 14 builds.
 https://github.com/hazelcast/hazelcast/pull/15372[#15372]
 * Added transaction specific backup operations: `TxnSetBackupOperation`
@@ -114,6 +118,10 @@ https://github.com/hazelcast/hazelcast/pull/14923[#14923]
 https://github.com/hazelcast/hazelcast/pull/14898[#14898]
 * Updated the map package so that it uses the Java 8 features.
 https://github.com/hazelcast/hazelcast/pull/14891[#14891]
+* Renamed the `Networking.start()` method as `Networking.restart()`
+to make it obvious that it can be used for restarting an
+already shutdown `Networking` instance.
+https://github.com/hazelcast/hazelcast/pull/14872[#14872]
 * Cleaned up the Maven repositories in Hazelcast's `pom.xml`
 to simplify the usage of Maven proxies.
 https://github.com/hazelcast/hazelcast/pull/14850[#14850]
@@ -215,9 +223,10 @@ https://github.com/hazelcast/hazelcast/pull/15185[#15185]
 https://github.com/hazelcast/hazelcast/pull/15180[#15180] 
 * Removed the XSDs for Hazelcast IMDG 3.x versions.
 https://github.com/hazelcast/hazelcast/pull/15177[#15177]
-* Moved various classes (`Node`, `NodeContext`, etc.)
+* Separated the interfaces and implementations in `com.hazelcast.instance`:
+Moved various classes (`Node`, `NodeContext`, etc.)
 from the `com.hazelcast.instance` package to
-the newly introduced `com.hazelcast.instance.impl`.
+`com.hazelcast.instance.impl`.
 https://github.com/hazelcast/hazelcast/pull/15151[#15151]
 * Renamed the `getId` method of `IdentifiedDataSerializable`
 to `getClassId`.
@@ -272,6 +281,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 |===
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
+
+| `SerializationService`
+| `com.hazelcast.spi.serialization`
+| `com.hazelcast.internal.serialization`
+| https://github.com/hazelcast/hazelcast/pull/15418[#15418]
 
 | Private client classes
 | 
