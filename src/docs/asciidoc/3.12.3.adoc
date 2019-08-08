@@ -1,0 +1,30 @@
+== 3.12.3
+
+[[enh-3123]]
+=== Enhancements 
+
+*_Hazelcast IMDG Enterprise Enhancements:_*
+
+* ???. link:https://docs.hazelcast.org/docs/3.12.3/manual/html-single/#???[???^] section.
+
+*_Hazelcast IMDG Open Source Enhancements:_*
+
+* ???. link:https://docs.hazelcast.org/docs/3.12.3/manual/html-single/#???[???^] section.
+
+The following are the other improvements performed to solve the enhancement
+issues opened by the Hazelcast customers/team.
+
+* To be shown on Management Center, the clients now send both its IP
+address and canonical hostname. Before, only the hostname of the
+client was shown.
+https://github.com/hazelcast/hazelcast/pull/15421[#15421]
+
+
+
+[[fixes-3123]]
+=== Fixes
+
+* Fixed an issue where a lock was required when registering metrics on the happy path.
+https://github.com/hazelcast/hazelcast/pull/15378[#15378]
+* Fixed an issue where some updates to the entries got lost from the write behind queue: It was a concurrency issue when there are updates to `CoalescedWriteBehindQueue` while `StoreWorker` is running.
+https://github.com/hazelcast/hazelcast/issues/15060[#15060]
