@@ -410,6 +410,12 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where `ClientMessageWriter` was throwing an
+exception while writing to buffer.
+https://github.com/hazelcast/hazelcast/issues/15471[#15471]
+* Fixed an issue where the maps on the client side were encoded
+as list of key value items, not list of keys and list of values.
+https://github.com/hazelcast/hazelcast/pull/15467[#15467]
 * Moved the `checkWanReplicationQueues` operation from the caller side
 to the callee. https://github.com/hazelcast/hazelcast/pull/15412[#15412]
 * Fixed an issue where `WanConsistencyCheckIgnoredEvent`, when it is
