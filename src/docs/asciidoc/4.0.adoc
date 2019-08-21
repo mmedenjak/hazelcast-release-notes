@@ -82,6 +82,8 @@ https://github.com/hazelcast/hazelcast/issues/15155[#15155]
 * Improved the generics for the API with Projection, Predicate and EntryListener
 by adding lower bounded wildcards to accept a wider range of parameters.
 https://github.com/hazelcast/hazelcast/pull/15153[#15153]
+* Unified `InvalidConfigurationException` and `ConfigurationException`.
+https://github.com/hazelcast/hazelcast/pull/15132[#15132]
 * Improved the Raft snapshotting so that the old log entries are not
 kept when there is no follower with an unknown match index.
 https://github.com/hazelcast/hazelcast/pull/15062[#15062]
@@ -347,7 +349,7 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 |`com.hazelcast.cp`
 |https://github.com/hazelcast/hazelcast/pull/15143[#15143]
 
-|`IndexAwarePredicate`, `VisitablePredicate`
+|`IndexAwarePredicate`, `VisitablePredicate`, `SqlPredicate/Parser`, `TruePredicate`
 |`com.hazelcast.query`
 |`com.hazelcast.query.impl.predicates`
 |https://github.com/hazelcast/hazelcast/pull/15142[#15142]
