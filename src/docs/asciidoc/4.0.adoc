@@ -10,10 +10,13 @@ for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 
 *_Hazelcast IMDG Enterprise New Features:_*
 
-* **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
 * **X.509 Certificate Authentication:** Added support for credential retrieval by the members
 from the X.509 certificates configured on the clients.
-See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section^].
+* **Intel(R) Optane(TM) DC Persistent Memory Integration:** Added support for
+Intel Optane DC to the High-Density Memory Store.
+See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section^]
+
 
 *_Hazelcast IMDG Open Source New Features:_*
 
@@ -51,6 +54,9 @@ in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added the async version of the `IMap.putAll()` method, i.e., `IMap.putAllAsync()`.
+In a member-to-member case, the put operations for members now are executed in parallel.
+https://github.com/hazelcast/hazelcast/pull/15463[#15463]
 * Updated the auto-generated codes according to the new Hazelcast
 Open Binary Client Protocol (v2.0): message types are no longer of the type
 `short`. Instead, `integer` is now being used to represent them.
@@ -82,6 +88,12 @@ https://github.com/hazelcast/hazelcast/issues/15155[#15155]
 * Improved the generics for the API with Projection, Predicate and EntryListener
 by adding lower bounded wildcards to accept a wider range of parameters.
 https://github.com/hazelcast/hazelcast/pull/15153[#15153]
+* Implemented the Transaction propagation feature:
+** Added the `suspend()` and `resume()` methods for `TransactionContext` interface.
+** Added `Propagation.REQUIRES_NEW` support for `HazelcastTransactionManager`.
++
+https://github.com/hazelcast/hazelcast/pull/15141[#15141]
++
 * Unified `InvalidConfigurationException` and `ConfigurationException`.
 https://github.com/hazelcast/hazelcast/pull/15132[#15132]
 * Improved the Raft snapshotting so that the old log entries are not
@@ -160,6 +172,9 @@ anymore, saving up on the heap space. By means of this, wrapper will also
 not be serialized, which was using up bytes for the factory ID, class ID
 and the full string with the service name.
 https://github.com/hazelcast/hazelcast/pull/15432[#15432]
+* Removed the deprecated the configuration parameters from
+Replicated Map, i.e., `concurrency-level` and `replication-delay-millis`.
+https://github.com/hazelcast/hazelcast/pull/15404[#15404]
 * Moved the capability interfaces from `com.hazelcast.spi` to
 `com.hz.internal.services`.
 https://github.com/hazelcast/hazelcast/pull/15403[#15403]
@@ -425,6 +440,12 @@ https://github.com/hazelcast/hazelcast/pull/15400[#15400]
 and `statisticsEnabled` were not being respected when a new
 `MapConfig` is dynamically added from a client to a running Hazelcast cluster.
 https://github.com/hazelcast/hazelcast/issues/15382[#15382]
+* Fixed an issue where the comparators were not able to act on
+both keys and values. A custom paging predicate comparator may act on
+keys and values at the same time even if only the keys are requested, e.g., using
+the `IMap.keySet()` method. Before this fix only the keys were fetched for
+this method, making comparators unable to act on values.
+https://github.com/hazelcast/hazelcast/pull/15380[#15380]
 * Optimized the shutdown for on-heap indexes: These indexes are cleaned on shutdown and
 the index entries are removed one by one. For large indexes, e.g.,
 for array/collection attribute indexes, this was taking a considerable amount of time.
