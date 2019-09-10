@@ -65,6 +65,9 @@ https://github.com/hazelcast/hazelcast/pull/15450[#15450]
 address and canonical hostname. Before, only the hostname of the
 client was shown.
 https://github.com/hazelcast/hazelcast/pull/15421[#15421]
+* Added a new implementation of `SecondsBasedEntryTaskScheduler` for the
+`FOR_EACH` mode to improve the performance of `TransactionContext.commit()`.
+https://github.com/hazelcast/hazelcast/pull/15414[#15414]
 * Made the Hazelcast specific root nodes in the YAML
 configurations optional.
 https://github.com/hazelcast/hazelcast/pull/15389[#15389]
@@ -99,6 +102,9 @@ https://github.com/hazelcast/hazelcast/pull/15132[#15132]
 * Improved the Raft snapshotting so that the old log entries are not
 kept when there is no follower with an unknown match index.
 https://github.com/hazelcast/hazelcast/pull/15062[#15062]
+* Made `ClientConfig` to override `toString` as it is the situation
+with `Config` to make it easier to troubleshoot.
+https://github.com/hazelcast/hazelcast/issues/15061[#15061]
 * Added the full example configuration files (XML and YAML) for the
 Hazelcast Java client.
 https://github.com/hazelcast/hazelcast/pull/15056[#15056]
@@ -539,6 +545,9 @@ https://github.com/hazelcast/hazelcast/pull/13784[#13784]
 * Fixed an issue where the locked entries with a time-to-live were not evicted.
 With this fix, the lock operation checks if an entry has already expired.
 https://github.com/hazelcast/hazelcast/issues/13272[#13272]
+* Fixed an issue where there were excessive amount of logs on the target cluster
+when `cache` config is missing for the WAN replication.
+https://github.com/hazelcast/hazelcast/issues/12826[#12826]
 * Fixed an issue where there was an inconsistent `removeIf` behavior among the
 collection views of IMap.
 https://github.com/hazelcast/hazelcast/issues/12198[#12198]
