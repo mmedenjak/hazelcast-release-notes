@@ -20,7 +20,10 @@ See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#?
 
 *_Hazelcast IMDG Open Source New Features:_*
 
-* **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+* **CP Subsystem Development Mode:** Introduced `UNSAFE` mode for the CP data
+structures. This way, you do not need to have at least three IMDG members
+to use CP subsystem: you can benefit from its functionalities using only one
+or two members. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
 
 [[enh-40]]
 === Enhancements
@@ -583,6 +586,18 @@ as the development/unsafe mode of CP Subsystem's `FencedLock`.
 * Removed the unused `newTransaction()` method.
 * Removed the deprecated `optimizeQueries` map configuration parameter.
 * Removed the deprecated `ClearNearCacheOperation`.
+* Removed the following deprecated group properties:
+** `hazelcast.version.check.enabled`
+** `hazelcast.icmp.enabled`
+** `hazelcast.icmp.parallel.mode`
+** `hazelcast.icmp.echo.fail.fast.on.startup`
+** `hazelcast.icmp.timeout`
+** `hazelcast.icmp.interval`
+** `hazelcast.icmp.max.attempts`
+** `hazelcast.icmp.ttl`
+** `hazelcast.mc.url.change.enabled`
+** `hazelcast.slow.invocation.detector.threshold.millis`
+
 
 
 
