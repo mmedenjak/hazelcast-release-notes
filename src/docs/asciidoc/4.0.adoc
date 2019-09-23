@@ -57,6 +57,12 @@ in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added serialization compatibility tests for built-in objects
+such as predicates, aggregators and projections.
+https://github.com/hazelcast/hazelcast/pull/15511[#15511]
+* Improved `DistinctValuesAggregator` and `MultiAttributeProjection` so that
+they return objects compatible with non-Java clients.
+https://github.com/hazelcast/hazelcast/pull/15506[#15506]
 * Added the async version of the `IMap.putAll()` method, i.e., `IMap.putAllAsync()`.
 In a member-to-member case, the put operations for members now are executed in parallel.
 https://github.com/hazelcast/hazelcast/pull/15463[#15463]
@@ -102,6 +108,9 @@ https://github.com/hazelcast/hazelcast/pull/15141[#15141]
 +
 * Unified `InvalidConfigurationException` and `ConfigurationException`.
 https://github.com/hazelcast/hazelcast/pull/15132[#15132]
+* Improved the performance of `TransactionLog.add()` by avoiding
+the `LinkedList.remove()` call.
+https://github.com/hazelcast/hazelcast/pull/15111[#15111]
 * Improved the Raft snapshotting so that the old log entries are not
 kept when there is no follower with an unknown match index.
 https://github.com/hazelcast/hazelcast/pull/15062[#15062]
@@ -176,21 +185,89 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
+* Removed the support for primitives for `setAttribute` and
+`getAttribute` operations.
+All member attributes support only string attributes now.
+https://github.com/hazelcast/hazelcast/pull/14974[#14974]
+* Removed the backward compatible `ADDED` event from the
+`loadAll` method.
+https://github.com/hazelcast/hazelcast/pull/14964[#14964]
+* Changed the `non-space-string` XSD type to collapse all
+whitespaces, so they are handled correctly in the declarative
+Hazelcast IMDG configuration files.
+https://github.com/hazelcast/hazelcast/issues/14919[#14919]
+* Removed the `java.util.function` back ports.
+https://github.com/hazelcast/hazelcast/pull/14912[#14912]
+
+==== Distributed Data Structures
+
+* Added null checks to `Cluster`, `Ringbuffer` and `ReplicatedMap`.
+https://github.com/hazelcast/hazelcast/pull/15351[#15351]
+* Added null checks and annotations to the IList, ISet, ITopic and
+MultiMap interfaces.
+https://github.com/hazelcast/hazelcast/pull/15220[#15220]
+* Made the collection clones of IMap immutable so that
+`UnsupportedOperationException` is thrown consistently
+upon the attempts to update a collection returned by the `keySet`,
+`entrySet`, `localKeySet`, `values` and `getAll` methods.
+https://github.com/hazelcast/hazelcast/pull/15013[#15013]
+* Added `Nullable` and `Nonnull` annotations to IMap.
+https://github.com/hazelcast/hazelcast/pull/15003[#15003]
+
+
+==== Configuration
+
+* Renamed `MapAttributeConfig` as `AttributeConfig`. Also, its
+`extractor` field is renamed as `extractorClassName`.
+https://github.com/hazelcast/hazelcast/pull/15548[#15548]
+* Removed the deprecated the configuration parameters from
+Replicated Map, i.e., `concurrency-level` and `replication-delay-millis`.
+https://github.com/hazelcast/hazelcast/pull/15404[#15404]
+* Removed the deprecated configuration parameters from the Near
+Cache configuration.
+https://github.com/hazelcast/hazelcast/pull/15313[#15313]
+* Moved the Event Journal configuration inside the map/cache
+configuration. Before, it was configured as a parent-level
+element.
+https://github.com/hazelcast/hazelcast/pull/15185[#15185]
+* Moved the Merkle tree configuration under map configuration.
+https://github.com/hazelcast/hazelcast/pull/15180[#15180] 
+* Removed the XSDs for Hazelcast IMDG 3.x versions.
+https://github.com/hazelcast/hazelcast/pull/15177[#15177]
+* Removed deprecated client configuration methods such as
+`isInsideAws()` and `newAliasedDiscoveryConfig()`.
+https://github.com/hazelcast/hazelcast/pull/15012[#15012]
+* Removed the `hazelcast.executionservice.taskscheduler.remove.oncancel`
+system property and related methods.
+https://github.com/hazelcast/hazelcast/pull/14998[#14998]
+
+==== WAN Replication
+
 * Removed `ReplicationEventObject` so that the WAN are not wrapped
 anymore, saving up on the heap space. By means of this, wrapper will also
 not be serialized, which was using up bytes for the factory ID, class ID
 and the full string with the service name.
 https://github.com/hazelcast/hazelcast/pull/15432[#15432]
-* Removed the deprecated the configuration parameters from
-Replicated Map, i.e., `concurrency-level` and `replication-delay-millis`.
-https://github.com/hazelcast/hazelcast/pull/15404[#15404]
-* Moved the capability interfaces from `com.hazelcast.spi` to
-`com.hz.internal.services`.
-https://github.com/hazelcast/hazelcast/pull/15403[#15403]
-Classes like AbstractDistributedObject have been moved to com.hz.spi.impl
-* Made all the classes/interfaces in the `com.hazelcast.spi` package
-`PrivateAPI`.
-https://github.com/hazelcast/hazelcast/pull/15401[#15401]
+* The previously known `WanPublisherConfig` has been separated into
+two configuration elements/classes to be used for built-in and
+custom WAN publishers: `batch-publisher` and `custom-publisher`.
+https://github.com/hazelcast/hazelcast/pull/15309[#15309]
+* Separated WAN private and public classes into different packages.
+https://github.com/hazelcast/hazelcast/pull/15195[#15195]
+
+==== Split-Brain Protection
+
+* Removed the legacy merge policies:
+** PASS_THROUGH
+** PUT_IF_ABSENT
+** HIGHER_HITS
+** LATEST_ACCESS
++
+https://github.com/hazelcast/hazelcast/pull/15292[#15292]
+
+
+==== Serialization
+
 * Added support for the following default Java serializers for collections:
 ** `ArrayDeque`
 ** `HashSet`
@@ -212,31 +289,30 @@ https://github.com/hazelcast/hazelcast/pull/15401[#15401]
 ** `ConcurrentSkipListMap`
 +
 https://github.com/hazelcast/hazelcast/pull/15371[#15371]
-+
+
+==== REST
+
+* Changed the `application/javascript` "Content-Type" header used
+by REST API to respond to the JSON documents. Now, it uses
+`application/json`.
+https://github.com/hazelcast/hazelcast/pull/14972[#14972]
+
+==== Distribution Package Changes
+
 * Merged the client module into the core module: All the classes
 in the `hazelcast-client` module have been moved to `hazelcast`.
 `hazelcast-client.jar` will not be created anymore.
 https://github.com/hazelcast/hazelcast/pull/15366[#15366]
-* Added null checks to `Cluster`, `Ringbuffer` and `ReplicatedMap`.
-https://github.com/hazelcast/hazelcast/pull/15351[#15351]
-* Removed the deprecated configuration parameters from the Near
-Cache configuration.
-https://github.com/hazelcast/hazelcast/pull/15313[#15313]
-* The previously known `WanPublisherConfig` has been separated into
-two configuration elements/classes to be used for built-in and
-custom WAN publishers: `batch-publisher` and `custom-publisher`.
-https://github.com/hazelcast/hazelcast/pull/15309[#15309]
-* Removed the legacy merge policies:
-** PASS_THROUGH
-** PUT_IF_ABSENT
-** HIGHER_HITS
-** LATEST_ACCESS
-+
-https://github.com/hazelcast/hazelcast/pull/15292[#15292]
-+
-* Added null checks and annotations to the IList, ISet, ITopic and
-MultiMap interfaces.
-https://github.com/hazelcast/hazelcast/pull/15220[#15220]
+
+==== API Package/Interface Changes
+
+* Moved the capability interfaces from `com.hazelcast.spi` to
+`com.hz.internal.services`.
+https://github.com/hazelcast/hazelcast/pull/15403[#15403]
+Classes like AbstractDistributedObject have been moved to com.hz.spi.impl
+* Made all the classes/interfaces in the `com.hazelcast.spi` package
+`PrivateAPI`.
+https://github.com/hazelcast/hazelcast/pull/15401[#15401]
 * Converted the following custom query attribute abstract classes to
 functional interfaces so that they have become
 lambda friendly.
@@ -251,16 +327,6 @@ https://github.com/hazelcast/hazelcast/pull/15204[#15204]
 * Removed the usage of `com.hazelcast.core.IBifunction`, replaced
 it with `java.util.function.Bifunction`.
 https://github.com/hazelcast/hazelcast/pull/15201[#15201]
-* Separated WAN private and public classes into different packages.
-https://github.com/hazelcast/hazelcast/pull/15195[#15195]
-* Moved the Event Journal configuration inside the map/cache
-configuration. Before, it was configured as a parent-level
-element.
-https://github.com/hazelcast/hazelcast/pull/15185[#15185]
-* Moved the Merkle tree configuration under map configuration.
-https://github.com/hazelcast/hazelcast/pull/15180[#15180] 
-* Removed the XSDs for Hazelcast IMDG 3.x versions.
-https://github.com/hazelcast/hazelcast/pull/15177[#15177]
 * Separated the interfaces and implementations in `com.hazelcast.instance`:
 Moved various classes (`Node`, `NodeContext`, etc.)
 from the `com.hazelcast.instance` package to
@@ -277,42 +343,12 @@ converted to interface with default methods.
 +
 https://github.com/hazelcast/hazelcast/pull/15051[#15051]
 +
-* Made the collection clones of IMap immutable so that
-`UnsupportedOperationException` is thrown consistently
-upon the attempts to update a collection returned by the `keySet`,
-`entrySet`, `localKeySet`, `values` and `getAll` methods.
-https://github.com/hazelcast/hazelcast/pull/15013[#15013]
-* Removed deprecated client configuration methods such as
-`isInsideAws()` and `newAliasedDiscoveryConfig()`.
-https://github.com/hazelcast/hazelcast/pull/15012[#15012]
-* Added `Nullable` and `Nonnull` annotations to IMap.
-https://github.com/hazelcast/hazelcast/pull/15003[#15003]
-* Removed the `hazelcast.executionservice.taskscheduler.remove.oncancel`
-system property and related methods.
-https://github.com/hazelcast/hazelcast/pull/14998[#14998]
 * Made the `EntryProcessor` interface lambda friendly.
 https://github.com/hazelcast/hazelcast/pull/14995[#14995]
 * Removed the `LegacyAsyncMap` interface.
 https://github.com/hazelcast/hazelcast/pull/14994[#14994]
-* Removed the support for primitives for `setAttribute` and
-`getAttribute` operations.
-All member attributes support only string attributes now.
-https://github.com/hazelcast/hazelcast/pull/14974[#14974]
-* Changed the `application/javascript` "Content-Type" header used
-by REST API to respond to the JSON documents. Now, it uses
-`application/json`.
-https://github.com/hazelcast/hazelcast/pull/14972[#14972]
-* Removed the backward compatible `ADDED` event from the
-`loadAll` method.
-https://github.com/hazelcast/hazelcast/pull/14964[#14964]
 * Added `EntryExpiredListener` to the `EntryListener` interface.
 https://github.com/hazelcast/hazelcast/pull/14959[#14959]
-* Changed the `non-space-string` XSD type to collapse all
-whitespaces, so they are handled correctly in the declarative
-Hazelcast IMDG configuration files.
-https://github.com/hazelcast/hazelcast/issues/14919[#14919]
-* Removed the `java.util.function` back ports.
-https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 * The packages of the following classes have been changed:
 +
 [cols="3a,2a,3a,1a"]
@@ -434,6 +470,9 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where the executor service message task
+was blocking the partition thread.
+https://github.com/hazelcast/hazelcast/pull/15522[#15522]
 * Fixed an issue where `ClientMessageWriter` was throwing an
 exception while writing to buffer.
 https://github.com/hazelcast/hazelcast/issues/15471[#15471]
