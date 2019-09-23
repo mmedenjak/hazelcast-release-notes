@@ -57,6 +57,8 @@ in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Set the log level to `FINEST` for `PartitionMigratingException`.
+https://github.com/hazelcast/hazelcast/pull/15577[#15577]
 * Added serialization compatibility tests for built-in objects
 such as predicates, aggregators and projections.
 https://github.com/hazelcast/hazelcast/pull/15511[#15511]
@@ -70,6 +72,8 @@ https://github.com/hazelcast/hazelcast/pull/15463[#15463]
 Open Binary Client Protocol (v2.0): message types are no longer of the type
 `short`. Instead, `integer` is now being used to represent them.
 https://github.com/hazelcast/hazelcast/pull/15450[#15450]
+* Added the support for nested JSON objects in arrays.
+https://github.com/hazelcast/hazelcast/pull/15425[#15425]
 * To be shown on Management Center, the clients now send both its IP
 address and canonical hostname. Before, only the hostname of the
 client was shown.
@@ -82,6 +86,9 @@ configurations optional.
 https://github.com/hazelcast/hazelcast/pull/15389[#15389]
 * Updated the `JavaVersion` class to support JDK 13 and 14 builds.
 https://github.com/hazelcast/hazelcast/pull/15372[#15372]
+* Added support for updating the licenses of all the running
+members of a Hazelcast IMDG cluster using the REST API.
+https://github.com/hazelcast/hazelcast/pull/15370[#15370]
 * Added transaction specific backup operations: `TxnSetBackupOperation`
 and `TxnDeleteBackupOperation`.
 https://github.com/hazelcast/hazelcast/pull/15236[#15236]
@@ -201,6 +208,14 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 
 ==== Distributed Data Structures
 
+* Removed the legacy `Semaphore` implementation and
+the `HazelcastInstance.getSemaphore()` method. Instead
+we provide the unsafe mode for all CP data structures.
+https://github.com/hazelcast/hazelcast/pull/15539[#15539]
+* Removed the legacy `CountdownLatch` implementation and
+the `HazelcastInstance.getCountdownLatch()` method. Instead
+we provide the unsafe mode for all CP data structures.
+https://github.com/hazelcast/hazelcast/pull/15538[#15538]
 * Added null checks to `Cluster`, `Ringbuffer` and `ReplicatedMap`.
 https://github.com/hazelcast/hazelcast/pull/15351[#15351]
 * Added null checks and annotations to the IList, ISet, ITopic and
@@ -217,6 +232,8 @@ https://github.com/hazelcast/hazelcast/pull/15003[#15003]
 
 ==== Configuration
 
+* Moved all the read-only configuration classes to internal package.
+https://github.com/hazelcast/hazelcast/pull/15569[#15569]
 * Renamed `MapAttributeConfig` as `AttributeConfig`. Also, its
 `extractor` field is renamed as `extractorClassName`.
 https://github.com/hazelcast/hazelcast/pull/15548[#15548]
@@ -243,7 +260,20 @@ https://github.com/hazelcast/hazelcast/pull/14998[#14998]
 
 ==== WAN Replication
 
-* 
+* Replaced the `WAN` prefix of classes with `Wan` for the
+sake of naming consistencies.
+https://github.com/hazelcast/hazelcast/pull/15571[#15571]
+* `WanReplicationPublisher` cleanups:
+** Removed `WanReplicationEndpoint` and moved all of its methods
+to `WanReplicationPublisher`.
+** Replaced the `publishSyncEvent()` method with
+`publishAntiEntropyEvent()`.
+** Removed the `putBackup()` method.
+** Moved the `removeWanEvents(int, String, String, int)` method to
+the newly introduced  `InternalWanReplicationPublisher`.
+** Removed the `Node` parameter from the `init()` method as it is private API.
++
+https://github.com/hazelcast/hazelcast/pull/15527[#15527]
 * Removed `ReplicationEventObject` so that the WAN are not wrapped
 anymore, saving up on the heap space. By means of this, wrapper will also
 not be serialized, which was using up bytes for the factory ID, class ID
@@ -356,6 +386,26 @@ https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 |===
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
+
+| All
+|
+
+* `com.hazelcast.config.yaml`
+* `com.hazelcast.crdt`
+* `com.hazelcast.memory`
+* `com.hazelcast.elastic`
+|
+
+* `com.hazelcast.internal.config.yaml`
+* `com.hazelcast.internal.crdt`
+* `com.hazelcast.internal.memory`
+* `com.hazelcast.internal.elastic`
+| https://github.com/hazelcast/hazelcast/pull/15588[#15588]
+
+| All
+| `com.hazelcast.util`
+| `com.hazelcast.internal.util`
+| https://github.com/hazelcast/hazelcast/pull/15570[#15570]
 
 | `SerializationService`
 | `com.hazelcast.spi.serialization`
@@ -471,9 +521,15 @@ https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where the CP subsystems' restart operations were
+not being canceled and waiting the running/scheduled discovery tasks.
+https://github.com/hazelcast/hazelcast/pull/15567[#15567]
 * Fixed an issue where the executor service message task
 was blocking the partition thread.
 https://github.com/hazelcast/hazelcast/pull/15522[#15522]
+* Fixed an issue where the used memory in metrics was becoming
+a negative value.
+https://github.com/hazelcast/hazelcast/issues/15485[#15485]
 * Fixed an issue where `ClientMessageWriter` was throwing an
 exception while writing to buffer.
 https://github.com/hazelcast/hazelcast/issues/15471[#15471]
@@ -597,6 +653,9 @@ https://github.com/hazelcast/hazelcast/issues/12198[#12198]
 * Fixed a leak in the query cache due to `ListenerRegistrationHelper`, which
 has been removed with this fix.
 https://github.com/hazelcast/hazelcast/pull/11914[#11914]
+* Fixed an issue where `NetworkConfig.setPortCount(int)` was not returning
+the `this` instance compared to other setter methods in the class.
+https://github.com/hazelcast/hazelcast/issues/11669[#11669]
 * Fixed an issue where the `IMap.replace()` method was not loading entries
 from the MapLoader when the keys could not be found in the memory.
 https://github.com/hazelcast/hazelcast/issues/11300[#11300]
