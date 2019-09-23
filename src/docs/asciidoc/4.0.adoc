@@ -243,6 +243,7 @@ https://github.com/hazelcast/hazelcast/pull/14998[#14998]
 
 ==== WAN Replication
 
+* 
 * Removed `ReplicationEventObject` so that the WAN are not wrapped
 anymore, saving up on the heap space. By means of this, wrapper will also
 not be serialized, which was using up bytes for the factory ID, class ID
