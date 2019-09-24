@@ -208,6 +208,10 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 
 ==== Distributed Data Structures
 
+* Removed the legacy `AtomicReference` implementation and
+the `HazelcastInstance.getAtomicReference()` method. Instead
+we provide the unsafe mode for all CP data structures.
+https://github.com/hazelcast/hazelcast/pull/15593[#15593]
 * Removed the legacy `Semaphore` implementation and
 the `HazelcastInstance.getSemaphore()` method. Instead
 we provide the unsafe mode for all CP data structures.
@@ -387,7 +391,12 @@ https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
 
-| All
+| All private NIO and serialization classes
+| `com.hazelcast.nio`
+| `com.hazelcast.internal.nio`
+| https://github.com/hazelcast/hazelcast/pull/15599[#15599]
+
+| All private YAML, CRDT and memory classes
 |
 
 * `com.hazelcast.config.yaml`
@@ -638,6 +647,11 @@ https://github.com/hazelcast/hazelcast/pull/14831[#14831]
 * Fixed an issue caused by the cache being not ready to be used
 immediately after the cache proxy was created.
 https://github.com/hazelcast/hazelcast/pull/14821[#14821]
+* Fixed an issue where the performance of `IMap.values()` was low when
+using `PartitionPredicate`. Also, `PartitionPredicate` was not
+respecting indexes. So, now global indexes are used for partition
+queries.
+https://github.com/hazelcast/hazelcast/pull/14814[#14814]
 * Fixed a performance issue where there were unneeded iterations and
 object creations while converting the client messages to user objects.
 https://github.com/hazelcast/hazelcast/pull/13784[#13784]
