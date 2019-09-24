@@ -3,28 +3,44 @@
 [[enh-3123]]
 === Enhancements 
 
-*_Hazelcast IMDG Enterprise Enhancements:_*
-
-* ???. link:https://docs.hazelcast.org/docs/3.12.3/manual/html-single/#???[???^] section.
-
-*_Hazelcast IMDG Open Source Enhancements:_*
-
-* ???. link:https://docs.hazelcast.org/docs/3.12.3/manual/html-single/#???[???^] section.
-
-The following are the other improvements performed to solve the enhancement
-issues opened by the Hazelcast customers/team.
-
+* Improved the client graceful shutdown mechanism so that
+its tasks are executed before marking a client as inactive.
+https://github.com/hazelcast/hazelcast/pull/15565[#15565]
 * To be shown on Management Center, the clients now send both its IP
 address and canonical hostname. Before, only the hostname of the
 client was shown.
 https://github.com/hazelcast/hazelcast/pull/15421[#15421]
-
+* Added the support for nested JSON objects in the arrays.
+https://github.com/hazelcast/hazelcast/issues/15368[#15368]
 
 
 [[fixes-3123]]
 === Fixes
 
-* Fixed an issue where a lock was required when registering metrics on the happy path.
+* Fixed an issue where CP subsystem restarts were not being canceled
+or waited the running/scheduled discovery tasks. Otherwise, two different
+discovery tasks could overlap and run concurrently or one of the discovery
+tasks could run in a corrupted state.
+https://github.com/hazelcast/hazelcast/pull/15568[#15568]
+* Fixed an issue where the cleaner task for expired records
+was logging the exceptions during migrations: the log level for `PartitionMigratingException`
+has been set to `FINEST`.
+https://github.com/hazelcast/hazelcast/issues/15543[#15543]
+* Fixed an issue where the executor service message task
+was blocking the partition thread.
+https://github.com/hazelcast/hazelcast/pull/15526[#15526]
+* Made `PagingPredicate` a `VisitablePredicate` so the optimizer is able to
+visit its inner predicate to optimize it or to select an index to evaluate the
+inner predicate with.
+https://github.com/hazelcast/hazelcast/issues/15408[#15408]
+* Fixed an issue where the `readBackupData` and `statisticsEnabled`
+options were not respected when a new map configuration is dynamically
+added from a client to a running Hazelcast cluster.
+https://github.com/hazelcast/hazelcast/pull/15392[#15392]
+* Fixed an issue where a lock was required when registering metrics
+on the happy path.
 https://github.com/hazelcast/hazelcast/pull/15378[#15378]
-* Fixed an issue where some updates to the entries got lost from the write behind queue: It was a concurrency issue when there are updates to `CoalescedWriteBehindQueue` while `StoreWorker` is running.
+* Fixed an issue where some updates to the entries got lost from
+the write behind queue: It was a concurrency issue when there are
+updates to `CoalescedWriteBehindQueue` while `StoreWorker` is running.
 https://github.com/hazelcast/hazelcast/issues/15060[#15060]
