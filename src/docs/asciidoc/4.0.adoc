@@ -341,6 +341,10 @@ https://github.com/hazelcast/hazelcast/pull/15366[#15366]
 
 ==== API Package/Interface Changes
 
+* The APIs that returned `UUID` string now returns `UUID`. These include `Endpoint.getUUID`,
+listener registrations/deregistrations, keys of replica timestamps of `VectorClock`,
+``UUID``s in the executor service, `UUID` in the `MigrationInfo`, cluster ID and transaction ID.
+https://github.com/hazelcast/hazelcast/pull/15473[#15473]
 * Moved the capability interfaces from `com.hazelcast.spi` to
 `com.hz.internal.services`.
 https://github.com/hazelcast/hazelcast/pull/15403[#15403]
