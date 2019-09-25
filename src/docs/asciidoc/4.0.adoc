@@ -30,11 +30,17 @@ or two members. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/i
 
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
-* **???:** ???. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+* **Separating WAN Publisher Configuration:** The previously known `wan-publisher` (or `WanPublisherConfig`) has been separated into two configuration elements to be used for built-in and custom WAN publishers:
+** `batch-publisher`
+** `custom-publisher`
++
+See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#defining-wan-replication[Defining WAN Replication section^]
 * **Improvements in the JAAS Authentication Mechanism:**
 ** Added support for the standard JAAS callbacks, i.e., `NameCallback` and `PasswordCallback`
 ** Secrets, if not necessary, are not stored now
-** Cleaned up the `Credentials` object.
+** Cleaned up the `Credentials` and `ClusterPrincipal` object.
++
+See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section^].
 
 
 *_Hazelcast IMDG Open Source Enhancements:_*
