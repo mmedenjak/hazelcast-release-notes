@@ -3,11 +3,17 @@
 [[enh-3123]]
 === Enhancements 
 
+* Added a new implementation of `SecondsBasedEntryTaskScheduler` for the
+`FOR_EACH` mode to improve the performance of `TransactionContext.commit()`.
+https://github.com/hazelcast/hazelcast/pull/15586[#15586]
 * Improved the client graceful shutdown mechanism so that
 its tasks are executed before marking a client as inactive.
 https://github.com/hazelcast/hazelcast/pull/15565[#15565]
 * Added sent/received bytes logs for each `ProtocolType` into the diagnostics.
 https://github.com/hazelcast/hazelcast/pull/15541[#15541]
+* Improved the performance of `TransactionLog.add()` by avoiding
+the `LinkedList.remove()` call.
+https://github.com/hazelcast/hazelcast/pull/15435[#15435]
 * To be shown on Management Center, the clients now send both its IP
 address and canonical hostname. Before, only the hostname of the
 client was shown.
@@ -18,6 +24,9 @@ https://github.com/hazelcast/hazelcast/issues/15368[#15368]
 [[fixes-3123]]
 === Fixes
 
+* Fixed an issue where the `node.isMaster()` method could cause
+inconsistent behaviors when it is executed during a partition service lock.
+https://github.com/hazelcast/hazelcast/pull/15618[#15618]
 * Fixed an issue where Management Center was not able to see the 3.12.2 members
 (members with CP subsystem enabled) after performing a rolling upgrade from Hazelcast IMDG 3.11.4 to
 3.12.2. 'ManagementCenterService' was shutting down and throwing an exception
