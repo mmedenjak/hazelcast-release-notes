@@ -63,6 +63,9 @@ in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added the ``cachePartitionLostListenerConfig``s to `CacheConfig` serialization
+and the client protocol encoding.
+https://github.com/hazelcast/hazelcast/pull/15608[#15608]
 * Set the log level to `FINEST` for `PartitionMigratingException`.
 https://github.com/hazelcast/hazelcast/pull/15577[#15577]
 * Added serialization compatibility tests for built-in objects
@@ -214,6 +217,9 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 
 ==== Distributed Data Structures
 
+* Removed the legacy `AtomicLong` and deprecated `IdGenerator`
+implementations.
+https://github.com/hazelcast/hazelcast/pull/15601[#15601]
 * Removed the legacy `AtomicReference` implementation and
 the `HazelcastInstance.getAtomicReference()` method. Instead
 we provide the unsafe mode for all CP data structures.
@@ -247,6 +253,9 @@ https://github.com/hazelcast/hazelcast/pull/15569[#15569]
 * Renamed `MapAttributeConfig` as `AttributeConfig`. Also, its
 `extractor` field is renamed as `extractorClassName`.
 https://github.com/hazelcast/hazelcast/pull/15548[#15548]
+* Renamed the `group` configuration element as `cluster` and
+removed the `GroupConfig` class.
+https://github.com/hazelcast/hazelcast/pull/15540[#15540]
 * Removed the deprecated the configuration parameters from
 Replicated Map, i.e., `concurrency-level` and `replication-delay-millis`.
 https://github.com/hazelcast/hazelcast/pull/15404[#15404]
@@ -298,6 +307,9 @@ https://github.com/hazelcast/hazelcast/pull/15195[#15195]
 
 ==== Split-Brain Protection
 
+* Renamed the `isMinimumClusterSizeSatisfied()` method as
+`hasMinimumSize().`
+https://github.com/hazelcast/hazelcast/pull/15554[#15554]
 * Removed the legacy merge policies:
 ** PASS_THROUGH
 ** PUT_IF_ABSENT
@@ -702,6 +714,7 @@ with the ones provided by the Hazelcast IMDG CP Subsystem:
 * Removed the deprecated diagnostics property names.
 * Removed the `ILock` interface. The `ILock implementation is still being kept
 as the development/unsafe mode of CP Subsystem's `FencedLock`.
+* Removed the legacy `IdGenerator` interface. Instead, `FlakeIdGenerator` has been used.
 * Removed the deprecated `AsyncAtomicLong` and `AsyncAtomicReference` classes.
 * Removed the deprecated cache eviction configurations.
 * Removed the MapReduce feature.
