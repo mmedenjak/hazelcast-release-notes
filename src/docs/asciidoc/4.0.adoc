@@ -63,6 +63,9 @@ in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Improved the client protocol code generator so that it now
+automatically generates the custom codecs.
+https://github.com/hazelcast/hazelcast/pull/15630[#15630]
 * Added the ``cachePartitionLostListenerConfig``s to `CacheConfig` serialization
 and the client protocol encoding.
 https://github.com/hazelcast/hazelcast/pull/15608[#15608]
@@ -413,6 +416,11 @@ https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
 
+| All private classes
+| `com.hazelcast.spi.hotrestart`
+| `com.hazelcast.internal.hotrestart`
+| https://github.com/hazelcast/hazelcast/pull/15603[#15603]
+
 | All private NIO and serialization classes
 | `com.hazelcast.nio`
 | `com.hazelcast.internal.nio`
@@ -552,6 +560,9 @@ https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where the `node.isMaster()` method could cause
+inconsistent behaviors when it is executed during a partition service lock.
+https://github.com/hazelcast/hazelcast/pull/15617[#15617]
 * Fixed an issue where the CP subsystems' restart operations were
 not being canceled and waiting the running/scheduled discovery tasks.
 https://github.com/hazelcast/hazelcast/pull/15567[#15567]
