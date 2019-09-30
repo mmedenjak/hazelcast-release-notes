@@ -320,7 +320,10 @@ https://github.com/hazelcast/hazelcast/pull/15554[#15554]
 ** LATEST_ACCESS
 +
 https://github.com/hazelcast/hazelcast/pull/15292[#15292]
-
+* Introduced "split brain protection" concept to replace "quorum"
+to make it more explicit and unambiguous. Classes and configuration
+elements including the term "quorum" has been replaced by "splitbrainprotection".
+https://github.com/hazelcast/hazelcast/pull/15444[#15444]
 
 ==== Serialization
 
