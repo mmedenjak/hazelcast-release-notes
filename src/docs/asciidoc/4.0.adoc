@@ -13,10 +13,10 @@ for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 * **X.509 Certificate Authentication:** Added support for credential retrieval by the members
 from the X.509 certificates configured on the clients.
 See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section^].
-* **Intel(R) Optane(TM) DC Persistent Memory Integration:** Added support for
-Intel Optane DC to the High-Density Memory Store.
-See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section^]
-
+* **Persistent Memory Integration:** Added support for persistent memory,
+such as Intel(R) Optane(TM) DC, to be used by Hazelcast's
+High-Density Memory Store feature.
+See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#using-persistent-memory[Using Persistent Memory section^]
 
 *_Hazelcast IMDG Open Source New Features:_*
 
@@ -63,6 +63,10 @@ in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Changed the WAN target information that is sent to Management Center
+from `targetClusterName` to `wanPublisherId` to be consistent with
+the naming in WAN replication configuration.
+https://github.com/hazelcast/hazelcast/pull/15646[#15646]
 * Improved the client protocol code generator so that it now
 automatically generates the custom codecs.
 https://github.com/hazelcast/hazelcast/pull/15630[#15630]
@@ -204,20 +208,6 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
-* Removed the support for primitives for `setAttribute` and
-`getAttribute` operations.
-All member attributes support only string attributes now.
-https://github.com/hazelcast/hazelcast/pull/14974[#14974]
-* Removed the backward compatible `ADDED` event from the
-`loadAll` method.
-https://github.com/hazelcast/hazelcast/pull/14964[#14964]
-* Changed the `non-space-string` XSD type to collapse all
-whitespaces, so they are handled correctly in the declarative
-Hazelcast IMDG configuration files.
-https://github.com/hazelcast/hazelcast/issues/14919[#14919]
-* Removed the `java.util.function` back ports.
-https://github.com/hazelcast/hazelcast/pull/14912[#14912]
-
 ==== Distributed Data Structures
 
 * Removed the legacy `AtomicLong` and deprecated `IdGenerator`
@@ -247,6 +237,18 @@ upon the attempts to update a collection returned by the `keySet`,
 https://github.com/hazelcast/hazelcast/pull/15013[#15013]
 * Added `Nullable` and `Nonnull` annotations to IMap.
 https://github.com/hazelcast/hazelcast/pull/15003[#15003]
+
+==== Distributed Events
+
+* Refactored the `MigrationListener` API. With this change,
+an event is published when a new migration process starts
+and another one when migration is completed. Additionally,
+on each replica migration, both for primary and backup
+replica migrations, a migration event is published.
+https://github.com/hazelcast/hazelcast/pull/15071[#15071]
+* Removed the backward compatible `ADDED` event from the
+`loadAll` method.
+https://github.com/hazelcast/hazelcast/pull/14964[#14964]
 
 
 ==== Configuration
@@ -279,6 +281,10 @@ https://github.com/hazelcast/hazelcast/pull/15012[#15012]
 * Removed the `hazelcast.executionservice.taskscheduler.remove.oncancel`
 system property and related methods.
 https://github.com/hazelcast/hazelcast/pull/14998[#14998]
+* Changed the `non-space-string` XSD type to collapse all
+whitespaces, so they are handled correctly in the declarative
+Hazelcast IMDG configuration files.
+https://github.com/hazelcast/hazelcast/issues/14919[#14919]
 
 ==== WAN Replication
 
@@ -410,8 +416,14 @@ https://github.com/hazelcast/hazelcast/pull/15051[#15051]
 https://github.com/hazelcast/hazelcast/pull/14995[#14995]
 * Removed the `LegacyAsyncMap` interface.
 https://github.com/hazelcast/hazelcast/pull/14994[#14994]
+* Removed the support for primitives for `setAttribute` and
+`getAttribute` operations.
+All member attributes support only string attributes now.
+https://github.com/hazelcast/hazelcast/pull/14974[#14974]
 * Added `EntryExpiredListener` to the `EntryListener` interface.
 https://github.com/hazelcast/hazelcast/pull/14959[#14959]
+* Removed the `java.util.function` back ports.
+https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 * The packages of the following classes have been changed:
 +
 [cols="3a,2a,3a,1a"]
