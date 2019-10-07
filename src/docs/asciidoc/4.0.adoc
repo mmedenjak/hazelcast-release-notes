@@ -2,7 +2,7 @@
 
 == 4.0
 
-NOTE: See the https://docs.hazelcast.org/docs/4.0/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Hazelcast IMDG 4.0 Migration Guide]
+NOTE: See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Hazelcast IMDG 4.0 Migration Guide]
 for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 
 [[nf-40]]
@@ -12,18 +12,22 @@ for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 
 * **X.509 Certificate Authentication:** Added support for credential retrieval by the members
 from the X.509 certificates configured on the clients.
-See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
 * **Persistent Memory Integration:** Added support for persistent memory,
 such as Intel(R) Optane(TM) DC, to be used by Hazelcast's
 High-Density Memory Store feature.
-See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#using-persistent-memory[Using Persistent Memory section^]
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#using-persistent-memory[Using Persistent Memory section^].
+* **Security Audit Logging:** Introduced an API layer which
+allows processing auditable event streams.
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
+
 
 *_Hazelcast IMDG Open Source New Features:_*
 
 * **CP Subsystem Development Mode:** Introduced `UNSAFE` mode for the CP data
 structures. This way, you do not need to have at least three IMDG members
 to use CP subsystem: you can benefit from its functionalities using only one
-or two members. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section].
+or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section].
 
 [[enh-40]]
 === Enhancements
@@ -34,13 +38,13 @@ or two members. See the https://docs.hazelcast.org/docs/4.0/manual/html-single/i
 ** `batch-publisher`
 ** `custom-publisher`
 +
-See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#defining-wan-replication[Defining WAN Replication section^]
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#defining-wan-replication[Defining WAN Replication section^]
 * **Improvements in the JAAS Authentication Mechanism:**
 ** Added support for the standard JAAS callbacks, i.e., `NameCallback` and `PasswordCallback`
 ** Secrets, if not necessary, are not stored now
 ** Cleaned up the `Credentials` and `ClusterPrincipal` object.
 +
-See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#???[??? section^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
 
 
 *_Hazelcast IMDG Open Source Enhancements:_*
@@ -48,21 +52,47 @@ See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#?
 * **HTTPS for scripts:**Enabled the REST endpoints for the `cluster.sh` and
 `healthcheck.sh` scripts to use HTTPS. Before, they were
 using HTTP. See the
-link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and
-link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#health-check-script[healtcheck.sh^] sections.
+link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and
+link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#health-check-script[healtcheck.sh^] sections.
 * **MapLoader with custom time-to-live:** Introduced the `EntryStore` and `EntryLoader`
 interfaces (adding expiration support for MapStore). See the
-https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#loading-and-storing-persistent-data[Loading and Storing Persistent Data section].
+https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#loading-and-storing-persistent-data[Loading and Storing Persistent Data section].
 * **JCache 1.1.1:**Updated Hazelcast JCache implementation to support JCache 1.1.1.
 This version of JCache does not introduce new functionalities;
 it resolves the errata and issues in JCache 1.1.0.
-See the https://docs.hazelcast.org/docs/4.0/manual/html-single/#jcache-111[Upgrading to JCache 1.1.1 section].
+See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#jcache-111[Upgrading to JCache 1.1.1 section].
 * **Moby naming:** Introduced friendly names for the Hazelcast instances to be shown
-in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#checking-the-name-of-the-instance-for-rest-client[Checking the Instances' Name section^]. Also, a new system property, `hazelcast.member.naming.moby.enabled`, is introduced for this purpose.
+in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#checking-the-name-of-the-instance-for-rest-client[Checking the Instances' Name section^]. Also, a new system property, `hazelcast.member.naming.moby.enabled`, is introduced for this purpose.
+* **Boomerang Backups:** Introduced a way to eliminate the sync backup
+wait from the client and send the backup ACK to the client:
+the smart clients have been made backup aware and the backups
+now are redirected to the client directly from the backup members.
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
+* **CP Subsystem Persistence:** Implemented persistent for Hazelcast's
+CP (Consistency & Partition Tolerance) subsystem. 
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
+* **Single Thread Hazelcast Clients Performance:** Hazelcast clients have been designed to be
+used by multiple threads; the more threads you throw at it, the better the performance
+(until it is saturated). Now, it has also been optimized for a single thread doing requests:
+The default values for the `hazelcast.client.io.write.through` and `hazelcast.client.response.thread.dynamic`
+have been changed from `false` to `true`.
+
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added "integer" for all the enum types in the protocol level,
+for custom type codecs (`TimeUnit` and `ExpiryPolicyType`).
+https://github.com/hazelcast/hazelcast/pull/15673[#15673]
+* Added value data types (long, double) to the diagnostics
+metrics which are serialized by `MetricsCompressor`.
+https://github.com/hazelcast/hazelcast/pull/15655[#15655]
+* Changed `ClientMessage` so that it is no longer a
+`LinkedList` which may produce too much litter.
+https://github.com/hazelcast/hazelcast/pull/15652[#15652]
+* Added dynamic discovery for the metrics which are mostly data structure
+and network related ones.
+https://github.com/hazelcast/hazelcast/pull/15650[#15650]
 * Changed the WAN target information that is sent to Management Center
 from `targetClusterName` to `wanPublisherId` to be consistent with
 the naming in WAN replication configuration.
@@ -97,6 +127,11 @@ https://github.com/hazelcast/hazelcast/pull/15421[#15421]
 * Added a new implementation of `SecondsBasedEntryTaskScheduler` for the
 `FOR_EACH` mode to improve the performance of `TransactionContext.commit()`.
 https://github.com/hazelcast/hazelcast/pull/15414[#15414]
+* Added a level of memory protection to the Hazelcast client protocol:
+untrusted connections (the ones which haven't finished
+authentication yet) do not accept fragmented messages; they check the
+frame size against a configurable limit.
+https://github.com/hazelcast/hazelcast/pull/15396[#15396]
 * Made the Hazelcast specific root nodes in the YAML
 configurations optional.
 https://github.com/hazelcast/hazelcast/pull/15389[#15389]
@@ -253,11 +288,19 @@ https://github.com/hazelcast/hazelcast/pull/14964[#14964]
 
 ==== Configuration
 
+* Removed the `connection-attempt-period` and `connection-attempt-limit`
+configuration elements. Instead, the elements of `connection-retry`
+are now used.
+https://github.com/hazelcast/hazelcast/pull/15675[#15675]
 * Moved all the read-only configuration classes to internal package.
 https://github.com/hazelcast/hazelcast/pull/15569[#15569]
 * Renamed `MapAttributeConfig` as `AttributeConfig`. Also, its
 `extractor` field is renamed as `extractorClassName`.
 https://github.com/hazelcast/hazelcast/pull/15548[#15548]
+* Improved the index configuration API so that now you
+can specify the name of the index. Also, instead of boolean type,
+you can use index type enumeration.
+https://github.com/hazelcast/hazelcast/pull/15537[#15537]
 * Renamed the `group` configuration element as `cluster` and
 removed the `GroupConfig` class.
 https://github.com/hazelcast/hazelcast/pull/15540[#15540]
@@ -371,6 +414,8 @@ https://github.com/hazelcast/hazelcast/pull/15366[#15366]
 
 ==== API Package/Interface Changes
 
+* Moved various private classes to internal packages.
+https://github.com/hazelcast/hazelcast/pull/15616[#15616]
 * The APIs that returned `UUID` string now returns `UUID`. These include `Endpoint.getUUID`,
 listener registrations/deregistrations, keys of replica timestamps of `VectorClock`,
 ``UUID``s in the executor service, `UUID` in the `MigrationInfo`, cluster ID and transaction ID.
@@ -494,6 +539,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 | `com.hazelcast.executor`
 | https://github.com/hazelcast/hazelcast/pull/15187[#15187]
 
+| `Address`
+| `com.hazelcast.nio`
+| `com.hazelcast.cluster`
+| https://github.com/hazelcast/hazelcast/pull/15172[#15172]
+
 |`ClassNameFilter`, `SerializationClassNameFilter` 
 |`com.hazelcast.nio`
 |`com.hazelcast.nio.serialization`
@@ -575,6 +625,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed an exception handling issue by the `setLicense` REST endpoint.
+https://github.com/hazelcast/hazelcast/pull/15685[#15685]
+* Fixed a race issue by initializing the local CP members before
+initializing the metadata group.
+https://github.com/hazelcast/hazelcast/pull/15684[#15684]
 * Fixed an issue where the `node.isMaster()` method could cause
 inconsistent behaviors when it is executed during a partition service lock.
 https://github.com/hazelcast/hazelcast/pull/15617[#15617]
@@ -736,9 +791,15 @@ with the ones provided by the Hazelcast IMDG CP Subsystem:
 [[removed-40]]
 === Removed Features
 
+* Removed `ICompletableFuture` which was a replacement for the missing JDK
+8's `CompletableFuture`. Now, it has been replaced by `CompletionStage`.
+See https://github.com/hazelcast/hazelcast/pull/15441[#15441] for more details.
 * Removed the methods in the `Member` and `AddressPicker` classes.
 * Removed the deprecated diagnostics property names.
-* Removed the `ILock` interface. The `ILock implementation is still being kept
+* Removed the deprecated `EvictionPolicyType` class. Instead use the
+enhanced `EvictionPolicy` class.
+* Removed the `ILock` and `ICondition` interfaces, and their
+implementations. The `ILock implementation is still being kept
 as the development/unsafe mode of CP Subsystem's `FencedLock`.
 * Removed the legacy `IdGenerator` interface. Instead, `FlakeIdGenerator` has been used.
 * Removed the deprecated `AsyncAtomicLong` and `AsyncAtomicReference` classes.
