@@ -13,13 +13,20 @@ for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 * **X.509 Certificate Authentication:** Added support for credential retrieval by the members
 from the X.509 certificates configured on the clients.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
+* **Security Audit Logging:** Introduced an API layer which
+allows processing auditable event streams.
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
 * **Persistent Memory Integration:** Added support for persistent memory,
 such as Intel(R) Optane(TM) DC, to be used by Hazelcast's
 High-Density Memory Store feature.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#using-persistent-memory[Using Persistent Memory section^].
-* **Security Audit Logging:** Introduced an API layer which
-allows processing auditable event streams.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
+* **Encrypting Data in Hot Restart Store :** Provided a framework and implementation to encrypt
+data in Hot Restart stores ("at rest") for data held in distributed structures.
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[???^].
+* **Out of the Box LDAP Configuration:** Introduced a new LDAP login module
+where you do not need to provide your own JAAS login module for this purpose.
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[???^].
+
 
 
 *_Hazelcast IMDG Open Source New Features:_*
@@ -28,6 +35,10 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index
 structures. This way, you do not need to have at least three IMDG members
 to use CP subsystem: you can benefit from its functionalities using only one
 or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section].
+* **CP Subsystem Persistence:** Implemented persistent for Hazelcast's
+CP (Consistency & Partition Tolerance) subsystem. 
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
+
 
 [[enh-40]]
 === Enhancements
@@ -39,12 +50,17 @@ or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-s
 ** `custom-publisher`
 +
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#defining-wan-replication[Defining WAN Replication section^]
+* **Tracking WAN Synchronization Events:** Management Center, logs and diagnostics now report
+the progress of a WAN synchronization.
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^]
 * **Improvements in the JAAS Authentication Mechanism:**
 ** Added support for the standard JAAS callbacks, i.e., `NameCallback` and `PasswordCallback`
 ** Secrets, if not necessary, are not stored now
 ** Cleaned up the `Credentials` and `ClusterPrincipal` object.
 +
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
+* **Javadoc for the Hazelcast IMDG Enterprise Edition:** Produced Javadoc JAR file
+for the Hazelcast IMDG Enterprise Edition.
 
 
 *_Hazelcast IMDG Open Source Enhancements:_*
@@ -68,9 +84,6 @@ wait from the client and send the backup ACK to the client:
 the smart clients have been made backup aware and the backups
 now are redirected to the client directly from the backup members.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
-* **CP Subsystem Persistence:** Implemented persistent for Hazelcast's
-CP (Consistency & Partition Tolerance) subsystem. 
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
 * **Single Thread Hazelcast Clients Performance:** Hazelcast clients have been designed to be
 used by multiple threads; the more threads you throw at it, the better the performance
 (until it is saturated). Now, it has also been optimized for a single thread doing requests:
@@ -81,6 +94,10 @@ have been changed from `false` to `true`.
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* In unsafe mode of CP Subsystem, `commitIndex` and session information
+now are migrated via partitioning system. Also waiting operations
+are notified when the partition primary is migrated.
+https://github.com/hazelcast/hazelcast/pull/15707[#15707]
 * Added "integer" for all the enum types in the protocol level,
 for custom type codecs (`TimeUnit` and `ExpiryPolicyType`).
 https://github.com/hazelcast/hazelcast/pull/15673[#15673]
@@ -625,6 +642,9 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where the `CompletableFuture#defaultExecutor()` method
+caused compilation failure on JDK 9 due to the "protected" access.
+https://github.com/hazelcast/hazelcast/pull/15702[#15702]
 * Fixed an exception handling issue by the `setLicense` REST endpoint.
 https://github.com/hazelcast/hazelcast/pull/15685[#15685]
 * Fixed a race issue by initializing the local CP members before
