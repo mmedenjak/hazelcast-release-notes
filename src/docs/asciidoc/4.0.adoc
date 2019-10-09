@@ -65,19 +65,19 @@ for the Hazelcast IMDG Enterprise Edition.
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
-* **HTTPS for scripts:**Enabled the REST endpoints for the `cluster.sh` and
+* **HTTPS for Scripts:**Enabled the REST endpoints for the `cluster.sh` and
 `healthcheck.sh` scripts to use HTTPS. Before, they were
 using HTTP. See the
 link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and
 link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#health-check-script[healtcheck.sh^] sections.
-* **MapLoader with custom time-to-live:** Introduced the `EntryStore` and `EntryLoader`
+* **MapLoader with Custom time-to-live:** Introduced the `EntryStore` and `EntryLoader`
 interfaces (adding expiration support for MapStore). See the
 https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#loading-and-storing-persistent-data[Loading and Storing Persistent Data section].
 * **JCache 1.1.1:**Updated Hazelcast JCache implementation to support JCache 1.1.1.
 This version of JCache does not introduce new functionalities;
 it resolves the errata and issues in JCache 1.1.0.
 See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#jcache-111[Upgrading to JCache 1.1.1 section].
-* **Moby naming:** Introduced friendly names for the Hazelcast instances to be shown
+* **Moby Naming:** Introduced friendly names for the Hazelcast instances to be shown
 in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#checking-the-name-of-the-instance-for-rest-client[Checking the Instances' Name section^]. Also, a new system property, `hazelcast.member.naming.moby.enabled`, is introduced for this purpose.
 * **Boomerang Backups:** Introduced a way to eliminate the sync backup
 wait from the client and send the backup ACK to the client:
@@ -89,6 +89,12 @@ used by multiple threads; the more threads you throw at it, the better the perfo
 (until it is saturated). Now, it has also been optimized for a single thread doing requests:
 The default values for the `hazelcast.client.io.write.through` and `hazelcast.client.response.thread.dynamic`
 have been changed from `false` to `true`.
+* **JSON Support for REST:** Added support for `HazelcastJsonValue` over REST API: When a
+`HazelcastJsonValue` is requested, now a UTF8 encoded JSON value is returned. The
+response  has the JSON string in the payload and "Content-Type"
+header is set to `application/json`.
+https://github.com/hazelcast/hazelcast/pull/15017[#15017]
+
 
 
 The following are the other improvements performed to solve the enhancement
@@ -198,11 +204,6 @@ https://github.com/hazelcast/hazelcast/pull/15056[#15056]
 * Hazelcast IMDG now sends error messages and stack trace separately
 (for WAN consistency check) to the Management Center.
 https://github.com/hazelcast/hazelcast/pull/15052[#15052]
-* Added support for `HazelcastJsonValue` over REST API: When a
-`HazelcastJsonValue` is requested, now a UTF8 encoded JSON value is returned. The
-response  has the JSON string in the payload and "Content-Type"
-header is set to `application/json`.
-https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 * Introduced functional and serializable interfaces having a single
 abstract method which declares a checked exception. The interfaces
 are also serializable and can be readily used in the IMDG API when
@@ -707,6 +708,10 @@ https://github.com/hazelcast/hazelcast/pull/15215[#15215]
 * Fixed an issue where `SimpleTokenCredentials` could not be
 deserialized due to the missing handling in `SpiPortableHook`.
 https://github.com/hazelcast/hazelcast/issues/15196[#15196]
+* Fixed an issue where the commit phase of transactional maps
+was not checking the member-wide upper limit for the entries in
+write behind queues.
+https://github.com/hazelcast/hazelcast/pull/15186[#15186]
 * Fixed an issue where the queries like `labels[any] = 0` and `labels[any] = 1`
 were optimized only to `false` since `labels[any]` was interpreted as a
 regular attribute name having a single value.
