@@ -1,6 +1,6 @@
 
 
-== 4.0
+== 4.0-BETA-1
 
 NOTE: See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Hazelcast IMDG 4.0 Migration Guide]
 for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
@@ -35,7 +35,7 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index
 structures. This way, you do not need to have at least three IMDG members
 to use CP subsystem: you can benefit from its functionalities using only one
 or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section].
-* **CP Subsystem Persistence:** Implemented persistent for Hazelcast's
+* **CP Subsystem Persistence:** Implemented persistency for Hazelcast's
 CP (Consistency & Partition Tolerance) subsystem. 
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
 
@@ -100,6 +100,8 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Refactored `ProxyService` to distinguish local-only and cluster-wide proxy creation.
+https://github.com/hazelcast/hazelcast/pull/15740[#15740]
 * In unsafe mode of CP Subsystem, `commitIndex` and session information
 now are migrated via partitioning system. Also waiting operations
 are notified when the partition primary is migrated.
@@ -113,6 +115,10 @@ https://github.com/hazelcast/hazelcast/pull/15655[#15655]
 * Changed `ClientMessage` so that it is no longer a
 `LinkedList` which may produce too much litter.
 https://github.com/hazelcast/hazelcast/pull/15652[#15652]
+* Introduced security realm configuration which can be referenced
+from Hazelcast's security configuration. Currently, the realms support
+configuring `authentication` and/or `identity`.
+https://github.com/hazelcast/hazelcast/pull/15651[#15651]
 * Added dynamic discovery for the metrics which are mostly data structure
 and network related ones.
 https://github.com/hazelcast/hazelcast/pull/15650[#15650]
@@ -646,6 +652,9 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 * Fixed an issue where the `CompletableFuture#defaultExecutor()` method
 caused compilation failure on JDK 9 due to the "protected" access.
 https://github.com/hazelcast/hazelcast/pull/15702[#15702]
+* Fixed an issue where the backup events were sent to every connected client
+instead only the related client.
+https://github.com/hazelcast/hazelcast/pull/15691[#15691]
 * Fixed an exception handling issue by the `setLicense` REST endpoint.
 https://github.com/hazelcast/hazelcast/pull/15685[#15685]
 * Fixed a race issue by initializing the local CP members before
@@ -821,10 +830,16 @@ with the ones provided by the Hazelcast IMDG CP Subsystem:
 See https://github.com/hazelcast/hazelcast/pull/15441[#15441] for more details.
 * Removed the methods in the `Member` and `AddressPicker` classes.
 * Removed the deprecated diagnostics property names.
+* Removed `PagingPredicateAccessor` since the client module has been
+merged to core. Instead, you can use the direct casts to `PagingPredicateImpl`.
 * Removed the deprecated `EvictionPolicyType` class. Instead use the
 enhanced `EvictionPolicy` class.
-* Removed the `ILock` and `ICondition` interfaces, and their
-implementations. The `ILock implementation is still being kept
+* Removed deprecated `CacheCreateConfigOperation`. It has been replaced by
+`AddCacheConfigOperation`.
+* Removed deprecated `PartitioningStrategyConfig.setPartitionStrategy()`. It
+has been replaced by `PartitioningStrategyConfig.setPartitioningStrategy().
+* Removed the `ILock` and `ICondition` interfaces.
+The ILock implementation is still being kept
 as the development/unsafe mode of CP Subsystem's `FencedLock`.
 * Removed the legacy `IdGenerator` interface. Instead, `FlakeIdGenerator` has been used.
 * Removed the deprecated `AsyncAtomicLong` and `AsyncAtomicReference` classes.
