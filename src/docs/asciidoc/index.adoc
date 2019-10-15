@@ -11,7 +11,7 @@ include::attributes.adoc[]
 :source-language: java
 :stylesheet: stylesheets/hazelcast.css
 :toc: left
-:toclevels: 2
+:toclevels: 4
 :docinfo: shared
 
 image::logo_dark.png[Hazelcast IMDG,link=https://hazelcast.org/,window=_blank]
@@ -20,17 +20,23 @@ image::logo_dark.png[Hazelcast IMDG,link=https://hazelcast.org/,window=_blank]
 
 = Hazelcast IMDG Release Notes 
 
-Welcome to the Hazelcast IMDG Release Notes. This document includes the new features, enhancements and fixed issues for
-Hazelcast IMDG Open Source edition releases.
+Welcome to the Hazelcast IMDG Release Notes.
+This document includes the new features, enhancements
+and fixed issues for Hazelcast IMDG releases.
+The linked numbers refer to the issue number in the Hazelcast IMDG GitHub repository.
 
 Please select a release from the Table of Contents on the left panel to see its release notes.
 
+NOTE: New feature and enhancement listings are grouped by
+Hazelcast IMDG editions, i.e., open source and enterprise.
+The purpose of this is to separate the ones that belong to the
+enterprise edition. The open source ones are already included
+in the enterprise edition.
 
-NOTE: The linked numbers refer to the issue number in the Hazelcast IMDG GitHub repository.
 
 :numbered!:
 
-//include::4.0.adoc[]
+include::4.0.adoc[]
 
 include::3.12.3.adoc[]
 

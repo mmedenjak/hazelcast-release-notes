@@ -27,8 +27,6 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index
 where you do not need to provide your own JAAS login module for this purpose.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[???^].
 
-
-
 *_Hazelcast IMDG Open Source New Features:_*
 
 * **CP Subsystem Development Mode:** Introduced `UNSAFE` mode for the CP data
@@ -267,6 +265,8 @@ https://github.com/hazelcast/hazelcast/pull/11107[#11107]
 [[bc-40]]
 === Breaking Changes
 
+NOTE: Please see the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Upgrading to Hazelcast IMDG 4.0^] for the details of following breaking changes to be considered while upgrading to IMDG 4.0. 
+
 ==== Distributed Data Structures
 
 * Removed the legacy `AtomicLong` and deprecated `IdGenerator`
@@ -312,6 +312,13 @@ https://github.com/hazelcast/hazelcast/pull/14964[#14964]
 
 ==== Configuration
 
+*
+* Undeprecated the following group properties:
+** `hazelcast.memcache.enabled`
+** `hazelcast.rest.enabled`
+** `hazelcast.http.healthcheck.enabled`
++
+https://github.com/hazelcast/hazelcast/pull/15743[#15743]
 * Removed the `connection-attempt-period` and `connection-attempt-limit`
 configuration elements. Instead, the elements of `connection-retry`
 are now used.
@@ -445,9 +452,9 @@ listener registrations/deregistrations, keys of replica timestamps of `VectorClo
 ``UUID``s in the executor service, `UUID` in the `MigrationInfo`, cluster ID and transaction ID.
 https://github.com/hazelcast/hazelcast/pull/15473[#15473]
 * Moved the capability interfaces from `com.hazelcast.spi` to
-`com.hz.internal.services`.
+`com.hz.internal.services`. Classes like `AbstractDistributedObject`
+have been moved to `com.hazelcast.spi.impl`.
 https://github.com/hazelcast/hazelcast/pull/15403[#15403]
-Classes like AbstractDistributedObject have been moved to com.hz.spi.impl
 * Made all the classes/interfaces in the `com.hazelcast.spi` package
 `PrivateAPI`.
 https://github.com/hazelcast/hazelcast/pull/15401[#15401]

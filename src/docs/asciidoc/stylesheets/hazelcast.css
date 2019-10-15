@@ -719,3 +719,29 @@ body.toc2.toc-left #toc.toc2 #toctitle { font-size: 0.9375em; }
 .sidebarblock > .content > .title { margin-top: -20px; margin-right: -20px; margin-left: -20px; margin-bottom: 20px; padding: 1em; font-size: 0.75em; background: #eaeaea; }
 
 .literalblock pre, .listingblock pre { background: #f9f9f9; }
+
+#toc #toctree .jstree-anchor {
+white-space: normal;
+height: inherit;
+hyphens: auto;
+font-size:14px;
+}
+
+@media only screen and (min-width: 1280px)
+#toc.toc2 ul ul {
+	padding-left: 0.25em;
+}
+
+#toc li {
+	margin-left: 0;
+}
+
+input#search {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        padding: 4px 0;
+        width: 100%;
+    }
