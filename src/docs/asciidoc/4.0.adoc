@@ -107,6 +107,13 @@ https://github.com/hazelcast/hazelcast/pull/15707[#15707]
 * Added "integer" for all the enum types in the protocol level,
 for custom type codecs (`TimeUnit` and `ExpiryPolicyType`).
 https://github.com/hazelcast/hazelcast/pull/15673[#15673]
+* Added client support for the following operations that Management
+Center can send to an IMDG cluster:
+** change the cluster state
+** retrieve the map configuration
+** update the map configuration
++
+https://github.com/hazelcast/hazelcast/pull/15662[#15662]
 * Added value data types (long, double) to the diagnostics
 metrics which are serialized by `MetricsCompressor`.
 https://github.com/hazelcast/hazelcast/pull/15655[#15655]
@@ -269,6 +276,9 @@ NOTE: Please see the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html
 
 ==== Distributed Data Structures
 
+* Removed the deprecated `getReplicationEventCount()` method of
+local replicated map statistics.
+https://github.com/hazelcast/hazelcast/pull/15676[#15676]
 * Removed the legacy `AtomicLong` and deprecated `IdGenerator`
 implementations.
 https://github.com/hazelcast/hazelcast/pull/15601[#15601]
@@ -312,13 +322,34 @@ https://github.com/hazelcast/hazelcast/pull/14964[#14964]
 
 ==== Configuration
 
-*
+* Removed the deprecated `AwsConfig` getter/setter methods, e.g., 
+`getAccessKey()`. They have been replaced with the `getProperty()`
+methods, e.g., `getProperty("access-key")`.
+https://github.com/hazelcast/hazelcast/pull/15758[#15758]
+* Moved the following client statistics properties to the public `ClientProperty`
+class.
+** `hazelcast.client.statistics.enabled`
+** `hazelcast.client.statistics.period.seconds`
++
+https://github.com/hazelcast/hazelcast/pull/15752[#15752]
 * Undeprecated the following group properties:
 ** `hazelcast.memcache.enabled`
 ** `hazelcast.rest.enabled`
 ** `hazelcast.http.healthcheck.enabled`
 +
 https://github.com/hazelcast/hazelcast/pull/15743[#15743]
+* Removed the deprecated `get/setImplementation()` methods of
+login module configuration. They have been replaced with
+`get/setClassName()`.
+https://github.com/hazelcast/hazelcast/pull/15729[#15729]
+* Removed the deprecated `get/setSyncBackupCount()` methods of
+MultiMap configuration. They have been replaced with
+`get/setBackupCount()`.
+https://github.com/hazelcast/hazelcast/pull/15720[#15720]
+* Removed the deprecated `get/setServiceImpl()` methods of
+service configuration. They have been replaced with
+`get/setImplementation()`.
+https://github.com/hazelcast/hazelcast/pull/15680[#15680]
 * Removed the `connection-attempt-period` and `connection-attempt-limit`
 configuration elements. Instead, the elements of `connection-retry`
 are now used.
@@ -445,6 +476,10 @@ https://github.com/hazelcast/hazelcast/pull/15366[#15366]
 
 ==== API Package/Interface Changes
 
+* Converted the `Aggregator` abstract class to an interface.
+https://github.com/hazelcast/hazelcast/pull/15764[#15764]
+* Replaced the `NodeEngine.isActive()` method by `NodeEngine.isRunning()`.
+https://github.com/hazelcast/hazelcast/pull/15721[#15721]
 * Moved various private classes to internal packages.
 https://github.com/hazelcast/hazelcast/pull/15616[#15616]
 * The APIs that returned `UUID` string now returns `UUID`. These include `Endpoint.getUUID`,
