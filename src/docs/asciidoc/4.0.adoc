@@ -37,7 +37,6 @@ or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-s
 CP (Consistency & Partition Tolerance) subsystem. 
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
 
-
 [[enh-40]]
 === Enhancements
 
@@ -57,9 +56,9 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index
 ** Cleaned up the `Credentials` and `ClusterPrincipal` object.
 +
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
-* **Javadoc for the Hazelcast IMDG Enterprise Edition:** Produced Javadoc JAR file
+* **Javadoc for the Hazelcast IMDG Enterprise Edition:** Added Javadoc JAR file
 for the Hazelcast IMDG Enterprise Edition.
-
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#getting-started[Getting Started section^]
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
@@ -77,11 +76,11 @@ it resolves the errata and issues in JCache 1.1.0.
 See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#jcache-111[Upgrading to JCache 1.1.1 section].
 * **Moby Naming:** Introduced friendly names for the Hazelcast instances to be shown
 in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#checking-the-name-of-the-instance-for-rest-client[Checking the Instances' Name section^]. Also, a new system property, `hazelcast.member.naming.moby.enabled`, is introduced for this purpose.
-* **Boomerang Backups:** Introduced a way to eliminate the sync backup
+* **Improved Client Performance:** Introduced a way to eliminate the sync backup
 wait from the client and send the backup ACK to the client:
 the smart clients have been made backup aware and the backups
 now are redirected to the client directly from the backup members.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#configuring-backup-acknowledgment[Configuring Backup Acknowledgment section^].
 * **Single Thread Hazelcast Clients Performance:** Hazelcast clients have been designed to be
 used by multiple threads; the more threads you throw at it, the better the performance
 (until it is saturated). Now, it has also been optimized for a single thread doing requests:
@@ -92,8 +91,6 @@ have been changed from `false` to `true`.
 response  has the JSON string in the payload and "Content-Type"
 header is set to `application/json`.
 https://github.com/hazelcast/hazelcast/pull/15017[#15017]
-
-
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
@@ -265,6 +262,9 @@ https://github.com/hazelcast/hazelcast/pull/14798[#14798]
 * Separated the statistic gathering for `IMap.set(K, V)` and
 `IMap.put(K, V) operations`.
 https://github.com/hazelcast/hazelcast/issues/14663[#14663]
+* Renamed the class to start a Hazelcast member from `com.hazelcast.core.server.StartServer`
+to `com.hazelcast.core.server.HazelcastMemberStarter`.
+https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 * Improved the fluent interface of configuration classes by adding
 the `return this` statements to the setter methods.
 https://github.com/hazelcast/hazelcast/pull/11107[#11107]
@@ -319,7 +319,6 @@ https://github.com/hazelcast/hazelcast/pull/15071[#15071]
 `loadAll` method.
 https://github.com/hazelcast/hazelcast/pull/14964[#14964]
 
-
 ==== Configuration
 
 * Removed the deprecated `AwsConfig` getter/setter methods, e.g., 
@@ -363,7 +362,7 @@ https://github.com/hazelcast/hazelcast/pull/15548[#15548]
 can specify the name of the index. Also, instead of boolean type,
 you can use index type enumeration.
 https://github.com/hazelcast/hazelcast/pull/15537[#15537]
-* Renamed the `group` configuration element as `cluster` and
+* Renamed the `group-name` configuration element as `cluster-name` and
 removed the `GroupConfig` class.
 https://github.com/hazelcast/hazelcast/pull/15540[#15540]
 * Removed the deprecated the configuration parameters from
@@ -476,6 +475,9 @@ https://github.com/hazelcast/hazelcast/pull/15366[#15366]
 
 ==== API Package/Interface Changes
 
+* Moved the `getXaResource()` method from the `TransactionContext` class
+to `HazelcastInstance`.
+https://github.com/hazelcast/hazelcast/pull/15728[#15728]
 * Converted the `Aggregator` abstract class to an interface.
 https://github.com/hazelcast/hazelcast/pull/15764[#15764]
 * Replaced the `NodeEngine.isActive()` method by `NodeEngine.isRunning()`.
@@ -686,8 +688,6 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 
 |===
 
-
-
 [[fixes-40]]
 === Fixes
 
@@ -867,9 +867,11 @@ with the ones provided by the Hazelcast IMDG CP Subsystem:
 [[removed-40]]
 === Removed Features
 
+* Removed the User Defined Services (Hazelcast's SPI) feature.
 * Removed `ICompletableFuture` which was a replacement for the missing JDK
 8's `CompletableFuture`. Now, it has been replaced by `CompletionStage`.
 See https://github.com/hazelcast/hazelcast/pull/15441[#15441] for more details.
+* Removed the `setLicenseKey()` method of `ClientConfig`.
 * Removed the methods in the `Member` and `AddressPicker` classes.
 * Removed the deprecated diagnostics property names.
 * Removed `PagingPredicateAccessor` since the client module has been
@@ -902,8 +904,3 @@ as the development/unsafe mode of CP Subsystem's `FencedLock`.
 ** `hazelcast.icmp.ttl`
 ** `hazelcast.mc.url.change.enabled`
 ** `hazelcast.slow.invocation.detector.threshold.millis`
-
-
-
-
-

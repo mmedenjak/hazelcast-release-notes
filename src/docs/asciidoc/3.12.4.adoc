@@ -1,0 +1,12 @@
+== 3.12.4
+
+[[fixes-3124]]
+=== Fixes
+
+* Fixed an issue where the predicate queries to retrieve
+multi-values were failing on the nested JSON objects in arrays.
+https://github.com/hazelcast/hazelcast/pull/15789[#15789]
+* Fixed the Java heap space `OutOfMemory` issue during the
+WebSphere Liberty server startup, with Hazelcast client
+which is enabled for session persistence.
+https://github.com/hazelcast/hazelcast/issues/15454[#15454]
