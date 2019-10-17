@@ -17,6 +17,9 @@ https://github.com/hazelcast/hazelcast/pull/15789[#15789]
 * Fixed a possible livelock when many threads were trying to
 use the `incrementMod()` method causing an infinite loop.
 https://github.com/hazelcast/hazelcast/pull/15777[#15777]
+* Fixed shutting down Management Center service caused by
+an NPE when MultiMap statistics are gathered after
+`MultiMapService.shutdown()`. [#15656]
 * Fixed the Java heap space `OutOfMemory` issue during the
 WebSphere Liberty server startup, with Hazelcast client
 which is enabled for session persistence.
