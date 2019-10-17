@@ -1,11 +1,22 @@
 == 3.12.4
 
+[[enh-3124]]
+=== Enhancements
+
+* Added support for the `PartitionLostListener` configuration
+on the client side.
+https://github.com/hazelcast/hazelcast/issues/15762[#15762]
+
+
 [[fixes-3124]]
 === Fixes
 
 * Fixed an issue where the predicate queries to retrieve
 multi-values were failing on the nested JSON objects in arrays.
 https://github.com/hazelcast/hazelcast/pull/15789[#15789]
+* Fixed a possible livelock when many threads were trying to
+use the `incrementMod()` method causing an infinite loop.
+https://github.com/hazelcast/hazelcast/pull/15777[#15777]
 * Fixed the Java heap space `OutOfMemory` issue during the
 WebSphere Liberty server startup, with Hazelcast client
 which is enabled for session persistence.
