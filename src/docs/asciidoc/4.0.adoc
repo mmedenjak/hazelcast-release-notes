@@ -22,7 +22,7 @@ High-Density Memory Store feature.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#using-persistent-memory[Using Persistent Memory section^].
 * **Encrypting Data in Hot Restart Store :** Provided a framework and implementation to encrypt
 data in Hot Restart stores ("at rest") for data held in distributed structures.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[???^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#encryption-at-rest[Encryption at Rest section^].
 * **Out of the Box LDAP Configuration:** Introduced a new LDAP login module
 where you do not need to provide your own JAAS login module for this purpose.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[???^].
@@ -49,13 +49,10 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-s
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#defining-wan-replication[Defining WAN Replication section^]
 * **Tracking WAN Synchronization Events:** Management Center, logs and diagnostics now report
 the progress of a WAN synchronization.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^]
 * **Improvements in the JAAS Authentication Mechanism:**
 ** Added support for the standard JAAS callbacks, i.e., `NameCallback` and `PasswordCallback`
 ** Secrets, if not necessary, are not stored now
 ** Cleaned up the `Credentials` and `ClusterPrincipal` object.
-+
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
 * **Javadoc for the Hazelcast IMDG Enterprise Edition:** Added Javadoc JAR file
 for the Hazelcast IMDG Enterprise Edition.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#getting-started[Getting Started section^]
