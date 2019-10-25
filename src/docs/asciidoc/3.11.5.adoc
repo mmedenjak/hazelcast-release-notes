@@ -1,0 +1,11 @@
+
+
+== 3.11.5
+
+[[fixes-3115]]
+=== Fixes
+
+* Fixed an issue where the newly joining members could not form
+a cluster when the existing members go down. For this, the joiner
+mechanism has been improved, details of which can be seen in 
+https://github.com/hazelcast/hazelcast/pull/15871[#15871].
