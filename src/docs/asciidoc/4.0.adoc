@@ -10,12 +10,6 @@ for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 
 *_Hazelcast IMDG Enterprise New Features:_*
 
-* **X.509 Certificate Authentication:** Added support for credential retrieval by the members
-from the X.509 certificates configured on the clients.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
-* **Security Audit Logging:** Introduced an API layer which
-allows processing auditable event streams.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section^].
 * **Persistent Memory Integration:** Added support for persistent memory,
 such as Intel(R) Optane(TM) DC, to be used by Hazelcast's
 High-Density Memory Store feature.
@@ -23,16 +17,19 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index
 * **Encrypting Data in Hot Restart Store :** Provided a framework and implementation to encrypt
 data in Hot Restart stores ("at rest") for data held in distributed structures.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#encryption-at-rest[Encryption at Rest section^].
+* **X.509 Certificate Authentication:** Added support for credential retrieval by the members
+from the X.509 certificates configured on the clients.
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#tls-authentication-type[Security chapter^].
 * **Out of the Box LDAP Configuration:** Introduced a new LDAP login module
 where you do not need to provide your own JAAS login module for this purpose.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[???^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#ldap-authentication-type[Security chapter^].
 
 *_Hazelcast IMDG Open Source New Features:_*
 
 * **CP Subsystem Development Mode:** Introduced `UNSAFE` mode for the CP data
 structures. This way, you do not need to have at least three IMDG members
 to use CP subsystem: you can benefit from its functionalities using only one
-or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#???[??? section].
+or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-unsafe-mode[CP Subsystem Unsafe Mode section].
 * **CP Subsystem Persistence:** Implemented persistency for Hazelcast's
 CP (Consistency & Partition Tolerance) subsystem. 
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
@@ -42,7 +39,9 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-s
 
 *_Hazelcast IMDG Enterprise Enhancements:_*
 
-* **Separating WAN Publisher Configuration:** The previously known `wan-publisher` (or `WanPublisherConfig`) has been separated into two configuration elements to be used for built-in and custom WAN publishers:
+* **Separating WAN Publisher Configuration:** The previously known `wan-publisher`
+(or `WanPublisherConfig`) has been separated into two configuration elements
+to be used for built-in and custom WAN publishers:
 ** `batch-publisher`
 ** `custom-publisher`
 +
@@ -53,6 +52,15 @@ the progress of a WAN synchronization.
 ** Added support for the standard JAAS callbacks, i.e., `NameCallback` and `PasswordCallback`
 ** Secrets, if not necessary, are not stored now
 ** Cleaned up the `Credentials` and `ClusterPrincipal` object.
++
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#jaas-authentication[JAAS Authentication section^]
+* **Improvements in the Security Configuration:**
+** Removed the `group-password` configuration.
+** Introduced the security realms on the members.
+** Replaced member/client login modules and member credentials factory by typed authentication configuration.
++
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#changes-in-the-security-configuration[Hazelcast IMDG 4.0 Migration Guide^]
+and link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#security[Security chapter^].
 * **Javadoc for the Hazelcast IMDG Enterprise Edition:** Added Javadoc JAR file
 for the Hazelcast IMDG Enterprise Edition.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#getting-started[Getting Started section^]
@@ -78,6 +86,15 @@ wait from the client and send the backup ACK to the client:
 the smart clients have been made backup aware and the backups
 now are redirected to the client directly from the backup members.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#configuring-backup-acknowledgment[Configuring Backup Acknowledgment section^].
+* **Ownerless Client:** Previously, the clients had an owner member
+responsible for cleaning up their resources after they leave the cluster. Also, the
+ownership information was needed to be replicated to the whole cluster when a client joins the cluster.
+This mechanism have been made simpler by introducing the following system properties
+to control the lifecycle of the clients on the member side:
+** `hazelcast.client.cleanup.period.millis`
+** `hazelcast.client.cleanup.timeout.millis`
++
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#client-system-properties[Client System Properties section^].
 * **Single Thread Hazelcast Clients Performance:** Hazelcast clients have been designed to be
 used by multiple threads; the more threads you throw at it, the better the performance
 (until it is saturated). Now, it has also been optimized for a single thread doing requests:
