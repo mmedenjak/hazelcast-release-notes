@@ -12,7 +12,7 @@ https://github.com/hazelcast/hazelcast/issues/15762[#15762]
 === Fixes
 
 * Fixed an issue where the query was ignoring the index
-but was processing successfully. [#15808]
+but was processing successfully.
 https://github.com/hazelcast/hazelcast/pull/15808[#15808]
 * Fixed an issue where the predicate queries to retrieve
 multi-values were failing on the nested JSON objects in arrays.
@@ -22,8 +22,5 @@ use the `incrementMod()` method causing an infinite loop.
 https://github.com/hazelcast/hazelcast/pull/15777[#15777]
 * Fixed shutting down Management Center service caused by
 an NPE when MultiMap statistics are gathered after
-`MultiMapService.shutdown()`. [#15656]
-* Fixed the Java heap space `OutOfMemory` issue during the
-WebSphere Liberty server startup, with Hazelcast client
-which is enabled for session persistence.
-https://github.com/hazelcast/hazelcast/issues/15454[#15454]
+`MultiMapService.shutdown()`.
+https://github.com/hazelcast/hazelcast/issues/15656[#15656]
