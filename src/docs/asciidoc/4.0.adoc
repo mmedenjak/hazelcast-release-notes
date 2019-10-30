@@ -23,6 +23,9 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#tls-
 * **Out of the Box LDAP Configuration:** Introduced a new LDAP login module
 where you do not need to provide your own JAAS login module for this purpose.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#ldap-authentication-type[Security chapter^].
+* **CP Subsystem Persistence:** Implemented persistency for Hazelcast's
+CP (Consistency & Partition Tolerance) subsystem. 
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
 
 *_Hazelcast IMDG Open Source New Features:_*
 
@@ -30,9 +33,6 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#ldap
 structures. This way, you do not need to have at least three IMDG members
 to use CP subsystem: you can benefit from its functionalities using only one
 or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-unsafe-mode[CP Subsystem Unsafe Mode section].
-* **CP Subsystem Persistence:** Implemented persistency for Hazelcast's
-CP (Consistency & Partition Tolerance) subsystem. 
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
 
 [[enh-40]]
 === Enhancements
@@ -42,22 +42,27 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-s
 * **Separating WAN Publisher Configuration:** The previously known `wan-publisher`
 (or `WanPublisherConfig`) has been separated into two configuration elements
 to be used for built-in and custom WAN publishers:
-** `batch-publisher`
-** `custom-publisher`
+** `batch-publisher` (or `WanBatchReplicationPublisherConfig`)
+** `custom-publisher`  (or `CustomWanPublisherConfig`)
 +
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#defining-wan-replication[Defining WAN Replication section^]
 * **Tracking WAN Synchronization Events:** Management Center, logs and diagnostics now report
-the progress of a WAN synchronization.
+the progress of a WAN synchronization. https://github.com/hazelcast/hazelcast/pull/15221[#15221]
 * **Improvements in the JAAS Authentication Mechanism:**
+** Aligned with JAAS best practices.
 ** Added support for the standard JAAS callbacks, i.e., `NameCallback` and `PasswordCallback`
-** Secrets, if not necessary, are not stored now
-** Cleaned up the `Credentials` and `ClusterPrincipal` object.
+** Avoided automatic deserialization of custom credentials in the client protocol.
+** Introduce the concept of security roles to distinguish between (a single) connecting side identity and its privileges.
+** Used `Credentials` object only for authentication to prevent secrets leaks.
+** Cleaned up the `Credentials` interface.
 +
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#jaas-authentication[JAAS Authentication section^]
 * **Improvements in the Security Configuration:**
+** Replaced the `<group>` configuration by simple `<cluster-name>`.
 ** Removed the `group-password` configuration.
-** Introduced the security realms on the members.
-** Replaced member/client login modules and member credentials factory by typed authentication configuration.
+** Introduced the concept of security realms on the members. https://github.com/hazelcast/hazelcast/pull/15651[#15651]
+** Added typed authentication and identity configuration (e.g. `<ldap>` authentication, `<token>` identity)
+** Used similar identity configuration in client config
 +
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#changes-in-the-security-configuration[Hazelcast IMDG 4.0 Migration Guide^]
 and link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#security[Security chapter^].
@@ -105,69 +110,11 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
-* Added the `Member` parameter to the `get/updateMapConfig()`
-methods of `ManagementCenterService`.
-https://github.com/hazelcast/hazelcast/pull/15795[#15795]
-* Enhanced the dynamic metrics collection:
-** Renamed `MetricsExtractor` as `MetricsCollectionContext`.
-** Added the `collect` method to `MetricsCollectionContext`.
-** Moved the registration methods from `MetricTagger` to `MetricsRegistry`.
-+
-https://github.com/hazelcast/hazelcast/pull/15779[#15779]
-* Refactored `ProxyService` to distinguish local-only and cluster-wide proxy creation.
-https://github.com/hazelcast/hazelcast/pull/15740[#15740]
-* In unsafe mode of CP Subsystem, `commitIndex` and session information
-now are migrated via partitioning system. Also waiting operations
-are notified when the partition primary is migrated.
-https://github.com/hazelcast/hazelcast/pull/15707[#15707]
-* Added "integer" for all the enum types in the protocol level,
-for custom type codecs (`TimeUnit` and `ExpiryPolicyType`).
-https://github.com/hazelcast/hazelcast/pull/15673[#15673]
-* Added client support for the following operations that Management
-Center can send to an IMDG cluster:
-** change the cluster state
-** retrieve the map configuration
-** update the map configuration
-+
-https://github.com/hazelcast/hazelcast/pull/15662[#15662]
-* Added value data types (long, double) to the diagnostics
-metrics which are serialized by `MetricsCompressor`.
-https://github.com/hazelcast/hazelcast/pull/15655[#15655]
-* Changed `ClientMessage` so that it is no longer a
-`LinkedList` which may produce too much litter.
-https://github.com/hazelcast/hazelcast/pull/15652[#15652]
-* Introduced security realm configuration which can be referenced
-from Hazelcast's security configuration. Currently, the realms support
-configuring `authentication` and/or `identity`.
-https://github.com/hazelcast/hazelcast/pull/15651[#15651]
 * Added dynamic discovery for the metrics which are mostly data structure
 and network related ones.
 https://github.com/hazelcast/hazelcast/pull/15650[#15650]
-* Changed the WAN target information that is sent to Management Center
-from `targetClusterName` to `wanPublisherId` to be consistent with
-the naming in WAN replication configuration.
-https://github.com/hazelcast/hazelcast/pull/15646[#15646]
-* Improved the client protocol code generator so that it now
-automatically generates the custom codecs.
-https://github.com/hazelcast/hazelcast/pull/15630[#15630]
-* Added the ``cachePartitionLostListenerConfig``s to `CacheConfig` serialization
-and the client protocol encoding.
-https://github.com/hazelcast/hazelcast/pull/15608[#15608]
 * Set the log level to `FINEST` for `PartitionMigratingException`.
 https://github.com/hazelcast/hazelcast/pull/15577[#15577]
-* Added serialization compatibility tests for built-in objects
-such as predicates, aggregators and projections.
-https://github.com/hazelcast/hazelcast/pull/15511[#15511]
-* Improved `DistinctValuesAggregator` and `MultiAttributeProjection` so that
-they return objects compatible with non-Java clients.
-https://github.com/hazelcast/hazelcast/pull/15506[#15506]
-* Added the async version of the `IMap.putAll()` method, i.e., `IMap.putAllAsync()`.
-In a member-to-member case, the put operations for members now are executed in parallel.
-https://github.com/hazelcast/hazelcast/pull/15463[#15463]
-* Updated the auto-generated codes according to the new Hazelcast
-Open Binary Client Protocol (v2.0): message types are no longer of the type
-`short`. Instead, `integer` is now being used to represent them.
-https://github.com/hazelcast/hazelcast/pull/15450[#15450]
 * Added the support for nested JSON objects in arrays.
 https://github.com/hazelcast/hazelcast/pull/15425[#15425]
 * To be shown on Management Center, the clients now send both its IP
@@ -190,18 +137,9 @@ https://github.com/hazelcast/hazelcast/pull/15372[#15372]
 * Added support for updating the licenses of all the running
 members of a Hazelcast IMDG cluster using the REST API.
 https://github.com/hazelcast/hazelcast/pull/15370[#15370]
-* Added transaction specific backup operations: `TxnSetBackupOperation`
-and `TxnDeleteBackupOperation`.
-https://github.com/hazelcast/hazelcast/pull/15236[#15236]
 * Fixed ``MemberAttributeEvent``s `getMembers()` method to return
 the correct members list for the client.
 https://github.com/hazelcast/hazelcast/pull/15231[#15231]
-* Improved the WAN replication mechanism so that the WAN synchronization
-now reports the progress based on target acknowledgments instead of
-reporting based on enqueueing the WAN synchronization events in the local cluster.
-https://github.com/hazelcast/hazelcast/pull/15221[#15221]
-* Added `Nullable` and `Nonnull` annotations to IQueue.
-https://github.com/hazelcast/hazelcast/pull/15156[#15156]
 * Added support for null keys for the client side implementations of
 `IMap.addEntryListener()`.
 https://github.com/hazelcast/hazelcast/issues/15155[#15155]
@@ -228,9 +166,6 @@ https://github.com/hazelcast/hazelcast/issues/15061[#15061]
 * Added the full example configuration files (XML and YAML) for the
 Hazelcast Java client.
 https://github.com/hazelcast/hazelcast/pull/15056[#15056]
-* Hazelcast IMDG now sends error messages and stack trace separately
-(for WAN consistency check) to the Management Center.
-https://github.com/hazelcast/hazelcast/pull/15052[#15052]
 * Introduced functional and serializable interfaces having a single
 abstract method which declares a checked exception. The interfaces
 are also serializable and can be readily used in the IMDG API when
@@ -249,27 +184,13 @@ https://github.com/hazelcast/hazelcast/pull/14982[#14982]
 https://github.com/hazelcast/hazelcast/pull/14827[#14827]
 * Fixed the Javadoc markup issues.
 https://github.com/hazelcast/hazelcast/pull/14971[#14971]
-* Introduced `PartitionIdSet`. This is a mutable set of partition IDs
-which can be efficiently represented by a fixed size leading to a
-better performance.
-https://github.com/hazelcast/hazelcast/pull/14925[#14925]
-* Made `AssertTask` an interface to enable lambdas to be used in
-assert-eventually methods.
-https://github.com/hazelcast/hazelcast/pull/14923[#14923]
 * Updated the Hazelcast Kubernetes dependency to version 1.5.
 https://github.com/hazelcast/hazelcast/pull/14898[#14898]
 * Updated the map package so that it uses the Java 8 features.
 https://github.com/hazelcast/hazelcast/pull/14891[#14891]
-* Renamed the `Networking.start()` method as `Networking.restart()`
-to make it obvious that it can be used for restarting an
-already shutdown `Networking` instance.
-https://github.com/hazelcast/hazelcast/pull/14872[#14872]
 * Cleaned up the Maven repositories in Hazelcast's `pom.xml`
 to simplify the usage of Maven proxies.
 https://github.com/hazelcast/hazelcast/pull/14850[#14850]
-* Eliminated the excessive logging when NIO networking is shutdown by
-deregistering the IO threads.
-https://github.com/hazelcast/hazelcast/pull/14823[#14823]
 * Updated the web session manager dependency to its latest
 version.
 https://github.com/hazelcast/hazelcast/pull/14822[#14822]
@@ -278,9 +199,6 @@ https://github.com/hazelcast/hazelcast/pull/14811[#14811]
 * Introduced a warning log for illegal reflective access operation when
 using Java 9 and higher, and OpenJ 9.
 https://github.com/hazelcast/hazelcast/pull/14798[#14798]
-* Separated the statistic gathering for `IMap.set(K, V)` and
-`IMap.put(K, V) operations`.
-https://github.com/hazelcast/hazelcast/issues/14663[#14663]
 * Renamed the class to start a Hazelcast member from `com.hazelcast.core.server.StartServer`
 to `com.hazelcast.core.server.HazelcastMemberStarter`.
 https://github.com/hazelcast/hazelcast/issues/12791[#12791]
@@ -295,12 +213,22 @@ NOTE: Please see the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html
 
 ==== Distributed Data Structures
 
+* Removed deprecated `IMap` methods accepting `EntryListener`.
+https://github.com/hazelcast/hazelcast/pull/15781[#15781]
+* Removed deprecated `DistributedObjectEvent.getObjectId`. 
+The replacement is `DistributedObjectEvent.getObjectName`.
+https://github.com/hazelcast/hazelcast/pull/15773[#15773]
 * Removed the deprecated `getReplicationEventCount()` method of
 local replicated map statistics.
 https://github.com/hazelcast/hazelcast/pull/15676[#15676]
 * Removed the legacy `AtomicLong` and deprecated `IdGenerator`
 implementations.
 https://github.com/hazelcast/hazelcast/pull/15601[#15601]
+* Removed the legacy `ILock` implementation and
+the `HazelcastInstance.getLock()` method. Instead
+we provide the unsafe mode of CP Subsystem's `FencedLock`.
+The `ICondition` is not supported anymore.
+https://github.com/hazelcast/hazelcast/pull/15625[#15625]
 * Removed the legacy `AtomicReference` implementation and
 the `HazelcastInstance.getAtomicReference()` method. Instead
 we provide the unsafe mode for all CP data structures.
@@ -313,18 +241,20 @@ https://github.com/hazelcast/hazelcast/pull/15539[#15539]
 the `HazelcastInstance.getCountdownLatch()` method. Instead
 we provide the unsafe mode for all CP data structures.
 https://github.com/hazelcast/hazelcast/pull/15538[#15538]
+* Added `Nullable` and `Nonnull` annotations to IQueue.
+https://github.com/hazelcast/hazelcast/pull/15156[#15156]
 * Added null checks to `Cluster`, `Ringbuffer` and `ReplicatedMap`.
 https://github.com/hazelcast/hazelcast/pull/15351[#15351]
 * Added null checks and annotations to the IList, ISet, ITopic and
 MultiMap interfaces.
 https://github.com/hazelcast/hazelcast/pull/15220[#15220]
+* Added `Nullable` and `Nonnull` annotations to IMap.
+https://github.com/hazelcast/hazelcast/pull/15003[#15003]
 * Made the collection clones of IMap immutable so that
 `UnsupportedOperationException` is thrown consistently
 upon the attempts to update a collection returned by the `keySet`,
 `entrySet`, `localKeySet`, `values` and `getAll` methods.
 https://github.com/hazelcast/hazelcast/pull/15013[#15013]
-* Added `Nullable` and `Nonnull` annotations to IMap.
-https://github.com/hazelcast/hazelcast/pull/15003[#15003]
 
 ==== Distributed Events
 
@@ -360,8 +290,12 @@ https://github.com/hazelcast/hazelcast/pull/15743[#15743]
 login module configuration. They have been replaced with
 `get/setClassName()`.
 https://github.com/hazelcast/hazelcast/pull/15729[#15729]
+* Removed the deprecated `get/setPartitionStrategy()` methods of
+`PartitioningStrategyConfig` configuration. They have been replaced with
+`get/setPartitioningStrategy()`.
+https://github.com/hazelcast/hazelcast/pull/15730[#15730]
 * Removed the deprecated `get/setSyncBackupCount()` methods of
-MultiMap configuration. They have been replaced with
+`MultiMap` configuration. They have been replaced with
 `get/setBackupCount()`.
 https://github.com/hazelcast/hazelcast/pull/15720[#15720]
 * Removed the deprecated `get/setServiceImpl()` methods of
@@ -372,8 +306,6 @@ https://github.com/hazelcast/hazelcast/pull/15680[#15680]
 configuration elements. Instead, the elements of `connection-retry`
 are now used.
 https://github.com/hazelcast/hazelcast/pull/15675[#15675]
-* Moved all the read-only configuration classes to internal package.
-https://github.com/hazelcast/hazelcast/pull/15569[#15569]
 * Renamed `MapAttributeConfig` as `AttributeConfig`. Also, its
 `extractor` field is renamed as `extractorClassName`.
 https://github.com/hazelcast/hazelcast/pull/15548[#15548]
@@ -384,7 +316,7 @@ https://github.com/hazelcast/hazelcast/pull/15537[#15537]
 * Renamed the `group-name` configuration element as `cluster-name` and
 removed the `GroupConfig` class.
 https://github.com/hazelcast/hazelcast/pull/15540[#15540]
-* Removed the deprecated the configuration parameters from
+* Removed the deprecated configuration parameters from
 Replicated Map, i.e., `concurrency-level` and `replication-delay-millis`.
 https://github.com/hazelcast/hazelcast/pull/15404[#15404]
 * Removed the deprecated configuration parameters from the Near
@@ -411,29 +343,14 @@ https://github.com/hazelcast/hazelcast/issues/14919[#14919]
 
 ==== WAN Replication
 
+* Cleaned up the WAN publisher SPI to make it easier to implement integration between map/cache entry mutation and an external system.
++
+https://github.com/hazelcast/hazelcast/pull/15195[#15195],
+https://github.com/hazelcast/hazelcast/pull/15432[#15432],
+https://github.com/hazelcast/hazelcast/pull/15527[#15527]
 * Replaced the `WAN` prefix of classes with `Wan` for the
 sake of naming consistencies.
 https://github.com/hazelcast/hazelcast/pull/15571[#15571]
-* `WanReplicationPublisher` cleanups:
-** Removed `WanReplicationEndpoint` and moved all of its methods
-to `WanReplicationPublisher`.
-** Replaced the `publishSyncEvent()` method with
-`publishAntiEntropyEvent()`.
-** Removed the `putBackup()` method.
-** Moved the `removeWanEvents(int, String, String, int)` method to
-the newly introduced  `InternalWanReplicationPublisher`.
-** Removed the `Node` parameter from the `init()` method as it is private API.
-+
-https://github.com/hazelcast/hazelcast/pull/15527[#15527]
-* Removed `ReplicationEventObject` so that the WAN are not wrapped
-anymore, saving up on the heap space. By means of this, wrapper will also
-not be serialized, which was using up bytes for the factory ID, class ID
-and the full string with the service name.
-https://github.com/hazelcast/hazelcast/pull/15432[#15432]
-* The previously known `WanPublisherConfig` has been separated into
-two configuration elements/classes to be used for built-in and
-custom WAN publishers: `batch-publisher` and `custom-publisher`.
-https://github.com/hazelcast/hazelcast/pull/15309[#15309]
 * Separated WAN private and public classes into different packages.
 https://github.com/hazelcast/hazelcast/pull/15195[#15195]
 
@@ -442,7 +359,8 @@ https://github.com/hazelcast/hazelcast/pull/15195[#15195]
 * Renamed the `isMinimumClusterSizeSatisfied()` method as
 `hasMinimumSize().`
 https://github.com/hazelcast/hazelcast/pull/15554[#15554]
-* Removed the legacy merge policies:
+* Removed the legacy merge policies specific to a data structure
+in favour of generic merge policies agnostic to data structure.
 ** PASS_THROUGH
 ** PUT_IF_ABSENT
 ** HIGHER_HITS
@@ -494,15 +412,34 @@ https://github.com/hazelcast/hazelcast/pull/15366[#15366]
 
 ==== API Package/Interface Changes
 
+* The Predicate API has been cleaned up to eliminate exposing internal 
+interfaces and classes. The end result is that the public Predicate API 
+provides only interfaces (Predicate, PagingPredicate, and 
+PartitionPredicate) with no dependencies on internal APIs.
+https://github.com/hazelcast/hazelcast/pull/15142[15142]
 * Moved the `getXaResource()` method from the `TransactionContext` class
 to `HazelcastInstance`.
 https://github.com/hazelcast/hazelcast/pull/15728[#15728]
 * Converted the `Aggregator` abstract class to an interface.
 https://github.com/hazelcast/hazelcast/pull/15764[#15764]
-* Replaced the `NodeEngine.isActive()` method by `NodeEngine.isRunning()`.
-https://github.com/hazelcast/hazelcast/pull/15721[#15721]
 * Moved various private classes to internal packages.
-https://github.com/hazelcast/hazelcast/pull/15616[#15616]
+https://github.com/hazelcast/hazelcast/pull/15569[15569],
+https://github.com/hazelcast/hazelcast/pull/15570[15570],
+https://github.com/hazelcast/hazelcast/pull/15588[15588],
+https://github.com/hazelcast/hazelcast/pull/15599[15599],
+https://github.com/hazelcast/hazelcast/pull/15603[15603],
+https://github.com/hazelcast/hazelcast/pull/15616[15616],
+https://github.com/hazelcast/hazelcast/pull/15171[15171],
+https://github.com/hazelcast/hazelcast/pull/15151[15151],
+https://github.com/hazelcast/hazelcast/pull/15146[15146],
+https://github.com/hazelcast/hazelcast/pull/15145[15145],
+https://github.com/hazelcast/hazelcast/pull/15129[15129],
+https://github.com/hazelcast/hazelcast/pull/15124[15124],
+https://github.com/hazelcast/hazelcast/pull/15123[15123],
+https://github.com/hazelcast/hazelcast/pull/15122[15122],
+https://github.com/hazelcast/hazelcast/pull/15121[15121],
+https://github.com/hazelcast/hazelcast/pull/15888[15888],
+https://github.com/hazelcast/hazelcast/pull/15887[15887]
 * The APIs that returned `UUID` string now returns `UUID`. These include `Endpoint.getUUID`,
 listener registrations/deregistrations, keys of replica timestamps of `VectorClock`,
 ``UUID``s in the executor service, `UUID` in the `MigrationInfo`, cluster ID and transaction ID.
@@ -510,13 +447,6 @@ https://github.com/hazelcast/hazelcast/pull/15473[#15473]
 * Removed `ICompletableFuture` which was a replacement for the missing JDK
 8's `CompletableFuture`. Now, it has been replaced by `CompletionStage`.
 See https://github.com/hazelcast/hazelcast/pull/15441[#15441] for more details.
-* Moved the capability interfaces from `com.hazelcast.spi` to
-`com.hz.internal.services`. Classes like `AbstractDistributedObject`
-have been moved to `com.hazelcast.spi.impl`.
-https://github.com/hazelcast/hazelcast/pull/15403[#15403]
-* Made all the classes/interfaces in the `com.hazelcast.spi` package
-`PrivateAPI`.
-https://github.com/hazelcast/hazelcast/pull/15401[#15401]
 * Converted the following custom query attribute abstract classes to
 functional interfaces so that they have become
 lambda friendly.
@@ -531,11 +461,6 @@ https://github.com/hazelcast/hazelcast/pull/15204[#15204]
 * Removed the usage of `com.hazelcast.core.IBifunction`, replaced
 it with `java.util.function.Bifunction`.
 https://github.com/hazelcast/hazelcast/pull/15201[#15201]
-* Separated the interfaces and implementations in `com.hazelcast.instance`:
-Moved various classes (`Node`, `NodeContext`, etc.)
-from the `com.hazelcast.instance` package to
-`com.hazelcast.instance.impl`.
-https://github.com/hazelcast/hazelcast/pull/15151[#15151]
 * Renamed the `getId` method of `IdentifiedDataSerializable`
 to `getClassId`.
 https://github.com/hazelcast/hazelcast/pull/15127[#15127]
@@ -553,7 +478,7 @@ https://github.com/hazelcast/hazelcast/pull/14995[#14995]
 https://github.com/hazelcast/hazelcast/pull/14994[#14994]
 * Removed the support for primitives for `setAttribute` and
 `getAttribute` operations.
-All member attributes support only string attributes now.
+All member attributes support only `String` attributes now.
 https://github.com/hazelcast/hazelcast/pull/14974[#14974]
 * Added `EntryExpiredListener` to the `EntryListener` interface.
 https://github.com/hazelcast/hazelcast/pull/14959[#14959]
@@ -726,11 +651,6 @@ https://github.com/hazelcast/hazelcast/pull/15803[#15803]
 * Fixed an issue where the `CompletableFuture#defaultExecutor()` method
 caused compilation failure on JDK 9 due to the "protected" access.
 https://github.com/hazelcast/hazelcast/pull/15702[#15702]
-* Fixed an issue where the backup events were sent to every connected client
-instead only the related client.
-https://github.com/hazelcast/hazelcast/pull/15691[#15691]
-* Fixed an exception handling issue by the `setLicense` REST endpoint.
-https://github.com/hazelcast/hazelcast/pull/15685[#15685]
 * Fixed a race issue by initializing the local CP members before
 initializing the metadata group.
 https://github.com/hazelcast/hazelcast/pull/15684[#15684]
@@ -749,9 +669,6 @@ https://github.com/hazelcast/hazelcast/issues/15485[#15485]
 * Fixed an issue where `ClientMessageWriter` was throwing an
 exception while writing to buffer.
 https://github.com/hazelcast/hazelcast/issues/15471[#15471]
-* Fixed an issue where the maps on the client side were encoded
-as list of key value items, not list of keys and list of values.
-https://github.com/hazelcast/hazelcast/pull/15467[#15467]
 * Moved the `checkWanReplicationQueues` operation from the caller side
 to the callee. https://github.com/hazelcast/hazelcast/pull/15412[#15412]
 * Fixed an issue where `WanConsistencyCheckIgnoredEvent`, when it is
@@ -889,30 +806,19 @@ https://github.com/hazelcast/hazelcast/issues/11300[#11300]
 === Removed Features
 
 * Removed the User Defined Services (Hazelcast's SPI) feature.
-* Removed the deprecated `getObjectId()` method from `DistributedObjectEvent`.
-Instead, use the `getObjectName()` method.
+https://github.com/hazelcast/hazelcast/pull/15403[#15403]
+https://github.com/hazelcast/hazelcast/pull/15401[#15401]
 * Removed the `setLicenseKey()` method of `ClientConfig`.
 * Removed the methods in the `Member` and `AddressPicker` classes.
 * Removed the deprecated diagnostics property names.
-* Removed `PagingPredicateAccessor` since the client module has been
-merged to core. Instead, you can use the direct casts to `PagingPredicateImpl`.
 * Removed the deprecated `EvictionPolicyType` class. Instead, use the
 enhanced `EvictionPolicy` class.
-* Removed deprecated `CacheCreateConfigOperation`. It has been replaced by
-`AddCacheConfigOperation`.
-* Removed deprecated `PartitioningStrategyConfig.setPartitionStrategy()`. It
-has been replaced by `PartitioningStrategyConfig.setPartitioningStrategy().
-* Removed the `ILock` and `ICondition` interfaces.
-The ILock implementation is still being kept
-as the development/unsafe mode of CP Subsystem's `FencedLock`.
 * Removed the legacy `IdGenerator` interface. Instead, `FlakeIdGenerator` has been used.
 * Removed the deprecated `AsyncAtomicLong` and `AsyncAtomicReference` classes.
 * Removed the deprecated cache eviction configurations.
 * Removed the MapReduce feature.
 * Removed the deprecated `LOCAL` transaction type (`TransactionType.LOCAL`)
-* Removed the unused `newTransaction()` method.
 * Removed the deprecated `optimizeQueries` map configuration parameter.
-* Removed the deprecated `ClearNearCacheOperation`.
 * Removed the following deprecated group properties:
 ** `hazelcast.version.check.enabled`
 ** `hazelcast.icmp.enabled`
