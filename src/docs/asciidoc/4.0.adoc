@@ -75,10 +75,6 @@ link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#health-check
 * **MapLoader with Custom time-to-live:** Introduced the `EntryStore` and `EntryLoader`
 interfaces (adding expiration support for MapStore). See the
 https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#loading-and-storing-persistent-data[Loading and Storing Persistent Data section].
-* **JCache 1.1.1:**Updated Hazelcast JCache implementation to support JCache 1.1.1.
-This version of JCache does not introduce new functionalities;
-it resolves the errata and issues in JCache 1.1.0.
-See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#jcache-111[Upgrading to JCache 1.1.1 section].
 * **Moby Naming:** Introduced friendly names for the Hazelcast instances to be shown
 in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#checking-the-name-of-the-instance-for-rest-client[Checking the Instances' Name section^]. Also, a new system property, `hazelcast.member.naming.moby.enabled`, is introduced for this purpose.
 * **Improved Client Performance:** Introduced a way to eliminate the sync backup
