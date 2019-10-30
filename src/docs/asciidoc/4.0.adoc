@@ -14,7 +14,7 @@ for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 such as Intel(R) Optane(TM) DC, to be used by Hazelcast's
 High-Density Memory Store feature.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#using-persistent-memory[Using Persistent Memory section^].
-* **Encrypting Data in Hot Restart Store :** Provided a framework and implementation to encrypt
+* **Encrypting Data in Hot Restart Store:** Provided a framework and implementation to encrypt
 data in Hot Restart stores ("at rest") for data held in distributed structures.
 See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#encryption-at-rest[Encryption at Rest section^].
 * **X.509 Certificate Authentication:** Added support for credential retrieval by the members
@@ -67,7 +67,7 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#gett
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
-* **HTTPS for Scripts:**Enabled the REST endpoints for the `cluster.sh` and
+* **HTTPS for Scripts:** Enabled the REST endpoints for the `cluster.sh` and
 `healthcheck.sh` scripts to use HTTPS. Before, they were
 using HTTP. See the
 link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and
@@ -507,6 +507,9 @@ https://github.com/hazelcast/hazelcast/pull/15616[#15616]
 listener registrations/deregistrations, keys of replica timestamps of `VectorClock`,
 ``UUID``s in the executor service, `UUID` in the `MigrationInfo`, cluster ID and transaction ID.
 https://github.com/hazelcast/hazelcast/pull/15473[#15473]
+* Removed `ICompletableFuture` which was a replacement for the missing JDK
+8's `CompletableFuture`. Now, it has been replaced by `CompletionStage`.
+See https://github.com/hazelcast/hazelcast/pull/15441[#15441] for more details.
 * Moved the capability interfaces from `com.hazelcast.spi` to
 `com.hz.internal.services`. Classes like `AbstractDistributedObject`
 have been moved to `com.hazelcast.spi.impl`.
@@ -882,26 +885,12 @@ https://github.com/hazelcast/hazelcast/issues/11669[#11669]
 from the MapLoader when the keys could not be found in the memory.
 https://github.com/hazelcast/hazelcast/issues/11300[#11300]
 
-[[deprecated-40]]
-=== Deprecated Features
-
-* ???.
-* The following system properties are deprecated:
-** `???`
-* The following Hazelcast IMDG interfaces/classes are deprecated and replaced
-with the ones provided by the Hazelcast IMDG CP Subsystem:
-** `???`
-* The following classes are deprecated:
-
 [[removed-40]]
 === Removed Features
 
 * Removed the User Defined Services (Hazelcast's SPI) feature.
 * Removed the deprecated `getObjectId()` method from `DistributedObjectEvent`.
 Instead, use the `getObjectName()` method.
-* Removed `ICompletableFuture` which was a replacement for the missing JDK
-8's `CompletableFuture`. Now, it has been replaced by `CompletionStage`.
-See https://github.com/hazelcast/hazelcast/pull/15441[#15441] for more details.
 * Removed the `setLicenseKey()` method of `ClientConfig`.
 * Removed the methods in the `Member` and `AddressPicker` classes.
 * Removed the deprecated diagnostics property names.
