@@ -110,9 +110,21 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
-* Added dynamic discovery for the metrics which are mostly data structure
-and network related ones.
-https://github.com/hazelcast/hazelcast/pull/15650[#15650]
+* Introduced dynamic metric collection. Previously, Hazelcast metrics were 
+reported programmatically to the Hazelcast Management Center, one by one. 
+Introducing new metrics required changes both in IMDG and in MC, which limited the
+number of metrics sent to MC. In 4.0 this has been changed to collecting and reporting 
+all available metrics dynamically just by declaring them in IMDG. Besides reporting
+the metrics dynamically to MC exposing them on JMX is done dynamically as well. 
+Both reporting to MC and exposing on JMX are toggleable by using the `metric` 
+configuration element introduced in 4.0.
++
+https://github.com/hazelcast/hazelcast/pull/15560[15560],
+https://github.com/hazelcast/hazelcast/pull/15650[15650],
+https://github.com/hazelcast/hazelcast/pull/15667[15667],
+https://github.com/hazelcast/hazelcast/pull/15779[15779],
+https://github.com/hazelcast/hazelcast/pull/15782[15782],
+https://github.com/hazelcast/hazelcast/pull/15818[15818]
 * Set the log level to `FINEST` for `PartitionMigratingException`.
 https://github.com/hazelcast/hazelcast/pull/15577[#15577]
 * Added the support for nested JSON objects in arrays.
@@ -137,9 +149,6 @@ https://github.com/hazelcast/hazelcast/pull/15372[#15372]
 * Added support for updating the licenses of all the running
 members of a Hazelcast IMDG cluster using the REST API.
 https://github.com/hazelcast/hazelcast/pull/15370[#15370]
-* Fixed ``MemberAttributeEvent``s `getMembers()` method to return
-the correct members list for the client.
-https://github.com/hazelcast/hazelcast/pull/15231[#15231]
 * Added support for null keys for the client side implementations of
 `IMap.addEntryListener()`.
 https://github.com/hazelcast/hazelcast/issues/15155[#15155]
@@ -152,8 +161,6 @@ https://github.com/hazelcast/hazelcast/pull/15153[#15153]
 +
 https://github.com/hazelcast/hazelcast/pull/15141[#15141]
 +
-* Unified `InvalidConfigurationException` and `ConfigurationException`.
-https://github.com/hazelcast/hazelcast/pull/15132[#15132]
 * Improved the performance of `TransactionLog.add()` by avoiding
 the `LinkedList.remove()` call.
 https://github.com/hazelcast/hazelcast/pull/15111[#15111]
@@ -186,8 +193,6 @@ https://github.com/hazelcast/hazelcast/pull/14827[#14827]
 https://github.com/hazelcast/hazelcast/pull/14971[#14971]
 * Updated the Hazelcast Kubernetes dependency to version 1.5.
 https://github.com/hazelcast/hazelcast/pull/14898[#14898]
-* Updated the map package so that it uses the Java 8 features.
-https://github.com/hazelcast/hazelcast/pull/14891[#14891]
 * Cleaned up the Maven repositories in Hazelcast's `pom.xml`
 to simplify the usage of Maven proxies.
 https://github.com/hazelcast/hazelcast/pull/14850[#14850]
@@ -197,11 +202,8 @@ https://github.com/hazelcast/hazelcast/pull/14822[#14822]
 * Separated the statistics for `IMap.set()` and `IMap.put()` methods.
 https://github.com/hazelcast/hazelcast/pull/14811[#14811]
 * Introduced a warning log for illegal reflective access operation when
-using Java 9 and higher, and OpenJ 9.
+using Java 9 and higher, and OpenJ9.
 https://github.com/hazelcast/hazelcast/pull/14798[#14798]
-* Renamed the class to start a Hazelcast member from `com.hazelcast.core.server.StartServer`
-to `com.hazelcast.core.server.HazelcastMemberStarter`.
-https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 * Improved the fluent interface of configuration classes by adding
 the `return this` statements to the setter methods.
 https://github.com/hazelcast/hazelcast/pull/11107[#11107]
@@ -258,6 +260,9 @@ https://github.com/hazelcast/hazelcast/pull/15013[#15013]
 
 ==== Distributed Events
 
+* Fixed ``MemberAttributeEvent``s `getMembers()` method to return
+the correct members list for the client.
+https://github.com/hazelcast/hazelcast/pull/15231[#15231]
 * Refactored the `MigrationListener` API. With this change,
 an event is published when a new migration process starts
 and another one when migration is completed. Additionally,
@@ -267,9 +272,20 @@ https://github.com/hazelcast/hazelcast/pull/15071[#15071]
 * Removed the backward compatible `ADDED` event from the
 `loadAll` method.
 https://github.com/hazelcast/hazelcast/pull/14964[#14964]
+* Refactored and cleaned up the internal partition/migration listeners:
+** Renamed `PartitionListener` to `PartitionReplicaInterceptor` and
+removed registering child listeners, which is not used.
+** Renamed `InternalMigrationListener` to `MigrationInterceptor` and
+converted to interface with default methods.
++
+https://github.com/hazelcast/hazelcast/pull/15051[#15051]
+* Added `EntryExpiredListener` to the `EntryListener` interface.
+https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 
 ==== Configuration
 
+* Unified `InvalidConfigurationException` and `ConfigurationException`.
+https://github.com/hazelcast/hazelcast/pull/15132[#15132]
 * Removed the deprecated `AwsConfig` getter/setter methods, e.g., 
 `getAccessKey()`. They have been replaced with the `getProperty()`
 methods, e.g., `getProperty("access-key")`.
@@ -354,23 +370,23 @@ https://github.com/hazelcast/hazelcast/pull/15571[#15571]
 * Separated WAN private and public classes into different packages.
 https://github.com/hazelcast/hazelcast/pull/15195[#15195]
 
-==== Split-Brain Protection
+==== Split-Brain Protection and Split-Brain Merge
 
+* Introduced "split brain protection" concept to replace "quorum"
+to make it more explicit and unambiguous. Classes and configuration
+elements including the term "quorum" has been replaced by "splitbrainprotection".
+https://github.com/hazelcast/hazelcast/pull/15444[#15444]
 * Renamed the `isMinimumClusterSizeSatisfied()` method as
 `hasMinimumSize().`
 https://github.com/hazelcast/hazelcast/pull/15554[#15554]
 * Removed the legacy merge policies specific to a data structure
-in favour of generic merge policies agnostic to data structure.
+in favour of generic merge policies.
 ** PASS_THROUGH
 ** PUT_IF_ABSENT
 ** HIGHER_HITS
 ** LATEST_ACCESS
 +
 https://github.com/hazelcast/hazelcast/pull/15292[#15292]
-* Introduced "split brain protection" concept to replace "quorum"
-to make it more explicit and unambiguous. Classes and configuration
-elements including the term "quorum" has been replaced by "splitbrainprotection".
-https://github.com/hazelcast/hazelcast/pull/15444[#15444]
 
 ==== Serialization
 
@@ -410,18 +426,36 @@ in the `hazelcast-client` module have been moved to `hazelcast`.
 `hazelcast-client.jar` will not be created anymore.
 https://github.com/hazelcast/hazelcast/pull/15366[#15366]
 
-==== API Package/Interface Changes
+==== Query engine API
 
 * The Predicate API has been cleaned up to eliminate exposing internal 
 interfaces and classes. The end result is that the public Predicate API 
 provides only interfaces (Predicate, PagingPredicate, and 
 PartitionPredicate) with no dependencies on internal APIs.
 https://github.com/hazelcast/hazelcast/pull/15142[15142]
+* Converted `Projection` to a functional interface so that it has become
+lambda friendly.
+https://github.com/hazelcast/hazelcast/pull/15204[#15204]
+* Converted the `Aggregator` abstract class to an interface.
+https://github.com/hazelcast/hazelcast/pull/15764[#15764]
+* Converted the following custom query attribute abstract classes to
+functional interfaces so that they have become
+lambda friendly.
+** `ArgumentParser`
+** `ValueCallback`
+** `ValueCollector`
+** `ValueReader`
+** `ValueExtractor`
+
+
+==== API Package/Interface Changes
+
+* Renamed the class to start a Hazelcast member from `com.hazelcast.core.server.StartServer`
+to `com.hazelcast.core.server.HazelcastMemberStarter`.
+https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 * Moved the `getXaResource()` method from the `TransactionContext` class
 to `HazelcastInstance`.
 https://github.com/hazelcast/hazelcast/pull/15728[#15728]
-* Converted the `Aggregator` abstract class to an interface.
-https://github.com/hazelcast/hazelcast/pull/15764[#15764]
 * Moved various private classes to internal packages.
 https://github.com/hazelcast/hazelcast/pull/15569[15569],
 https://github.com/hazelcast/hazelcast/pull/15570[15570],
@@ -447,41 +481,21 @@ https://github.com/hazelcast/hazelcast/pull/15473[#15473]
 * Removed `ICompletableFuture` which was a replacement for the missing JDK
 8's `CompletableFuture`. Now, it has been replaced by `CompletionStage`.
 See https://github.com/hazelcast/hazelcast/pull/15441[#15441] for more details.
-* Converted the following custom query attribute abstract classes to
-functional interfaces so that they have become
-lambda friendly.
-** `ArgumentParser`
-** `ValueCallback`
-** `ValueCollector`
-** `ValueReader`
-** `ValueExtractor`
-* Converted `Projection` to a functional interface so that it has become
-lambda friendly.
-https://github.com/hazelcast/hazelcast/pull/15204[#15204]
 * Removed the usage of `com.hazelcast.core.IBifunction`, replaced
 it with `java.util.function.Bifunction`.
 https://github.com/hazelcast/hazelcast/pull/15201[#15201]
 * Renamed the `getId` method of `IdentifiedDataSerializable`
 to `getClassId`.
 https://github.com/hazelcast/hazelcast/pull/15127[#15127]
-* Refactored and cleaned up the internal partition/migration listeners:
-** Renamed `PartitionListener` to `PartitionReplicaInterceptor` and
-removed registering child listeners, which is not used.
-** Renamed `InternalMigrationListener` to `MigrationInterceptor` and
-converted to interface with default methods.
-+
-https://github.com/hazelcast/hazelcast/pull/15051[#15051]
 +
 * Made the `EntryProcessor` interface lambda friendly.
 https://github.com/hazelcast/hazelcast/pull/14995[#14995]
 * Removed the `LegacyAsyncMap` interface.
 https://github.com/hazelcast/hazelcast/pull/14994[#14994]
 * Removed the support for primitives for `setAttribute` and
-`getAttribute` operations.
+`getAttribute` member attributes.
 All member attributes support only `String` attributes now.
 https://github.com/hazelcast/hazelcast/pull/14974[#14974]
-* Added `EntryExpiredListener` to the `EntryListener` interface.
-https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 * Removed the `java.util.function` back ports.
 https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 * The packages of the following classes have been changed:
@@ -695,8 +709,8 @@ https://github.com/hazelcast/hazelcast/pull/15358[#15358]
 * Fixed an issue where the named scheduled tasks was not respecting
 the `HazelcastInstanceAware` marker.
 https://github.com/hazelcast/hazelcast/pull/15352[#15352]
-* Fixed a possible `NullPointerException` for the `remove` variable in
-`DeafultRecordStore`.
+* Fixed a possible `NullPointerException` for the `remove-if-same` map
+operation.
 https://github.com/hazelcast/hazelcast/pull/15344[#15344]
 * Fixed an issue where storing `MapStore` instances in `MapStoreConfig`
 could cause member failures when the configuration is added
@@ -795,9 +809,6 @@ https://github.com/hazelcast/hazelcast/issues/12198[#12198]
 * Fixed a leak in the query cache due to `ListenerRegistrationHelper`, which
 has been removed with this fix.
 https://github.com/hazelcast/hazelcast/pull/11914[#11914]
-* Fixed an issue where `NetworkConfig.setPortCount(int)` was not returning
-the `this` instance compared to other setter methods in the class.
-https://github.com/hazelcast/hazelcast/issues/11669[#11669]
 * Fixed an issue where the `IMap.replace()` method was not loading entries
 from the MapLoader when the keys could not be found in the memory.
 https://github.com/hazelcast/hazelcast/issues/11300[#11300]
