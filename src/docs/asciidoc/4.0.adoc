@@ -654,7 +654,7 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 
 |===
 
-[[fixes-40]]
+[[fixes-40beta1]]
 === Fixes
 
 * Fixed an issue where a new CP member could create the Raft nodes before its
