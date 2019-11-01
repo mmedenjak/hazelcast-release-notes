@@ -119,12 +119,12 @@ the metrics dynamically to MC exposing them on JMX is done dynamically as well.
 Both reporting to MC and exposing on JMX are toggleable by using the `metric` 
 configuration element introduced in 4.0.
 +
-https://github.com/hazelcast/hazelcast/pull/15560[15560],
-https://github.com/hazelcast/hazelcast/pull/15650[15650],
-https://github.com/hazelcast/hazelcast/pull/15667[15667],
-https://github.com/hazelcast/hazelcast/pull/15779[15779],
-https://github.com/hazelcast/hazelcast/pull/15782[15782],
-https://github.com/hazelcast/hazelcast/pull/15818[15818]
+https://github.com/hazelcast/hazelcast/pull/15560[#15560],
+https://github.com/hazelcast/hazelcast/pull/15650[#15650],
+https://github.com/hazelcast/hazelcast/pull/15667[#15667],
+https://github.com/hazelcast/hazelcast/pull/15779[#15779],
+https://github.com/hazelcast/hazelcast/pull/15782[#15782],
+https://github.com/hazelcast/hazelcast/pull/15818[#15818]
 * Set the log level to `FINEST` for `PartitionMigratingException`.
 https://github.com/hazelcast/hazelcast/pull/15577[#15577]
 * Added the support for nested JSON objects in arrays.
@@ -432,7 +432,7 @@ https://github.com/hazelcast/hazelcast/pull/15366[#15366]
 interfaces and classes. The end result is that the public Predicate API 
 provides only interfaces (Predicate, PagingPredicate, and 
 PartitionPredicate) with no dependencies on internal APIs.
-https://github.com/hazelcast/hazelcast/pull/15142[15142]
+https://github.com/hazelcast/hazelcast/pull/15142[#15142]
 * Converted `Projection` to a functional interface so that it has become
 lambda friendly.
 https://github.com/hazelcast/hazelcast/pull/15204[#15204]
@@ -457,23 +457,23 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 to `HazelcastInstance`.
 https://github.com/hazelcast/hazelcast/pull/15728[#15728]
 * Moved various private classes to internal packages.
-https://github.com/hazelcast/hazelcast/pull/15569[15569],
-https://github.com/hazelcast/hazelcast/pull/15570[15570],
-https://github.com/hazelcast/hazelcast/pull/15588[15588],
-https://github.com/hazelcast/hazelcast/pull/15599[15599],
-https://github.com/hazelcast/hazelcast/pull/15603[15603],
-https://github.com/hazelcast/hazelcast/pull/15616[15616],
-https://github.com/hazelcast/hazelcast/pull/15171[15171],
-https://github.com/hazelcast/hazelcast/pull/15151[15151],
-https://github.com/hazelcast/hazelcast/pull/15146[15146],
-https://github.com/hazelcast/hazelcast/pull/15145[15145],
-https://github.com/hazelcast/hazelcast/pull/15129[15129],
-https://github.com/hazelcast/hazelcast/pull/15124[15124],
-https://github.com/hazelcast/hazelcast/pull/15123[15123],
-https://github.com/hazelcast/hazelcast/pull/15122[15122],
-https://github.com/hazelcast/hazelcast/pull/15121[15121],
-https://github.com/hazelcast/hazelcast/pull/15888[15888],
-https://github.com/hazelcast/hazelcast/pull/15887[15887]
+https://github.com/hazelcast/hazelcast/pull/15569[#15569],
+https://github.com/hazelcast/hazelcast/pull/15570[#15570],
+https://github.com/hazelcast/hazelcast/pull/15588[#15588],
+https://github.com/hazelcast/hazelcast/pull/15599[#15599],
+https://github.com/hazelcast/hazelcast/pull/15603[#15603],
+https://github.com/hazelcast/hazelcast/pull/15616[#15616],
+https://github.com/hazelcast/hazelcast/pull/15171[#15171],
+https://github.com/hazelcast/hazelcast/pull/15151[#15151],
+https://github.com/hazelcast/hazelcast/pull/15146[#15146],
+https://github.com/hazelcast/hazelcast/pull/15145[#15145],
+https://github.com/hazelcast/hazelcast/pull/15129[#15129],
+https://github.com/hazelcast/hazelcast/pull/15124[#15124],
+https://github.com/hazelcast/hazelcast/pull/15123[#15123],
+https://github.com/hazelcast/hazelcast/pull/15122[#15122],
+https://github.com/hazelcast/hazelcast/pull/15121[#15121],
+https://github.com/hazelcast/hazelcast/pull/15888[#15888],
+https://github.com/hazelcast/hazelcast/pull/15887[#15887]
 * The APIs that returned `UUID` string now returns `UUID`. These include `Endpoint.getUUID`,
 listener registrations/deregistrations, keys of replica timestamps of `VectorClock`,
 ``UUID``s in the executor service, `UUID` in the `MigrationInfo`, cluster ID and transaction ID.
