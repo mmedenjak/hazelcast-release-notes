@@ -654,8 +654,12 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 
 |===
 
-[[fixes-40beta1]]
+[[fixes-40]]
 === Fixes
+
+
+[[fixes-40beta1]]
+==== 4.0-Beta-1 Fixes
 
 * Fixed an issue where a new CP member could create the Raft nodes before its
 local CP member field is not initialized yet, when it is being promoted.
@@ -817,7 +821,7 @@ https://github.com/hazelcast/hazelcast/issues/11300[#11300]
 === Removed Features
 
 * Removed the User Defined Services (Hazelcast's SPI) feature.
-https://github.com/hazelcast/hazelcast/pull/15403[#15403]
+https://github.com/hazelcast/hazelcast/pull/15403[#15403], 
 https://github.com/hazelcast/hazelcast/pull/15401[#15401]
 * Removed the `setLicenseKey()` method of `ClientConfig`.
 * Removed the methods in the `Member` and `AddressPicker` classes.
