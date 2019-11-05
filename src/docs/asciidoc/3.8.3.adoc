@@ -14,6 +14,10 @@ https://github.com/hazelcast/hazelcast/issues/10806[#10806]
 capacity. https://github.com/hazelcast/hazelcast/issues/10774[#10774]
 * Older versions of Mulesoft clash with Hazelcast Client classpath.
 https://github.com/hazelcast/hazelcast/issues/10706[#10706]
+* Fixed an issue where `NonBlockingIOThread` was not shutting down
+since a thread interruption could be suppressed/cleared in the flow of
+operations; an explicit `stop` flag has been introduced to close it.
+https://github.com/hazelcast/hazelcast/pull/10651[#10651]
 * In the case when the master node is terminated in the middle of a
 2-phase transaction, the rollback for that transaction is not performed.
 This causes loss of data.
