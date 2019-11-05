@@ -2,7 +2,7 @@
 
 == 4.0-BETA-1
 
-NOTE: See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Hazelcast IMDG 4.0 Migration Guide]
+NOTE: See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Hazelcast IMDG 4.0 Migration Guide^]
 for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 
 [[nf-40]]
