@@ -110,6 +110,16 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Introduced cluster fail-fast when there are missing security
+realms.
+https://github.com/hazelcast/hazelcast/pull/15872[#15872]
+* Added support for persisting and restoring the active CP members
+list.
+https://github.com/hazelcast/hazelcast/pull/15828[#15828]
+* Added binary compatibility tests for the client protocol.
+https://github.com/hazelcast/hazelcast/pull/15822[#15822]
+* Added `ConnectionRetryConfig` to `ClientConfigXmlGenerator`.
+https://github.com/hazelcast/hazelcast/pull/15821[#15821]
 * Introduced dynamic metric collection. Previously, Hazelcast metrics were 
 reported programmatically to the Hazelcast Management Center, one by one. 
 Introducing new metrics required changes both in IMDG and in MC, which limited the
@@ -149,6 +159,9 @@ https://github.com/hazelcast/hazelcast/pull/15372[#15372]
 * Added support for updating the licenses of all the running
 members of a Hazelcast IMDG cluster using the REST API.
 https://github.com/hazelcast/hazelcast/pull/15370[#15370]
+* Introduced configuration of initial permits for CP subsystem
+semaphore.
+https://github.com/hazelcast/hazelcast/issues/15208[#15208]
 * Added support for null keys for the client side implementations of
 `IMap.addEntryListener()`.
 https://github.com/hazelcast/hazelcast/issues/15155[#15155]
@@ -187,6 +200,10 @@ https://github.com/hazelcast/hazelcast/pull/14986[#14986]
 when merging entries received via WAN. Otherwise, the unconditional
 deserialization was causing overhead.
 https://github.com/hazelcast/hazelcast/pull/14982[#14982]
+* Updated the following packages to Java 8 and removed the
+3.x rolling upgrade compatibility paths: cache, MultiMap, cluster,
+partition, WAN replication, CP subsystem, Hot Restart.
+https://github.com/hazelcast/hazelcast/issues/14896[#14896]
 * Added the support for Java 8 `Optionals` in the queries.
 https://github.com/hazelcast/hazelcast/pull/14827[#14827]
 * Fixed the Javadoc markup issues.
@@ -243,15 +260,18 @@ https://github.com/hazelcast/hazelcast/pull/15539[#15539]
 the `HazelcastInstance.getCountdownLatch()` method. Instead
 we provide the unsafe mode for all CP data structures.
 https://github.com/hazelcast/hazelcast/pull/15538[#15538]
-* Added `Nullable` and `Nonnull` annotations to IQueue.
-https://github.com/hazelcast/hazelcast/pull/15156[#15156]
-* Added null checks to `Cluster`, `Ringbuffer` and `ReplicatedMap`.
-https://github.com/hazelcast/hazelcast/pull/15351[#15351]
-* Added null checks and annotations to the IList, ISet, ITopic and
-MultiMap interfaces.
+* Added `Nullable` and `Nonnull` annotations to IQueue, IMap,
+`HazelcastInstance`, Cardinality Estimator, IExecutor, Durable Executor,
+`QuorumService`, CP subsystem, logging service,
+lifecycle service, partition service and client service.
+https://github.com/hazelcast/hazelcast/pull/15156[#15156],
+https://github.com/hazelcast/hazelcast/pull/15003[#15003],
+https://github.com/hazelcast/hazelcast/pull/15442[#15442],
+https://github.com/hazelcast/hazelcast/pull/15842[#15842]
+* Added null checks and annotations to `Cluster`, Ringbuffer, Replicated Map,
+IList, ISet, ITopic and MultiMap interfaces.
+https://github.com/hazelcast/hazelcast/pull/15351[#15351],
 https://github.com/hazelcast/hazelcast/pull/15220[#15220]
-* Added `Nullable` and `Nonnull` annotations to IMap.
-https://github.com/hazelcast/hazelcast/pull/15003[#15003]
 * Made the collection clones of IMap immutable so that
 `UnsupportedOperationException` is thrown consistently
 upon the attempts to update a collection returned by the `keySet`,
@@ -284,6 +304,8 @@ https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 
 ==== Configuration
 
+* The group name in the client configuration renamed to cluster name.
+https://github.com/hazelcast/hazelcast/pull/15772[#15772]
 * Unified `InvalidConfigurationException` and `ConfigurationException`.
 https://github.com/hazelcast/hazelcast/pull/15132[#15132]
 * Removed the deprecated `AwsConfig` getter/setter methods, e.g., 
@@ -505,6 +527,11 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
 
+| All classes
+| `com.hazelcast.internal.util.function`
+| `com.hazelcast.function`
+| https://github.com/hazelcast/hazelcast/pull/15802[#15802]
+
 | `WanPublisherState`
 | `com.hazelcast.config`
 | `com.hazelcast.wan`
@@ -657,9 +684,21 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40]]
 === Fixes
 
+[[fixes-40beta2]]
+==== 4.0-Beta-2
+
+* Fixed an issue where the client connection count
+was retrieved using an incorrect method.
+https://github.com/hazelcast/hazelcast/pull/15861[#15861]
+* Fixed a configuration failure with YAML for composite
+key indexes.
+https://github.com/hazelcast/hazelcast/issues/15806[#15806]
+* Fixed an issue where the gauges could not be created from the
+dynamic metrics.
+https://github.com/hazelcast/hazelcast/issues/15718[#15718]
 
 [[fixes-40beta1]]
-==== 4.0-Beta-1 Fixes
+==== 4.0-Beta-1
 
 * Fixed an issue where a new CP member could create the Raft nodes before its
 local CP member field is not initialized yet, when it is being promoted.
@@ -820,6 +859,19 @@ https://github.com/hazelcast/hazelcast/issues/11300[#11300]
 [[removed-40]]
 === Removed Features
 
+[[removed-40beta2]]
+==== 4.0-Beta-2
+
+* Removed the deprecated `SimpleEntryView.evictionCriteriaNumber()`
+method.
+https://github.com/hazelcast/hazelcast/pull/15846[#15846]
+* Removed the deprecated IMap methods accepting `EntryListener`.
+This has been replaced with `MapListener`.
+https://github.com/hazelcast/hazelcast/pull/15781[#15781]
+
+[[removed-40beta1]]
+==== 4.0-Beta-1
+
 * Removed the User Defined Services (Hazelcast's SPI) feature.
 https://github.com/hazelcast/hazelcast/pull/15403[#15403], 
 https://github.com/hazelcast/hazelcast/pull/15401[#15401]
@@ -834,7 +886,7 @@ enhanced `EvictionPolicy` class.
 * Removed the MapReduce feature.
 * Removed the deprecated `LOCAL` transaction type (`TransactionType.LOCAL`)
 * Removed the deprecated `optimizeQueries` map configuration parameter.
-* Removed the following deprecated group properties:
+* Removed the following deprecated system properties:
 ** `hazelcast.version.check.enabled`
 ** `hazelcast.icmp.enabled`
 ** `hazelcast.icmp.parallel.mode`
