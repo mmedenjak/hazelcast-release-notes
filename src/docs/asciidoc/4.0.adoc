@@ -120,6 +120,9 @@ https://github.com/hazelcast/hazelcast/pull/15828[#15828]
 https://github.com/hazelcast/hazelcast/pull/15822[#15822]
 * Added `ConnectionRetryConfig` to `ClientConfigXmlGenerator`.
 https://github.com/hazelcast/hazelcast/pull/15821[#15821]
+* Removed the legacy `BindMessage` class and renamed `ExtendedBindMessage`
+as `BindMessage`.
+https://github.com/hazelcast/hazelcast/pull/15820[#15820]
 * Introduced dynamic metric collection. Previously, Hazelcast metrics were 
 reported programmatically to the Hazelcast Management Center, one by one. 
 Introducing new metrics required changes both in IMDG and in MC, which limited the
@@ -224,6 +227,9 @@ https://github.com/hazelcast/hazelcast/pull/14798[#14798]
 * Improved the fluent interface of configuration classes by adding
 the `return this` statements to the setter methods.
 https://github.com/hazelcast/hazelcast/pull/11107[#11107]
+* Added support for falling back to a "default" configuration for
+the cache data structure.
+https://github.com/hazelcast/hazelcast/issues/10695[#10695]
 
 [[bc-40]]
 === Breaking Changes
@@ -472,9 +478,6 @@ lambda friendly.
 
 ==== API Package/Interface Changes
 
-* Renamed the class to start a Hazelcast member from `com.hazelcast.core.server.StartServer`
-to `com.hazelcast.core.server.HazelcastMemberStarter`.
-https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 * Moved the `getXaResource()` method from the `TransactionContext` class
 to `HazelcastInstance`.
 https://github.com/hazelcast/hazelcast/pull/15728[#15728]
@@ -520,12 +523,36 @@ All member attributes support only `String` attributes now.
 https://github.com/hazelcast/hazelcast/pull/14974[#14974]
 * Removed the `java.util.function` back ports.
 https://github.com/hazelcast/hazelcast/pull/14912[#14912]
+* `CacheService` now implements `StatisticsAwareService`
+https://github.com/hazelcast/hazelcast/issues/14904[#14904]
+* Renamed the class to start a Hazelcast member from
+`com.hazelcast.core.server.StartServer` to
+`com.hazelcast.core.server.HazelcastMemberStarter`.
+https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 * The packages of the following classes have been changed:
 +
 [cols="3a,2a,3a,1a"]
 |===
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
+
+| All private classes
+|
+
+* `com.hazelcast.client.config`
+* `com.hazelcast.config`
+* `com.hazelcast.spi.partition`
+* `com.hazelcast.map.journal`
+* `com.hazelcast.query.extractor`
+|
+
+* `com.hazelcast.client.config.impl`
+* `com.hazelcast.internal.config`
+* `com.hazelcast.internal.partition`
+* `com.hazelcast.map.impl.journal`
+* `com.hazelcast.query.impl`
+
+| https://github.com/hazelcast/hazelcast/pull/15887[#15887]
 
 | All classes
 | `com.hazelcast.internal.util.function`
@@ -687,9 +714,16 @@ https://github.com/hazelcast/hazelcast/pull/14912[#14912]
 [[fixes-40beta2]]
 ==== 4.0-Beta-2
 
+* Fixed an issue where `tcp.connection.clientCount` was
+collected and published twice.
+https://github.com/hazelcast/hazelcast/issues/15883[#15883]
 * Fixed an issue where the client connection count
 was retrieved using an incorrect method.
 https://github.com/hazelcast/hazelcast/pull/15861[#15861]
+* Fixed an issue where calling the `IMap.removeAll()` method
+without index was updating the last access and expiry time
+for all records.
+https://github.com/hazelcast/hazelcast/pull/15850[#15850] 
 * Fixed a configuration failure with YAML for composite
 key indexes.
 https://github.com/hazelcast/hazelcast/issues/15806[#15806]
