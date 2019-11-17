@@ -110,9 +110,22 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added the cache statistics to the dynamically collected metrics
+https://github.com/hazelcast/hazelcast/pull/15926[#15926]
+* The following operations have been added to the client side
+Management Center service:
+** `getMemberConfig`
+** `runGc`
+** `getThreadDump`
+** `shutdownMember`
+** `promoteMember`
+** `getSystemProperties`
 * Introduced cluster fail-fast when there are missing security
 realms.
 https://github.com/hazelcast/hazelcast/pull/15872[#15872]
+* Enhanced the counters by adding the `set()` method so that they
+can be used in Hazelcast Jet.
+https://github.com/hazelcast/hazelcast/pull/15867[#15867]
 * Added support for persisting and restoring the active CP members
 list.
 https://github.com/hazelcast/hazelcast/pull/15828[#15828]
@@ -123,6 +136,9 @@ https://github.com/hazelcast/hazelcast/pull/15821[#15821]
 * Removed the legacy `BindMessage` class and renamed `ExtendedBindMessage`
 as `BindMessage`.
 https://github.com/hazelcast/hazelcast/pull/15820[#15820]
+* Unified the IMap and ICache eviction configurations to decrease
+the configuration complexity.
+https://github.com/hazelcast/hazelcast/pull/15592[#15592]
 * Introduced dynamic metric collection. Previously, Hazelcast metrics were 
 reported programmatically to the Hazelcast Management Center, one by one. 
 Introducing new metrics required changes both in IMDG and in MC, which limited the
@@ -478,6 +494,37 @@ lambda friendly.
 
 ==== API Package/Interface Changes
 
+* Moved the following classes from `com.hazelcast.monitor`
+to `com.hazelcast.internal.monitor`:
+** `HotRestartState`
+** `LocalCacheStats`
+** `LocalFlakeIdGeneratorStats`
+** `LocalGCStats`
+** `LocalMemoryStats`
+** `LocalOperationStats`
+** `LocalPNCounterStats`
+** `LocalRecordStoreStats`
+** `LocalWanPublisherStats`
+** `LocalWanStats`
+** `MemberPartitionState`
+** `MemberState`
+** `NodeState`
+** `WanSyncState`
+** All classes in `com.hazelcast.monitor.impl`
++
+https://github.com/hazelcast/hazelcast/pull/15888[#15888]
+* Relocated the following classes:
+** `com.hazelcast.monitor.LocalQueueStats` -> `com.hazelcast.collection.LocalQueueStats`
+** `com.hazelcast.monitor.LocalExecutorStats` -> `com.hazelcast.executor.LocalExecutorStats`
+** `com.hazelcast.monitor.LocalInstanceStats` -> `com.hazelcast.instance.LocalInstanceStats`
+** `com.hazelcast.internal.management.JsonSerializable` -> `com.hazelcast.json.JsonSerializable`
+** `com.hazelcast.monitor.LocalMapStats` -> `com.hazelcast.map.LocalMapStats`
+** `com.hazelcast.monitor.LocalMultiMapStats` -> `com.hazelcast.multimap.LocalMultiMapStats`
+** `com.hazelcast.monitor.NearCacheStats` -> `com.hazelcast.nearcache.NearCacheStats`
+** `com.hazelcast.monitor.LocalReplicatedMapStats` -> `com.hazelcast.replicatedmap.LocalReplicatedMapStats`
+** `com.hazelcast.monitor.LocalTopicStats` -> `com.hazelcast.topic.LocalTopicStats`
++
+https://github.com/hazelcast/hazelcast/pull/15888[#15888]
 * Moved the `getXaResource()` method from the `TransactionContext` class
 to `HazelcastInstance`.
 https://github.com/hazelcast/hazelcast/pull/15728[#15728]
@@ -535,6 +582,17 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 |===
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
+
+| `EventJournalMapEvent`, `EventJournalCacheEvent`
+| 
+
+* `com.hazelcast.map.impl.journal`
+* `com.hazelcast.cache.impl.journal`
+|
+
+* `com.hazelcast.map`
+* `com.hazelcast.cache`
+| https://github.com/hazelcast/hazelcast/pull/15900[#15900]
 
 | All private classes
 |
@@ -714,6 +772,15 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40beta2]]
 ==== 4.0-Beta-2
 
+* Fixed an issue where an exception thrown from a dynamic
+metric provider was stopping the dynamic metric collector task.
+https://github.com/hazelcast/hazelcast/issues/15932[#15932]
+* Fixed the extensive `Overwriting existing probe` logs when
+starting a Hazelcast member.
+https://github.com/hazelcast/hazelcast/pull/15910[#15910]
+* Fixed the `InvocationTargetException` thrown by the metrics
+service on JDK 11.
+https://github.com/hazelcast/hazelcast/issues/15884[#15884]
 * Fixed an issue where `tcp.connection.clientCount` was
 collected and published twice.
 https://github.com/hazelcast/hazelcast/issues/15883[#15883]
@@ -730,6 +797,9 @@ https://github.com/hazelcast/hazelcast/issues/15806[#15806]
 * Fixed an issue where the gauges could not be created from the
 dynamic metrics.
 https://github.com/hazelcast/hazelcast/issues/15718[#15718]
+* Made the public `createCachingProvider()` method private
+since its class, `HazelcastServerCachingProvider`, is a private one.
+https://github.com/hazelcast/hazelcast/issues/15144[#15144]
 
 [[fixes-40beta1]]
 ==== 4.0-Beta-1
