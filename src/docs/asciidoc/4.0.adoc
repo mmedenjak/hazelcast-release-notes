@@ -110,6 +110,12 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Removed the PID management from the IMDG start and stop
+scripts. You can now start multiple Hazelcast instances, when
+using the start script, without the need to create another
+copy of the `/bin` directory, i.e., it now allows running
+multiple processes.
+https://github.com/hazelcast/hazelcast/pull/15934[#15934]
 * Added the cache statistics to the dynamically collected metrics
 https://github.com/hazelcast/hazelcast/pull/15926[#15926]
 * The following operations have been added to the client side
@@ -583,6 +589,11 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 
 |Classes|Package Before IMDG 4.0|Package After IMDG 4.0|Details
 
+| `LdapLoginModule`, `BasicLdapLoginModule`
+| `com.hazelcast.security.impl`
+| `com.hazelcast.security.loginimpl`
+| https://github.com/hazelcast/hazelcast/pull/15929[#15929]
+
 | `EventJournalMapEvent`, `EventJournalCacheEvent`
 | 
 
@@ -772,6 +783,13 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40beta2]]
 ==== 4.0-Beta-2
 
+* Fixed the cache statistics handling: Previously used
+`Config.findCacheConfig()` could only lookup
+cache configurations added statically or dynamically
+via `Config.addCacheConfig()`, but was missing configurations
+of dynamically created caches via `CacheManager.createCache()`.
+Now, `CacheService.getCacheConfigs()` is used to fix this.
+https://github.com/hazelcast/hazelcast/pull/15937[#15937]
 * Fixed an issue where an exception thrown from a dynamic
 metric provider was stopping the dynamic metric collector task.
 https://github.com/hazelcast/hazelcast/issues/15932[#15932]
