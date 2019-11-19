@@ -249,6 +249,11 @@ https://github.com/hazelcast/hazelcast/pull/14798[#14798]
 * Improved the fluent interface of configuration classes by adding
 the `return this` statements to the setter methods.
 https://github.com/hazelcast/hazelcast/pull/11107[#11107]
+* Aligned the put mechanism for IMap and ICache: As in ICache,
+now the put operations without time-to-live (TTL) in IMap makes an
+entry either to live forever or use the TTL in the map's
+configuration (if configured).
+https://github.com/hazelcast/hazelcast/issues/10965[#10965]
 * Added support for falling back to a "default" configuration for
 the cache data structure.
 https://github.com/hazelcast/hazelcast/issues/10695[#10695]
@@ -783,6 +788,17 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40beta2]]
 ==== 4.0-Beta-2
 
+* Fixed an issue where gathering MultiMap statistics was breaking
+the split-brain healing with `LatestAccessMergePolicy`.
+https://github.com/hazelcast/hazelcast/issues/16001[#16001]
+* Fixed an issue where the configuration validator was not checking
+if the maximum size policy is appropriate for the selected in-memory
+format.
+https://github.com/hazelcast/hazelcast/pull/15964[#15964]
+* Fixed an issue where `ManagementCenterService` was shutting down
+itself when it encounters an exception during the creation of `TimedMemberState`.
+This was causing the cluster to disappear from Management Center.
+https://github.com/hazelcast/hazelcast/issues/15946[#15946]
 * Fixed the cache statistics handling: Previously used
 `Config.findCacheConfig()` could only lookup
 cache configurations added statically or dynamically
@@ -815,6 +831,13 @@ https://github.com/hazelcast/hazelcast/issues/15806[#15806]
 * Fixed an issue where the gauges could not be created from the
 dynamic metrics.
 https://github.com/hazelcast/hazelcast/issues/15718[#15718]
+* Fixed an issue where the client's Near Cache was not being
+invalidated after the `IMap.executeOnKeys()` method is called.
+https://github.com/hazelcast/hazelcast/issues/15468[#15468]
+* Fixed the inconsistent behavior for sending a null message
+via `Topic.publish()` on the members and clients. Now, the client
+side also is not allowed to send it.
+https://github.com/hazelcast/hazelcast/issues/15338[#15338]
 * Made the public `createCachingProvider()` method private
 since its class, `HazelcastServerCachingProvider`, is a private one.
 https://github.com/hazelcast/hazelcast/issues/15144[#15144]
