@@ -110,6 +110,9 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* The `recreateCachesOnCluster` invocation is not being checked
+for the maximum invocations count anymore during cluster restarts.
+https://github.com/hazelcast/hazelcast/pull/16026[#16026]
 * Removed the PID management from the IMDG start and stop
 scripts. You can now start multiple Hazelcast instances, when
 using the start script, without the need to create another
@@ -265,6 +268,19 @@ NOTE: Please see the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html
 
 ==== Distributed Data Structures
 
+* Removed the `MapEvictionPolicy` class and its related
+configurations. This has brought the following changes:
+** `EvictionConfig` is used instead of `MapEvictionPolicy` for
+custom eviction policies.
+** `MapEvictionPolicy` has been removed and `MapEvictionPolicyComparator`
+has been addd for the same tasks.
+** `EvictionPolicyComparator`, `MapEvictionPolicyComparator` and
+`CacheEvictionPolicyComparator` have become interfaces.
+** Moved `EvictionPolicyComparator`  and `EvictableEntryView` to
+the `com.hazelcast.spi.eviction` package.
+** Renamed the `accessHits()` method as `hits()`.
++
+https://github.com/hazelcast/hazelcast/pull/15939[#15939]
 * Removed deprecated `IMap` methods accepting `EntryListener`.
 https://github.com/hazelcast/hazelcast/pull/15781[#15781]
 * Removed deprecated `DistributedObjectEvent.getObjectId`. 
@@ -337,6 +353,10 @@ https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 
 ==== Configuration
 
+* `CachingProvider` no longer resolves an URI as the instance name
+since it was used both as the namespace for the cache manager and as a
+means to locate a running Hazelcast instance.
+https://github.com/hazelcast/hazelcast/pull/15995[#15995]
 * The group name in the client configuration renamed to cluster name.
 https://github.com/hazelcast/hazelcast/pull/15772[#15772]
 * Unified `InvalidConfigurationException` and `ConfigurationException`.
@@ -481,7 +501,7 @@ in the `hazelcast-client` module have been moved to `hazelcast`.
 `hazelcast-client.jar` will not be created anymore.
 https://github.com/hazelcast/hazelcast/pull/15366[#15366]
 
-==== Query engine API
+==== Query Engine API
 
 * The Predicate API has been cleaned up to eliminate exposing internal 
 interfaces and classes. The end result is that the public Predicate API 
@@ -528,7 +548,7 @@ https://github.com/hazelcast/hazelcast/pull/15888[#15888]
 ** `com.hazelcast.monitor.LocalQueueStats` -> `com.hazelcast.collection.LocalQueueStats`
 ** `com.hazelcast.monitor.LocalExecutorStats` -> `com.hazelcast.executor.LocalExecutorStats`
 ** `com.hazelcast.monitor.LocalInstanceStats` -> `com.hazelcast.instance.LocalInstanceStats`
-** `com.hazelcast.internal.management.JsonSerializable` -> `com.hazelcast.json.JsonSerializable`
+** `com.hazelcast.internal.management.JsonSerializable` -> `com.hazelcast.json.internal.JsonSerializable`
 ** `com.hazelcast.monitor.LocalMapStats` -> `com.hazelcast.map.LocalMapStats`
 ** `com.hazelcast.monitor.LocalMultiMapStats` -> `com.hazelcast.multimap.LocalMultiMapStats`
 ** `com.hazelcast.monitor.NearCacheStats` -> `com.hazelcast.nearcache.NearCacheStats`
@@ -788,6 +808,22 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40beta2]]
 ==== 4.0-Beta-2
 
+* Fixed an issue where `TestHazelcastInstanceFactory.registry()`
+was throwing `NullPointerException` when it is null (being null could happen
+when using in production networks).
+https://github.com/hazelcast/hazelcast/pull/16033[#16033]
+* Fixed an issue where an enabled `redoOperation()` was not
+throwing an exception when an empty list is tried to be retrieved
+on the client.
+https://github.com/hazelcast/hazelcast/pull/16015[#16015]
+* Aligned the exception mechanism of `CacheManager.createCache()`
+with the `getCache()` and `getCacheManager().getCache()` methods of the
+same class.
+https://github.com/hazelcast/hazelcast/pull/16007[#16007]
+* Fixed an issue where a Raft node may leak and stay in the ACTIVE
+state after a CP member terminates, because of a race between
+the Hazelcast member shutdown and Raft node termination logic.
+https://github.com/hazelcast/hazelcast/pull/16022[#16022]
 * Fixed an issue where gathering MultiMap statistics was breaking
 the split-brain healing with `LatestAccessMergePolicy`.
 https://github.com/hazelcast/hazelcast/issues/16001[#16001]
@@ -799,6 +835,8 @@ https://github.com/hazelcast/hazelcast/pull/15964[#15964]
 itself when it encounters an exception during the creation of `TimedMemberState`.
 This was causing the cluster to disappear from Management Center.
 https://github.com/hazelcast/hazelcast/issues/15946[#15946]
+* Fixed an issue in the query operation for offloaded cases.
+https://github.com/hazelcast/hazelcast/pull/15944[#15944]
 * Fixed the cache statistics handling: Previously used
 `Config.findCacheConfig()` could only lookup
 cache configurations added statically or dynamically
@@ -824,7 +862,10 @@ https://github.com/hazelcast/hazelcast/pull/15861[#15861]
 * Fixed an issue where calling the `IMap.removeAll()` method
 without index was updating the last access and expiry time
 for all records.
-https://github.com/hazelcast/hazelcast/pull/15850[#15850] 
+https://github.com/hazelcast/hazelcast/pull/15850[#15850]
+* Fixed the consistency issue between the configuration replacers
+and XML configuration imports.
+https://github.com/hazelcast/hazelcast/pull/15810[#15810]
 * Fixed a configuration failure with YAML for composite
 key indexes.
 https://github.com/hazelcast/hazelcast/issues/15806[#15806]
@@ -841,6 +882,12 @@ https://github.com/hazelcast/hazelcast/issues/15338[#15338]
 * Made the public `createCachingProvider()` method private
 since its class, `HazelcastServerCachingProvider`, is a private one.
 https://github.com/hazelcast/hazelcast/issues/15144[#15144]
+* Fixed an issue where the `client.getDistributedObjects()` method
+may cause recreation of the destroyed objects.
+https://github.com/hazelcast/hazelcast/issues/14571[#14571]
+* Fixed an issue where the query cache was missing key and value
+information for entries.
+https://github.com/hazelcast/hazelcast/issues/13423[#13423]
 
 [[fixes-40beta1]]
 ==== 4.0-Beta-1
