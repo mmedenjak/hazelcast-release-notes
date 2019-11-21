@@ -110,6 +110,9 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added option to disable retrieving the
+`OSMBean.getFreePhysicalMemorySize()` method.
+https://github.com/hazelcast/hazelcast/pull/16039[#16039]
 * The `recreateCachesOnCluster` invocation is not being checked
 for the maximum invocations count anymore during cluster restarts.
 https://github.com/hazelcast/hazelcast/pull/16026[#16026]
@@ -329,6 +332,10 @@ https://github.com/hazelcast/hazelcast/pull/15013[#15013]
 
 ==== Distributed Events
 
+* Removed the unused entry listener configuration code since
+the return type of `getImplementation()` has been changed from
+`EntryListener` to `MapListener`.
+https://github.com/hazelcast/hazelcast/pull/16051[#16051]
 * Fixed ``MemberAttributeEvent``s `getMembers()` method to return
 the correct members list for the client.
 https://github.com/hazelcast/hazelcast/pull/15231[#15231]
@@ -465,6 +472,11 @@ https://github.com/hazelcast/hazelcast/pull/15292[#15292]
 
 ==== Serialization
 
+* Since `SerializationService` is now an internal API,
+the implementations of `ObjectDataOutput` make use of
+`SerializationServiceSupport` where serialization service
+is needed in the user customizations.
+https://github.com/hazelcast/hazelcast/pull/16046[#16046]
 * Added support for the following default Java serializers for collections:
 ** `ArrayDeque`
 ** `HashSet`
@@ -808,10 +820,19 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40beta2]]
 ==== 4.0-Beta-2
 
+* Fixed possible statistics miscalculations by checking an
+entry's expiration in a Near Cache only if its state is
+`READ_PERMITTED`
+https://github.com/hazelcast/hazelcast/pull/16067[#16067]
 * Fixed an issue where `TestHazelcastInstanceFactory.registry()`
 was throwing `NullPointerException` when it is null (being null could happen
 when using in production networks).
 https://github.com/hazelcast/hazelcast/pull/16033[#16033]
+* Fixed an issue where some functions may not be working when
+a client provides a new client type: removed `ClientType` and
+`ConnectionType` enums and introduced free strings for them
+instead.
+https://github.com/hazelcast/hazelcast/pull/16030[#16030]
 * Fixed an issue where an enabled `redoOperation()` was not
 throwing an exception when an empty list is tried to be retrieved
 on the client.
@@ -827,6 +848,10 @@ https://github.com/hazelcast/hazelcast/pull/16022[#16022]
 * Fixed an issue where gathering MultiMap statistics was breaking
 the split-brain healing with `LatestAccessMergePolicy`.
 https://github.com/hazelcast/hazelcast/issues/16001[#16001]
+* Fixed an issue where enabling REST API configuration
+(`getRestApiConfig().setEnabled(true)`) was throwing
+`NullPointerException` since its default value was null.
+https://github.com/hazelcast/hazelcast/pull/15981[#15981] 
 * Fixed an issue where the configuration validator was not checking
 if the maximum size policy is appropriate for the selected in-memory
 format.
