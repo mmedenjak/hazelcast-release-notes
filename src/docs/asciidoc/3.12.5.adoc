@@ -1,0 +1,31 @@
+== 3.12.5
+
+[[enh-3125]]
+=== Enhancements
+
+* The `recreateCachesOnCluster` invocation is not being checked
+for the maximum invocations count anymore during cluster restarts.
+https://github.com/hazelcast/hazelcast/pull/16014[#16014]
+
+
+[[fixes-3125]]
+=== Fixes
+
+* Fixed an issue where an enabled `redoOperation()` was not
+throwing an exception when an empty list is tried to be retrieved
+on the client.
+https://github.com/hazelcast/hazelcast/pull/16019[#16019]
+* Fixed an issue where gathering MultiMap statistics was breaking
+the split-brain healing with `LatestAccessMergePolicy`.
+https://github.com/hazelcast/hazelcast/issues/16003[#16003]
+* Fixed the `multiplier` element of client's connection
+retry configuration to be set as a `double` in the
+XML configuration (`hazelcast-client.xml). 
+https://github.com/hazelcast/hazelcast/pull/15990[#15990]
+* Fixed an issue where calling the `IMap.removeAll()` method
+without index was updating the last access and expiry time
+for all records.
+https://github.com/hazelcast/hazelcast/pull/15853[#15853]
+* Fixed an issue where the client connection count
+was retrieved using an incorrect method.
+https://github.com/hazelcast/hazelcast/issues/15681[#15681]
