@@ -3,6 +3,9 @@
 [[enh-3125]]
 === Enhancements
 
+* Added option to disable retrieving the
+`OSMBean.getFreePhysicalMemorySize()` method.
+https://github.com/hazelcast/hazelcast/pull/16065[#16065]
 * The `recreateCachesOnCluster` invocation is not being checked
 for the maximum invocations count anymore during cluster restarts.
 https://github.com/hazelcast/hazelcast/pull/16014[#16014]
@@ -22,6 +25,10 @@ https://github.com/hazelcast/hazelcast/issues/16003[#16003]
 retry configuration to be set as a `double` in the
 XML configuration (`hazelcast-client.xml). 
 https://github.com/hazelcast/hazelcast/pull/15990[#15990]
+* Fixed an issue where, after forming a cluster, certain members
+occasionally do not contain `EventService` registrations for
+some other members.
+https://github.com/hazelcast/hazelcast/issues/15950[#15950]
 * Fixed an issue where calling the `IMap.removeAll()` method
 without index was updating the last access and expiry time
 for all records.
