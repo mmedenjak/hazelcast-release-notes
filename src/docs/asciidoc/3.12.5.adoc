@@ -25,6 +25,20 @@ https://github.com/hazelcast/hazelcast/issues/16003[#16003]
 retry configuration to be set as a `double` in the
 XML configuration (`hazelcast-client.xml). 
 https://github.com/hazelcast/hazelcast/pull/15990[#15990]
+* Fixed the following Hot Restart issues:
+** Introduced an additional stage to the Hot Restart
+procedure, i.e., `HotRestartIntegrationService.startup()`,
+which waits until all members transition from the `PASSIVE` state.
+This guarantees all members to have the same state after Hot
+Restart operation is finished.
+** IMap proxies created during Hot Restart are not initialized
+and published to other cluster members. So the operation
+has been improved to force initialize any uninitialized proxies
+and publish them. This fixed the issue where the
+`getDistributedObjects()` method was not reporting the persisted
+objects after a Hot Restart.
++
+https://github.com/hazelcast/hazelcast/pull/15986[#15986],
 * Fixed an issue where, after forming a cluster, certain members
 occasionally do not contain `EventService` registrations for
 some other members.
