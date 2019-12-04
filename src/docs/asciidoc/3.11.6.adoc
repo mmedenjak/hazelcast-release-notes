@@ -1,0 +1,12 @@
+
+
+== 3.11.6
+
+[[fixes-3116]]
+=== Fixes
+
+* Fixed an issue where the `OSMBean.getFreePhysicalMemorySize()`
+method was being excessively executed on AIX operating
+systems: added the option to disable the retrieval using
+this method.
+https://github.com/hazelcast/hazelcast/pull/16091[#16091]

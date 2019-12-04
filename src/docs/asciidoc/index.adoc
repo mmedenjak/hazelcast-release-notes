@@ -52,6 +52,8 @@ include::3.12.1.adoc[]
 
 include::3.12.adoc[]
 
+include::3.11.6.adoc[]
+
 include::3.11.5.adoc[]
 
 include::3.11.4.adoc[]
