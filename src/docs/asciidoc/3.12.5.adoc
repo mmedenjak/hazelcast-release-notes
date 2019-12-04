@@ -14,6 +14,15 @@ https://github.com/hazelcast/hazelcast/pull/16014[#16014]
 [[fixes-3125]]
 === Fixes
 
+* Fixed an issue where repetitive calls of `IMap.loadAll()`
+may cause memory leaks.
+https://github.com/hazelcast/hazelcast/pull/16171[#16171]
+* Fixed an issue where an HTTP request via
+`hazelcast/rest/cluster` was failing when using the advanced network
+configuration and a client endpoint is
+not specified. In this case, this request's response
+has been improved to report `0` as the client connection count.
+https://github.com/hazelcast/hazelcast/pull/16150[#16150]
 * Fixed an issue where an enabled `redoOperation()` was not
 throwing an exception when an empty list is tried to be retrieved
 on the client.
@@ -38,7 +47,7 @@ and publish them. This fixed the issue where the
 `getDistributedObjects()` method was not reporting the persisted
 objects after a Hot Restart.
 +
-https://github.com/hazelcast/hazelcast/pull/15986[#15986],
+https://github.com/hazelcast/hazelcast/pull/15986[#15986]
 * Fixed an issue where, after forming a cluster, certain members
 occasionally do not contain `EventService` registrations for
 some other members.
