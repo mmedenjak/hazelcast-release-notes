@@ -1,8 +1,8 @@
 
 
-== 4.0-BETA-1
+== 4.0-BETA-2
 
-NOTE: See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Hazelcast IMDG 4.0 Migration Guide^]
+NOTE: See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Hazelcast IMDG 4.0 Migration Guide^]
 for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 
 [[nf-40]]
@@ -13,26 +13,26 @@ for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.0.
 * **Persistent Memory Integration:** Added support for persistent memory,
 such as Intel(R) Optane(TM) DC, to be used by Hazelcast's
 High-Density Memory Store feature.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#using-persistent-memory[Using Persistent Memory section^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/index.html#using-persistent-memory[Using Persistent Memory section^].
 * **Encrypting Data in Hot Restart Store:** Provided a framework and implementation to encrypt
 data in Hot Restart stores ("at rest") for data held in distributed structures.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#encryption-at-rest[Encryption at Rest section^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#encryption-at-rest[Encryption at Rest section^].
 * **X.509 Certificate Authentication:** Added support for credential retrieval by the members
 from the X.509 certificates configured on the clients.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#tls-authentication-type[Security chapter^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#tls-authentication-type[Security chapter^].
 * **Out of the Box LDAP Configuration:** Introduced a new LDAP login module
 where you do not need to provide your own JAAS login module for this purpose.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#ldap-authentication-type[Security chapter^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#ldap-authentication-type[Security chapter^].
 * **CP Subsystem Persistence:** Implemented persistency for Hazelcast's
 CP (Consistency & Partition Tolerance) subsystem. 
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#cp-subsystem-persistence[CP Subsystem Persistence section^].
 
 *_Hazelcast IMDG Open Source New Features:_*
 
 * **CP Subsystem Development Mode:** Introduced `UNSAFE` mode for the CP data
 structures. This way, you do not need to have at least three IMDG members
 to use CP subsystem: you can benefit from its functionalities using only one
-or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#cp-subsystem-unsafe-mode[CP Subsystem Unsafe Mode section].
+or two members. See the https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#cp-subsystem-unsafe-mode[CP Subsystem Unsafe Mode section].
 
 [[enh-40]]
 === Enhancements
@@ -45,7 +45,7 @@ to be used for built-in and custom WAN publishers:
 ** `batch-publisher` (or `WanBatchReplicationPublisherConfig`)
 ** `custom-publisher`  (or `CustomWanPublisherConfig`)
 +
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#defining-wan-replication[Defining WAN Replication section^]
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/index.html#defining-wan-replication[Defining WAN Replication section^]
 * **Tracking WAN Synchronization Events:** Management Center, logs and diagnostics now report
 the progress of a WAN synchronization. https://github.com/hazelcast/hazelcast/pull/15221[#15221]
 * **Improvements in the JAAS Authentication Mechanism:**
@@ -56,7 +56,7 @@ the progress of a WAN synchronization. https://github.com/hazelcast/hazelcast/pu
 ** Used `Credentials` object only for authentication to prevent secrets leaks.
 ** Cleaned up the `Credentials` interface.
 +
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#jaas-authentication[JAAS Authentication section^]
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#jaas-authentication[JAAS Authentication section^]
 * **Improvements in the Security Configuration:**
 ** Replaced the `<group>` configuration by simple `<cluster-name>`.
 ** Removed the `group-password` configuration.
@@ -64,29 +64,29 @@ See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#jaas
 ** Added typed authentication and identity configuration (e.g. `<ldap>` authentication, `<token>` identity)
 ** Used similar identity configuration in client config
 +
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#changes-in-the-security-configuration[Hazelcast IMDG 4.0 Migration Guide^]
-and link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#security[Security chapter^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#changes-in-the-security-configuration[Hazelcast IMDG 4.0 Migration Guide^]
+and link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#security[Security chapter^].
 * **Javadoc for the Hazelcast IMDG Enterprise Edition:** Added Javadoc JAR file
 for the Hazelcast IMDG Enterprise Edition.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#getting-started[Getting Started section^]
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#getting-started[Getting Started section^]
 
 *_Hazelcast IMDG Open Source Enhancements:_*
 
 * **HTTPS for Scripts:** Enabled the REST endpoints for the `cluster.sh` and
 `healthcheck.sh` scripts to use HTTPS. Before, they were
 using HTTP. See the
-link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and
-link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#health-check-script[healtcheck.sh^] sections.
+link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and
+link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#health-check-script[healtcheck.sh^] sections.
 * **MapLoader with Custom time-to-live:** Introduced the `EntryStore` and `EntryLoader`
 interfaces (adding expiration support for MapStore). See the
-https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/index.html#loading-and-storing-persistent-data[Loading and Storing Persistent Data section].
+https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/index.html#loading-and-storing-persistent-data[Loading and Storing Persistent Data section].
 * **Moby Naming:** Introduced friendly names for the Hazelcast instances to be shown
-in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#checking-the-name-of-the-instance-for-rest-client[Checking the Instances' Name section^]. Also, a new system property, `hazelcast.member.naming.moby.enabled`, is introduced for this purpose.
+in the Hazelcast Management Center. See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#checking-the-name-of-the-instance-for-rest-client[Checking the Instances' Name section^]. Also, a new system property, `hazelcast.member.naming.moby.enabled`, is introduced for this purpose.
 * **Improved Client Performance:** Introduced a way to eliminate the sync backup
 wait from the client and send the backup ACK to the client:
 the smart clients have been made backup aware and the backups
 now are redirected to the client directly from the backup members.
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#configuring-backup-acknowledgment[Configuring Backup Acknowledgment section^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#configuring-backup-acknowledgment[Configuring Backup Acknowledgment section^].
 * **Ownerless Client:** Previously, the clients had an owner member
 responsible for cleaning up their resources after they leave the cluster. Also, the
 ownership information was needed to be replicated to the whole cluster when a client joins the cluster.
@@ -95,7 +95,7 @@ to control the lifecycle of the clients on the member side:
 ** `hazelcast.client.cleanup.period.millis`
 ** `hazelcast.client.cleanup.timeout.millis`
 +
-See the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#client-system-properties[Client System Properties section^].
+See the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#client-system-properties[Client System Properties section^].
 * **Single Thread Hazelcast Clients Performance:** Hazelcast clients have been designed to be
 used by multiple threads; the more threads you throw at it, the better the performance
 (until it is saturated). Now, it has also been optimized for a single thread doing requests:
@@ -110,6 +110,9 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Improved the `IMap.putAll()` and `IMap.put()` behaviors
+so that they match when they trigger listener events.
+https://github.com/hazelcast/hazelcast/pull/16144[#16144]
 * The `runScript` and `runConsoleCommand` operations have been added to
 the client side `ManagementCenterService`.
 https://github.com/hazelcast/hazelcast/pull/16071[#16071]
@@ -287,7 +290,7 @@ https://github.com/hazelcast/hazelcast/issues/10695[#10695]
 [[bc-40]]
 === Breaking Changes
 
-NOTE: Please see the link:https://docs.hazelcast.org/docs/4.0-BETA-1/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Upgrading to Hazelcast IMDG 4.0^] for the details of following breaking changes to be considered while upgrading to IMDG 4.0. 
+NOTE: Please see the link:https://docs.hazelcast.org/docs/4.0-BETA-2/manual/html-single/#upgrading-to-hazelcast-imdg-4-0[Upgrading to Hazelcast IMDG 4.0^] for the details of following breaking changes to be considered while upgrading to IMDG 4.0. 
 
 ==== Distributed Data Structures
 
@@ -384,6 +387,8 @@ https://github.com/hazelcast/hazelcast/pull/14959[#14959]
 since it was used both as the namespace for the cache manager and as a
 means to locate a running Hazelcast instance.
 https://github.com/hazelcast/hazelcast/pull/15995[#15995]
+* Removed the configuration for user defined services SPI.
+https://github.com/hazelcast/hazelcast/pull/15951[#15951]
 * The group name in the client configuration renamed to cluster name.
 https://github.com/hazelcast/hazelcast/pull/15772[#15772]
 * Unified `InvalidConfigurationException` and `ConfigurationException`.
@@ -492,8 +497,6 @@ https://github.com/hazelcast/hazelcast/pull/15292[#15292]
 
 ==== Serialization
 
-* Added the following built-in serializers for `Map.Entry` and `PriorityQueue`:
-** 
 * Since `SerializationService` is now an internal API,
 the implementations of `ObjectDataOutput` make use of
 `SerializationServiceSupport` where serialization service
@@ -859,6 +862,27 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40beta2]]
 ==== 4.0-Beta-2
 
+* Fixed an issue where an HTTP request via
+`hazelcast/rest/cluster` was failing when using the advanced network
+configuration and a client endpoint is
+not specified. In this case, this request's response
+has been improved to report `0` as the client connection count.
+https://github.com/hazelcast/hazelcast/pull/16152[#16152]
+* Fixed the following Hot Restart issues:
+** Introduced an additional stage to the Hot Restart
+procedure, i.e., `HotRestartIntegrationService.startup()`,
+which waits until all members transition from the `PASSIVE` state.
+This guarantees all members to have the same state after Hot
+Restart operation is finished.
+** IMap proxies created during Hot Restart are not initialized
+and published to other cluster members. So the operation
+has been improved to force initialize any uninitialized proxies
+and publish them. This fixed the issue where the
+`getDistributedObjects()` method was not reporting the persisted
+objects after a Hot Restart.
++
+https://github.com/hazelcast/hazelcast/pull/16116[#16116],
+https://github.com/hazelcast/hazelcast/pull/15930[#15930]
 * Forced eviction was evicting all the entries
 regardless of the eviction configuration. This has
 been fixed: forced eviction now runs only if a map has
@@ -872,6 +896,9 @@ https://github.com/hazelcast/hazelcast/pull/16076[#16076]
 entry's expiration in a Near Cache only if its state is
 `READ_PERMITTED`
 https://github.com/hazelcast/hazelcast/pull/16067[#16067]
+* Fixed an issue where a `StreamSerializer` is added using
+`setTypeClass` instead of `setTypeClassName`; this was not correctly handled.
+https://github.com/hazelcast/hazelcast/issues/16047[#16047]
 * Fixed an issue where `TestHazelcastInstanceFactory.registry()`
 was throwing `NullPointerException` when it is null (being null could happen
 when using in production networks).
@@ -923,6 +950,9 @@ https://github.com/hazelcast/hazelcast/pull/15937[#15937]
 * Fixed an issue where an exception thrown from a dynamic
 metric provider was stopping the dynamic metric collector task.
 https://github.com/hazelcast/hazelcast/issues/15932[#15932]
+* Fixed an issue where the map and Replicated Map in a client
+share the same near cache when they have identical names.
+https://github.com/hazelcast/hazelcast/issues/15912[#15912]
 * Fixed the extensive `Overwriting existing probe` logs when
 starting a Hazelcast member.
 https://github.com/hazelcast/hazelcast/pull/15910[#15910]
