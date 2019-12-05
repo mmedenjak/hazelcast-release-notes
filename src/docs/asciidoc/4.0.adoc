@@ -171,6 +171,9 @@ https://github.com/hazelcast/hazelcast/pull/15821[#15821]
 * Removed the legacy `BindMessage` class and renamed `ExtendedBindMessage`
 as `BindMessage`.
 https://github.com/hazelcast/hazelcast/pull/15820[#15820]
+* Renamed the `restart()` method of `CPSubsystemManagementService`
+to `reset()`.
+https://github.com/hazelcast/hazelcast/pull/15798[#15798]
 * Unified the IMap and ICache eviction configurations to decrease
 the configuration complexity.
 https://github.com/hazelcast/hazelcast/pull/15592[#15592]
@@ -497,6 +500,10 @@ https://github.com/hazelcast/hazelcast/pull/15292[#15292]
 
 ==== Serialization
 
+* Now, `Data` and `SerializationService` are not exposed
+in `ObjectDataOutput/Input` and `ObjectDataInput`,
+respectively.
+https://github.com/hazelcast/hazelcast/pull/16064[#16064]
 * Since `SerializationService` is now an internal API,
 the implementations of `ObjectDataOutput` make use of
 `SerializationServiceSupport` where serialization service
