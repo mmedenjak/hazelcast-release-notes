@@ -7,6 +7,9 @@
 index memory usage for low-cardinality columns and also to speed up
 the queries and lower memory requirements for them
 when the queries have multiple predicates acting on the same bitmap index.
+Note that bitmap indexes usage, currently, is a good fit for
+array/collection attribute indexing, rather than regular
+single-valued attributes.
 See the link:https://docs.hazelcast.org/docs/3.12.6/manual/html-single/#bitmap-indexes[Bitmap Indexes section].
 
 
