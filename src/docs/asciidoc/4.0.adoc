@@ -117,6 +117,12 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added the following client operations related to CP subsystem to be
+used by Management Center:
+** `getCPMembers`
+** `promoteToCPMember`
+** `removeCPMember`
+** `resetCPSubsystem`
 * Improved the `IMap.putAll()` and `IMap.put()` behaviors
 so that they match when they trigger listener events.
 https://github.com/hazelcast/hazelcast/pull/16144[#16144]
@@ -474,8 +480,43 @@ whitespaces, so they are handled correctly in the declarative
 Hazelcast IMDG configuration files.
 https://github.com/hazelcast/hazelcast/issues/14919[#14919]
 
+==== Management Center
+
+* Removed all the codes providing HTTP based communications
+between Hazelcast Management Center  and Hazelcast IMDG. Therefore:
+** Removed the `MCMutualAuthConfig` class.
+** Removed the `enabled`, `url`, `mutualAuthConfig`, and `updateInterval`
+fields from the `ManagementCenterConfig` class.
+** Declarative XML configuration simply looks like the following:
++
+```
+<management-center scripting-enabled="true|false"/>
+```
+** Declarative YAML configuration simply looks like the following:
++
+```
+management-center
+  scripting-enabled: true|false
+```
+** Related REST API changes are as follows:
+*** Removed the `/hazelcast/rest/mancenter/changeurl` endpoint.
+*** Renamed `/hazelcast/rest/mancenter/security/permissions` as `/hazelcast/rest/management/security/permissions`.
+*** Renamed the `/hazelcast/rest/mancenter/wan/\*` endpoints as `/hazelcast/rest/wan/*`.
+*** Removed the legacy `/hazelcast/rest/mancenter/clearWanQueues` alternative URL in favor
+of `/hazelcast/rest/wan/clearWanQueues`.
+
 ==== WAN Replication
 
+* Aligned the naming of WAN classes, interfaces and getters/setters.
+Some examples are listed below:
+** `WanReplicationPublisher` -> `WanPublisher`
+** `WanReplicationConsumer` -> `WanConsumer`
+** `WanReplicationEvent` -> `WanEvent`
+** `WanBatchReplicationPublisherConfig` -> `WanBatchPublisherConfig`
+** `CustomWanPublisherConfig` -> `WanCustomPublisherConfig`
++
+See https://github.com/hazelcast/hazelcast/pull/16174[#16174] for
+all the changes.
 * Cleaned up the WAN publisher SPI to make it easier to implement integration between map/cache entry mutation and an external system.
 +
 https://github.com/hazelcast/hazelcast/pull/15195[#15195],
@@ -544,6 +585,18 @@ https://github.com/hazelcast/hazelcast/pull/16102[#16102],
 
 ==== REST
 
+* Performed the following cleanups:
+** Made all the HTTP status codes (including 200) to return a response body.
+** Moved the helper methods from `HttpPostCommandProcessor` to `HttpCommand`.
+** Removed the exception handling and authentication helper methods.
+** The exception handling now always returns a HTTP 500 for an error.
+** The authentication and parameter parsing is now handled by the
+`decodeParamsAndAuthenticate` method.
+** HTTP 400 is NOT returned now if any handler throws an
+`IndexOutOfBoundsException`.
+** Added credentials checking to POST methods for map and queue.
++
+https://github.com/hazelcast/hazelcast/pull/16148[#16148]
 * Aligned the output format of the REST API to return JSON:
 ** Changed the output format of the `healthcheck` and `cluster` URIs to return
 JSON since the other URIs already return JSON.
@@ -873,6 +926,9 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40]]
 === Fixes
 
+* Fixed the incorrect deserialization in `PriorityQueueStreamSerializer` and
+`PriorityBlockingQueueStreamSerializer`.
+https://github.com/hazelcast/hazelcast/issues/16224[#16224]
 * Fixed the joining mechanism so that when the discovery
 strategy is enabled, multiple join configurations are prevented.
 https://github.com/hazelcast/hazelcast/pull/16177[#16177]
@@ -889,6 +945,11 @@ https://github.com/hazelcast/hazelcast/issues/16096[#16096]
 * Fixed an issue where `Address.equals()` and `hashCode` was
 using hostname instead of IP addresses.
 https://github.com/hazelcast/hazelcast/pull/16075[#16075]
+* Fixed an issue where a client in `CLIENT_DISCONNECTED` state
+was not aware of possible attribute changes in the cluster after
+its state becomes `CLIENT_CONNECTED`: Hazelcast now does not allow
+changing member attributes after restarts.
+https://github.com/hazelcast/hazelcast/pull/16168[#16168]
 
 [[fixes-40beta2]]
 ==== 4.0-Beta-2
@@ -1156,7 +1217,8 @@ have a different IP address after it is restarted.
 https://github.com/hazelcast/hazelcast/pull/14842[#14842]
 * Fixed an issue where the migration operations were running
 before the previous finalization is completed.
-https://github.com/hazelcast/hazelcast/pull/14832[#14832]
+https://github.com/hazelcast/hazelcast/pull/14832[#14832],
+https://github.com/hazelcast/hazelcast/pull/16189[#16189]
 * Fixed an issue where the outbound pipeline was not waking up
 properly after various optimizations for write-through
 persistence is made.
