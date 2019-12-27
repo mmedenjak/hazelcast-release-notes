@@ -310,6 +310,10 @@ NOTE: Please see the link:https://docs.hazelcast.org/docs/4.0/manual/html-single
 
 ==== Distributed Data Structures
 
+* Changed the behavior of the `getAll()` method: when
+either of the loaded key or value returned by the `MapLoader` is null,
+this method now fails fast.
+https://github.com/hazelcast/hazelcast/pull/16204[#16204]
 * Removed the `MapEvictionPolicy` class and its related
 configurations. This has brought the following changes:
 ** `EvictionConfig` is used instead of `MapEvictionPolicy` for
@@ -926,6 +930,14 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where the `MembershipEvent.getMembers()` was
+not returning the cluster member list in the proper order
+at the time of event (when a new member joins).
+https://github.com/hazelcast/hazelcast/pull/16243[#16243]
+* Fixed an issue where a REST URI not matching any pattern
+was returning a response belonging in `CLUSTER_WRITE` endpoint
+group. Now, it throws an exception.
+https://github.com/hazelcast/hazelcast/pull/16237[#16237]
 * Fixed the incorrect deserialization in `PriorityQueueStreamSerializer` and
 `PriorityBlockingQueueStreamSerializer`.
 https://github.com/hazelcast/hazelcast/issues/16224[#16224]
