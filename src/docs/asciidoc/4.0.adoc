@@ -117,12 +117,35 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
-* Added the following client operations related to CP subsystem to be
-used by Management Center:
+* Added convenience constructor for `SpringManagedContext`
+to easily create it in the programmatic way.
+https://github.com/hazelcast/hazelcast/pull/16401[#16401]
+* Now the arrays passed to the `Collection.toArray()` calls
+are not pre-sized.
+https://github.com/hazelcast/hazelcast/pull/16391[#16391]
+* Added the local member UUID to `BindMessage` instances to help
+resolving the  recurring Member-Address mapping issues.
+https://github.com/hazelcast/hazelcast/pull/16326[#16326]
+* Removed `SplitBrainMergeTypeProvider`. Instead, split-brain
+merge types are now directly used in the respective
+`ConfigValidator`, avoiding the loading of JCache related
+classes when not necessary.
+https://github.com/hazelcast/hazelcast/pull/16321[#16321]
+* Removed the shortened `mancenter` phrase from the source code.
+https://github.com/hazelcast/hazelcast/pull/16282[#16282]
+* Added the following client operations related to CP subsystem
+and Hot Restart to be used by Management Center:
 ** `getCPMembers`
 ** `promoteToCPMember`
 ** `removeCPMember`
 ** `resetCPSubsystem`
+** `triggerPartialStart`
+** `triggerForceStart`
+** `triggerHotRestartBackup`
+** `interruptHotRestartBackup`
++
+https://github.com/hazelcast/hazelcast/pull/16226[#16226],
+https://github.com/hazelcast/hazelcast/pull/16262[#16262]
 * Improved the `IMap.putAll()` and `IMap.put()` behaviors
 so that they match when they trigger listener events.
 https://github.com/hazelcast/hazelcast/pull/16144[#16144]
@@ -291,6 +314,17 @@ https://github.com/hazelcast/hazelcast/pull/14811[#14811]
 * Introduced a warning log for illegal reflective access operation when
 using Java 9 and higher, and OpenJ9.
 https://github.com/hazelcast/hazelcast/pull/14798[#14798]
+* Introduced XEN optimized clock on EC2 since using `System.currentTimeMillis`
+may be expensive: it is used when the XEN clock on
+Linux is detected and uses an approximate time instead of the actual
+time.
+https://github.com/hazelcast/hazelcast/pull/14418[#14418]
+* Added a method to easily identify when all replicas of a
+partition have been lost: `allReplicasInPartitionLost()`
+https://github.com/hazelcast/hazelcast/pull/11983[#11983]
+* Changed the Scheduled Executor's capacity value from "per partition"
+to "per member".
+https://github.com/hazelcast/hazelcast/issues/11629[#11629]
 * Improved the fluent interface of configuration classes by adding
 the `return this` statements to the setter methods.
 https://github.com/hazelcast/hazelcast/pull/11107[#11107]
@@ -310,6 +344,11 @@ NOTE: Please see the link:https://docs.hazelcast.org/docs/4.0/manual/html-single
 
 ==== Distributed Data Structures
 
+* Removed the `values()` and `entrySet()` from map and replicated
+map's `MBeans` since these are potentially dangerous operations that can
+cause an `OutOfMemoryException` on the member since by default there is no
+limit on how many entries can be returned as a response for a query.
+https://github.com/hazelcast/hazelcast/pull/16238[#16238]
 * Changed the behavior of the `getAll()` method: when
 either of the loaded key or value returned by the `MapLoader` is null,
 this method now fails fast.
@@ -534,6 +573,10 @@ https://github.com/hazelcast/hazelcast/pull/15195[#15195]
 
 ==== Split-Brain Protection and Split-Brain Merge
 
+* Removed references to `Data` from the split-brain merge policies:
+`Data` is now internal API and, hence, custom merge policies
+were receiving leaking references to an internal API.
+https://github.com/hazelcast/hazelcast/pull/16159[#16159]
 * Introduced "split brain protection" concept to replace "quorum"
 to make it more explicit and unambiguous. Classes and configuration
 elements including the term "quorum" has been replaced by "splitbrainprotection".
@@ -930,10 +973,31 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40]]
 === Fixes
 
+* Fixed the `NullPointerException` in `WanCacheEntryView` since
+it was missing a reference to the serialization service.
+https://github.com/hazelcast/hazelcast/pull/16382[#16382]
+* Fixed the missing client XML/YAML configurations in `mvn assembly`.
+https://github.com/hazelcast/hazelcast/issues/16331[#16331]
+* Fixed an issue where the Near Cache
+was not being updated with the new value as soon as `putAsync`
+future is completed, when local update policy is `CACHE_ON_UPDATE`.
+https://github.com/hazelcast/hazelcast/pull/16314[#16314]
+* Reverted the support for transaction propagation implementation due
+to the issues with nested transactions.
+https://github.com/hazelcast/hazelcast/pull/16301[#16301]
+* Fixed an issue where the destruction of a proxy that is not
+yet initialized was blocking on its construction, leading to the risk of deadlock.
+https://github.com/hazelcast/hazelcast/pull/16297[#16297]
+* Fixed the `NullPointerException` in handling the authentication
+result when the Management Center client connects to starting cluster.
+https://github.com/hazelcast/hazelcast/pull/16294[#16294]
 * Fixed an issue where the `MembershipEvent.getMembers()` was
 not returning the cluster member list in the proper order
 at the time of event (when a new member joins).
 https://github.com/hazelcast/hazelcast/pull/16243[#16243]
+* Fixed an issue where the CP group IDs were not unique
+for different CP subsystem initializations.
+https://github.com/hazelcast/hazelcast/pull/16240[#16240]
 * Fixed an issue where a REST URI not matching any pattern
 was returning a response belonging in `CLUSTER_WRITE` endpoint
 group. Now, it throws an exception.
@@ -951,6 +1015,13 @@ https://github.com/hazelcast/hazelcast/pull/16173[#16173]
 was throwing a configuration exception when there is a conflict
 between the dynamic and static configurations.
 https://github.com/hazelcast/hazelcast/issues/16165[#16165]
+*  Fixed an issue where the configuration objects, that have
+both implementation/class and name as the configuration, were
+not equal after (de)serializations.
+https://github.com/hazelcast/hazelcast/issues/16156[#16156]
+* Eliminated the unnecessary iterations and object creations on
+the bulk client responses.
+https://github.com/hazelcast/hazelcast/pull/16138[#16138]
 * Fixed an issue where repetitive calls of `IMap.loadAll()`
 may cause memory leaks.
 https://github.com/hazelcast/hazelcast/issues/16096[#16096]
@@ -962,6 +1033,17 @@ was not aware of possible attribute changes in the cluster after
 its state becomes `CLIENT_CONNECTED`: Hazelcast now does not allow
 changing member attributes after restarts.
 https://github.com/hazelcast/hazelcast/pull/16168[#16168]
+* Fixed the inconsistency in Near Cache when using `CacheOnUpdate`:
+Normally, a Near Cache is updated with get operations; another
+option is `CacheOnUpdate` and when it is enabled, put operations also
+update the Near Cache. To never miss any invalidation and never read
+any stale data indefinitely, get based updates use reservations. With this fix,
+this reservation based solution also applies to the put operations when
+`CacheOnUpdate` is configured.
+https://github.com/hazelcast/hazelcast/issues/12548[#12548]
+* Fixed an issue where `ProxyManager` was not removing `Proxy`
+even after the original distributed object is destroyed.
+https://github.com/hazelcast/hazelcast/issues/12470[#12470]
 
 [[fixes-40beta2]]
 ==== 4.0-Beta-2
