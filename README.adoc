@@ -1,4 +1,4 @@
-=== Hazelcast Management Center Release Notes
+=== Hazelcast IMDG Center Release Notes
 
 
 .Build The Documentation:
