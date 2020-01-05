@@ -133,8 +133,11 @@ classes when not necessary.
 https://github.com/hazelcast/hazelcast/pull/16321[#16321]
 * Removed the shortened `mancenter` phrase from the source code.
 https://github.com/hazelcast/hazelcast/pull/16282[#16282]
-* Added the following client operations related to CP subsystem
-and Hot Restart to be used by Management Center:
+* Removed the client side user executor and related configuration,
+i.e., `executor-pool-size`.
+https://github.com/hazelcast/hazelcast/pull/16215[#16215]
+* Added the following client operations related to CP subsystem,
+Hot Restart and WAN replication to be used by Management Center:
 ** `getCPMembers`
 ** `promoteToCPMember`
 ** `removeCPMember`
@@ -143,9 +146,15 @@ and Hot Restart to be used by Management Center:
 ** `triggerForceStart`
 ** `triggerHotRestartBackup`
 ** `interruptHotRestartBackup`
+** `changeWanReplicationState`
+** `clearWanQueues`
+** `addWanReplicationConfig`
+** `wanSyncMap`
+** `checkWanConsistency`
 +
 https://github.com/hazelcast/hazelcast/pull/16226[#16226],
-https://github.com/hazelcast/hazelcast/pull/16262[#16262]
+https://github.com/hazelcast/hazelcast/pull/16262[#16262],
+https://github.com/hazelcast/hazelcast/pull/16078[#16078]
 * Improved the `IMap.putAll()` and `IMap.put()` behaviors
 so that they match when they trigger listener events.
 https://github.com/hazelcast/hazelcast/pull/16144[#16144]
