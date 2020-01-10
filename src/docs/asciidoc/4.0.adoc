@@ -117,12 +117,32 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Removed the following duplicated MBeans since the metrics MBean
+have been exposed:
+** `ClientEngineMBean`
+** `EventServiceMBean`
+** `NetworkingServiceMBean`
+** `OperationServiceMBean`
+** `ProxyServiceMBean`
++
+https://github.com/hazelcast/hazelcast/pull/16425[#16425]
+* Renamed the `WanReplicationRef.setMergePolicy()` method
+as `setMergePolicyClassName()` and made the `PassThroughMergePolicy`
+the default merge policy for WAN replication if none is specified.
+https://github.com/hazelcast/hazelcast/pull/16403[#16403]
 * Added convenience constructor for `SpringManagedContext`
 to easily create it in the programmatic way.
 https://github.com/hazelcast/hazelcast/pull/16401[#16401]
 * Now the arrays passed to the `Collection.toArray()` calls
 are not pre-sized.
 https://github.com/hazelcast/hazelcast/pull/16391[#16391]
+* Added support for AWS PrivateLink. Now, Hazelcast IMDG
+Java client can work with Hazelcast Cloud when it uses AWS PrivateLink.
+https://github.com/hazelcast/hazelcast/pull/16371[#16371]
+* Added the `getOrCreate()` method to the client configuration
+to fix the issue with `setInstanceName()` when using Spring Boot
+and Hazelcast client.
+https://github.com/hazelcast/hazelcast/issues/16362[#16362]
 * Added the local member UUID to `BindMessage` instances to help
 resolving the  recurring Member-Address mapping issues.
 https://github.com/hazelcast/hazelcast/pull/16326[#16326]
@@ -131,6 +151,9 @@ merge types are now directly used in the respective
 `ConfigValidator`, avoiding the loading of JCache related
 classes when not necessary.
 https://github.com/hazelcast/hazelcast/pull/16321[#16321]
+* Improved the Ringbuffer data structure so that it does not
+throw `StaleSequenceException` when using `ReadManyOperation`.
+https://github.com/hazelcast/hazelcast/pull/16303[#16303]
 * Removed the shortened `mancenter` phrase from the source code.
 https://github.com/hazelcast/hazelcast/pull/16282[#16282]
 * Removed the client side user executor and related configuration,
@@ -155,6 +178,9 @@ Hot Restart and WAN replication to be used by Management Center:
 https://github.com/hazelcast/hazelcast/pull/16226[#16226],
 https://github.com/hazelcast/hazelcast/pull/16262[#16262],
 https://github.com/hazelcast/hazelcast/pull/16078[#16078]
+* Added the support for `yml` extension, in addition to `yaml`,
+for the Hazelcast configuration locator.
+https://github.com/hazelcast/hazelcast/issues/16205[#16205]
 * Improved the `IMap.putAll()` and `IMap.put()` behaviors
 so that they match when they trigger listener events.
 https://github.com/hazelcast/hazelcast/pull/16144[#16144]
@@ -353,6 +379,15 @@ NOTE: Please see the link:https://docs.hazelcast.org/docs/4.0/manual/html-single
 
 ==== Distributed Data Structures
 
+* Externalized the hardcoded Flake ID Generator properties.
+So the following constants are now in `FlakeIdGeneratorConfig`:
+** `EPOCH_START`
+** `BITS_TIMESTAMP`
+** `BITS_SEQUENCE`
+** `BITS_NODE_ID`
+** `ALLOWED_FUTURE_MILLIS`
++
+https://github.com/hazelcast/hazelcast/pull/16278[#16278]
 * Removed the `values()` and `entrySet()` from map and replicated
 map's `MBeans` since these are potentially dangerous operations that can
 cause an `OutOfMemoryException` on the member since by default there is no
@@ -982,6 +1017,10 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where the serializable singleton comparators
+for natural and reverse order was creating new instances
+on deserialization.
+https://github.com/hazelcast/hazelcast/pull/16439[#16439]
 * Fixed the `NullPointerException` in `WanCacheEntryView` since
 it was missing a reference to the serialization service.
 https://github.com/hazelcast/hazelcast/pull/16382[#16382]
