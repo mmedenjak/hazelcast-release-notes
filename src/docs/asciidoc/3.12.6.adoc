@@ -22,14 +22,24 @@ Now, Hazelcast IMDG Java client can work with Hazelcast Cloud when it uses AWS P
 [[fixes-3126]]
 === Fixes
 
+* Fixed an issue where disabling the quorum had not an effect
+and was still checking the presence of split-brain protection.
+https://github.com/hazelcast/hazelcast/issues/16507[#16507]
+* Fixed an issue where the `Imap.containsKey()` method was not
+able to find Near Cached entries when it is called from a
+client.
+https://github.com/hazelcast/hazelcast/issues/16472[#16472]
+* Fixed a race condition caused by using on-heap indexes
+while indexing is in progress.
+https://github.com/hazelcast/hazelcast/pull/16461[#16461]
+* Fixed the issue with `setInstanceName()` when using Spring Boot
+and Hazelcast client: the `getOrCreate()` method
+has been added to the client configuration.
+https://github.com/hazelcast/hazelcast/pull/16363[#16363]
 * Fixed an issue where wildcard usage at
 `CLASSPATH` was breaking the `stop.bat` and
 `start.bat` scripts.
 https://github.com/hazelcast/hazelcast/issues/16355[#16355]
-* Fixed the issue with `setInstanceName()` when using Spring Boot
-and Hazelcast client: the `getOrCreate()` method
-has been added to the client configuration.
-https://github.com/hazelcast/hazelcast/issues/16313[#16313]
 * Fixed an issue where the migration operations were running
 before the previous finalization is completed.
 https://github.com/hazelcast/hazelcast/pull/16190[#16190]
