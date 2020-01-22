@@ -126,6 +126,21 @@ have been exposed:
 ** `ProxyServiceMBean`
 +
 https://github.com/hazelcast/hazelcast/pull/16425[#16425]
+* Removed the dependencies on `Data` from the `SplitBrainMergePolicy`
+API:
+** The newly introduced `getRawValue/Key` methods (which supersede
+the old getValue/Key) in `MergingValue/MergingEntry` classes
+return the in-memory representation as `OBJECT`. The deserialized
+value can be obtained using `getDeserializedValue/Key`.
+** The merge types in SplitBrainMergeTypes no longer depend on Data.
+Also, the value type has been removed from the various "view"
+interfaces such as `MergingHits`, `MergingCreationTime`, etc.
+** The new marker super-interface `MergingView` has been introduced that
+all the "view" interfaces (including `MergingValue`) now extend.
+** The generic type signature of `SplitBrainMergePolicy` has been changed
+to specify the (deserialized) type of the merging value.
++
+https://github.com/hazelcast/hazelcast/pull/16423[#16423]
 * Renamed the `WanReplicationRef.setMergePolicy()` method
 as `setMergePolicyClassName()` and made the `PassThroughMergePolicy`
 the default merge policy for WAN replication if none is specified.
@@ -1017,6 +1032,13 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40]]
 === Fixes
 
+* Fixed an issue where disabling the quorum had not an effect
+and was still checking the presence of split-brain protection.
+https://github.com/hazelcast/hazelcast/issues/16510[#16510]
+* Fixed an issue where the `Imap.containsKey()` method was not
+able to find Near Cached entries when it is called from a
+client.
+https://github.com/hazelcast/hazelcast/issues/16462[#16462]
 * Fixed an issue where the serializable singleton comparators
 for natural and reverse order was creating new instances
 on deserialization.
