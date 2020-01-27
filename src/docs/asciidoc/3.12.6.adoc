@@ -22,6 +22,9 @@ Now, Hazelcast IMDG Java client can work with Hazelcast Cloud when it uses AWS P
 [[fixes-3126]]
 === Fixes
 
+* Fixed the map configuration so that now the value of
+`optimize-queries` element is not serialized anymore.
+https://github.com/hazelcast/hazelcast/pull/16524[#16524]
 * Fixed an issue where disabling the quorum had not an effect
 and was still checking the presence of split-brain protection.
 https://github.com/hazelcast/hazelcast/issues/16507[#16507]
