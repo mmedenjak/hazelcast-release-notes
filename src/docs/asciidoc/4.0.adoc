@@ -117,6 +117,9 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Updated the Spring license as the Hazelcast community
+license.
+https://github.com/hazelcast/hazelcast/pull/16553[#16553]
 * Removed the following duplicated MBeans since the metrics MBean
 have been exposed:
 ** `ClientEngineMBean`
@@ -584,6 +587,10 @@ https://github.com/hazelcast/hazelcast/issues/14919[#14919]
 
 ==== Management Center
 
+* Scripting is now disabled by default for both Hazelcast
+IMDG Open Source and Enterprise editions. Previously, it was disabled
+only for the Enterprise edition.
+https://github.com/hazelcast/hazelcast/issues/16526[#16526]
 * Removed all the codes providing HTTP based communications
 between Hazelcast Management Center  and Hazelcast IMDG. Therefore:
 ** Removed the `MCMutualAuthConfig` class.
@@ -1032,9 +1039,25 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40]]
 === Fixes
 
+* Fixed the `NullPointerException` when completing
+a future in `ExecutorService` with an `ExecutionException`.
+https://github.com/hazelcast/hazelcast/pull/16564[#16564]
+* Fixed a leak issue in listeners: if connection closes
+while registering a `clusterViewListener`, there was a leak
+since there couldn't be a `DestroyAction`. It has been
+fixed by adding a catch-and-ignore for `CancelledKeyException`.
+https://github.com/hazelcast/hazelcast/pull/16558[#16558]
+* Fixed an issue where the Management Center client
+could not change the cluster state if the cluster is in
+the `PASSIVE` state.
+https://github.com/hazelcast/hazelcast/pull/16538[#16538]
 * Fixed an issue where disabling the quorum had not an effect
 and was still checking the presence of split-brain protection.
 https://github.com/hazelcast/hazelcast/issues/16510[#16510]
+* Fixed the consistency issue in High-Density Memory Store's
+ICache iterator: The `hasNotBeenObserved` method could be causing
+stable entries to be skipped.
+https://github.com/hazelcast/hazelcast/pull/16504[#16504]
 * Fixed an issue where the `Imap.containsKey()` method was not
 able to find Near Cached entries when it is called from a
 client.
