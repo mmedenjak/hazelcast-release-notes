@@ -49,8 +49,8 @@ See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#bitmap-inde
 * **Separating WAN Publisher Configuration:** The previously known `wan-publisher`
 (or `WanPublisherConfig`) has been separated into two configuration elements
 to be used for built-in and custom WAN publishers:
-** `batch-publisher` (or `WanBatchReplicationPublisherConfig`)
-** `custom-publisher`  (or `CustomWanPublisherConfig`)
+** `batch-publisher` (or `WanBatchPublisherConfig`)
+** `custom-publisher`  (or `WanCustomPublisherConfig`)
 +
 See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#defining-wan-replication[Defining WAN Replication section^]
 * **Tracking WAN Synchronization Events:** Management Center, logs and diagnostics now report
@@ -117,9 +117,6 @@ https://github.com/hazelcast/hazelcast/pull/15017[#15017]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
-* Updated the Spring license as the Hazelcast community
-license.
-https://github.com/hazelcast/hazelcast/pull/16553[#16553]
 * Removed the following duplicated MBeans since the metrics MBean
 have been exposed:
 ** `ClientEngineMBean`
@@ -129,21 +126,6 @@ have been exposed:
 ** `ProxyServiceMBean`
 +
 https://github.com/hazelcast/hazelcast/pull/16425[#16425]
-* Removed the dependencies on `Data` from the `SplitBrainMergePolicy`
-API:
-** The newly introduced `getRawValue/Key` methods (which supersede
-the old getValue/Key) in `MergingValue/MergingEntry` classes
-return the in-memory representation as `OBJECT`. The deserialized
-value can be obtained using `getDeserializedValue/Key`.
-** The merge types in SplitBrainMergeTypes no longer depend on Data.
-Also, the value type has been removed from the various "view"
-interfaces such as `MergingHits`, `MergingCreationTime`, etc.
-** The new marker super-interface `MergingView` has been introduced that
-all the "view" interfaces (including `MergingValue`) now extend.
-** The generic type signature of `SplitBrainMergePolicy` has been changed
-to specify the (deserialized) type of the merging value.
-+
-https://github.com/hazelcast/hazelcast/pull/16423[#16423]
 * Renamed the `WanReplicationRef.setMergePolicy()` method
 as `setMergePolicyClassName()` and made the `PassThroughMergePolicy`
 the default merge policy for WAN replication if none is specified.
@@ -151,9 +133,6 @@ https://github.com/hazelcast/hazelcast/pull/16403[#16403]
 * Added convenience constructor for `SpringManagedContext`
 to easily create it in the programmatic way.
 https://github.com/hazelcast/hazelcast/pull/16401[#16401]
-* Now the arrays passed to the `Collection.toArray()` calls
-are not pre-sized.
-https://github.com/hazelcast/hazelcast/pull/16391[#16391]
 * Added support for AWS PrivateLink. Now, Hazelcast IMDG
 Java client can work with Hazelcast Cloud when it uses AWS PrivateLink.
 https://github.com/hazelcast/hazelcast/pull/16371[#16371]
@@ -161,14 +140,6 @@ https://github.com/hazelcast/hazelcast/pull/16371[#16371]
 to fix the issue with `setInstanceName()` when using Spring Boot
 and Hazelcast client.
 https://github.com/hazelcast/hazelcast/issues/16362[#16362]
-* Added the local member UUID to `BindMessage` instances to help
-resolving the  recurring Member-Address mapping issues.
-https://github.com/hazelcast/hazelcast/pull/16326[#16326]
-* Removed `SplitBrainMergeTypeProvider`. Instead, split-brain
-merge types are now directly used in the respective
-`ConfigValidator`, avoiding the loading of JCache related
-classes when not necessary.
-https://github.com/hazelcast/hazelcast/pull/16321[#16321]
 * Improved the Ringbuffer data structure so that it does not
 throw `StaleSequenceException` when using `ReadManyOperation`.
 https://github.com/hazelcast/hazelcast/pull/16303[#16303]
@@ -202,18 +173,6 @@ https://github.com/hazelcast/hazelcast/issues/16205[#16205]
 * Improved the `IMap.putAll()` and `IMap.put()` behaviors
 so that they match when they trigger listener events.
 https://github.com/hazelcast/hazelcast/pull/16144[#16144]
-* The `runScript` and `runConsoleCommand` operations have been added to
-the client side `ManagementCenterService`.
-https://github.com/hazelcast/hazelcast/pull/16071[#16071]
-* More cleanups in the WAN replication SPI:
-** Removed the `Node` parameter from `WanReplicationConsumer`.
-** Changed the type of `AbstractWanPublisherConfig.implementation` to
-`WanReplicationPublisher` and `WanConsumerConfig.implementation` to
-`WanReplicationConsumer`.
-** Moved all migration and replication related methods to
-`MigrationAwareWanReplicationPublisher` interface.
-+
-https://github.com/hazelcast/hazelcast/pull/16052[#16052]
 * Added option to disable retrieving the
 `OSMBean.getFreePhysicalMemorySize()` method.
 https://github.com/hazelcast/hazelcast/pull/16039[#16039]
@@ -236,30 +195,13 @@ configuration and added `cluster-connect-timeout-millis`
 instead to allow retrying with fixed amount of time
 and shutdown after some time.
 https://github.com/hazelcast/hazelcast/pull/15923[#15923]
-* The following operations have been added to the client side
-Management Center service:
-** `getMemberConfig`
-** `runGc`
-** `getThreadDump`
-** `shutdownMember`
-** `promoteMember`
-** `getSystemProperties`
 * Introduced cluster fail-fast when there are missing security
 realms.
 https://github.com/hazelcast/hazelcast/pull/15872[#15872]
-* Enhanced the counters by adding the `set()` method so that they
-can be used in Hazelcast Jet.
-https://github.com/hazelcast/hazelcast/pull/15867[#15867]
-* Added support for persisting and restoring the active CP members
-list.
-https://github.com/hazelcast/hazelcast/pull/15828[#15828]
 * Added binary compatibility tests for the client protocol.
 https://github.com/hazelcast/hazelcast/pull/15822[#15822]
 * Added `ConnectionRetryConfig` to `ClientConfigXmlGenerator`.
 https://github.com/hazelcast/hazelcast/pull/15821[#15821]
-* Removed the legacy `BindMessage` class and renamed `ExtendedBindMessage`
-as `BindMessage`.
-https://github.com/hazelcast/hazelcast/pull/15820[#15820]
 * Renamed the `restart()` method of `CPSubsystemManagementService`
 to `reset()`.
 https://github.com/hazelcast/hazelcast/pull/15798[#15798]
@@ -314,18 +256,9 @@ https://github.com/hazelcast/hazelcast/issues/15155[#15155]
 * Improved the generics for the API with Projection, Predicate and EntryListener
 by adding lower bounded wildcards to accept a wider range of parameters.
 https://github.com/hazelcast/hazelcast/pull/15153[#15153]
-* Implemented the Transaction propagation feature:
-** Added the `suspend()` and `resume()` methods for `TransactionContext` interface.
-** Added `Propagation.REQUIRES_NEW` support for `HazelcastTransactionManager`.
-+
-https://github.com/hazelcast/hazelcast/pull/15141[#15141]
-+
 * Improved the performance of `TransactionLog.add()` by avoiding
 the `LinkedList.remove()` call.
 https://github.com/hazelcast/hazelcast/pull/15111[#15111]
-* Improved the Raft snapshotting so that the old log entries are not
-kept when there is no follower with an unknown match index.
-https://github.com/hazelcast/hazelcast/pull/15062[#15062]
 * Made `ClientConfig` to override `toString` as it is the situation
 with `Config` to make it easier to troubleshoot.
 https://github.com/hazelcast/hazelcast/issues/15061[#15061]
@@ -367,11 +300,6 @@ https://github.com/hazelcast/hazelcast/pull/14811[#14811]
 * Introduced a warning log for illegal reflective access operation when
 using Java 9 and higher, and OpenJ9.
 https://github.com/hazelcast/hazelcast/pull/14798[#14798]
-* Introduced XEN optimized clock on EC2 since using `System.currentTimeMillis`
-may be expensive: it is used when the XEN clock on
-Linux is detected and uses an approximate time instead of the actual
-time.
-https://github.com/hazelcast/hazelcast/pull/14418[#14418]
 * Added a method to easily identify when all replicas of a
 partition have been lost: `allReplicasInPartitionLost()`
 https://github.com/hazelcast/hazelcast/pull/11983[#11983]
@@ -425,7 +353,6 @@ has been addd for the same tasks.
 `CacheEvictionPolicyComparator` have become interfaces.
 ** Moved `EvictionPolicyComparator`  and `EvictableEntryView` to
 the `com.hazelcast.spi.eviction` package.
-** Renamed the `accessHits()` method as `hits()`.
 +
 https://github.com/hazelcast/hazelcast/pull/15939[#15939]
 * Removed deprecated `IMap` methods accepting `EntryListener`.
@@ -621,8 +548,8 @@ Some examples are listed below:
 ** `WanReplicationPublisher` -> `WanPublisher`
 ** `WanReplicationConsumer` -> `WanConsumer`
 ** `WanReplicationEvent` -> `WanEvent`
-** `WanBatchReplicationPublisherConfig` -> `WanBatchPublisherConfig`
-** `CustomWanPublisherConfig` -> `WanCustomPublisherConfig`
+** `WanBatchPublisherConfig` -> `WanBatchPublisherConfig`
+** `WanCustomPublisherConfig` -> `WanCustomPublisherConfig`
 +
 See https://github.com/hazelcast/hazelcast/pull/16174[#16174] for
 all the changes.
@@ -630,7 +557,8 @@ all the changes.
 +
 https://github.com/hazelcast/hazelcast/pull/15195[#15195],
 https://github.com/hazelcast/hazelcast/pull/15432[#15432],
-https://github.com/hazelcast/hazelcast/pull/15527[#15527]
+https://github.com/hazelcast/hazelcast/pull/15527[#15527],
+https://github.com/hazelcast/hazelcast/pull/16052[#16052]
 * Replaced the `WAN` prefix of classes with `Wan` for the
 sake of naming consistencies.
 https://github.com/hazelcast/hazelcast/pull/15571[#15571]
@@ -639,10 +567,21 @@ https://github.com/hazelcast/hazelcast/pull/15195[#15195]
 
 ==== Split-Brain Protection and Split-Brain Merge
 
-* Removed references to `Data` from the split-brain merge policies:
-`Data` is now internal API and, hence, custom merge policies
-were receiving leaking references to an internal API.
-https://github.com/hazelcast/hazelcast/pull/16159[#16159]
+* Removed the dependencies on `Data` from the `SplitBrainMergePolicy`
+API:
+** The newly introduced `getRawValue/Key` methods (which supersede
+the old getValue/Key) in `MergingValue/MergingEntry` classes
+return the in-memory representation as `OBJECT`. The deserialized
+value can be obtained using `getDeserializedValue/Key`.
+** The merge types in SplitBrainMergeTypes no longer depend on Data.
+Also, the value type has been removed from the various "view"
+interfaces such as `MergingHits`, `MergingCreationTime`, etc.
+** The new marker super-interface `MergingView` has been introduced that
+all the "view" interfaces (including `MergingValue`) now extend.
+** The generic type signature of `SplitBrainMergePolicy` has been changed
+to specify the (deserialized) type of the merging value.
++
+https://github.com/hazelcast/hazelcast/pull/16423[#16423]
 * Introduced "split brain protection" concept to replace "quorum"
 to make it more explicit and unambiguous. Classes and configuration
 elements including the term "quorum" has been replaced by "splitbrainprotection".
@@ -700,14 +639,9 @@ https://github.com/hazelcast/hazelcast/pull/16102[#16102],
 
 * Performed the following cleanups:
 ** Made all the HTTP status codes (including 200) to return a response body.
-** Moved the helper methods from `HttpPostCommandProcessor` to `HttpCommand`.
-** Removed the exception handling and authentication helper methods.
 ** The exception handling now always returns a HTTP 500 for an error.
-** The authentication and parameter parsing is now handled by the
-`decodeParamsAndAuthenticate` method.
 ** HTTP 400 is NOT returned now if any handler throws an
 `IndexOutOfBoundsException`.
-** Added credentials checking to POST methods for map and queue.
 +
 https://github.com/hazelcast/hazelcast/pull/16148[#16148]
 * Aligned the output format of the REST API to return JSON:
@@ -759,25 +693,6 @@ lambda friendly.
 
 ==== API Package/Interface Changes
 
-* Moved the following classes from `com.hazelcast.monitor`
-to `com.hazelcast.internal.monitor`:
-** `HotRestartState`
-** `LocalCacheStats`
-** `LocalFlakeIdGeneratorStats`
-** `LocalGCStats`
-** `LocalMemoryStats`
-** `LocalOperationStats`
-** `LocalPNCounterStats`
-** `LocalRecordStoreStats`
-** `LocalWanPublisherStats`
-** `LocalWanStats`
-** `MemberPartitionState`
-** `MemberState`
-** `NodeState`
-** `WanSyncState`
-** All classes in `com.hazelcast.monitor.impl`
-+
-https://github.com/hazelcast/hazelcast/pull/15888[#15888]
 * Relocated the following classes:
 ** `com.hazelcast.monitor.LocalQueueStats` -> `com.hazelcast.collection.LocalQueueStats`
 ** `com.hazelcast.monitor.LocalExecutorStats` -> `com.hazelcast.executor.LocalExecutorStats`
@@ -810,7 +725,8 @@ https://github.com/hazelcast/hazelcast/pull/15123[#15123],
 https://github.com/hazelcast/hazelcast/pull/15122[#15122],
 https://github.com/hazelcast/hazelcast/pull/15121[#15121],
 https://github.com/hazelcast/hazelcast/pull/15888[#15888],
-https://github.com/hazelcast/hazelcast/pull/15887[#15887]
+https://github.com/hazelcast/hazelcast/pull/15887[#15887],
+https://github.com/hazelcast/hazelcast/pull/15888[#15888]
 * The APIs that returned `UUID` string now returns `UUID`. These include `Endpoint.getUUID`,
 listener registrations/deregistrations, keys of replica timestamps of `VectorClock`,
 ``UUID``s in the executor service, `UUID` in the `MigrationInfo`, cluster ID and transaction ID.
@@ -1039,25 +955,9 @@ https://github.com/hazelcast/hazelcast/issues/12791[#12791]
 [[fixes-40]]
 === Fixes
 
-* Fixed the `NullPointerException` when completing
-a future in `ExecutorService` with an `ExecutionException`.
-https://github.com/hazelcast/hazelcast/pull/16564[#16564]
-* Fixed a leak issue in listeners: if connection closes
-while registering a `clusterViewListener`, there was a leak
-since there couldn't be a `DestroyAction`. It has been
-fixed by adding a catch-and-ignore for `CancelledKeyException`.
-https://github.com/hazelcast/hazelcast/pull/16558[#16558]
-* Fixed an issue where the Management Center client
-could not change the cluster state if the cluster is in
-the `PASSIVE` state.
-https://github.com/hazelcast/hazelcast/pull/16538[#16538]
 * Fixed an issue where disabling the quorum had not an effect
 and was still checking the presence of split-brain protection.
 https://github.com/hazelcast/hazelcast/issues/16510[#16510]
-* Fixed the consistency issue in High-Density Memory Store's
-ICache iterator: The `hasNotBeenObserved` method could be causing
-stable entries to be skipped.
-https://github.com/hazelcast/hazelcast/pull/16504[#16504]
 * Fixed an issue where the `Imap.containsKey()` method was not
 able to find Near Cached entries when it is called from a
 client.
@@ -1066,24 +966,15 @@ https://github.com/hazelcast/hazelcast/issues/16462[#16462]
 for natural and reverse order was creating new instances
 on deserialization.
 https://github.com/hazelcast/hazelcast/pull/16439[#16439]
-* Fixed the `NullPointerException` in `WanCacheEntryView` since
-it was missing a reference to the serialization service.
-https://github.com/hazelcast/hazelcast/pull/16382[#16382]
 * Fixed the missing client XML/YAML configurations in `mvn assembly`.
 https://github.com/hazelcast/hazelcast/issues/16331[#16331]
 * Fixed an issue where the Near Cache
 was not being updated with the new value as soon as `putAsync`
 future is completed, when local update policy is `CACHE_ON_UPDATE`.
 https://github.com/hazelcast/hazelcast/pull/16314[#16314]
-* Reverted the support for transaction propagation implementation due
-to the issues with nested transactions.
-https://github.com/hazelcast/hazelcast/pull/16301[#16301]
 * Fixed an issue where the destruction of a proxy that is not
 yet initialized was blocking on its construction, leading to the risk of deadlock.
 https://github.com/hazelcast/hazelcast/pull/16297[#16297]
-* Fixed the `NullPointerException` in handling the authentication
-result when the Management Center client connects to starting cluster.
-https://github.com/hazelcast/hazelcast/pull/16294[#16294]
 * Fixed an issue where the `MembershipEvent.getMembers()` was
 not returning the cluster member list in the proper order
 at the time of event (when a new member joins).
@@ -1095,15 +986,9 @@ https://github.com/hazelcast/hazelcast/pull/16240[#16240]
 was returning a response belonging in `CLUSTER_WRITE` endpoint
 group. Now, it throws an exception.
 https://github.com/hazelcast/hazelcast/pull/16237[#16237]
-* Fixed the incorrect deserialization in `PriorityQueueStreamSerializer` and
-`PriorityBlockingQueueStreamSerializer`.
-https://github.com/hazelcast/hazelcast/issues/16224[#16224]
 * Fixed the joining mechanism so that when the discovery
 strategy is enabled, multiple join configurations are prevented.
 https://github.com/hazelcast/hazelcast/pull/16177[#16177]
-* Fixed an issue where an improper `byteArray` type was being
-used in `ClientAuthenticationCustom` messages.
-https://github.com/hazelcast/hazelcast/pull/16173[#16173]
 * Fixed an issue where the client-side `HazelcastInstance`
 was throwing a configuration exception when there is a conflict
 between the dynamic and static configurations.
@@ -1178,10 +1063,6 @@ https://github.com/hazelcast/hazelcast/pull/16067[#16067]
 * Fixed an issue where a `StreamSerializer` is added using
 `setTypeClass` instead of `setTypeClassName`; this was not correctly handled.
 https://github.com/hazelcast/hazelcast/issues/16047[#16047]
-* Fixed an issue where `TestHazelcastInstanceFactory.registry()`
-was throwing `NullPointerException` when it is null (being null could happen
-when using in production networks).
-https://github.com/hazelcast/hazelcast/pull/16033[#16033]
 * Fixed an issue where some functions may not be working when
 a client provides a new client type: removed `ClientType` and
 `ConnectionType` enums and introduced free strings for them
@@ -1291,9 +1172,6 @@ https://github.com/hazelcast/hazelcast/pull/15702[#15702]
 * Fixed a race issue by initializing the local CP members before
 initializing the metadata group.
 https://github.com/hazelcast/hazelcast/pull/15684[#15684]
-* Fixed an issue where the `node.isMaster()` method could cause
-inconsistent behaviors when it is executed during a partition service lock.
-https://github.com/hazelcast/hazelcast/pull/15617[#15617]
 * Fixed an issue where the CP subsystems' restart operations were
 not being canceled and waiting the running/scheduled discovery tasks.
 https://github.com/hazelcast/hazelcast/pull/15567[#15567]
@@ -1303,14 +1181,8 @@ https://github.com/hazelcast/hazelcast/pull/15522[#15522]
 * Fixed an issue where the used memory in metrics was becoming
 a negative value.
 https://github.com/hazelcast/hazelcast/issues/15485[#15485]
-* Fixed an issue where `ClientMessageWriter` was throwing an
-exception while writing to buffer.
-https://github.com/hazelcast/hazelcast/issues/15471[#15471]
 * Moved the `checkWanReplicationQueues` operation from the caller side
 to the callee. https://github.com/hazelcast/hazelcast/pull/15412[#15412]
-* Fixed an issue where `WanConsistencyCheckIgnoredEvent`, when it is
-sent to Management Center, was throwing a `NullPointerException`.
-https://github.com/hazelcast/hazelcast/pull/15400[#15400]
 * Fixed an issue where the map configuration options `readBackupData`
 and `statisticsEnabled` were not being respected when a new
 `MapConfig` is dynamically added from a client to a running Hazelcast cluster.
@@ -1478,3 +1350,23 @@ enhanced `EvictionPolicy` class.
 ** `hazelcast.icmp.ttl`
 ** `hazelcast.mc.url.change.enabled`
 ** `hazelcast.slow.invocation.detector.threshold.millis`
+* Removed the legacy `AtomicLong` and deprecated `IdGenerator`
+implementations.
+https://github.com/hazelcast/hazelcast/pull/15601[#15601]
+* Removed the legacy `ILock` implementation and
+the `HazelcastInstance.getLock()` method. Instead
+we provide the unsafe mode of CP Subsystem's `FencedLock`.
+The `ICondition` is not supported anymore.
+https://github.com/hazelcast/hazelcast/pull/15625[#15625]
+* Removed the legacy `AtomicReference` implementation and
+the `HazelcastInstance.getAtomicReference()` method. Instead
+we provide the unsafe mode for all CP data structures.
+https://github.com/hazelcast/hazelcast/pull/15593[#15593]
+* Removed the legacy `Semaphore` implementation and
+the `HazelcastInstance.getSemaphore()` method. Instead
+we provide the unsafe mode for all CP data structures.
+https://github.com/hazelcast/hazelcast/pull/15539[#15539]
+* Removed the legacy `CountdownLatch` implementation and
+the `HazelcastInstance.getCountdownLatch()` method. Instead
+we provide the unsafe mode for all CP data structures.
+https://github.com/hazelcast/hazelcast/pull/15538[#15538]
