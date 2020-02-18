@@ -1,0 +1,9 @@
+
+== 3.10.7
+
+[[fixes-3107]]
+=== Fixes
+
+* Fixed an issue where the Near Cache invalidation was not
+working properly when used with Transactional Map.
+https://github.com/hazelcast/hazelcast/pull/16617[#16617]
