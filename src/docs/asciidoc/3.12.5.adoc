@@ -32,7 +32,7 @@ the split-brain healing with `LatestAccessMergePolicy`.
 https://github.com/hazelcast/hazelcast/issues/16003[#16003]
 * Fixed the `multiplier` element of client's connection
 retry configuration to be set as a `double` in the
-XML configuration (`hazelcast-client.xml). 
+XML configuration (`hazelcast-client.xml`). 
 https://github.com/hazelcast/hazelcast/pull/15990[#15990]
 * Fixed the following Hot Restart issues:
 ** Introduced an additional stage to the Hot Restart
