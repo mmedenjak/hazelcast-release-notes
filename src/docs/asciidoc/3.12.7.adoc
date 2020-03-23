@@ -1,0 +1,19 @@
+== 3.12.7
+
+[[features-3127]]
+=== New Features
+
+* ???.
+See the link:https://docs.hazelcast.org/docs/3.12.7/manual/html-single/#???[???section].
+
+[[enh-3127]]
+=== Enhancements
+
+* ???.
+
+
+[[fixes-3127]]
+=== Fixes
+
+* Fixed an issue where ???.
+https://github.com/hazelcast/hazelcast/issues/???[#???]

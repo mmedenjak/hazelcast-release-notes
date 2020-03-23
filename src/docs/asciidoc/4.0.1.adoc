@@ -1,0 +1,49 @@
+== 4.0.1
+
+[[enh-401]]
+=== Enhancements
+
+* Introduced trusted interfaces concept for the Management Center
+connections. It is now possible to restrict the source IP addresses
+from which the Management Center operations are allowed.
+See the link:https://docs.hazelcast.org/docs/4.0.1/manual/html-single/#limiting-source-addresses[Limiting Source Addresses section].
+* Added the `creationTime` field to the `Executor` JMX bean.
+https://github.com/hazelcast/hazelcast/pull/16774[#16774]
+* Promoted the `IMap.putAllAsync()` and `IMap.submitToKeys()` methods to IMDG's public API.
+https://github.com/hazelcast/hazelcast/pull/16771[#16771]
+* Updated the related aspects of Hazelcast IMDG after the changes done on the client protocol
+side to add the ability to add new parameters, methods, services, events and custom types to codecs.
+https://github.com/hazelcast/hazelcast/pull/16719[#16719]
+* Upgraded Log4J2 version to 2.13.0.
+https://github.com/hazelcast/hazelcast/pull/16658[#16658]
+* Introduced the `hazelcast.logging.details.enabled` property to make the logging
+of cluster version, name and IP optional to decrease the noise in the logs when, for
+example, you have a single-member cluster.
+https://github.com/hazelcast/hazelcast/pull/16630[#16630]
+* Updated the link:https://hazelcast.org/hub/?project=kubernetes-cloud-discovery[Hazelcast Kubernetes^]
+plugin to 2.0.1.
+https://github.com/hazelcast/hazelcast/pull/16591[#16591]
+* Added the support for automatically detecting the classloader of a type for the user
+code deployment feature.
+https://github.com/hazelcast/hazelcast/pull/16584[#16584]
+
+[[fixes-401]]
+=== Fixes
+
+* Fixed an issue where the `Metrics` beans were missing the standard `Type`
+information when monitoring with JMX.
+https://github.com/hazelcast/hazelcast/issues/16729[#16729]
+* Fixed an invalidation issue when using a transactional map
+from a cache with a Near Cache: the cache invalidation event occurs when
+the `transactionalMap.put` method is called. As a result, the entry was getting
+invalidated before the change is committed to the map.
+https://github.com/hazelcast/hazelcast/pull/16638[#16638]
+* Fixed an issue where the upload of classes using the client user
+code deployment were not successful when they are retrieved not in their
+created order. 
+https://github.com/hazelcast/hazelcast/pull/16611[#16611]
+* Fixed an issue where the `size()` method was returning a negative value
+when map, cache and multimap contain more than `Integer.MAX_VALUE` entries.
+https://github.com/hazelcast/hazelcast/issues/14935[#14935]
+
+
