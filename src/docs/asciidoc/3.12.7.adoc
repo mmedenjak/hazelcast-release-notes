@@ -12,6 +12,10 @@ https://github.com/hazelcast/hazelcast/issues/16421[#16421]
 [[fixes-3127]]
 === Fixes
 
+* Fixed an issue where Map, Cache, MultiMap data structures
+were returning negative values (`size()`) when the size is more than
+`Integer.MAX_VALUE`.
+https://github.com/hazelcast/hazelcast/pull/16897[#16897]
 * Fixed an issue where explicitly registering portable class definitions
 was failing with multiple portable factories and overlapping class IDs.
 https://github.com/hazelcast/hazelcast/pull/16832[#16832]
