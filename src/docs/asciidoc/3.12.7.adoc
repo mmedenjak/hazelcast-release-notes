@@ -1,19 +1,35 @@
 == 3.12.7
 
-[[features-3127]]
-=== New Features
-
-* ???.
-See the link:https://docs.hazelcast.org/docs/3.12.7/manual/html-single/#???[???section].
-
 [[enh-3127]]
 === Enhancements
 
-* ???.
-
+* Updated the version of Hazelcast Kubernetes discovery plugin to 1.5.3.
+https://github.com/hazelcast/hazelcast/pull/16589[#16589]
+* Added the support for automatically detecting the classloader of a type for
+the user code deployment feature.
+https://github.com/hazelcast/hazelcast/issues/16421[#16421]
 
 [[fixes-3127]]
 === Fixes
 
-* Fixed an issue where ???.
-https://github.com/hazelcast/hazelcast/issues/???[#???]
+* Fixed an issue where explicitly registering portable class definitions
+was failing with multiple portable factories and overlapping class IDs.
+https://github.com/hazelcast/hazelcast/pull/16832[#16832]
+* Fixed an issue where Reliable Topic was not working properly due to
+missing permissions.
+https://github.com/hazelcast/hazelcast/pull/16773[#16773]
+* Fixed an issue where the wait key of a blocking call within a Raft
+invocation was still being reported as a live operation, when the key times out.
+https://github.com/hazelcast/hazelcast/pull/16616[#16616]
+* Fixed an issue where the upload of classes using the client user code
+deployment were not successful when they are retrieved not in their created order.
+https://github.com/hazelcast/hazelcast/pull/16610[#16610]
+* Fixed an issue where `InPredicate` was not invoking value comparison when the
+read attribute is null.
+https://github.com/hazelcast/hazelcast/pull/16578[#16578]
+* Fixed an invalidation issue when using a transactional map from a cache
+with Near Cache: the cache invalidation event occurs when the
+`transactionalMap.put` method is called. As a result, the entry was getting
+invalidated before the change is committed to the map.
+https://github.com/hazelcast/hazelcast/issues/16577[#16577]
+
