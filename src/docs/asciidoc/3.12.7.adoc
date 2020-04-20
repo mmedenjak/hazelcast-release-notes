@@ -3,6 +3,10 @@
 [[enh-3127]]
 === Enhancements
 
+* Added a public API to load configuration files: the new `load()` method in `Config`,
+`ClientConfig`, and `ClientFailoverConfig` loads the configurations with
+given locations. If not found, the default configuration is returned.
+https://github.com/hazelcast/hazelcast/pull/16864[#16864]
 * Updated the version of Hazelcast Kubernetes discovery plugin to 1.5.3.
 https://github.com/hazelcast/hazelcast/pull/16589[#16589]
 * Added the support for automatically detecting the classloader of a type for
