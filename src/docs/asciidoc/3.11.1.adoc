@@ -23,5 +23,8 @@ of an `HazelcastClientOfflineException`. https://github.com/hazelcast/hazelcast/
 === Behavioral Changes
 
 * Starting with Hazelcast IMDG 3.11.1 and for the future releases, when you enable TLS/SSL and do not provide the `trustStore` property, the default trusted certificates are/will be used, i.e., the Java provided list of trusted CA certificates.
-
-
+* Due to the API change in `evictionPolicy` in maps (related issue is listed above as #14086), you may face with
+a configuration conflict while using dynamic configuration,
+i.e., the exception `Cannot add a dynamic configuration`. You can use the
+`hazelcast.dynamicconfig.ignore.conflicts` property when restarting your cluster after
+this conflict to heal it.
