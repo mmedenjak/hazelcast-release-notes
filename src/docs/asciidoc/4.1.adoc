@@ -1,0 +1,92 @@
+== 4.1
+
+NOTE: See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#upgrading-to-hazelcast-imdg-4-1[Hazelcast IMDG 4.1 Migration Guide^]
+for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.1.
+
+[[nf-41]]
+=== New Features
+
+*_Hazelcast IMDG Enterprise New Features:_*
+
+* **???:** ???.
+See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
+
+*_Hazelcast IMDG Open Source New Features:_*
+
+* **???:** ???.
+See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
+
+[[enh-41]]
+=== Enhancements
+
+*_Hazelcast IMDG Enterprise Enhancements:_*
+
+* **???:** ???.
+See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
+
+*_Hazelcast IMDG Open Source Enhancements:_*
+
+* **Improvements in Partial Network Disconnections:** Introduced properties
+to be configured to detect and resolve the partial network issues among the
+Hazelcast IMDG members.
+See link:https://github.com/hazelcast/hazelcast/pull/16680[#16680^] and the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
+
+The following are the other improvements performed to solve the enhancement
+issues opened by the Hazelcast customers/team.
+
+* Improved an unclear exception message for credentials.
+https://github.com/hazelcast/hazelcast/pull/16756[#16756]
+* Renamed MultiMap proxy implementation to follow the established naming convention:
+`ObjectMultiMapProxy` -> `MultiMapProxyImpl`.
+https://github.com/hazelcast/hazelcast/pull/16637[#16637]
+* Made `IMap.putAllAsync()` and `IMap.submitToKeys()` methods public API.
+https://github.com/hazelcast/hazelcast/issues/16449[#16449]
+* Implemented the base type system for SQL: the base SQL data types
+have been defined and mapped to the corresponding Java types.
+Type information is used by executor stages to use the right strategy
+of expression evaluation.
+https://github.com/hazelcast/hazelcast/issues/15241[#15241]
+* Added a test for the `ClientConsoleApp` class. 
+https://github.com/hazelcast/hazelcast/issues/12298[#12298]
+
+[[bc-41]]
+=== Breaking Changes
+
+
+[[fixes-41]]
+=== Fixes
+
+* Fixed an issue where the RESP API was always requiring the call URLs
+to end with a slash character.
+https://github.com/hazelcast/hazelcast/pull/16688[#16688]
+* Fixed an issue where the service URL for Eureka could not be set
+using the declarative configuration.
+https://github.com/hazelcast/hazelcast/pull/16679[#16679]
+* Fixed an issue where `InPredicate` was not invoking value comparison when the
+read attribute is null.
+https://github.com/hazelcast/hazelcast/issues/15100[#15100]
+* Fixed an issue where Map, Cache, MultiMap data structures
+were returning negative values (`size()`) when the size is more than
+`Integer.MAX_VALUE`.
+https://github.com/hazelcast/hazelcast/issues/14935[#14935]
+
+[[removed-41]]
+=== Removed Features
+
+
+[[heroes-41]]
+===  Hazelcast Heroes
+
+We'd like to thank to the following contributors from our
+open source community that appear in this release notes
+document:
+
+* https://github.com/inelpandzic[Inel Pandzic]
+* https://github.com/omidp[Omid Pourhadi]
+* https://github.com/ryanlindeborg[Ryan Lindeborg]
+* https://github.com/santhoshkumarbs[Santhosh Kumar]
+* https://github.com/KowalczykBartek[Bartek Kowalczyk]
+
+Thank you for your valuable contributions!
+
+
