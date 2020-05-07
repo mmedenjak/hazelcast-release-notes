@@ -83,7 +83,7 @@ See the link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#getting-sta
 `healthcheck.sh` scripts to use HTTPS. Before, they were
 using HTTP. See the
 link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#using-the-script-cluster-sh[cluster.sh^] and
-link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#health-check-script[healtcheck.sh^] sections.
+link:https://docs.hazelcast.org/docs/4.0/manual/html-single/#health-check-script[healthcheck.sh^] sections.
 * **MapLoader with Custom time-to-live:** Introduced the `EntryStore` and `EntryLoader`
 interfaces (adding expiration support for MapStore). See the
 https://docs.hazelcast.org/docs/4.0/manual/html-single/index.html#loading-and-storing-persistent-data[Loading and Storing Persistent Data section].
