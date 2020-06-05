@@ -745,3 +745,12 @@ input#search {
         padding: 4px 0;
         width: 100%;
     }
+
+.footer-text {
+	bottom: 40px; 
+	right: 13px; 
+	position: fixed; 
+	padding: 7px 12px; 
+	background: #FF5F00; 
+	color: #fff;
+}
