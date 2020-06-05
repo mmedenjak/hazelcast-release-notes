@@ -30,10 +30,15 @@ See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#?
 to be configured to detect and resolve the partial network issues among the
 Hazelcast IMDG members.
 See link:https://github.com/hazelcast/hazelcast/pull/16680[#16680^] and the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
+* **Trusted Interfaces:** It is now possible to restrict the source IP addresses
+from which the Management Center operations are allowed.
+See the link:https://docs.hazelcast.org/docs/4.0.1/manual/html-single/#limiting-source-addresses[Limiting Source Addresses section^].
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added the creation time metric for the executor service.
+https://github.com/hazelcast/hazelcast/pull/16775[#16775]
 * Improved an unclear exception message for credentials.
 https://github.com/hazelcast/hazelcast/pull/16756[#16756]
 * Renamed MultiMap proxy implementation to follow the established naming convention:
@@ -46,6 +51,9 @@ have been defined and mapped to the corresponding Java types.
 Type information is used by executor stages to use the right strategy
 of expression evaluation.
 https://github.com/hazelcast/hazelcast/issues/15241[#15241]
+* Clarified the exception message when you connect to a cluster with an
+invalid group name.
+https://github.com/hazelcast/hazelcast/issues/15099[#15099]
 * Added a test for the `ClientConsoleApp` class. 
 https://github.com/hazelcast/hazelcast/issues/12298[#12298]
 
@@ -56,6 +64,11 @@ https://github.com/hazelcast/hazelcast/issues/12298[#12298]
 [[fixes-41]]
 === Fixes
 
+* Fixed an issue where the client permissions for Reliable Topic and Ringbuffer
+we're missing.
+https://github.com/hazelcast/hazelcast/pull/16755[#16755]
+* Fixed an issue where the type information was missing the Metrics MBeans.
+https://github.com/hazelcast/hazelcast/pull/16747[#16747]
 * Fixed an issue where the RESP API was always requiring the call URLs
 to end with a slash character.
 https://github.com/hazelcast/hazelcast/pull/16688[#16688]
