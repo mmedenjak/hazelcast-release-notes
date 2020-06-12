@@ -32,15 +32,28 @@ Hazelcast IMDG members.
 See link:https://github.com/hazelcast/hazelcast/pull/16680[#16680^] and the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
 * **Trusted Interfaces:** It is now possible to restrict the source IP addresses
 from which the Management Center operations are allowed.
-See the link:https://docs.hazelcast.org/docs/4.0.1/manual/html-single/#limiting-source-addresses[Limiting Source Addresses section^].
+See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#limiting-source-addresses[Limiting Source Addresses section^].
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Implemented the `root` operator for the SQL engine
+responsible for getting the final result stream.
+https://github.com/hazelcast/hazelcast/issues/16829[#16829]
+* Added support for `IMap.computeIfAbsent()`.
+https://github.com/hazelcast/hazelcast/pull/16808[#16808]
+* Introduced SQL thread pools for query processing.
+https://github.com/hazelcast/hazelcast/issues/16805[#16805]
+* Introduced the network protocol, base executor and row
+interfaces for the SQL engine.
+https://github.com/hazelcast/hazelcast/issues/16799[#16799],
+https://github.com/hazelcast/hazelcast/issues/16762[#16762]
 * Added the creation time metric for the executor service.
 https://github.com/hazelcast/hazelcast/pull/16775[#16775]
 * Improved an unclear exception message for credentials.
 https://github.com/hazelcast/hazelcast/pull/16756[#16756]
+* Defined metrics for ISet and IList collections.
+https://github.com/hazelcast/hazelcast/pull/16665[#16665]
 * Renamed MultiMap proxy implementation to follow the established naming convention:
 `ObjectMultiMapProxy` -> `MultiMapProxyImpl`.
 https://github.com/hazelcast/hazelcast/pull/16637[#16637]
@@ -56,6 +69,10 @@ invalid group name.
 https://github.com/hazelcast/hazelcast/issues/15099[#15099]
 * Added a test for the `ClientConsoleApp` class. 
 https://github.com/hazelcast/hazelcast/issues/12298[#12298]
+* Improved the behavior of `ConcurrentMap.computeIfPresent`:
+combined single client-server round trips instead of two (for `get` and
+`replace` methods).
+https://github.com/hazelcast/hazelcast/issues/11958[#11958]
 
 [[bc-41]]
 === Breaking Changes
@@ -64,6 +81,8 @@ https://github.com/hazelcast/hazelcast/issues/12298[#12298]
 [[fixes-41]]
 === Fixes
 
+* Fixed the `NullPointerException` in `IndexCopyBehavior.NEVER` mode.
+https://github.com/hazelcast/hazelcast/pull/16784[#16784]
 * Fixed an issue where the client permissions for Reliable Topic and Ringbuffer
 we're missing.
 https://github.com/hazelcast/hazelcast/pull/16755[#16755]
@@ -99,6 +118,9 @@ document:
 * https://github.com/ryanlindeborg[Ryan Lindeborg]
 * https://github.com/santhoshkumarbs[Santhosh Kumar]
 * https://github.com/KowalczykBartek[Bartek Kowalczyk]
+* https://github.com/webashutosh[Ashutosh Agrawal]
+* https://github.com/aberkecz[Ádám Berkecz]
+* https://github.com/HugeOrangeDev[HugeOrangeDev]
 
 Thank you for your valuable contributions!
 
