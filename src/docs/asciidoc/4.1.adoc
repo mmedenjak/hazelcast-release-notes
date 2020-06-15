@@ -37,6 +37,16 @@ See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#limiting-so
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added the `load()` method to `Config`, `ClientConfig` and
+`ClientFailoverConfig` classes. This method loads the configuration
+with the known locations. If not found, the default configuration is returned.
+https://github.com/hazelcast/hazelcast/pull/16864[#16864]
+* Improved the `deleteAll()` (MapStore) and ITopic Javadocs.
+https://github.com/hazelcast/hazelcast/pull/16862[#16862],
+https://github.com/hazelcast/hazelcast/pull/16861[#16861],
+* Introduced the `ServerConnection` and `ClientConnection` interfaces
+that extend `Connection` for cleaning up purposes.
+https://github.com/hazelcast/hazelcast/pull/16849[#16849]
 * Implemented the `root` operator for the SQL engine
 responsible for getting the final result stream.
 https://github.com/hazelcast/hazelcast/issues/16829[#16829]
@@ -48,15 +58,39 @@ https://github.com/hazelcast/hazelcast/issues/16805[#16805]
 interfaces for the SQL engine.
 https://github.com/hazelcast/hazelcast/issues/16799[#16799],
 https://github.com/hazelcast/hazelcast/issues/16762[#16762]
+* Added the `setAll()` and `setAllAsync()` methods for IMap.
+https://github.com/hazelcast/hazelcast/pull/16787[#16787]
+* Added the `writeOrdered()` method to the `Connection` class
+for the purpose of ordered delivery of messages.
+https://github.com/hazelcast/hazelcast/issues/16776[#16776]
 * Added the creation time metric for the executor service.
 https://github.com/hazelcast/hazelcast/pull/16775[#16775]
 * Improved an unclear exception message for credentials.
 https://github.com/hazelcast/hazelcast/pull/16756[#16756]
+* Updated the related aspects of Hazelcast IMDG after the
+changes done on the client protocol side to add the ability
+to add new parameters, methods, services, events and custom types
+to codecs.
+https://github.com/hazelcast/hazelcast/pull/16718[#16718]
+* Added the `offset` parameter that can be used while creating
+inputs in `BufferObjectDataInput`.
+https://github.com/hazelcast/hazelcast/pull/16701[#16701]
 * Defined metrics for ISet and IList collections.
 https://github.com/hazelcast/hazelcast/pull/16665[#16665]
+* Upgraded log4j2 version to 2.13.0.
+https://github.com/hazelcast/hazelcast/pull/16654[#16654]
 * Renamed MultiMap proxy implementation to follow the established naming convention:
 `ObjectMultiMapProxy` -> `MultiMapProxyImpl`.
 https://github.com/hazelcast/hazelcast/pull/16637[#16637]
+* Introduced the `hazelcast.logging.details.enabled` property
+to make the logging of cluster version, name and IP optional to
+decrease the noise in the logs when, for example, you have a single-member cluster.
+https://github.com/hazelcast/hazelcast/pull/16622[#16622]
+* Upgraded the Hazelcast Kubernetes plugin version to 2.0.1.
+https://github.com/hazelcast/hazelcast/pull/16590[#16590]
+* * Added the support for automatically detecting the classloader
+of a type for the user code deployment feature.
+https://github.com/hazelcast/hazelcast/pull/16585[#16585]
 * Made `IMap.putAllAsync()` and `IMap.submitToKeys()` methods public API.
 https://github.com/hazelcast/hazelcast/issues/16449[#16449]
 * Implemented the base type system for SQL: the base SQL data types
@@ -77,10 +111,18 @@ https://github.com/hazelcast/hazelcast/issues/11958[#11958]
 [[bc-41]]
 === Breaking Changes
 
+* The `TcpIpConnection` class has been renamed as `ServerConnection`.
+https://github.com/hazelcast/hazelcast/pull/16839[#16839]
+
+
 
 [[fixes-41]]
 === Fixes
 
+* Fixed an issue where the class definitions, that are registered explicitly in
+the serialization configuration and have the same class ID in different factories,
+were not handled properly.
+https://github.com/hazelcast/hazelcast/pull/16831[#16831]
 * Fixed the `NullPointerException` in `IndexCopyBehavior.NEVER` mode.
 https://github.com/hazelcast/hazelcast/pull/16784[#16784]
 * Fixed an issue where the client permissions for Reliable Topic and Ringbuffer
@@ -94,6 +136,22 @@ https://github.com/hazelcast/hazelcast/pull/16688[#16688]
 * Fixed an issue where the service URL for Eureka could not be set
 using the declarative configuration.
 https://github.com/hazelcast/hazelcast/pull/16679[#16679]
+* Fixed an issue where the wait key of a blocking call within
+a Raft invocation was still being reported as a live operation,
+when the key times out.
+https://github.com/hazelcast/hazelcast/pull/16614[#16614]
+* Fixed an issue where the upload of classes using the client
+user code deployment were not successful when they are retrieved not
+in their created order.
+https://github.com/hazelcast/hazelcast/pull/16612[#16612]
+* Fixed an issue where the size() method was returning a negative
+value when map, cache and multimap contain more than Integer.MAX_VALUE entries.
+https://github.com/hazelcast/hazelcast/pull/16594[#16594]
+* Fixed an invalidation issue when using a transactional map
+from a cache with a Near Cache: the cache invalidation event occurs
+when the `transactionalMap.put` method is called. As a result,
+the entry was getting invalidated before the change is committed to the map.
+https://github.com/hazelcast/hazelcast/pull/16579[#16579]
 * Fixed an issue where `InPredicate` was not invoking value comparison when the
 read attribute is null.
 https://github.com/hazelcast/hazelcast/issues/15100[#15100]
@@ -121,6 +179,8 @@ document:
 * https://github.com/webashutosh[Ashutosh Agrawal]
 * https://github.com/aberkecz[Ádám Berkecz]
 * https://github.com/HugeOrangeDev[HugeOrangeDev]
+* https://github.com/pertsodian[Harry Tran]
+* https://github.com/StephenOTT[Stephen Russett]
 
 Thank you for your valuable contributions!
 
