@@ -1,0 +1,52 @@
+== 4.0.2
+
+[[enh-402]]
+=== Enhancements
+
+* Removed a constraint which was rejecting all the operations
+except the ones marked with `AllowedDuringPassiveState` while a
+member is shutting down. With this enhancement, operations are allowed
+and this provides additional safety guarantees especially for the members
+holding large amounts of data.
+https://github.com/hazelcast/hazelcast/pull/17029[#17029]
+* Introduced a packet flag to distinguish between the connections of members
+having the same Hazelcast version and different versions.
+https://github.com/hazelcast/hazelcast/pull/16993[#16993]
+* Updated `pom.xml` to have the latest version of the Hazelcast AWS plugin,
+which introduced the support for AWS Fargate.
+See link:https://github.com/hazelcast/hazelcast-aws/pull/170[here^] for details.
+https://github.com/hazelcast/hazelcast/pull/16990[#16990]
+* Added the `load()` method to `Config`, `ClientConfig` and
+`ClientFailoverConfig` classes. This method loads the configuration
+with the known locations. If not found, the default configuration is returned.
+https://github.com/hazelcast/hazelcast/pull/16903[#16903]
+* Added the missing partition/active partition count descriptor constants
+to the metrics.
+https://github.com/hazelcast/hazelcast/pull/16858[#16858]
+
+[[fixes-402]]
+=== Fixes
+
+* Fixed an issue where the CP client message tasks were deserializing
+the responses.
+https://github.com/hazelcast/hazelcast/pull/17054[#17054]
+* Fixed the broken interoperability between the `CompletableFuture`
+methods.
+https://github.com/hazelcast/hazelcast/pull/17048[#17048]
+* Fixed an issue in the cache service where its pre-join
+operation was considering `CacheConfig` as resolved: it
+was assuming that key/value types, user customizations and
+other cache configurations have been loaded. This was an issue
+when the cache is not touched yet.
+https://github.com/hazelcast/hazelcast/pull/16918[#16918]
+* Fixed an issue where the Hazelcast instances were failing to start
+due to a missing flag for the cluster status.
+https://github.com/hazelcast/hazelcast/issues/16852[#16852]
+* Reverted the change where Hazelcast was not retrying an invocation if it is sent
+to a specific member and returns the  `TargetNotMemberException` exception.
+https://github.com/hazelcast/hazelcast/pull/16843[#16843]
+* Fixed an issue where the class definitions, that are registered explicitly in
+the serialization configuration and have the same class ID in different factories,
+were not handled properly.
+https://github.com/hazelcast/hazelcast/pull/16833[#16833]
+

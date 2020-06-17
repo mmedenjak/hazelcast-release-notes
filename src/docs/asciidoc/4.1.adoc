@@ -119,6 +119,10 @@ https://github.com/hazelcast/hazelcast/pull/16839[#16839]
 [[fixes-41]]
 === Fixes
 
+* Fixed an issue where `ServiceLoader` was round-tripping between URL and URI,
+and consequently loses the associated `URLStreamHandler` when trying to load
+Hazelcast from a custom class loader.
+https://github.com/hazelcast/hazelcast/issues/16846[#16846]
 * Fixed an issue where the class definitions, that are registered explicitly in
 the serialization configuration and have the same class ID in different factories,
 were not handled properly.
@@ -181,6 +185,7 @@ document:
 * https://github.com/HugeOrangeDev[HugeOrangeDev]
 * https://github.com/pertsodian[Harry Tran]
 * https://github.com/StephenOTT[Stephen Russett]
+* https://github.com/ulfjack[Ulf Adams]
 
 Thank you for your valuable contributions!
 
