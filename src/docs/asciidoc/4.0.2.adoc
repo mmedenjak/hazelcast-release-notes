@@ -27,12 +27,21 @@ https://github.com/hazelcast/hazelcast/pull/16858[#16858]
 [[fixes-402]]
 === Fixes
 
+* Fixed an issue where the split-brain protection events were triggered during the
+startup of members, but before they join the cluster. With this fix,
+these listeners will not be fired until the minimum cluster size (quorum) is met after the
+member startups.
+https://github.com/hazelcast/hazelcast/pull/17090[#17090]
 * Fixed an issue where the CP client message tasks were deserializing
 the responses.
 https://github.com/hazelcast/hazelcast/pull/17054[#17054]
 * Fixed the broken interoperability between the `CompletableFuture`
 methods.
 https://github.com/hazelcast/hazelcast/pull/17048[#17048]
+* Fixed an issue where the Hazelcast cluster having advanced network
+configuration was not sending the proper connection information
+to Management Center.
+https://github.com/hazelcast/hazelcast/pull/17003[#17003]
 * Fixed an issue in the cache service where its pre-join
 operation was considering `CacheConfig` as resolved: it
 was assuming that key/value types, user customizations and
