@@ -44,6 +44,8 @@ include::4.0.1.adoc[]
 
 include::4.0.adoc[]
 
+//include::3.12.8.adoc[]
+
 include::3.12.7.adoc[]
 
 include::3.12.6.adoc[]
