@@ -37,6 +37,10 @@ See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#limiting-so
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Improved the client configuration such that when the client
+failover configuration is provided, the reconnect mode cannot
+be set as `off`; it now fails fast in this case.
+https://github.com/hazelcast/hazelcast/pull/16886[#16886]
 * Added the `load()` method to `Config`, `ClientConfig` and
 `ClientFailoverConfig` classes. This method loads the configuration
 with the known locations. If not found, the default configuration is returned.
