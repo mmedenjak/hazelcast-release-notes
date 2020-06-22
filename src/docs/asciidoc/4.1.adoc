@@ -13,7 +13,10 @@ See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#?
 
 *_Hazelcast IMDG Open Source New Features:_*
 
-* **???:** ???.
+* **SQL Implementation:** Implemented the SQL engine that
+supports map scans, index scans, projections and filters.
+It also introduces the `hazelcast-sql` module to handle the
+SQL engine's dependencies on Apache Calcite.
 See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
 
 [[enh-41]]
@@ -33,14 +36,24 @@ See link:https://github.com/hazelcast/hazelcast/pull/16680[#16680^] and the link
 * **Trusted Interfaces:** It is now possible to restrict the source IP addresses
 from which the Management Center operations are allowed.
 See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#limiting-source-addresses[Limiting Source Addresses section^].
+* **Out-of-the-Box Kerberos Support:** Introduced support for Kerberos
+authentication protocol which is one of the standard
+solutions for single-sign-on. It also adds the GSSAPI authentication support in
+LDAP configuration.
+See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#kerberos-authentication-type[Kerberos Authentication Type section^].
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Improved the mechanism of partition table updates to
+eliminate the latencies when these updates are sent to the clients by a member.
+https://github.com/hazelcast/hazelcast/pull/16939[#16939]
 * Improved the client configuration such that when the client
 failover configuration is provided, the reconnect mode cannot
 be set as `off`; it now fails fast in this case.
 https://github.com/hazelcast/hazelcast/pull/16886[#16886]
+* Introduced the `forEach()` loop support for IMap.
+https://github.com/hazelcast/hazelcast/pull/16877[#16877]
 * Added the `load()` method to `Config`, `ClientConfig` and
 `ClientFailoverConfig` classes. This method loads the configuration
 with the known locations. If not found, the default configuration is returned.
@@ -79,6 +92,8 @@ https://github.com/hazelcast/hazelcast/pull/16718[#16718]
 * Added the `offset` parameter that can be used while creating
 inputs in `BufferObjectDataInput`.
 https://github.com/hazelcast/hazelcast/pull/16701[#16701]
+* Introduced the `putAllAsync()` method for MultiMap.
+https://github.com/hazelcast/hazelcast/pull/16698[#16698]
 * Defined metrics for ISet and IList collections.
 https://github.com/hazelcast/hazelcast/pull/16665[#16665]
 * Upgraded log4j2 version to 2.13.0.
@@ -123,6 +138,12 @@ https://github.com/hazelcast/hazelcast/pull/16839[#16839]
 [[fixes-41]]
 === Fixes
 
+* Fixed an issue in the cache service where its pre-join
+operation was considering `CacheConfig` as resolved: it
+was assuming that key/value types, user customizations and
+other cache configurations have been loaded. This was an issue
+when the cache is not touched yet.
+https://github.com/hazelcast/hazelcast/pull/16917[#16917]
 * Fixed an issue where `ServiceLoader` was round-tripping between URL and URI,
 and consequently loses the associated `URLStreamHandler` when trying to load
 Hazelcast from a custom class loader.
@@ -190,6 +211,7 @@ document:
 * https://github.com/pertsodian[Harry Tran]
 * https://github.com/StephenOTT[Stephen Russett]
 * https://github.com/ulfjack[Ulf Adams]
+* https://github.com/abdulazizali77[Abdul Aziz Ali]
 
 Thank you for your valuable contributions!
 
