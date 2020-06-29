@@ -14,7 +14,7 @@ enough. It can be configured using the following properties:
 ** `hazelcast.wan.consumer.ack.delay.backoff.max`
 ** `hazelcast.wan.consumer.ack.delay.backoff.multiplier`
 +
-See link:https://github.com/hazelcast/hazelcast/blob/3.12.8/hazelcast/src/main/java/com/hazelcast/spi/properties/GroupProperty.java#L1056[here] for their explanations.
+See link:https://github.com/hazelcast/hazelcast/blob/v3.12.8/hazelcast/src/main/java/com/hazelcast/spi/properties/GroupProperty.java#L1056[here] for their explanations.
 
 [[fixes-3128]]
 === Fixes
