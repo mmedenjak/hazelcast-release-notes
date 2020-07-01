@@ -5,12 +5,20 @@
 
 * Introduced the `ConfigRecognition` API that determines
 if a provided declarative configuration is recognized by the
-rules defined in a given implementation.
+rules defined in a given implementation. Along with the API the
+following three implementations are added:
+** `MemberConfigRecognizer` for recognizing member XML and YAML
+configurations
+** `ClientConfigRecognizer` for recognizing client XML and YAML
+configurations
+** `ClientFailoverConfigRecognizer` for recognizing failover client XML and
+YAML configurations
 https://github.com/hazelcast/hazelcast/pull/17093[#17093]
-* Introduced WAN throttling mechanism: this allows
-the WAN publishers to overload the WAN consumers if transferring the WAN
-events takes less time than processing them in the target cluster. This
-can be the case with WAN synchronization if the network latency is low
+* Introduced WAN throttling mechanism: this prevents the
+WAN consumers from getting overloaded by the WAN producers
+if transferring the WAN events takes less time than processing
+them in the target cluster. This can be the case with WAN
+synchronization if the network latency is low
 enough. It can be configured using the following properties:
 ** `hazelcast.wan.consumer.invocation.threshold`
 ** `hazelcast.wan.consumer.ack.delay.backoff.init`
@@ -19,12 +27,12 @@ enough. It can be configured using the following properties:
 +
 See link:https://github.com/hazelcast/hazelcast/blob/4.0.2/hazelcast/src/main/java/com/hazelcast/spi/properties/ClusterProperty.java#L1112[here] for their explanations.
 +
-https://github.com/hazelcast/hazelcast/pull/17088[#17088]
+https://github.com/hazelcast/hazelcast/pull/17092[#17092]
 * Removed a constraint which was rejecting all the operations
 except the ones marked with `AllowedDuringPassiveState` while a
 member is shutting down. With this enhancement, operations are allowed
-and this provides additional safety guarantees especially for the members
-holding large amounts of data.
+during shutdown. This keeps the same safety guarantees while increasing
+availability, especially for the members holding large amounts of data.
 https://github.com/hazelcast/hazelcast/pull/17029[#17029]
 * Introduced a packet flag to distinguish between the connections of members
 having the same Hazelcast version and different versions.
@@ -40,6 +48,9 @@ https://github.com/hazelcast/hazelcast/pull/16903[#16903]
 * Added the missing partition/active partition count descriptor constants
 to the metrics.
 https://github.com/hazelcast/hazelcast/pull/16858[#16858]
+* Improved the client partition table update push mechanism to prevent latency
+spikes when there is a partition table change and many clients need to be notified.
+https://github.com/hazelcast/hazelcast/pull/16938[#16938]
 
 [[fixes-402]]
 === Fixes
@@ -51,7 +62,7 @@ member startups.
 https://github.com/hazelcast/hazelcast/pull/17090[#17090]
 * Fixed an issue where the CP client message tasks were deserializing
 the responses.
-https://github.com/hazelcast/hazelcast/pull/17054[#17054]
+https://github.com/hazelcast/hazelcast/pull/17055[#17055]
 * Fixed the broken interoperability between the `CompletableFuture`
 methods.
 https://github.com/hazelcast/hazelcast/pull/17048[#17048]
@@ -75,4 +86,14 @@ https://github.com/hazelcast/hazelcast/pull/16843[#16843]
 the serialization configuration and have the same class ID in different factories,
 were not handled properly.
 https://github.com/hazelcast/hazelcast/pull/16833[#16833]
+* Fixed behaviour of WAN sync when cluster contains lite members for dynamically
+added WAN config. WAN sync can now be invoked on lite members for dynamically
+added WAN config only if the config was added using that lite member. Other lite
+members can still fail if WAN sync is invoked on them for the dynamically added
+config. In addition to this, the node coordinating the WAN sync will no longer
+broadcast the event to lite members, as they don't own any data which needs to be
+synchronized.
+* Fixed map store initialization behaviour when instance is running under a
+Java Security Manager.
+https://github.com/hazelcast/hazelcast/pull/17033[#17033]
 
