@@ -13,6 +13,7 @@ configurations
 configurations
 ** `ClientFailoverConfigRecognizer` for recognizing failover client XML and
 YAML configurations
++
 https://github.com/hazelcast/hazelcast/pull/17093[#17093]
 * Introduced WAN throttling mechanism: this prevents the
 WAN consumers from getting overloaded by the WAN producers
@@ -41,6 +42,9 @@ https://github.com/hazelcast/hazelcast/pull/16993[#16993]
 which introduced the support for AWS Fargate.
 See link:https://github.com/hazelcast/hazelcast-aws/pull/170[here^] for details.
 https://github.com/hazelcast/hazelcast/pull/16990[#16990]
+* Improved the client partition table update push mechanism to prevent latency
+spikes when there is a partition table change and many clients need to be notified.
+https://github.com/hazelcast/hazelcast/pull/16938[#16938]
 * Added the `load()` method to `Config`, `ClientConfig` and
 `ClientFailoverConfig` classes. This method loads the configuration
 with the known locations. If not found, the default configuration is returned.
@@ -48,9 +52,6 @@ https://github.com/hazelcast/hazelcast/pull/16903[#16903]
 * Added the missing partition/active partition count descriptor constants
 to the metrics.
 https://github.com/hazelcast/hazelcast/pull/16858[#16858]
-* Improved the client partition table update push mechanism to prevent latency
-spikes when there is a partition table change and many clients need to be notified.
-https://github.com/hazelcast/hazelcast/pull/16938[#16938]
 
 [[fixes-402]]
 === Fixes
@@ -66,6 +67,9 @@ https://github.com/hazelcast/hazelcast/pull/17055[#17055]
 * Fixed the broken interoperability between the `CompletableFuture`
 methods.
 https://github.com/hazelcast/hazelcast/pull/17048[#17048]
+* Fixed map store initialization behavior when instance is running under a
+Java Security Manager.
+https://github.com/hazelcast/hazelcast/pull/17033[#17033]
 * Fixed an issue where the Hazelcast cluster having advanced network
 configuration was not sending the proper connection information
 to Management Center.
@@ -86,14 +90,11 @@ https://github.com/hazelcast/hazelcast/pull/16843[#16843]
 the serialization configuration and have the same class ID in different factories,
 were not handled properly.
 https://github.com/hazelcast/hazelcast/pull/16833[#16833]
-* Fixed behaviour of WAN sync when cluster contains lite members for dynamically
-added WAN config. WAN sync can now be invoked on lite members for dynamically
-added WAN config only if the config was added using that lite member. Other lite
+* Fixed the behavior of WAN sync when the cluster contains lite members for dynamically
+added WAN configurations. WAN sync can now be invoked on the lite members for dynamically
+added WAN configurations only if the configuration was added using that lite member. Other lite
 members can still fail if WAN sync is invoked on them for the dynamically added
-config. In addition to this, the node coordinating the WAN sync will no longer
+configuration. In addition to this, the member coordinating the WAN sync will no longer
 broadcast the event to lite members, as they don't own any data which needs to be
 synchronized.
-* Fixed map store initialization behaviour when instance is running under a
-Java Security Manager.
-https://github.com/hazelcast/hazelcast/pull/17033[#17033]
 
