@@ -990,7 +990,7 @@ https://github.com/hazelcast/hazelcast/pull/16237[#16237]
 strategy is enabled, multiple join configurations are prevented.
 https://github.com/hazelcast/hazelcast/pull/16177[#16177]
 * Fixed an issue where the client-side `HazelcastInstance`
-was throwing a configuration exception when there is a conflict
+was not throwing a configuration exception when there is a conflict
 between the dynamic and static configurations.
 https://github.com/hazelcast/hazelcast/issues/16165[#16165]
 *  Fixed an issue where the configuration objects, that have

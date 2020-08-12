@@ -1,0 +1,37 @@
+== 3.12.9
+
+[[enh-3129]]
+=== Enhancements
+
+* Updated the `hazelcast-kubernetes` dependency version to 1.5.4.
+https://github.com/hazelcast/hazelcast/pull/17256[#17256]
+* Added support for tenant control when creating caches.
+https://github.com/hazelcast/hazelcast/pull/17121[#17121]
+
+[[fixes-3129]]
+=== Fixes
+
+* Fixed a race issue when creating a cache (JCache) using multiple
+methods with the same cache name but having different keys.
+https://github.com/hazelcast/hazelcast/issues/17284[#17284]
+* Fixed an issue where the repeated calls of `executeOnKeys()`
+in Hazelcast clients for `NATIVE` maps was causing a continuous increase
+in the used memory and exhaustion of the memory pool after a while.
+https://github.com/hazelcast/hazelcast/pull/17271[#17271]
+* Fixed an issue where `ReliableTopicMessageListener` was
+firing a warning when the client is shutting down.
+https://github.com/hazelcast/hazelcast/issues/17070[#17070]
+* Fixed an issue where the client-side `HazelcastInstance`
+was not throwing a configuration exception when there is a conflict
+between the dynamic and static configurations.
+https://github.com/hazelcast/hazelcast/issues/16927[#16927]
+
+[[heroes-3129]]
+===  Hazelcast Heroes
+
+The following contributor from our
+open source community appears in these release notes:
+
+* https://github.com/lprimak[lprimak]
+
+Thank you for your valuable contributions!

@@ -120,6 +120,10 @@ https://github.com/hazelcast/hazelcast/issues/15241[#15241]
 * Clarified the exception message when you connect to a cluster with an
 invalid group name.
 https://github.com/hazelcast/hazelcast/issues/15099[#15099]
+* Refactored the check and retry initialization logic of
+`ReplicatedMapProxy` so that they are performed in parallel for different
+partitions.
+https://github.com/hazelcast/hazelcast/pull/14331[#14331]
 * Added a test for the `ClientConsoleApp` class. 
 https://github.com/hazelcast/hazelcast/issues/12298[#12298]
 * Improved the behavior of `ConcurrentMap.computeIfPresent`:
@@ -212,6 +216,7 @@ document:
 * https://github.com/StephenOTT[Stephen Russett]
 * https://github.com/ulfjack[Ulf Adams]
 * https://github.com/abdulazizali77[Abdul Aziz Ali]
+* https://github.com/netudima[Dmitry Konstantinov]
 
 Thank you for your valuable contributions!
 
