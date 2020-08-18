@@ -71,3 +71,13 @@ makes the `Config.toString` message incomplete. https://github.com/hazelcast/haz
 * Hazelcast IMap ignores the size capacity. https://github.com/hazelcast/hazelcast/issues/188[#188]
 * Hazelcast resource adapter package (version 2.1.2) does not deploy on
 JBoss 7.1.1. https://github.com/hazelcast/hazelcast/issues/182[#182]
+
+[[heroes-23]]
+===  Hazelcast Heroes
+
+The following contributor from our
+open source community appears in these release notes:
+
+* https://github.com/germanklf[Germán Kondolf]
+
+Thank you for your valuable contributions!

@@ -158,3 +158,16 @@ https://github.com/hazelcast/hazelcast/issues/59[#59]
 https://github.com/hazelcast/hazelcast/issues/57[#57]
 * Hazelcast resource adapter does not work on WebSphere 6.1/7.
 https://github.com/hazelcast/hazelcast/issues/37[#37]
+
+[[heroes-30]]
+===  Hazelcast Heroes
+
+The following contributor from our
+open source community appears in these release notes:
+
+* https://github.com/rmoquin[Ryan Moquin]
+* https://github.com/vcottagiri[Varghese Cottagiri]
+* https://github.com/notz[Gernot Pansy]
+* https://github.com/Shohou[Dmitry Shohov]
+
+Thank you for your valuable contributions!

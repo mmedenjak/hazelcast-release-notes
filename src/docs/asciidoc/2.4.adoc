@@ -43,3 +43,13 @@ backups. https://github.com/hazelcast/hazelcast/issues/260[#260]
 * Enable Hazelcast to use specified port ranges to accommodate firewall
 policies. https://github.com/hazelcast/hazelcast/issues/251[#251]
 * Seeing multiple concurrent locks on a distributed lock. https://github.com/hazelcast/hazelcast/issues/168[#168]
+
+[[heroes-24]]
+===  Hazelcast Heroes
+
+The following contributor from our
+open source community appears in these release notes:
+
+* https://github.com/marshalium[Marshall Scorcio]
+
+Thank you for your valuable contributions!

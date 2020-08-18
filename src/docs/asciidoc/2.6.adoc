@@ -16,3 +16,13 @@ https://github.com/hazelcast/hazelcast/issues/477[#477]
 timeout. https://github.com/hazelcast/hazelcast/issues/472[#472]
 * `@SpringAware` annotation leads to memory leak when using Hazelcast
 distributed executor service. https://github.com/hazelcast/hazelcast/issues/470[#470]
+
+[[heroes-26]]
+===  Hazelcast Heroes
+
+The following contributor from our
+open source community appears in these release notes:
+
+* https://github.com/DavidJohnHarrison[David John Harrison]
+
+Thank you for your valuable contributions!
