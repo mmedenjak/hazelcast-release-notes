@@ -18,6 +18,9 @@ https://github.com/hazelcast/hazelcast/issues/17284[#17284]
 in Hazelcast clients for `NATIVE` maps was causing a continuous increase
 in the used memory and exhaustion of the memory pool after a while.
 https://github.com/hazelcast/hazelcast/pull/17271[#17271]
+* Fixed a performance issue when using paging predicates with
+JDK 8.
+https://github.com/hazelcast/hazelcast/pull/17213[#17213]
 * Fixed an issue where `ReliableTopicMessageListener` was
 firing a warning when the client is shutting down.
 https://github.com/hazelcast/hazelcast/issues/17070[#17070]
