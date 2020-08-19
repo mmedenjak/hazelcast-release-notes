@@ -44,12 +44,10 @@ backups. https://github.com/hazelcast/hazelcast/issues/260[#260]
 policies. https://github.com/hazelcast/hazelcast/issues/251[#251]
 * Seeing multiple concurrent locks on a distributed lock. https://github.com/hazelcast/hazelcast/issues/168[#168]
 
-[[heroes-24]]
-===  Hazelcast Heroes
+[[contributors-24]]
+===  Contributors
 
-The following contributor from our
-open source community appears in these release notes:
+We would like to thank the contributors from our open source
+community who worked on this release:
 
 * https://github.com/marshalium[Marshall Scorcio]
-
-Thank you for your valuable contributions!

@@ -72,12 +72,10 @@ makes the `Config.toString` message incomplete. https://github.com/hazelcast/haz
 * Hazelcast resource adapter package (version 2.1.2) does not deploy on
 JBoss 7.1.1. https://github.com/hazelcast/hazelcast/issues/182[#182]
 
-[[heroes-23]]
-===  Hazelcast Heroes
+[[contributors-23]]
+===  Contributors
 
-The following contributor from our
-open source community appears in these release notes:
+We would like to thank the contributors from our open source
+community who worked on this release:
 
 * https://github.com/germanklf[Germán Kondolf]
-
-Thank you for your valuable contributions!

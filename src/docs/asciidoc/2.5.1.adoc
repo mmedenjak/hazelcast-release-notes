@@ -37,12 +37,10 @@ time `store()` is called in loader and then `remove()` is called on
 locked map, value for the key is read from the store and not from map.
 Consequently, put/set/update is overridden and data is lost. https://github.com/hazelcast/hazelcast/issues/187[#187]
 
-[[heroes-251]]
-===  Hazelcast Heroes
+[[contributors-251]]
+===  Contributors
 
-The following contributor from our
-open source community appears in these release notes:
+We would like to thank the contributors from our open source
+community who worked on this release:
 
 * https://github.com/pablotdl[Pablo S]
-
-Thank you for your valuable contributions!

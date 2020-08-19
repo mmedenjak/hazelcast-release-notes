@@ -20,12 +20,10 @@ the clustered session. https://github.com/hazelcast/hazelcast/issues/104[#104]
 * There is an issue in concurrent `queue.take()` and
 `txn.rollback()`. https://github.com/hazelcast/hazelcast/issues/99[#99]
 
-[[heroes-203]]
-===  Hazelcast Heroes
+[[contributors-203]]
+===  Contributors
 
-The following contributor from our
-open source community appears in these release notes:
+We would like to thank the contributors from our open source
+community who worked on this release:
 
 * https://github.com/Nugs[Andrew Walters]
-
-Thank you for your valuable contributions!
