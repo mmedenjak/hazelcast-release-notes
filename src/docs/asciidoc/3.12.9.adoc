@@ -29,12 +29,10 @@ was not throwing a configuration exception when there is a conflict
 between the dynamic and static configurations.
 https://github.com/hazelcast/hazelcast/issues/16927[#16927]
 
-[[heroes-3129]]
-===  Hazelcast Heroes
+[[contributors-3129]]
+===  Contributors
 
-The following contributor from our
-open source community appears in these release notes:
+We would like to thank the contributors from our open source
+community who worked on this release:
 
 * https://github.com/lprimak[lprimak]
-
-Thank you for your valuable contributions!
