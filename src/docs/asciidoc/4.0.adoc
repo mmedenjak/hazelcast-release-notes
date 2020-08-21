@@ -1370,3 +1370,16 @@ https://github.com/hazelcast/hazelcast/pull/15539[#15539]
 the `HazelcastInstance.getCountdownLatch()` method. Instead
 we provide the unsafe mode for all CP data structures.
 https://github.com/hazelcast/hazelcast/pull/15538[#15538]
+
+[[contributors-40]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/acl-oss[ACL-OSS]
+* https://github.com/gdela[Wojciech Gdela]
+* https://github.com/sbespalov[Sergey Bespalov]
+* https://github.com/lukasherman[Lukáš Herman]
+
+

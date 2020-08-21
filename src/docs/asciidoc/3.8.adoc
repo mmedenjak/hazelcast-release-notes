@@ -340,3 +340,16 @@ should be used.
 * MapReduce feature is deprecated. See the
 http://docs.hazelcast.org/docs/3.8/manual/html-single/index.html#mapreduce-deprecation[MapReduce
 Deprecation section].
+
+[[contributors-38]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/LoneRifle[LoneRifle]
+* https://github.com/cpiotr[Piotr Ciruk]
+* https://github.com/rvanheest[Richard van Heest]
+* https://github.com/kedar-joshi[Kedar Joshi]
+* https://github.com/fredang[Frederic Dang Ngoc]
+* https://github.com/dsukhoroslov[Denis Sukhoroslov]

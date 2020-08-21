@@ -338,3 +338,12 @@ and should not use default XML feature to connect to `localhost`.
 https://github.com/hazelcast/hazelcast/issues/3256[#3256]
 * Owner connection `read()` forever.
 https://github.com/hazelcast/hazelcast/issues/3401[#3401]
+
+[[contributors-35]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/igmar[Igmar Palsenberg]
+* https://github.com/cszmajda[cszmajda]

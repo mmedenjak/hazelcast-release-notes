@@ -429,3 +429,13 @@ the cluster.
 You can set the system property
 `hazelcast.legacy.memberlist.format.enabled` to `true` if you want to
 see the member list in its old format.
+
+[[contributors-39]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/gaganis[Giorgos Gaganis]
+* https://github.com/dpwegener[dpwegener]
+

@@ -48,3 +48,11 @@ https://github.com/hazelcast/hazelcast/issues/2531[#2531]
 * There appears to be a leak in the memory in
 `SecondsBasedEntryTaskScheduler` when idle timeout is enabled on a map.
 https://github.com/hazelcast/hazelcast/issues/2343[#2343]
+
+[[contributors-325]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/AndrewKolpakov[Andrew Kolpakov]

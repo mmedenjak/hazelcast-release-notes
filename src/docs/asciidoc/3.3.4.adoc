@@ -69,3 +69,11 @@ count of a map cannot be fulfilled since a node defined in the custom
 partition group is down, a JMX service call is blocked in the while-loop
 at `com.hazelcast.map.MapService.createLocalMapStats`.
 https://github.com/hazelcast/hazelcast/issues/3526[#3526]
+
+[[contributors-334]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/cszmajda[cszmajda]

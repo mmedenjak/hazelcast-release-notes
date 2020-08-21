@@ -406,3 +406,20 @@ batch size to `1` while configuring the `WanBatchReplication`. Please
 refer to the
 http://docs.hazelcast.org/docs/3.7/manual/html-single/index.html#defining-wan-replication[Defining
 WAN Replication section] for more information.
+
+[[contributors-37]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/bturner[Bryan Turner]
+* https://github.com/LoneRifle[LoneRifle]
+* https://github.com/Vampire[Björn Kautler]
+* https://github.com/messo[Bálint Kriván]
+* https://github.com/dsukhoroslov[Denis Sukhoroslov]
+* https://github.com/Jorik0[Jorik0]
+* https://github.com/msebire[Mathieu Sebire]
+* https://github.com/aborshik[Alex Borshik]
+* https://github.com/cpiotr[Piotr Ciruk]
+* https://github.com/zerhacker[zerhacker]

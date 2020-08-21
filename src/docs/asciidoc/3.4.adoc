@@ -139,3 +139,16 @@ https://github.com/hazelcast/hazelcast/issues/2385[#2385]
 * Sections of Hazelcast configuration should be able to be imported so
 that these sections can be shared between other Hazelcast configurations.
 https://github.com/hazelcast/hazelcast/issues/406[#406]
+
+[[contributors-34]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/gallandarakhneorg[Stéphane Galland]
+* https://github.com/mst-appear[Mikael Ståldal]
+* https://github.com/markathomas[Mark Thomas]
+* https://github.com/mheemskerk[mheemskerk]
+* https://github.com/cszmajda[cszmajda]
+* https://github.com/tufangorel[Tufan Görel]

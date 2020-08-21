@@ -55,3 +55,11 @@ https://github.com/hazelcast/hazelcast/issues/2354[#2354]
 https://github.com/hazelcast/hazelcast/issues/2358[#2358]
 * NullPointerException in Bundle Activator.
 https://github.com/hazelcast/hazelcast/issues/2489[#2489]
+
+[[contributors-322]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/lukasblu[Lukas Blunschi]

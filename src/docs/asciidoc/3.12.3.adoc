@@ -61,3 +61,12 @@ https://github.com/hazelcast/hazelcast/pull/15378[#15378]
 the write behind queue: It was a concurrency issue when there are
 updates to `CoalescedWriteBehindQueue` while `StoreWorker` is running.
 https://github.com/hazelcast/hazelcast/issues/15060[#15060]
+
+[[contributors-3123]]
+=== Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/gdela[Wojciech Gdela]
+

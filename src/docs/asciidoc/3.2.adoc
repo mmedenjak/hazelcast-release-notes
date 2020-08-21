@@ -240,3 +240,20 @@ https://github.com/hazelcast/hazelcast/issues/850[#850]
 https://github.com/hazelcast/hazelcast/issues/826[#826]
 * Full replication of Maps should be performed.
 https://github.com/hazelcast/hazelcast/issues/360[#360]
+
+[[contributors-32]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/jwcarman[James Carman]
+* https://github.com/ispringer[Ian Springer]
+* https://github.com/yhz[hogan]
+* https://github.com/nscavell[Nick Scavelli]
+* https://github.com/krolser[Aleh]
+* https://github.com/santoshbmath[Santosh]
+* https://github.com/oravecz[Jim Cook]
+* https://github.com/jagliot[Jagliot]
+* https://github.com/kjordan2001[kjordan2001]
+

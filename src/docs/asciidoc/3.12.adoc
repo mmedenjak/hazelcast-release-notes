@@ -216,3 +216,11 @@ implementations provided by the CP Subsystem have been introduced.
 ** `hazelcast.mc.url.change.enabled`
 ** `hazelcast.memcache.enabled`
 ** `hazelcast.http.healthcheck.enabled`
+
+[[contributors-312]]
+=== Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/vblagushin[Vladimir Blagushin]

@@ -450,3 +450,18 @@ to be maintained for every major release. This process should be
 dynamic. https://github.com/hazelcast/hazelcast/issues/174[#174]
 * Throughput statistics for Map shows nothing when the `putAll()` method
 is used. https://github.com/hazelcast/hazelcast/issues/159[#159]
+
+[[contributors-36]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/cszmajda[cszmajda]
+* https://github.com/matjohns[Mat Johns]
+* https://github.com/adessaigne[adessaigne]
+* https://github.com/Fabryprog[Fabrizio Spataro]
+* https://github.com/LoneRifle[LoneRifle]
+* https://github.com/fwassmer[fwassmer]
+* https://github.com/cetin[Çetin]
+* https://github.com/henri-tremblay[Henri Tremblay]

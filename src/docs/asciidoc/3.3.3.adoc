@@ -50,3 +50,11 @@ https://github.com/hazelcast/hazelcast/issues/3666[#3666]
 * Null pointer exception in the method `Records.buildRecordInfo` from
 the stabilizer `MapStoreTest`.
 https://github.com/hazelcast/hazelcast/issues/2956[#2956]
+
+[[contributors-333]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/dirkvanrensburg[Dirk van Rensburg]

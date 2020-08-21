@@ -157,3 +157,15 @@ With 3.10, the method `Config.findCacheConfig` is aligned to behave like the oth
 ** `hazelcast.icmp.max.attempts`
 ** `hazelcast.icmp.interval`
 ** `hazelcast.icmp.ttl`
+
+[[contributors-310]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/elFarto[Stephen]
+* https://github.com/vmarquez[Vincent Marquez]
+* https://github.com/LukasVyhlidka[Lukáš Vyhlídka]
+* https://github.com/Mak-Sym[Mak-Sym]
+* https://github.com/mumukiller[Gerasimov Gennady]

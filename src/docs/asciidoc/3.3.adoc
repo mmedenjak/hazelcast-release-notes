@@ -244,3 +244,15 @@ https://github.com/hazelcast/hazelcast/issues/2591[#2591]
 queue. https://github.com/hazelcast/hazelcast/issues/2588[#2588]
 * `com.hazelcast.core.EntryView#getLastAccessTime` is
 invalid. https://github.com/hazelcast/hazelcast/issues/2581[#2581]
+
+[[contributors-33]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/ollierob[Ollie R]
+* https://github.com/bturner[Bryan Turner]
+* https://github.com/akerekes[Andras Kerekes]
+* https://github.com/lukasblu[Lukas Blunschi]
+* https://github.com/PetroSemeniuk[Petro Semeniuk]

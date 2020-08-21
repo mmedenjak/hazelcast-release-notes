@@ -15,3 +15,11 @@ have any effect. https://github.com/hazelcast/hazelcast/issues/644[#644]
 * Near cache functionality does not work for Java client. `MapConfig`
 always returns the generic map name since in the client, the client
 prefix is added to map’s name. https://github.com/hazelcast/hazelcast/issues/620[#620]
+
+[[contributors-262]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/notz[Gernot Pansy]

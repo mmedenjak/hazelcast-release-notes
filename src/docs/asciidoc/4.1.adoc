@@ -197,12 +197,11 @@ https://github.com/hazelcast/hazelcast/issues/14935[#14935]
 === Removed Features
 
 
-[[heroes-41]]
-===  Hazelcast Heroes
+[[contributors-41]]
+===  Contributors
 
-We'd like to thank to the following contributors from our
-open source community that appear in this release notes
-document:
+We would like to thank the contributors from our open source
+community who worked on this release:
 
 * https://github.com/inelpandzic[Inel Pandzic]
 * https://github.com/omidp[Omid Pourhadi]
@@ -217,7 +216,5 @@ document:
 * https://github.com/ulfjack[Ulf Adams]
 * https://github.com/abdulazizali77[Abdul Aziz Ali]
 * https://github.com/netudima[Dmitry Konstantinov]
-
-Thank you for your valuable contributions!
 
 

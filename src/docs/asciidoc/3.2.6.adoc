@@ -23,3 +23,11 @@ https://github.com/hazelcast/hazelcast/issues/3047[#3047]
 * `ContextClassLoader` is by default only set on some cached operation
 threads, not on most others.
 https://github.com/hazelcast/hazelcast/issues/2721[#2721]
+
+[[contributors-326]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/AndrewKolpakov[Andrew Kolpakov]

@@ -95,3 +95,15 @@ PN counter data from the first member was lost. This is fixed by removing PN cou
 ** `hazelcast.master.confirmation.interval.seconds`
 ** `hazelcast.max.no.master.confirmation.seconds`
 ** `hazelcast.mc.max.visible.instance.count`
+
+[[contributors-311]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+
+* https://github.com/Mak-Sym[Mak-Sym]
+* https://github.com/hgvanpariya[Harikrushna V]
+* https://github.com/carstenartur[Carsten Hammer]
+* https://github.com/webashutosh[Ashutosh Agrawal]

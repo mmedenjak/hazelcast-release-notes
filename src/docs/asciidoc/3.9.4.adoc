@@ -87,3 +87,12 @@ https://github.com/hazelcast/hazelcast/issues/12273[#12273]
 * A dynamically added configuration for Replicate Map structure causes a
 `ConfigurationException`.
 https://github.com/hazelcast/hazelcast/issues/12222[#12222]
+
+[[contributors-394]]
+===  Contributors
+
+We would like to thank the contributors from our open source
+community who worked on this release:
+
+* https://github.com/mumukiller[Gerasimov Gennady]
+
