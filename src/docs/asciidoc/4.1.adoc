@@ -32,7 +32,7 @@ See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#?
 * **Improvements in Partial Network Disconnections:** Introduced properties
 to be configured to detect and resolve the partial network issues among the
 Hazelcast IMDG members.
-See link:https://github.com/hazelcast/hazelcast/pull/16680[#16680^] and the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
+See link:https://github.com/hazelcast/hazelcast/pull/16680[#16680^] and the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#partial-network-partitions[Partial Network Partitions section^].
 * **Trusted Interfaces:** It is now possible to restrict the source IP addresses
 from which the Management Center operations are allowed.
 See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#limiting-source-addresses[Limiting Source Addresses section^].
@@ -41,10 +41,43 @@ authentication protocol which is one of the standard
 solutions for single-sign-on. It also adds the GSSAPI authentication support in
 LDAP configuration.
 See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#kerberos-authentication-type[Kerberos Authentication Type section^].
+* **WAN Throttling Mechanism**: This prevents the WAN consumers from 
+getting overloaded by the WAN producers if transferring the WAN events takes
+less time than processing them in the target cluster. This can be the case with
+WAN synchronization if the network latency is low enough. It can be configured using
+the following properties:
+** `hazelcast.wan.consumer.invocation.threshold`
+** `hazelcast.wan.consumer.ack.delay.backoff.init`
+** `hazelcast.wan.consumer.ack.delay.backoff.max`
+** `hazelcast.wan.consumer.ack.delay.backoff.multiplier`
++
+https://github.com/hazelcast/hazelcast/pull/17113[#17113]
 
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added support for tenant control when creating caches.
+https://github.com/hazelcast/hazelcast/pull/17122[#17122]
+* Added metric count support for sets, and maps having backup reads enabled,
+query caches, map stores, custom attributes and WAN replication configurations.
+https://github.com/hazelcast/hazelcast/pull/17053[#17053],
+https://github.com/hazelcast/hazelcast/pull/17071[#17071],
+https://github.com/hazelcast/hazelcast/pull/17069[#17069],
+https://github.com/hazelcast/hazelcast/pull/17081[#17081]
+* Added support to allow submitting and executing operations while a member
+is shutting down to increase the availability of a cluster more that keeps
+large data.
+https://github.com/hazelcast/hazelcast/pull/17028[#17028]
+* Added `hazelcast-azure` discovery plugin to the `hazelcast-all` module.
+https://github.com/hazelcast/hazelcast/pull/16982[#16982]
+* Introduced the `ConfigRecognition` API that determines if a
+provided declarative configuration is recognized by the rules defined in a given
+implementation. Along with the API the following three implementations are added:
+** `MemberConfigRecognizer` for recognizing member XML and YAML configurations
+** `ClientConfigRecognizer` for recognizing client XML and YAML configurations
+** `ClientFailoverConfigRecognizer` for recognizing failover client XML and YAML configurations
++
+https://github.com/hazelcast/hazelcast/pull/16958[#16958]
 * Improved the mechanism of partition table updates to
 eliminate the latencies when these updates are sent to the clients by a member.
 https://github.com/hazelcast/hazelcast/pull/16939[#16939]
@@ -101,6 +134,9 @@ https://github.com/hazelcast/hazelcast/pull/16654[#16654]
 * Renamed MultiMap proxy implementation to follow the established naming convention:
 `ObjectMultiMapProxy` -> `MultiMapProxyImpl`.
 https://github.com/hazelcast/hazelcast/pull/16637[#16637]
+* Improved the `computeIfPresent()` implementation so that now it keeps a
+clone of the old/existing value and uses that for replace/delete operations.
+https://github.com/hazelcast/hazelcast/pull/16636[#16636]
 * Introduced the `hazelcast.logging.details.enabled` property
 to make the logging of cluster version, name and IP optional to
 decrease the noise in the logs when, for example, you have a single-member cluster.
@@ -142,12 +178,20 @@ https://github.com/hazelcast/hazelcast/pull/16839[#16839]
 [[fixes-41]]
 === Fixes
 
+* Fixed the broken interoperability between the `CompletableFuture` methods.
+https://github.com/hazelcast/hazelcast/pull/17020[#17020]
+* Fixed an issue where touching a map entry having an entry processor working on it
+was modifying its time-to-live.
+https://github.com/hazelcast/hazelcast/issues/16987[#16987]
 * Fixed an issue in the cache service where its pre-join
 operation was considering `CacheConfig` as resolved: it
 was assuming that key/value types, user customizations and
 other cache configurations have been loaded. This was an issue
 when the cache is not touched yet.
 https://github.com/hazelcast/hazelcast/pull/16917[#16917]
+* Fixed an issue where Management Center was not working as expected
+when the cluster is set up using advanced network configuration.
+https://github.com/hazelcast/hazelcast/pull/16910[#16910]
 * Fixed an issue where `ServiceLoader` was round-tripping between URL and URI,
 and consequently loses the associated `URLStreamHandler` when trying to load
 Hazelcast from a custom class loader.
@@ -216,5 +260,6 @@ community who worked on this release:
 * https://github.com/ulfjack[Ulf Adams]
 * https://github.com/abdulazizali77[Abdul Aziz Ali]
 * https://github.com/netudima[Dmitry Konstantinov]
-
+* https://github.com/chanmol1999[Anmol Chaddha]
+* https://github.com/lprimak[lprimak]
 
