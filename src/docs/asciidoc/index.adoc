@@ -38,6 +38,8 @@ in the enterprise edition.
 
 //include::4.1.adoc[]
 
+//include::4.1-BETA-1.adoc[]
+
 include::4.0.2.adoc[]
 
 include::4.0.1.adoc[]

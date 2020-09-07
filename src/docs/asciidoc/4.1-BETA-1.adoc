@@ -1,50 +1,33 @@
-== 4.1
-
-NOTE: See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#upgrading-to-hazelcast-imdg-4-1[Hazelcast IMDG 4.1 Migration Guide^]
-for the detailed guidelines to be followed when upgrading Hazelcast IMDG to 4.1.
+== 4.1-BETA-1
 
 [[nf-41]]
 === New Features
 
-*_Hazelcast IMDG Enterprise New Features:_*
-
-* **???:** ???.
-See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
-
-*_Hazelcast IMDG Open Source New Features:_*
-
 * **Instance Tracking:** It is a feature which writes a file on the Hazelcast instance startup
 at the configured location. This file contains metadata about the instance, such as version, product name
 and process ID, and it is not deleted on the member shutdown.
-See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#isntace-tracking[Instance Tracking section^].
+See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/#instance-tracking[Instance Tracking section^].
 * **SQL Implementation:** Implemented the SQL engine that
 supports map scans, index scans, projections and filters.
 It also introduces the `hazelcast-sql` module to handle the
 SQL engine's dependencies on Apache Calcite.
-See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
+See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/index.html#sql[SQL section^].
 
 [[enh-41]]
 === Enhancements
 
-*_Hazelcast IMDG Enterprise Enhancements:_*
-
-* **???:** ???.
-See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/index.html#???[??? section^].
-
-*_Hazelcast IMDG Open Source Enhancements:_*
-
 * **Improvements in Partial Network Disconnections:** Introduced properties
 to be configured to detect and resolve the partial network issues among the
 Hazelcast IMDG members.
-See link:https://github.com/hazelcast/hazelcast/pull/16680[#16680^] and the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#partial-network-partitions[Partial Network Partitions section^].
+See link:https://github.com/hazelcast/hazelcast/pull/16680[#16680^] and the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/#partial-network-partitions[Partial Network Partitions section^].
 * **Trusted Interfaces:** It is now possible to restrict the source IP addresses
 from which the Management Center operations are allowed.
-See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#limiting-source-addresses[Limiting Source Addresses section^].
+See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/#limiting-source-addresses[Limiting Source Addresses section^].
 * **Out-of-the-Box Kerberos Support:** Introduced support for Kerberos
 authentication protocol which is one of the standard
 solutions for single-sign-on. It also adds the GSSAPI authentication support in
 LDAP configuration.
-See the link:https://docs.hazelcast.org/docs/4.1/manual/html-single/#kerberos-authentication-type[Kerberos Authentication Type section^].
+See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/#kerberos-authentication-type[Kerberos Authentication Type section^].
 * **WAN Throttling Mechanism**: This prevents the WAN consumers from 
 getting overloaded by the WAN producers if transferring the WAN events takes
 less time than processing them in the target cluster. This can be the case with
@@ -190,6 +173,8 @@ https://github.com/hazelcast/hazelcast/pull/16839[#16839]
 [[fixes-41]]
 === Fixes
 
+* Fixed an issue where `ReliableTopicMessageListener` was firing a warning when the client is shutting down.
+https://github.com/hazelcast/hazelcast/pull/17153[#17153]
 * Fixed the broken interoperability between the `CompletableFuture` methods.
 https://github.com/hazelcast/hazelcast/pull/17020[#17020]
 * Fixed an issue where touching a map entry having an entry processor working on it
