@@ -15,6 +15,12 @@ See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/index
 * **Automatic Detection of Discovery Strategy:** It tries to automatically detect the
 applicable discovery mechanism based on the runtime environment.
 See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/index.html#auto-detection[Auto Detection section^].
+* **Overriding Configuration:** You can now override the configuration entries
+of your cluster without changing the declarative configuration files (XML/YAML).
+See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/index.html#overriding-configuration[Overriding Configuration section^].
+* **Auditlog:** This feature allows observing some important cluster events.
+Auditable events have a unique type ID, and contain a timestamp and importance level.
+See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/index.html#auditlog[Logging Auditable Events section^].
 
 [[enh-41]]
 === Enhancements
@@ -23,6 +29,9 @@ See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/index
 to be configured to detect and resolve the partial network issues among the
 Hazelcast IMDG members.
 See link:https://github.com/hazelcast/hazelcast/pull/16680[#16680^] and the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/#partial-network-partitions[Partial Network Partitions section^].
+* **CP Subsystem Listeners:** Added membership and group availability
+listeners for CP Subsystem.
+See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/#cp-subsystem-listeners[CP Subsystem Listeners section^].
 * **Trusted Interfaces:** It is now possible to restrict the source IP addresses
 from which the Management Center operations are allowed.
 See the link:https://docs.hazelcast.org/docs/4.1-BETA-1/manual/html-single/#limiting-source-addresses[Limiting Source Addresses section^].
@@ -46,8 +55,45 @@ https://github.com/hazelcast/hazelcast/pull/17113[#17113]
 The following are the other improvements performed to solve the enhancement
 issues opened by the Hazelcast customers/team.
 
+* Added support for the merge operation in IMap.
+https://github.com/hazelcast/hazelcast/pull/17419[#17419]
+* Added support for publishing CP Subsystem and CP data structure
+statistics via Metrics.
+https://github.com/hazelcast/hazelcast/pull/17369[#17369]
+* Added public classes to expose the member- and
+client-side caching provider implementations (in the JCache implementation)
+without referring to internal classes.
+https://github.com/hazelcast/hazelcast/pull/17320[#17320]
+* Improved the entry processing mechanism so that the read-only processors on backups
+are not executed anymore.
+https://github.com/hazelcast/hazelcast/pull/17318[#17318]
+* Improved `CacheSimpleConfig` so that it now accepts cache name in its constructors.
+https://github.com/hazelcast/hazelcast/issues/17287[#17287]
+* Added support for advanced persistent memory configuration.
+https://github.com/hazelcast/hazelcast/pull/17282[#17282]
+* Cleaned up the noisy initial log messages on Hazelcast startups.
+https://github.com/hazelcast/hazelcast/pull/17243[#17243]
+* Introduced auto-disposable tasks for the scheduled executor service.
+https://github.com/hazelcast/hazelcast/pull/17215[#17215]
+* Added support for configurable priority queues.
+https://github.com/hazelcast/hazelcast/pull/17201[#17201]
+* Parallelized the partition replica migrations so that
+the time needed for rebalancing the partitions after adding
+or removing a member to/from a cluster is reduced.
+https://github.com/hazelcast/hazelcast/pull/17197[#17197]
+* Added support for basic SQL expressions.
+https://github.com/hazelcast/hazelcast/pull/17183[#17183]
+* Added client labels to `ClientEndpointImpl.toString()`
+to simplify the client identification (in addition to client uuid)
+on the Hazelcast member side.
+https://github.com/hazelcast/hazelcast/issues/17178[#17178]
+* Added the statistics entry to phone home, that counts the caches having WAN replication
+configured.
+https://github.com/hazelcast/hazelcast/pull/17143[#17143]
 * Added support for tenant control when creating caches.
 https://github.com/hazelcast/hazelcast/pull/17122[#17122]
+* Added support for accessing domain objects without domain classes (`GenericRecord`).
+https://github.com/hazelcast/hazelcast/pull/17105[#17105]
 * Added metric count support for sets, and maps having backup reads enabled,
 query caches, map stores, custom attributes and WAN replication configurations.
 https://github.com/hazelcast/hazelcast/pull/17053[#17053],
@@ -168,16 +214,32 @@ https://github.com/hazelcast/hazelcast/issues/11958[#11958]
 [[bc-41]]
 === Breaking Changes
 
+* In a CP subsystem session, a generic `IllegalStateException` was being thrown when Hazelcast
+is shutdown. Now the same situation throws `HazelcastInstanceNotActiveException`.
+https://github.com/hazelcast/hazelcast/issues/17120[#17120]
 * The `TcpIpConnection` class has been renamed as `ServerConnection`.
 https://github.com/hazelcast/hazelcast/pull/16839[#16839]
-
-
 
 [[fixes-41]]
 === Fixes
 
+* Fixed an issue where the custom load balancers
+could not be configured declaratively.
+https://github.com/hazelcast/hazelcast/pull/17415[#17415]
+* Fixed the issue of dangling pointers in global indexes.
+https://github.com/hazelcast/hazelcast/pull/17338[#17338]
+* Fixed a race issue when creating a cache (JCache) using
+multiple methods with the same cache name but having different keys.
+https://github.com/hazelcast/hazelcast/pull/17286[#17286]
+* Fixed an issue where the repeated calls of `executeOnKeys()`
+in Hazelcast clients for `NATIVE` maps was causing a continuous
+increase in the used memory and exhaustion of the memory pool after a while.
+https://github.com/hazelcast/hazelcast/pull/17276[#17276]
 * Fixed an issue where `ReliableTopicMessageListener` was firing a warning when the client is shutting down.
 https://github.com/hazelcast/hazelcast/pull/17153[#17153]
+* Fixed an issue where the client was stuck with an outdated
+member list after a split-brain scenario.
+https://github.com/hazelcast/hazelcast/pull/17147[#17147]
 * Fixed the broken interoperability between the `CompletableFuture` methods.
 https://github.com/hazelcast/hazelcast/pull/17020[#17020]
 * Fixed an issue where touching a map entry having an entry processor working on it
@@ -260,4 +322,8 @@ community who worked on this release:
 * https://github.com/lprimak[lprimak]
 * https://github.com/keteracel[keteracel]
 * https://github.com/buraksezer[Burak Sezer]
+* https://github.com/wangumer[wangumer]
+* https://github.com/the-thing[Marcin L]
+
+
 
