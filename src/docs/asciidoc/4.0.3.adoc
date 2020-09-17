@@ -7,7 +7,7 @@
 https://github.com/hazelcast/hazelcast/pull/17482[#17482]
 * Adding public classes to expose the member and client side caching provider implementations without referring to internal classes.
 https://github.com/hazelcast/hazelcast/pull/17421[#17421]
-* Update hazelcast-kubernetes dependency to 2.0.2.
+* Update `hazelcast-kubernetes` dependency to 2.0.2.
 https://github.com/hazelcast/hazelcast/pull/17255[#17255]
 * Added ability to set expiration times for entries when using entry processors.
 https://github.com/hazelcast/hazelcast/pull/17175[#17175]
@@ -15,7 +15,7 @@ https://github.com/hazelcast/hazelcast/pull/17175[#17175]
 [[fixes-403]]
 === Fixes
 
-* Fixed NullPointerException when using IMap with HASH indexes.
+* Fixed `NullPointerException` when using IMap with HASH indexes.
 https://github.com/hazelcast/hazelcast/pull/17527[#17527]
 * Fixed rendering of diagnostics in case there is an exception inside a diagnostics plugin.
 https://github.com/hazelcast/hazelcast/pull/17502[#17502]
@@ -23,11 +23,11 @@ https://github.com/hazelcast/hazelcast/pull/17502[#17502]
 https://github.com/hazelcast/hazelcast/pull/17510[#17510]
 * Fixed propagation of exception from a function registered on a not-yet completed CompletionStage.
 https://github.com/hazelcast/hazelcast/pull/17520[#17520]
-* Fix race when overwriting CacheManager during JCache creation.
+* Fix race when overwriting `CacheManager` during JCache creation.
 https://github.com/hazelcast/hazelcast/pull/17292[#17292]
-* Fixed NATIVE memory leak when using IMap.executeOnKeys from a IMDG client.
+* Fixed NATIVE memory leak when using `IMap.executeOnKeys` from a IMDG client.
 https://github.com/hazelcast/hazelcast/pull/17274[#17274]
-* Resolved performance issue when using PagingPredicate in combination with JDK8.
+* Resolved performance issue when using `PagingPredicate` in combination with JDK8.
 https://github.com/hazelcast/hazelcast/pull/17211[#17211]
 * Fixed client behaviour when cluster encounters a split-brain. In some cases, the client was unable to reconnect to the cluster, even after the cluster healed.
 https://github.com/hazelcast/hazelcast/pull/17148[#17148]
